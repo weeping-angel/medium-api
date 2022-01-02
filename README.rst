@@ -1,36 +1,29 @@
-Medium APIs
-{{ cookiecutter.package_name|count * "=" }}
+===========
+medium-apis
+===========
 
-{% if cookiecutter.readme_pypi_badge -%}
-.. image:: https://img.shields.io/pypi/v/{{ cookiecutter.package_name }}.svg
-    :target: https://pypi.python.org/pypi/{{ cookiecutter.package_name }}
-    :alt: Latest PyPI version
-{%- endif %}
 
-{% if cookiecutter.readme_travis_badge -%}
-.. image:: {{ cookiecutter.readme_travis_url }}.png
-   :target: {{ cookiecutter.readme_travis_url }}
-   :alt: Latest Travis CI build status
-{%- endif %}
+.. image:: https://img.shields.io/pypi/v/medium_apis.svg
+        :target: https://pypi.python.org/pypi/medium_apis
 
-{{ cookiecutter.package_description }}
+.. image:: https://img.shields.io/travis/weeping-angel/medium_apis.svg
+        :target: https://travis-ci.com/weeping-angel/medium_apis
 
-Usage
------
+.. image:: https://readthedocs.org/projects/medium-apis/badge/?version=latest
+        :target: https://medium-apis.readthedocs.io/en/latest/?version=latest
+        :alt: Documentation Status
 
-Installation
-------------
 
-Requirements
-^^^^^^^^^^^^
 
-Compatibility
--------------
 
-Licence
--------
+Python Wrapper on top of Medium API to quickly extract data from Medium's website (https://medium.com).
 
-Authors
--------
 
-`{{ cookiecutter.package_name }}` was written by `{{ cookiecutter.author_name }} <{{ cookiecutter.author_email }}>`_.
+* Free software: MIT license
+* Documentation: https://medium-apis.readthedocs.io.
+
+
+Features
+--------
+
+* TODO
