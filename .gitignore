@@ -2,3 +2,6 @@
 venv
 tests
 .DS_Store
+
+*.egg-info/
+dist
