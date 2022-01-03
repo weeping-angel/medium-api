@@ -8,7 +8,6 @@ Welcome to medium-apis's documentation!
    README
    installation
    usage
-   modules
    contributing
    authors
    history
