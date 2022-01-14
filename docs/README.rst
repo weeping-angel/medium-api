@@ -1,5 +1,5 @@
 ===========
-medium-apis
+Medium APIs
 ===========
 
 
@@ -20,7 +20,8 @@ Python Wrapper on top of Medium API to quickly extract data from Medium's websit
 
 
 * Free software: MIT license
-* Documentation: https://medium-apis.readthedocs.io.
+* Documentation: https://medium-apis.readthedocs.io
+* PyPI: https://pypi.org/project/medium-apis/
 
 
 Features

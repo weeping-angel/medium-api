@@ -12,7 +12,7 @@ To install medium-apis, run this command in your terminal:
 
 .. code-block:: console
 
-    $ pip install medium_apis
+    $ pip install medium-apis
 
 This is the preferred method to install medium-apis, as it will always install the most recent stable release.
 
