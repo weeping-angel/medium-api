@@ -71,12 +71,12 @@ class Medium:
         resp, _ = self.__get_resp(f'/publication/{str(publication_id)}')
         return dict(resp)
 
-    def get_top_writers(self, topic_slug):
+    def get_top_writers_ids(self, topic_slug):
         resp, _ = self.__get_resp(f'/top_writers/{str(topic_slug)}')
         top_writer_ids = resp['top_writers']
         return list(top_writer_ids)
 
-    def get_latestposts(self, topic_slug):
+    def get_latestposts_ids(self, topic_slug):
         resp, _ = self.__get_resp(f'/latestposts/{str(topic_slug)}')
         latestposts_ids = resp['latestposts']
         return list(latestposts_ids)
