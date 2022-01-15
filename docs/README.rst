@@ -19,10 +19,11 @@ Medium APIs
 Python Wrapper on top of Medium API to quickly extract data from Medium's website (https://medium.com).
 
 
-* Free software: MIT license
+
 * Documentation: https://medium-apis.readthedocs.io
 * PyPI: https://pypi.org/project/medium-apis/
-
+* Swagger Documentation: https://weeping-angel.github.io/medium-apis
+* Free software: MIT license
 
 Features
 --------
