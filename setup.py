@@ -17,7 +17,7 @@ def read(filename):
 
 setup(
     name="medium-apis",
-    version="0.1.0",
+    version="0.1.1",
     url="https://github.com/weeping-angel/medium-apis",
     license='MIT',
 
@@ -25,7 +25,7 @@ setup(
     author_email="nishujain1997.19@gmail.com",
 
     description="Python Wrapper on top of Medium API to quickly extract data from Medium's website (https://medium.com).",
-    long_description=read("README.rst"),
+    long_description=read("./docs/README.rst"),
 
     packages=find_packages(include=['medium_apis', 'medium_apis.*']),
 

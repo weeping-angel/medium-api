@@ -2,7 +2,8 @@
 venv
 tests
 .DS_Store
-medium_apis/__pycache__
+**/__pycache__/
+**/*.pyc
 
 *.egg-info/
 dist
