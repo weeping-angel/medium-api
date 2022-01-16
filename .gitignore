@@ -1,6 +1,5 @@
 .vscode
 venv
-tests
 .DS_Store
 **/__pycache__/
 **/*.pyc
