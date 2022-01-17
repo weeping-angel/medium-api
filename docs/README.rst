@@ -12,6 +12,8 @@ Medium APIs
         :target: https://medium-apis.readthedocs.io/en/latest/?version=latest
         :alt: Documentation Status
 
+| Social Profiles:
+
 .. image:: https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white
         :target: https://nishu-jain.medium.com
         :alt: Author's Blog
@@ -19,6 +21,8 @@ Medium APIs
 .. image:: https://img.shields.io/badge/-Stackoverflow-FE7A16?style=for-the-badge&logo=stack-overflow&logoColor=white
         :target: https://stackoverflow.com/users/17500503/weeping-angel
         :alt: StackOverflow Profile
+
+| Funding
 
 .. image:: https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white
         :target: https://www.paypal.com/paypalme/sanskarjain1997
