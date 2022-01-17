@@ -21,7 +21,7 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('..'))
 
-import medium_apis
+# import medium_apis
 import pkg_resources
 
 # -- General configuration ---------------------------------------------
