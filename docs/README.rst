@@ -1,6 +1,7 @@
 ===========
 Medium APIs
 ===========
+.. image:: https://img.shields.io/badge/Made%20with-Python-1f425f.svg
 
 .. image:: https://img.shields.io/pypi/v/medium-apis
         :target: https://pypi.python.org/pypi/medium_apis
@@ -12,7 +13,6 @@ Medium APIs
 
 .. image:: https://github.com/weeping-angel/medium-apis/actions/workflows/tests.yml/badge.svg
 
-.. image:: https://img.shields.io/badge/Made%20with-Python-1f425f.svg
 
 
 ..
