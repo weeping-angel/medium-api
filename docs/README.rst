@@ -6,11 +6,13 @@ Medium APIs
         :target: https://pypi.python.org/pypi/medium_apis
         :alt: PYPI Package Version
 
-.. image:: https://github.com/weeping-angel/medium-apis/actions/workflows/tests.yml/badge.svg
-
 .. image:: https://readthedocs.org/projects/medium-apis/badge/?version=latest
         :target: https://medium-apis.readthedocs.io/en/latest/?version=latest
         :alt: RTD Documentation Status
+
+.. image:: https://github.com/weeping-angel/medium-apis/actions/workflows/tests.yml/badge.svg
+
+
 
 ..
         | Social Profiles:
