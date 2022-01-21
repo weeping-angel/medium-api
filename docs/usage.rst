@@ -8,4 +8,4 @@ To use medium-apis in a project::
 
     medium = Medium('YOUR_RAPIDAPI_KEY')
 
-    user = medium.get_user('username')
+    user = medium.get_user(username = 'username')
