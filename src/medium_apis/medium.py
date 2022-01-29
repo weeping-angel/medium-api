@@ -1,6 +1,12 @@
 from http.client import HTTPSConnection
 from ujson import loads
-import concurrent.futures
+
+from medium_apis.topfeeds import TopFeeds
+from medium_apis.user import User
+from medium_apis.article import Article
+from medium_apis.publication import Publication
+from medium_apis.top_writers import TopWriters
+from medium_apis.latestposts import LatestPosts
 
 class Medium:
     def __init__(self, rapidapi_key, base_url='medium2.p.rapidapi.com', calls=0):
@@ -17,91 +23,28 @@ class Medium:
         self.calls += 1
         return loads(resp.read()), resp.status
 
-    def get_user_id(self, username):
-        resp, _ = self.__get_resp(f'/user/id_for/{str(username)}')
-        user_id = resp['id']
-        return str(user_id)
-
-    def get_user(self, user_id=None, username=None):
+    def user(self, username=None, user_id=None):
         if user_id is not None:
-            resp, _ = self.__get_resp(f'/user/{str(user_id)}')
+            return User(user_id = user_id, get_resp = self.__get_resp)
         elif username is not None:
-            user_id = self.get_user_id(username)
-            resp, _ = self.__get_resp(f'/user/{str(user_id)}')
+            resp, _ = self.__get_resp(f'/user/id_for/{str(username)}')
+            user_id = resp['id']
+            return User(user_id = user_id, get_resp = self.__get_resp)
         else:
             print('Missing parameter: Please provide "user_id" or "username" to call the function')
             return None
 
-        return dict(resp)
+    def article(self, article_id):
+        return Article(article_id = article_id, get_resp = self.__get_resp)
 
-    def get_user_articles_ids(self, user_id=None, username=None):
-        if user_id is not None:
-            resp, _ = self.__get_resp(f'/user/{str(user_id)}/articles')
-        elif username is not None:
-            user_id = self.get_user_id(username)
-            resp, _ = self.__get_resp(f'/user/{str(user_id)}/articles')
-        else:
-            print('Missing parameter: Please provide "user_id" or "username" to call the function')
-            return None
+    def publication(self, publication_id):
+        return Publication(publication_id = publication_id, get_resp=self.__get_resp)
 
-        article_ids = resp['associated_articles']
-        return list(article_ids)
+    def top_writers(self, topic_slug):
+        return TopWriters(topic_slug=topic_slug, get_resp=self.__get_resp)
 
-    def get_user_following(self, user_id=None, username=None):
-        if user_id is not None:
-            resp, _ = self.__get_resp(f'/user/{str(user_id)}/following')
-        elif username is not None:
-            user_id = self.get_user_id(username)
-            resp, _ = self.__get_resp(f'/user/{str(user_id)}/following')
-        else:
-            print('Missing parameter: Please provide "user_id" or "username" to call the function')
-            return None
-        
-        return list(resp['following'])
+    def latestposts(self, topic_slug):
+        return LatestPosts(topic_slug=topic_slug, get_resp=self.__get_resp)
 
-    def get_article_info(self, article_id):
-        resp, _ = self.__get_resp(f'/article/{str(article_id)}')
-        return dict(resp)
-
-    def get_article_content(self, article_id):
-        resp, _ = self.__get_resp(f'/article/{str(article_id)}/content')
-        return str(resp['content'])
-
-    def get_publication_info(self, publication_id):
-        resp, _ = self.__get_resp(f'/publication/{str(publication_id)}')
-        return dict(resp)
-
-    def get_top_writers_ids(self, topic_slug):
-        resp, _ = self.__get_resp(f'/top_writers/{str(topic_slug)}')
-        top_writer_ids = resp['top_writers']
-        return list(top_writer_ids)
-
-    def get_latestposts_ids(self, topic_slug):
-        resp, _ = self.__get_resp(f'/latestposts/{str(topic_slug)}')
-        latestposts_ids = resp['latestposts']
-        return list(latestposts_ids)
-
-    def get_user_articles_info(self, user_id=None, username=None):
-        articles = []
-
-        if user_id is not None:
-            article_ids = self.get_user_articles_ids(user_id)
-        elif username is not None:
-            user_id = self.get_user_id(username)
-            article_ids = self.get_user_articles_ids(user_id)
-        else:
-            print('Missing parameter: Please provide "user_id" or "username" to call the function')
-            return None
-
-        with concurrent.futures.ThreadPoolExecutor(max_workers=100) as executor:
-            future_to_url = (executor.submit(self.get_article_info, article_id) for article_id in article_ids)
-
-            for future in concurrent.futures.as_completed(future_to_url):
-                try:
-                    article = future.result()
-                except Exception as exc:
-                    article = str(type(exc))
-                finally:
-                    articles.append(article)
-
-        return articles # list of dict
+    def topfeeds(self, tag, mode):
+        return TopFeeds(tag=tag, mode=mode, get_resp=self.__get_resp)
