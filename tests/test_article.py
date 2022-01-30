@@ -45,6 +45,9 @@ def test_article_content():
     assert len(article.content) > 0
 
 def test_article_json():
+    article.save_info()
+    article.save_content()
+    
     article_json = article.json
 
     assert isinstance(article_json, dict)

@@ -56,6 +56,8 @@ def test_user_top_articles_instances():
     assert isinstance(top_articles[0], Article)
 
 def test_user_articles_as_json():
+    user.fetch_articles(content=True)
+
     user_articles_as_json = user.articles_as_json
 
     assert isinstance(user_articles_as_json, list)
