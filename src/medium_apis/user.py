@@ -1,9 +1,10 @@
-import concurrent.futures
+
 
 class User:
-    def __init__(self, user_id, get_resp):
+    def __init__(self, user_id, get_resp, fetch_articles):
         self.user_id = user_id
         self.__get_resp = get_resp
+        self.__fetch_articles = fetch_articles
 
         self.__posts = None
         self.__info = None
@@ -43,7 +44,7 @@ class User:
         from medium_apis.article import Article
 
         if self.__posts is None:
-            self.__posts = [Article(i, get_resp = self.__get_resp) for i in self.article_ids]
+            self.__posts = [Article(i, get_resp = self.__get_resp, fetch_articles=self.__fetch_articles) for i in self.article_ids]
             
         return self.__posts
 
@@ -52,15 +53,13 @@ class User:
         from medium_apis.article import Article
 
         if self.__top_articles is None:
-            self.__top_articles = [Article(i, get_resp = self.__get_resp) for i in self.top_article_ids]
+            self.__top_articles = [Article(i, get_resp = self.__get_resp, fetch_articles=self.__fetch_articles) for i in self.top_article_ids]
             
         return self.__top_articles
 
     @property
     def articles_as_json(self):
-        self.fetch_articles_info()
-        self.fetch_articles_content()
-        return [post.json for post in self.__posts]
+        return [post.json for post in self.articles]
 
     def save_info(self):
         user = self.info
@@ -73,17 +72,6 @@ class User:
         self.is_writer_program_enrolled = user["is_writer_program_enrolled"]
         self.image_url = user['image_url']
 
-    def fetch_articles_info(self):
-        with concurrent.futures.ThreadPoolExecutor(max_workers=100) as executor:
-            future_to_url = (executor.submit(article.save_info) for article in self.articles if article.title is None)
-
-            for future in concurrent.futures.as_completed(future_to_url):
-                future.result()
-
-    def fetch_articles_content(self):
-        with concurrent.futures.ThreadPoolExecutor(max_workers=100) as executor:
-            future_to_url = (executor.submit(article.save_content) for article in self.articles if article.content is None)
-
-            for future in concurrent.futures.as_completed(future_to_url):
-                future.result()
+    def fetch_articles(self, content=False):
+        self.__fetch_articles(self.articles, content=content)
 

@@ -1,9 +1,10 @@
 from datetime import datetime
 
 class Article:
-    def __init__(self, article_id, get_resp):
+    def __init__(self, article_id, get_resp, fetch_articles):
         self.__get_resp = get_resp
         self.article_id = str(article_id)
+        self.__fetch_articles = fetch_articles
 
         self.title = None
         self.subtitle = None
@@ -34,7 +35,7 @@ class Article:
         self.title = article['title']
         self.subtitle = article['subtitle']
         self.claps = article['claps']
-        self.author = User(user_id=article['author'], get_resp=self.__get_resp)
+        self.author = User(user_id=article['author'], get_resp=self.__get_resp, fetch_articles=self.__fetch_articles)
         self.url = article['url']
         self.published_at = datetime.strptime(article['published_at'], '%Y-%m-%d %H:%M:%S')
         self.publication_id = article['publication_id']
@@ -85,7 +86,10 @@ class Article:
 
     @property
     def json(self):
-        ret = self.info
-        ret['content'] = self.content
+        ret = {}
+        if self.__info:
+            ret.update(self.info)
+        if self.__content:
+            ret['content'] = self.content
 
         return ret

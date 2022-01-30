@@ -2,9 +2,10 @@ import concurrent.futures
 
 
 class LatestPosts:
-    def __init__(self, topic_slug, get_resp):
+    def __init__(self, topic_slug, get_resp, fetch_articles):
         self.topic_slug = str(topic_slug)
         self.__get_resp = get_resp
+        self.__fetch_articles = fetch_articles
 
         self.__ids = None
         self.__posts = None
@@ -22,16 +23,12 @@ class LatestPosts:
         from medium_apis.article import Article
 
         if self.__posts is None:
-            self.__posts = [Article(article_id=article_id, get_resp=self.__get_resp) for article_id in self.ids]
+            self.__posts = [Article(article_id=article_id, 
+                                    get_resp=self.__get_resp, 
+                                    fetch_articles=self.__fetch_articles) 
+                            for article_id in self.ids]
 
         return self.__posts 
 
-    def fetch_articles_info(self):
-        if self.__posts is None:
-            self.__posts = self.articles
-
-        with concurrent.futures.ThreadPoolExecutor(max_workers=100) as executor:
-            future_to_url = (executor.submit(article.save_info) for article in self.__posts)
-
-            for future in concurrent.futures.as_completed(future_to_url):
-                future.result()
+    def fetch_articles(self, content=False):
+        self.__fetch_articles(self.articles, content=content)
