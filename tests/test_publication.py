@@ -19,7 +19,7 @@ def test_publication_id():
     assert _publication._id == publication_id
 
 def test_publication_info():
-    _publication.set_info()
+    _publication.save_info()
 
     assert isinstance(_publication.name, str)
     assert isinstance(_publication.description, str)
