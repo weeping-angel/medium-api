@@ -1,13 +1,14 @@
-Welcome to medium-apis's documentation!
-======================================
+Welcome to Medium API's documentation!
+=============================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Contents:
 
    README
    installation
    usage
+   documentation
    contributing
    authors
    history
