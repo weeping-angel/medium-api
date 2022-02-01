@@ -1,6 +1,28 @@
+"""
+This module contains the `Article` class.
+"""
+
 from datetime import datetime
 
 class Article:
+    """Article Class
+    
+    With `Article` object, you can use the following properties and methods:
+
+        - article._id
+        - article.info
+        - article.is_self_published
+        - article.content
+        - article.json
+
+        - article.save_info()
+        - article.save_content()
+
+    Note:
+        `Article` class is NOT intended to be used directly by importing.
+        See :obj:`medium_apis.medium.Medium.article`.
+
+    """
     def __init__(self, article_id, get_resp, fetch_articles):
         self.__get_resp = get_resp
         self.article_id = str(article_id)
@@ -27,8 +49,30 @@ class Article:
         self.__content = None
 
     def save_info(self):
-        from medium_apis.user import User
-        from medium_apis.publication import Publication
+        """Saves the information related to the article
+        
+        Note:
+            Only after running ``article.save_info()`` you can use the following
+            variables:
+
+                - ``article.title``
+                - ``article.subtitle``
+                - ``article.claps``
+                - ``article.author``
+                - ``article.url``
+                - ``article.published_at``
+                - ``article.publication_id``
+                - ``article.tags``
+                - ``article.topics``
+                - ``article.last_modified_at``
+                - ``article.reading_time``
+                - ``article.word_count``
+                - ``article.voters``
+                - ``article.image_url`` 
+                - ``article.publication``
+        """
+        from medium_apis._user import User
+        from medium_apis._publication import Publication
 
         article = self.info
 
@@ -52,14 +96,35 @@ class Article:
 
 
     def save_content(self):
+        """Saves the textual content of the article
+
+        Can be accessed later using ``article.content``
+        
+        Returns:
+            None
+
+        """
         self.__content = self.content
 
     @property
     def _id(self):
+        """To get the article_id
+
+        Returns:
+            str: Returns article_id of the object.
+        
+        """
         return self.article_id
 
     @property
     def info(self):
+        """To get the articles information
+        
+        Returns:
+            dict: Returns a dictionary object containing `title, subtitle, claps,
+            voters, author, publication_id, word_count, etc ...` (excluding `content`)
+        
+        """
         if self.__info is None:
             resp, _ = self.__get_resp(f'/article/{self.article_id}')
             self.__info = dict(resp)
@@ -70,6 +135,12 @@ class Article:
 
     @property
     def is_self_published(self):
+        """To check if the article is self-published or not
+        
+        Returns:
+            bool: Returns `True` if article is self-published, else `False` if article 
+            is published under a Medium Publication.
+        """
         article = self.info
         if article['publication_id'] != '*Self-Published*':
             return False
@@ -78,6 +149,12 @@ class Article:
 
     @property
     def content(self):
+        """To get the textual content of the article
+
+        Returns:
+            str: A single string containing `kicker, title, subtitle, paragraphs,
+            image captions, listicles, etc ...` within an article 
+        """
         if self.__content is None:
             resp, _ = self.__get_resp(f'/article/{self.article_id}/content')
             self.__content = str(resp['content'])
@@ -86,6 +163,13 @@ class Article:
 
     @property
     def json(self):
+        """To get the articles information in JSON format
+        
+        Returns:
+            dict: Returns a JSON object containing article `info` and `content` if 
+            already fetched. Else, returns an empty object.
+        
+        """
         ret = {}
         if self.__info:
             ret.update(self.info)

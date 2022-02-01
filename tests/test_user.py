@@ -2,8 +2,8 @@ import os
 import pytest
 
 from medium_apis import Medium
-from medium_apis.user import User
-from medium_apis.article import Article
+from medium_apis._user import User
+from medium_apis._article import Article
 
 medium = Medium(os.getenv('RAPIDAPI_KEY'))
 

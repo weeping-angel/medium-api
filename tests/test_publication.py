@@ -2,35 +2,35 @@ import os
 import pytest
 
 from medium_apis import Medium
-from medium_apis import publication
-from medium_apis.publication import Publication
+from medium_apis import _publication
+from medium_apis._publication import Publication
 
 medium = Medium(os.getenv('RAPIDAPI_KEY'))
 
 publication_id = '98111c9905da'
 
-publication = medium.publication(publication_id=publication_id)
+_publication = medium.publication(publication_id=publication_id)
 
 def test_publication_instance():
-    assert isinstance(publication, Publication)
+    assert isinstance(_publication, Publication)
 
 def test_publication_id():
-    assert isinstance(publication._id, str)
-    assert publication._id == publication_id
+    assert isinstance(_publication._id, str)
+    assert _publication._id == publication_id
 
 def test_publication_info():
-    publication.set_info()
+    _publication.set_info()
 
-    assert isinstance(publication.name, str)
-    assert isinstance(publication.description, str)
-    assert isinstance(publication.url, str)
-    assert isinstance(publication.tagline, str)
-    assert isinstance(publication.followers, int)
-    assert isinstance(publication.slug, str)
-    assert isinstance(publication.tags, list)
-    assert isinstance(publication.twitter_username, str)
-    assert isinstance(publication.instagram_username, str)
-    assert isinstance(publication.facebook_pagename, str)
+    assert isinstance(_publication.name, str)
+    assert isinstance(_publication.description, str)
+    assert isinstance(_publication.url, str)
+    assert isinstance(_publication.tagline, str)
+    assert isinstance(_publication.followers, int)
+    assert isinstance(_publication.slug, str)
+    assert isinstance(_publication.tags, list)
+    assert isinstance(_publication.twitter_username, str)
+    assert isinstance(_publication.instagram_username, str)
+    assert isinstance(_publication.facebook_pagename, str)
 
-    assert isinstance(publication.info, dict)
+    assert isinstance(_publication.info, dict)
 
