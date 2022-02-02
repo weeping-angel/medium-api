@@ -11,7 +11,6 @@ Welcome to Medium API's documentation!
    documentation
    contributing
    authors
-   history
 
 Indices and tables
 ==================
