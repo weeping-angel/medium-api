@@ -30,7 +30,7 @@ class TopFeeds:
         """To get a list of topfeeds `article_ids`
         
         Returns:
-            list[str]: A list of `article_ids` (str) from the topfeeds for the give
+            list[str]: A list of `article_ids` (str) from the topfeeds for the given
             `tag` and `mode`.
         
         """
@@ -45,7 +45,7 @@ class TopFeeds:
         """To get a list of topfeeds `Article` objects
         
         Returns:
-            list[Article]: A list of `Article` objects from the topfeeds for the give
+            list[Article]: A list of `Article` objects from the topfeeds for the given
             `tag` and `mode`.
         
         """

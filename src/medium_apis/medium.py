@@ -163,8 +163,8 @@ class Medium:
 
         Returns:
             TopWriters: Medium APIs `TopWriters` Object (medium_apis.top_writers.TopWriters) 
-            that can be used to access all the properties and methods related to a Medium's 
-            Top Writers.
+            that can be used to access all the properties and methods related to Medium's 
+            Top Writers for the give `topic_slug`.
 
         """
         return TopWriters(topic_slug=topic_slug, 
@@ -185,7 +185,7 @@ class Medium:
 
         Returns:
             LatestPosts: Medium APIs `LatestPosts` Object (medium_apis.latestposts.LatestPosts) 
-            that can be used to access all the properties and methods related to a Medium's 
+            that can be used to access all the properties and methods related to Medium's 
             LatestPosts within the given topic.
 
         """
@@ -216,8 +216,8 @@ class Medium:
 
         Returns:
             TopFeeds: Medium APIs `TopFeeds` Object (medium_apis.topfeeds.TopFeeds) 
-            that can be used to access all the properties and methods related to a Medium's 
-            TopFeeds for a given tag.
+            that can be used to access all the properties and methods, for given `tag` 
+            and `mode`.
 
         """
         return TopFeeds(tag=tag, mode=mode, 
