@@ -15,9 +15,20 @@ Medium APIs
 
 .. image:: https://github.com/weeping-angel/medium-apis/actions/workflows/tests.yml/badge.svg
 
+.. raw:: html
+
+        <style>
+                img.align-center {
+                margin-left: auto;
+                margin-right: auto;
+                display: block;
+                }
+        </style>
+
 .. image:: _static/MediumAPIs-Banner.png
-        :alt: Medium APIs
-        :align: center
+   :align: center
+   :alt: Medium APIs
+        
 
 ..
         | Social Profiles:
