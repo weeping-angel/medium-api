@@ -65,7 +65,7 @@ class Medium:
         self.calls += 1
         return loads(resp.read()), resp.status
 
-    def user(self, username=None, user_id=None):
+    def user(self, username=None, user_id=None, save_info=True):
         """For getting the Medium User Object
 
             Typical usage example:
@@ -86,6 +86,10 @@ class Medium:
                 cannot be changed. The User object is initialized using this only. 
                 It's optional only if you've already provided the `username`.
 
+            save_info (bool, optional): If `False`, creates an empty User object which
+                needs to be filled using ``user.save_info()`` method later. (Default is 
+                `True`)
+
         Returns:
             User: Medium API's User Object (medium_apis.user.User) that can be used 
             to access all the properties and methods associated to the given Medium
@@ -98,13 +102,15 @@ class Medium:
         if user_id is not None:
             return User(user_id = user_id, 
                         get_resp = self.__get_resp, 
-                        fetch_articles=self.fetch_articles)
+                        fetch_articles=self.fetch_articles,
+                        save_info = save_info)
         elif username is not None:
             resp, _ = self.__get_resp(f'/user/id_for/{str(username)}')
             user_id = resp['id']
             return User(user_id = user_id, 
                         get_resp = self.__get_resp, 
-                        fetch_articles=self.fetch_articles)
+                        fetch_articles=self.fetch_articles,
+                        save_info = save_info)
         else:
             print('Missing parameter: Please provide "user_id" or "username" to call the function')
             return None

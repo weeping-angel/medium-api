@@ -22,10 +22,13 @@ class User:
         See :obj:`medium_apis.medium.Medium.user`.
 
     """
-    def __init__(self, user_id, get_resp, fetch_articles):
+    def __init__(self, user_id, get_resp, fetch_articles, save_info=True):
         self.user_id = user_id
         self.__get_resp = get_resp
         self.__fetch_articles = fetch_articles
+
+        if save_info:
+            self.save_info()
 
         self.__posts = None
         self.__info = None
