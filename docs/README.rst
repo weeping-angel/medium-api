@@ -36,20 +36,12 @@ Medium APIs
 
 Python Wrapper on top of Medium API to quickly extract data from Medium's website (https://medium.com).
 
-
-
-* Documentation: https://medium-apis.readthedocs.io
-* PyPI: https://pypi.org/project/medium-apis/
-* Swagger Documentation: https://weeping-angel.github.io/medium-apis
-
-
-
 Installation
 ------------
 
-Install from PyPI
+Install from `PyPI <https://pypi.org/project/medium-apis/>`_
 
-.. code-block:: shell
+.. code-block:: console
 
         $ pip install medium-apis
 
@@ -66,7 +58,6 @@ Getting a Medium user's information and fetching his articles.
 
         nishu = medium.user(username="nishu-jain")
 
-        nishu.save_info()
         print(f'{nishu.fullname} has {nishu.followers} followers.')
 
         nishu.fetch_articles()
@@ -94,7 +85,14 @@ Extract/Scrape/Fetch/Get :
     * Medium's LatestPosts (distributed articles)
     * And so on ...
   
+Applications
+------------
 
+Other Materials
+---------------
+
+Medium REST APIs:
+        - Swagger Documentation: https://weeping-angel.github.io/medium-apis
 
 License
 -------
@@ -103,3 +101,6 @@ Free software: MIT license
 
 Code of Conduct
 ---------------
+
+In the interest of fostering an open and welcoming environment, all contributors, maintainers 
+and users are expected to abide by the Python code of conduct: https://www.python.org/psf/codeofconduct/
