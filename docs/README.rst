@@ -53,7 +53,6 @@ Usage
 Getting a Medium user's information and fetching his articles.
 
 .. code-block:: python
-        :emphasize-lines: 5, 9
 
         from medium_apis import Medium
         
