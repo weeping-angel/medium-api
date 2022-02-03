@@ -1,11 +1,12 @@
+import os
 from medium_apis import Medium
 
-medium = Medium('YOUR_RAPIDAPI_KEY')
+medium = Medium(os.getenv('RAPIDAPI_KEY'))
 
 user = medium.user(username = 'nishu-jain')
 
 print('Fullname: ', user.fullname) 
-print('username: @', user.username)
+print('username: ', user.username)
 print('user_id: ', user._id)
 print('bio: ', user.bio)
 print('followers: ', user.followers)
