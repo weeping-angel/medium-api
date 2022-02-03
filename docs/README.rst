@@ -19,7 +19,7 @@ Medium APIs
 
         <div align="center">
         <img src="_static/MediumAPIs-Banner.png" />
-        </div>
+        </div><br/>
 
 ..
         | Social Profiles:
