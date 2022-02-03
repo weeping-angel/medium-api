@@ -21,7 +21,7 @@ Medium APIs
         | Social Profiles:
 
         .. image:: https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white
-                :target: https://nishu-jain.medium.com
+                :target: https://user-jain.medium.com
                 :alt: Author's Blog
 
         .. image:: https://img.shields.io/badge/-Stackoverflow-FE7A16?style=for-the-badge&logo=stack-overflow&logoColor=white
@@ -34,7 +34,7 @@ Medium APIs
                 :target: https://www.paypal.com/paypalme/sanskarjain1997
                 :alt: Paypal Link
 
-Python Wrapper on top of `Medium API <https://rapidapi.com/nishujain1997.19@gmail.com/api/medium2/>`_ to quickly extract data from Medium's website (https://medium.com).
+Python Wrapper on top of `Medium API <https://rapidapi.com/userjain1997.19@gmail.com/api/medium2/>`_ to quickly extract data from Medium's website (https://medium.com).
 
 Installation
 ------------
@@ -58,12 +58,12 @@ Getting a Medium user's information and fetching his articles.
         
         medium = Medium('YOUR_RAPIDAPI_KEY')
 
-        nishu = medium.user(username="nishu-jain")
+        user = medium.user(username="nishu-jain")
 
-        print(f'{nishu.fullname} has {nishu.followers} followers.')
+        print(f'{user.fullname} has {user.followers} followers.')
 
-        nishu.fetch_articles()
-        for article in nishu.articles:
+        user.fetch_articles()
+        for article in user.articles:
                 print(article.title)
 
 
