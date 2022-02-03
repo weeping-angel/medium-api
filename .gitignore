@@ -9,3 +9,4 @@ venv
 *.egg-info/
 dist
 _build
+build
