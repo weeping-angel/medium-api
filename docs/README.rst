@@ -17,9 +17,9 @@ Medium APIs
 
 .. raw:: html
 
-        <center>
-        <img class="align-center" src="_static/MediumAPIs-Banner.png" />
-        </center>        
+        <div align="center">
+        <img src="_static/MediumAPIs-Banner.png" />
+        </div>
 
 ..
         | Social Profiles:
