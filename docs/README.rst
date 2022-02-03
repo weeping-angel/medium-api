@@ -34,7 +34,7 @@ Medium APIs
                 :target: https://www.paypal.com/paypalme/sanskarjain1997
                 :alt: Paypal Link
 
-Python Wrapper on top of Medium API to quickly extract data from Medium's website (https://medium.com).
+Python Wrapper on top of `Medium API <https://rapidapi.com/nishujain1997.19@gmail.com/api/medium2/>`_ to quickly extract data from Medium's website (https://medium.com).
 
 Installation
 ------------
@@ -45,12 +45,15 @@ Install from `PyPI <https://pypi.org/project/medium-apis/>`_
 
         $ pip install medium-apis
 
+Dependency: ``ujson``
+
 Usage
 -----
 
 Getting a Medium user's information and fetching his articles.
 
 .. code-block:: python
+        :emphasize-lines: 5, 9
 
         from medium_apis import Medium
         
@@ -78,8 +81,8 @@ Features
 Extract/Scrape/Fetch/Get :
   
     * Medium User information and user-written articles
-    * Medium Articles information and textual content 
-    * Medium publications information
+    * Medium Articles information and their textual content 
+    * Medium Publications information
     * Medium's Top Writers
     * Medium's Topfeeds (Trending, Latest, All time best, best of year/month/week)
     * Medium's LatestPosts (distributed articles)
@@ -92,12 +95,13 @@ Other Materials
 ---------------
 
 Medium REST APIs:
+
         - Swagger Documentation: https://weeping-angel.github.io/medium-apis
 
 License
 -------
 
-Free software: MIT license
+Free software: `MIT license <https://raw.githubusercontent.com/weeping-angel/medium-apis/main/LICENSE>`_
 
 Code of Conduct
 ---------------
