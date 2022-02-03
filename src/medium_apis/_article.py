@@ -136,8 +136,8 @@ class Article:
         if self.__info is None:
             resp, _ = self.__get_resp(f'/article/{self.article_id}')
             self.__info = dict(resp)
-            if not 'title' in self.__info.keys():
-                return self.info
+            if not 'title' in self.__info.keys(): # In case API call fails
+                return self.info # pragma: no cover
         
         return self.__info
 

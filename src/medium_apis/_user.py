@@ -31,6 +31,14 @@ class User:
         self.__info = None
         self.__top_articles = None
 
+        self.fullname = None
+        self.username = None
+        self.followers = None
+        self.bio = None
+        self.twitter_username = None
+        self.is_writer_program_enrolled = None
+        self.image_url = None
+
         if save_info:
             self.save_info()
 

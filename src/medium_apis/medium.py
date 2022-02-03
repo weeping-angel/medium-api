@@ -86,7 +86,7 @@ class Medium:
                 cannot be changed. The User object is initialized using this only. 
                 It's optional only if you've already provided the `username`.
 
-            save_info (bool, optional): If `False`, creates an empty User object which
+            save_info (bool, optional): If `False`, creates an empty `User` object which
                 needs to be filled using ``user.save_info()`` method later. (Default is 
                 `True`)
 
@@ -128,7 +128,7 @@ class Medium:
 
                 - https://nishu-jain.medium.com/about-me-nishu-jain-562c5821b5f0
 
-            save_info (bool, optional): If `False`, creates an empty Article object which
+            save_info (bool, optional): If `False`, creates an empty `Article` object which
                 needs to be filled using ``article.save_info()`` method later. (Default is 
                 `True`)
 
@@ -151,6 +151,10 @@ class Medium:
 
         Args:
             publication_id (str): It's the unique hash id of a Medium Publication.
+
+            save_info (bool, optional): If `False`, creates an empty `Publication` object which
+                needs to be filled using ``publication.save_info()`` method later. (Default is 
+                `True`)
 
         Returns:
             Publication: Medium APIs `Publication` Object (medium_apis.publication.Publication) 
