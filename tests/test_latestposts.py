@@ -26,3 +26,9 @@ def test_latestposts_articles():
     assert isinstance(articles, list)
     assert isinstance(articles[0], Article)
 
+def test_latestposts_fetch_articles():
+    latestposts.fetch_articles()
+
+    assert 'title' in latestposts.articles[0].info.keys()
+    assert latestposts.articles[0].title is not None
+
