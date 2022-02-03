@@ -27,12 +27,12 @@ class User:
         self.__get_resp = get_resp
         self.__fetch_articles = fetch_articles
 
-        if save_info:
-            self.save_info()
-
         self.__posts = None
         self.__info = None
         self.__top_articles = None
+
+        if save_info:
+            self.save_info()
 
     @property
     def _id(self):
@@ -54,7 +54,7 @@ class User:
         
         """
         if self.__info is None:
-            resp, _ = self.__get_resp(f'/user/{str(self.user_id)}')
+            resp, _ = self.__get_resp(f'/user/{self._id}')
             self.__info = dict(resp)
         
         return self.__info
