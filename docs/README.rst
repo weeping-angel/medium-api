@@ -18,7 +18,7 @@ Medium APIs
 .. raw:: html
 
         <div align="center">
-        <img src="_static/MediumAPIs-Banner-1920x1080.png" />
+        <img src="_static/MediumAPIs-Banner-6912x3456.png" />
         </div><br/>
 
 ..
