@@ -15,7 +15,9 @@ Medium APIs
 
 .. image:: https://github.com/weeping-angel/medium-apis/actions/workflows/tests.yml/badge.svg
 
-
+.. image:: _static/MediumAPIs-Banner.png
+        :alt: Medium APIs
+        :align: center
 
 ..
         | Social Profiles:
@@ -66,6 +68,9 @@ Getting a Medium user's information and fetching his articles.
         for article in user.articles:
                 print(article.title)
 
+
+How to get your RapidAPI Key
+----------------------------
 
 
 Documentation
