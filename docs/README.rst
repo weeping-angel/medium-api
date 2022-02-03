@@ -17,6 +17,7 @@ Medium APIs
 
 .. raw:: html
         
+        <head>
         <style>
                 img.align-center {
                 margin-left: auto;
@@ -24,6 +25,7 @@ Medium APIs
                 display: block;
                 }
         </style>
+        </head>
         <img class="align-center" src="_static/MediumAPIs-Banner.png" />
         
 
