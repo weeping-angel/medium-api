@@ -1,11 +1,12 @@
 Welcome to Medium API's documentation!
 =============================================
 
+Python Wrapper on top of Medium API to quickly extract data from Medium's website (https://medium.com).
+
 .. toctree::
    :maxdepth: 3
    :caption: Contents:
 
-   README
    installation
    usage
    documentation
