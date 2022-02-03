@@ -2,10 +2,9 @@
 Usage
 =====
 
-To use medium-apis in a project::
+Get Medium User's Info
 
-    from medium_apis import Medium
-
-    medium = Medium('YOUR_RAPIDAPI_KEY')
-
-    user = medium.get_user(username = 'username')
+.. literalinclude:: examples/get_user_info.py
+    :language: python
+    :emphasize-lines: 5
+    :linenos:
