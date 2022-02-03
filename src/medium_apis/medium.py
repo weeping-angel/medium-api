@@ -115,7 +115,7 @@ class Medium:
             print('Missing parameter: Please provide "user_id" or "username" to call the function')
             return None
 
-    def article(self, article_id):
+    def article(self, article_id, save_info=True):
         """For getting the Medium Article Object
 
             Typical usage example:
@@ -128,6 +128,10 @@ class Medium:
 
                 - https://nishu-jain.medium.com/about-me-nishu-jain-562c5821b5f0
 
+            save_info (bool, optional): If `False`, creates an empty Article object which
+                needs to be filled using ``article.save_info()`` method later. (Default is 
+                `True`)
+
         Returns:
             Article: Medium APIs `Article` Object (medium_apis.article.Article) that can be
             used to access all the properties and methods related to a Medium Article.
@@ -135,9 +139,10 @@ class Medium:
         """
         return Article(article_id = article_id, 
                        get_resp = self.__get_resp, 
-                       fetch_articles=self.fetch_articles)
+                       fetch_articles=self.fetch_articles,
+                       save_info = save_info)
 
-    def publication(self, publication_id):
+    def publication(self, publication_id, save_info=True):
         """For getting the Medium Publication Object
 
             Typical usage example:
@@ -154,7 +159,8 @@ class Medium:
 
         """
         return Publication(publication_id = publication_id, 
-                           get_resp=self.__get_resp)
+                           get_resp=self.__get_resp,
+                           save_info=save_info)
 
     def top_writers(self, topic_slug):
         """For getting the Medium's TopWriters Object

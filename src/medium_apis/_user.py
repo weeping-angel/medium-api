@@ -22,7 +22,7 @@ class User:
         See :obj:`medium_apis.medium.Medium.user`.
 
     """
-    def __init__(self, user_id, get_resp, fetch_articles, save_info=True):
+    def __init__(self, user_id, get_resp, fetch_articles, save_info=False):
         self.user_id = user_id
         self.__get_resp = get_resp
         self.__fetch_articles = fetch_articles
@@ -106,7 +106,11 @@ class User:
         from medium_apis._article import Article
 
         if self.__posts is None:
-            self.__posts = [Article(i, get_resp = self.__get_resp, fetch_articles=self.__fetch_articles) for i in self.article_ids]
+            self.__posts = [Article(i, 
+                                    get_resp = self.__get_resp, 
+                                    fetch_articles=self.__fetch_articles, 
+                                    save_info=False) 
+                            for i in self.article_ids]
             
         return self.__posts
 
@@ -122,7 +126,11 @@ class User:
         from medium_apis._article import Article
 
         if self.__top_articles is None:
-            self.__top_articles = [Article(i, get_resp = self.__get_resp, fetch_articles=self.__fetch_articles) for i in self.top_article_ids]
+            self.__top_articles = [Article(i, 
+                                           get_resp = self.__get_resp, 
+                                           fetch_articles=self.__fetch_articles, 
+                                           save_info=False) 
+                                    for i in self.top_article_ids]
             
         return self.__top_articles
 

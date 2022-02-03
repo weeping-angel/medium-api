@@ -23,7 +23,7 @@ class Article:
         See :obj:`medium_apis.medium.Medium.article`.
 
     """
-    def __init__(self, article_id, get_resp, fetch_articles):
+    def __init__(self, article_id, get_resp, fetch_articles, save_info=False):
         self.__get_resp = get_resp
         self.article_id = str(article_id)
         self.__fetch_articles = fetch_articles
@@ -47,6 +47,9 @@ class Article:
 
         self.__info = None
         self.__content = None
+
+        if save_info:
+            self.save_info()
 
     def save_info(self):
         """Saves the information related to the article
@@ -79,7 +82,10 @@ class Article:
         self.title = article['title']
         self.subtitle = article['subtitle']
         self.claps = article['claps']
-        self.author = User(user_id=article['author'], get_resp=self.__get_resp, fetch_articles=self.__fetch_articles)
+        self.author = User(user_id=article['author'], 
+                           get_resp=self.__get_resp, 
+                           fetch_articles=self.__fetch_articles, 
+                           save_info=False)
         self.url = article['url']
         self.published_at = datetime.strptime(article['published_at'], '%Y-%m-%d %H:%M:%S')
         self.publication_id = article['publication_id']
@@ -92,7 +98,9 @@ class Article:
         self.image_url = article['image_url']
 
         if not self.is_self_published:
-            self.publication = Publication(publication_id=self.publication_id, get_resp=self.__get_resp)
+            self.publication = Publication(publication_id=self.publication_id, 
+                                           get_resp=self.__get_resp,
+                                           save_info=False)
 
 
     def save_content(self):

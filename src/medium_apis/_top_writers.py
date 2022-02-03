@@ -51,7 +51,9 @@ class TopWriters:
         if self.__users is None:
             self.__users = [User(user_id=user_id, 
                                  get_resp=self.__get_resp,
-                                 fetch_articles=self.__fetch_articles) for user_id in self.ids]
+                                 fetch_articles=self.__fetch_articles,
+                                 save_info=False) 
+                            for user_id in self.ids]
         
         return self.__users
 

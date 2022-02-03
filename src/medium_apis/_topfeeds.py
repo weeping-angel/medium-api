@@ -52,12 +52,16 @@ class TopFeeds:
         from medium_apis._article import Article
 
         if self.__articles is None:
-            self.__articles = [Article(article_id=article_id, get_resp=self.__get_resp, fetch_articles=self.__fetch_articles) for article_id in self.ids]
+            self.__articles = [Article(article_id=article_id, 
+                                       get_resp=self.__get_resp, 
+                                       fetch_articles=self.__fetch_articles,
+                                       save_info=False) 
+                                for article_id in self.ids]
 
         return self.__articles
 
     def fetch_articles(self, content=False):
-        """To fetch all the topfeeds articles information
+        """To fetch all the topfeeds articles information (multithreading)
 
         Args:
             content (bool, optional): Set it to `True` if you want to fetch the 

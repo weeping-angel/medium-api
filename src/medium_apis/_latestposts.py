@@ -50,13 +50,14 @@ class LatestPosts:
         if self.__posts is None:
             self.__posts = [Article(article_id=article_id, 
                                     get_resp=self.__get_resp, 
-                                    fetch_articles=self.__fetch_articles) 
+                                    fetch_articles=self.__fetch_articles,
+                                    save_info=False) 
                             for article_id in self.ids]
 
         return self.__posts 
 
     def fetch_articles(self, content=False):
-        """To fetch all the latestposts articles information
+        """To fetch all the latestposts articles information (multithreading)
 
         Args:
             content (bool, optional): Set it to `True` if you want to fetch the 

@@ -12,7 +12,7 @@ class Publication:
         See :obj:`medium_apis.medium.Medium.publication`.
 
     """
-    def __init__(self, publication_id, get_resp):
+    def __init__(self, publication_id, get_resp, save_info=False):
         self.publication_id = str(publication_id)
         self.__get_resp = get_resp
 
@@ -28,6 +28,9 @@ class Publication:
         self.facebook_pagename = None
 
         self.__info = None
+
+        if save_info:
+            self.save_info()
 
     @property
     def _id(self):
