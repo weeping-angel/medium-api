@@ -11,7 +11,9 @@ Medium APIs
         <a href="https://pypi.python.org/pypi/medium_apis"><img alt="PYPI Package Version" src="https://img.shields.io/pypi/v/medium-apis" /></a>
         <a href="https://medium-apis.readthedocs.io/en/latest/?version=latest"><img alt="RTD Documentation Status" src="https://readthedocs.org/projects/medium-apis/badge/?version=latest" /></a>
         <img alt="Github Actions Tests" src="https://github.com/weeping-angel/medium-apis/actions/workflows/tests.yml/badge.svg" />
+        </div>
         <br/>
+        <div align="center">
         <img src="_static/MediumAPIs-Banner-6912x3456.png" />
         </div><br/>
 
