@@ -5,19 +5,13 @@
 Medium APIs
 ===========
 
-.. image:: https://img.shields.io/pypi/v/medium-apis
-        :target: https://pypi.python.org/pypi/medium_apis
-        :alt: PYPI Package Version
-
-.. image:: https://readthedocs.org/projects/medium-apis/badge/?version=latest
-        :target: https://medium-apis.readthedocs.io/en/latest/?version=latest
-        :alt: RTD Documentation Status
-
-.. image:: https://github.com/weeping-angel/medium-apis/actions/workflows/tests.yml/badge.svg
-
 .. raw:: html
 
         <div align="center">
+        <a href="https://pypi.python.org/pypi/medium_apis"><img alt="PYPI Package Version" src="https://img.shields.io/pypi/v/medium-apis" /></a>
+        <a href="https://medium-apis.readthedocs.io/en/latest/?version=latest"><img alt="RTD Documentation Status" src="https://readthedocs.org/projects/medium-apis/badge/?version=latest" /></a>
+        <img alt="Github Actions Tests" src="https://github.com/weeping-angel/medium-apis/actions/workflows/tests.yml/badge.svg" />
+        <br/>
         <img src="_static/MediumAPIs-Banner-6912x3456.png" />
         </div><br/>
 
@@ -38,7 +32,7 @@ Medium APIs
                 :target: https://www.paypal.com/paypalme/sanskarjain1997
                 :alt: Paypal Link
 
-Python Wrapper on top of `Medium API <https://rapidapi.com/userjain1997.19@gmail.com/api/medium2/>`_ to quickly extract data from Medium's website (https://medium.com).
+Python Wrapper on top of `Medium APIs <https://rapidapi.com/userjain1997.19@gmail.com/api/medium2/>`_ to quickly extract data from Medium's website (https://medium.com).
 
 Installation
 ------------
@@ -51,8 +45,8 @@ Install from `PyPI <https://pypi.org/project/medium-apis/>`_
 
 Dependency: ``ujson``
 
-Usage
------
+Example
+-------
 
 Getting a Medium user's information and fetching his articles.
 
@@ -71,14 +65,10 @@ Getting a Medium user's information and fetching his articles.
                 print(article.title)
 
 
+For more examples, see `Usage <https://medium-apis.readthedocs.io/en/latest/usage.html>`_ 
+
 How to get your RapidAPI Key
 ----------------------------
-
-
-Documentation
--------------
-
-Full Documentation at https://medium-apis.readthedocs.io
 
 
 Features
@@ -96,6 +86,11 @@ Extract/Scrape/Fetch/Get :
   
 Applications
 ------------
+
+Documentation
+-------------
+
+Full Documentation at https://medium-apis.readthedocs.io
 
 Other Materials
 ---------------
