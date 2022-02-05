@@ -14,7 +14,7 @@ Medium APIs
         </div>
         <br/>
         <div align="center">
-        <img src="_static/MediumAPIs-Banner-6912x3456.png" />
+        <img src="_static/MediumAPIs-Banner.png" />
         </div><br/>
 
 ..
