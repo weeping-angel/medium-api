@@ -117,10 +117,7 @@ License
 
 Free software: `MIT license <https://raw.githubusercontent.com/weeping-angel/medium-apis/main/LICENSE>`_
 
-Terms of Use
-------------
-
-
+EULA: `Terms of Use <https://medium-apis.readthedocs.io/en/latest/terms_of_use.html>`_
 
 Code of Conduct
 ---------------
