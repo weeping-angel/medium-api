@@ -96,9 +96,10 @@ Extract/Scrape/Fetch/Get :
     * Medium's Topfeeds (Trending, Latest, All time best, best of year/month/week)
     * Medium's LatestPosts (distributed articles)
     * And so on ...
-  
-Applications
-------------
+
+ .. 
+        Applications
+        ------------
 
 Documentation
 -------------
@@ -111,6 +112,14 @@ Other Materials
 Medium REST APIs:
 
         - Swagger Documentation: https://weeping-angel.github.io/medium-apis
+
+Related Articles:
+
+        - `Medium APIs - Documentation <https://medium.com/p/3384e2d08667>`_
+        - `How To Retrieve Medium Stories of a User Using APIs? <https://medium.com/p/fcdb1576558a>`_
+        - `Medium API: Get Posts Using Python <https://medium.com/p/e8ca4331845e>`_
+        - `Medium API: Get Posts Using Node.js & Axios <https://medium.com/p/a43894efaeab>`_
+        - `Best Metric to Judge a Medium Article's Popularity <https://medium.com/p/cac577609bd4>`_
 
 License
 -------
