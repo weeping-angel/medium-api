@@ -34,7 +34,7 @@ Medium APIs
                 :target: https://www.paypal.com/paypalme/sanskarjain1997
                 :alt: Paypal Link
 
-Python Wrapper on top of `Medium APIs <https://rapidapi.com/userjain1997.19@gmail.com/api/medium2/>`_ to quickly extract data from Medium's website (https://medium.com).
+Python Wrapper on top of `Medium APIs (by Nishu Jain) <https://rapidapi.com/nishujain1997.19@gmail.com/api/medium2/>`_ to quickly extract data from Medium's website (https://medium.com).
 
 Installation
 ------------
@@ -46,6 +46,8 @@ Install from `PyPI <https://pypi.org/project/medium-apis/>`_
         $ pip install medium-apis
 
 Dependency: ``ujson``
+
+| For more detailed installation, see `Installation <https://medium-apis.readthedocs.io/en/latest/installation.html>`_
 
 Example
 -------
@@ -72,6 +74,15 @@ For more examples, see `Usage <https://medium-apis.readthedocs.io/en/latest/usag
 How to get your RapidAPI Key
 ----------------------------
 
+Steps:
+
+        - Sign up on `RapidAPI Platform <https://rapidapi.com/auth/sign-up>`_
+        - Subscribe to `Medium-APIs <https://rapidapi.com/nishujain1997.19@gmail.com/api/medium2/pricing>`_
+        - Go to the API's *Endpoints* tab on the `RapidAPI Hub listing <https://rapidapi.com/nishujain1997.19@gmail.com/api/medium2/>`_ and select the API key from the **X-RapidAPI-Key** dropdown under *Header Parameters* section.
+
+For more details, see the following links:
+        - https://rapidapi.com/blog/api-glossary/api-key/
+        - https://docs.rapidapi.com/docs/keys
 
 Features
 --------
@@ -105,6 +116,11 @@ License
 -------
 
 Free software: `MIT license <https://raw.githubusercontent.com/weeping-angel/medium-apis/main/LICENSE>`_
+
+Terms of Use
+------------
+
+
 
 Code of Conduct
 ---------------

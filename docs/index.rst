@@ -12,6 +12,7 @@ Python Wrapper on top of Medium API to quickly extract data from Medium's websit
    documentation
    contributing
    authors
+   terms_of_use
 
 Indices and tables
 ==================
