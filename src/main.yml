@@ -4,14 +4,16 @@ info:
   title: Medium API
   version: '1.0'
   description: >
-    Medium API helps you to quickly extract data from Medium’s Website (https://medium.com). 
+    Medium API helps you to quickly extract data from Medium's Website (https://medium.com). 
     
     
-    You can gather data related to users, publications, articles (including it’s textual content), latest posts & top writers within a topic/niche, etc…
+    You can gather data related to users, publications, articles (including its textual content), latest posts & top writers within a topic/niche, etc…
   contact:
     name: Nishu Jain
     email: nishujain1997.19@gmail.com
     url: https://nishu-jain.medium.com
+
+  termsOfService: https://drive.google.com/file/d/1eMyer0Kr-nfLoUl-vnpUFioS5vYVnc_J/view
 
 servers:
   - url: https://medium2.p.rapidapi.com
