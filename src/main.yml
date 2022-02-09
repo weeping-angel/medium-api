@@ -1,0 +1,56 @@
+openapi: '3.0.2'
+
+info:
+  title: Medium API
+  version: '1.0'
+  description: >
+    Medium API helps you to quickly extract data from Medium’s Website (https://medium.com). 
+    
+    
+    You can gather data related to users, publications, articles (including it’s textual content), latest posts & top writers within a topic/niche, etc…
+  contact:
+    name: Nishu Jain
+    email: nishujain1997.19@gmail.com
+    url: https://nishu-jain.medium.com
+
+servers:
+  - url: https://medium2.p.rapidapi.com
+
+paths:
+  /user/id_for/{username}:
+    $ref: './paths/user_id_for.yml'
+  /user/{user_id}:
+    $ref: './paths/user_info.yml'
+  /user/{user_id}/following:
+    $ref: './paths/user_following.yml'
+  /user/{user_id}/articles:
+    $ref: './paths/user_articles.yml'
+  /user/{user_id}/top_articles:
+    $ref: './paths/user_top_articles.yml'
+  /article/{article_id}:
+    $ref: './paths/article_info.yml'
+  /article/{article_id}/content:
+    $ref: './paths/article_content.yml'
+  /publication/{publication_id}:
+    $ref: './paths/publication_info.yml'
+  /topfeeds/{tag}/{mode}:
+    $ref: './paths/topfeeds.yml'
+  /top_writer/{topic_slug}:
+    $ref: './paths/top_writers.yml'
+  /latestposts/{topic_slug}:
+    $ref: './paths/latestposts.yml'
+
+  
+components:
+  securitySchemes:
+    ApiKey: 
+      type: apiKey
+      in: header
+      name: x-rapidapi-key
+    ApiHost:
+      type: apiKey
+      in: header
+      name: x-rapidapi-host
+  
+  
+

@@ -1,0 +1,36 @@
+get:
+  summary: Get Top Writers
+  description: >
+    Returns a list of top writers (`user_ids`) within a particular topic/niche (`topic_slug`). 
+    
+    e.g. 
+    
+    - blockchain
+    
+    - relationships
+    
+    - artificial-intelligence, etc ...
+    
+    
+    **Note:** Maximum number of top writers within a topic/niche will be 250.
+  parameters:
+    - name: topic_slug
+      in: path
+      required: true
+      description: It's a unique string, usually hyphen-separated, representing a topic/niche, as classified by Medium.
+      schema:
+        type: string
+        example: relationships
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              top_writers: 
+                type: array
+                items: 
+                  type: string
+                  example: 1985b61817c3

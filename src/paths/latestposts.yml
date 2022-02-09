@@ -1,0 +1,34 @@
+get:
+  summary: Get Latest Posts
+  description: >
+    Returns a list of latest posts (`article_ids`) for a topic/niche (as classified by the Medium platform). Example of a topic/niche can be:
+
+    * blockchain
+
+    * relationships
+
+    * mental-health, etc …
+
+
+    These are known as `topic_slugs`. At any given moment, this endpoint will return a list of 25 articles (`article_ids`).
+  parameters:
+    - name: topic_slug
+      in: path
+      required: true
+      description: It's a unique string, usually hyphen-separated, representing a topic/niche, as classified by Medium.
+      schema:
+        type: string
+        example: artificial-intelligence
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              latestposts: 
+                type: array
+                items: 
+                  type: string
+                  example: 67fa62fc1971

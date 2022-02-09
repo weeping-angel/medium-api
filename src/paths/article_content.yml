@@ -1,0 +1,28 @@
+get:
+  summary: Get Article's Content
+  description: >
+    Returns the content of an article/story, for the corresponding `article_id`
+  parameters:
+    - name: article_id
+      in: path
+      required: true
+      description: It's a unique hash id assigned to every Medium Article.
+      schema:
+        type: string
+        example: 562c5821b5f0
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              content: 
+                type: string
+                example: >
+                  Article title
+                
+                  Article Subtitle
+                
+                  Article Content ....

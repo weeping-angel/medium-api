@@ -1,0 +1,57 @@
+get:
+  summary: Get User Info
+  description: >
+    Returns user related information like *Full name, Bio, Followers count, Following count, Twitter username, Profile-image URL, User ID, etc...* 
+    
+    
+    It takes `user_id` as the path parameter.
+
+    
+    **Note:** If you don't know the `user_id`, then you can get it from the endpoint\
+    
+    '/user/id_for/{`username`}'.
+  parameters:
+    - name: user_id
+      in: path
+      required: true
+      description: It's a unique hash id assigned to every single Medium user.
+      schema:
+        type: string
+        example: "1985b61817c3"
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id: 
+                type: string
+                example: 1985b61817c3
+              username: 
+                type: string
+                example: nishu-jain
+              fullname: 
+                type: string
+                example: Nishu Jain
+              bio: 
+                type: string
+                example: Obsessed with Tech Biz Arts & Words; Does NOT dumb down the writing; Skilled Wordsmith; Delivers the best
+              followers: 
+                type: integer
+                format: int32
+                example: 255
+              following: 
+                type: integer
+                format: int32
+                example: 1
+              twitter_username: 
+                type: string
+                example: vortlog
+              is_writer_program_enrolled: 
+                type: boolean
+              image_url: 
+                type: string
+                example: https://miro.medium.com/1*C92Hx7k9nRM7TPlrmhgW9w.jpeg
+

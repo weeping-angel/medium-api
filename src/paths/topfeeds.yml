@@ -1,0 +1,43 @@
+get:
+  summary: Get Topfeeds
+  description: >
+    Returns a list of `article_ids` (length: 25) for the given `tag` and `mode`.
+    
+  parameters:
+    - name: tag
+      in: path
+      required: true
+      description: It's a unique string, usually hyphen-separated, representing a class of content.
+      schema:
+        type: string
+        example: artificial-intelligence
+
+    - name: mode
+      in: path
+      required: true
+      description: >
+        Mode:
+
+          - `hot` : For getting trending articles
+          - `new` : For getting latest articles
+          - `top_year` : For getting best articles of the year
+          - `top_month` : For getting best articles of the month
+          - `top_week` : For getting best articles of the week
+          - `top_all_time`: For getting best article of all time
+      schema:
+        type: string
+        example: new
+
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              topfeeds: 
+                type: array
+                items: 
+                  type: string
+                  example: b2076afc4930

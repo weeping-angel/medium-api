@@ -1,0 +1,31 @@
+get:
+  summary: Get User ID
+  description: >
+    Returns the unique `user_id` for the given `username`.
+
+    
+    **Note:** You can find the `username` from the user's/author's profile page URL. 
+
+    - **username**.medium.com
+    
+    - medium.com/@**username**
+  parameters:
+    - name: username
+      in: path
+      required: true
+      description: It's a unique string chosen by every single Medium user.
+      schema:
+        type: string
+        example: nishu-jain
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+                description: Unique hash id of the user.
+                example: 1985b61817c3

@@ -1,0 +1,72 @@
+get:
+  summary: Get Article Info
+  description: >
+    Returns the article related information such as *Title, Subtitle, Tags, Topics* (assigned by Medium), *Publication, Published date and time, Clap Count, Voter Count, Word Count, Reading Time, etc…*
+  parameters:
+    - name: article_id
+      in: path
+      required: true
+      description: It's a unique hash id assigned to every Medium Article.
+      schema:
+        type: string
+        example: f06086080568
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id: 
+                type: string
+                example: f06086080568
+              title: 
+                type: string
+                example: 4 Tips to Strengthen Your Bonds — Now
+              subtitle: 
+                type: string
+                example: Re-energize your relationship in the midst of a crisis
+              author: 
+                type: string
+                example: 1985b61817c3
+              publication_id: 
+                type: string
+                example: e7040e67514c
+              word_count: 
+                type: integer
+                format: int32
+                example: 845
+              reading_time: 
+                type: number
+                example: 3.5720125786164
+              topics: 
+                type: array
+                items: 
+                  type: string
+                  example: mental-health
+              tags: 
+                type: array
+                items: 
+                  type: string
+                  example: relationships
+              claps: 
+                type: integer
+                format: int32
+                example: 53
+              voters: 
+                type: integer
+                format: int32
+                example: 3
+              published_at: 
+                type: string
+                example: 2020-08-25 11:08:18
+              last_modified_at: 
+                type: string
+                example: 2021-05-28 04:22:48
+              url: 
+                type: string
+                example: https://medium.com/age-of-awareness/re-energizing-your-relationship-in-the-midst-of-a-crisis-f06086080568
+              image_url: 
+                type: string
+                example: https://miro.medium.com/1*W0wM9xIeeIR3_Oo0E_thaA.png

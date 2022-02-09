@@ -1,0 +1,31 @@
+get:
+  summary: Get User Following
+  description: >
+    Returns the list of `user_ids` of the user's followings.
+
+
+    **Note:** Currently, this list does not contain the `publication_ids` of the publications that the user is following.
+  parameters:
+    - name: user_id
+      in: path
+      required: true
+      description: Unique hash id assigned to every single Medium user.
+      schema:
+        type: string
+        example: 14d5c41e0264
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+                following: 
+                  type: array
+                  items: 
+                    type: string
+                    example: c61f93eeb8a5
+                id: 
+                  type: string
+                  example: 14d5c41e0264

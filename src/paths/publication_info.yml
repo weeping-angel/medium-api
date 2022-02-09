@@ -1,0 +1,59 @@
+get:
+  summary: Get Publication Info
+  description: >
+    Returns the publication related information such as *Publication name, Tagline, Description, Tags, Followers Count, Twitter username, Instagram username, Facebook Page name, etc …*
+
+
+    **Note:** If you don't know the `publication_id`, you can get it from any article published by it. Use endpoint "/article/{articleid}" to retrieve the `publication_id`.
+  parameters:
+    - name: publication_id
+      in: path
+      required: true
+      description: It's a unique hash id assigned to every Medium Publication.
+      schema:
+        type: string
+        example: 98111c9905da
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id: 
+                type: string
+                example: 98111c9905da
+              name: 
+                type: string
+                example: Towards AI
+              tagline: 
+                type: string
+                example: The World’s Leading AI and Technology Publication
+              description: 
+                type: string
+                example: Towards AI is the world’s leading AI and technology publication. Publishing unbiased AI and technology-related articles. Read by thought-leaders and decision-makers around the world.
+              tags: 
+                type: array
+                items: 
+                  type: string
+                  example: ARTIFICIAL INTELLIGENCE
+              followers: 
+                type: integer
+                format: int32
+                example: 25260
+              instagram_username: 
+                type: string
+                example: towards_ai
+              facebook_pagename: 
+                type: string
+                example: towardsAl
+              url: 
+                type: string
+                example: pub.towardsai.net
+              slug: 
+                type: string
+                example: towards-artificial-intelligence
+              twitter_username: 
+                type: string
+                example: towards_AI

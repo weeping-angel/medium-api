@@ -1,0 +1,25 @@
+get:
+  summary: Get User's Articles
+  description: >
+    Returns the list of articles (`article_ids`) written by the user.
+  parameters:
+    - name: user_id
+      in: path
+      required: true
+      description: Unique hash id assigned to every single Medium user.
+      schema:
+        type: string
+        example: "1985b61817c3"
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+                associated_articles: 
+                  type: array
+                  items: 
+                    type: string
+                    example: 562c5821b5f0
