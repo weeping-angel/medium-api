@@ -1,1 +1,0 @@
-redoc-cli bundle ./src/main.yml --output index.html
