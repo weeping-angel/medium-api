@@ -1,0 +1,33 @@
+name: Convert Swagger documentation to index.html (for GitHub pages)
+on:
+  push:
+    branches:
+      - pages
+      
+jobs:
+  swagger2html:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: Install redoc cli
+        run: |
+          npm install -g redoc-cli
+
+      - name: Run redoc-cli
+        run: |
+          redoc-cli bundle ./src/main.yml --output index.html
+
+      - name: setup git config
+        run: |
+          # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+
+      - name: commit
+        run: |
+          # Stage the file, commit and push
+          git add index.html
+          git commit -m "Updated Swagger documentation"
+          git push origin pages
