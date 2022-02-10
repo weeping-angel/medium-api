@@ -3,6 +3,7 @@ This module contains the `Article` class.
 """
 
 from datetime import datetime
+import time
 
 class Article:
     """Article Class
@@ -137,6 +138,7 @@ class Article:
             resp, _ = self.__get_resp(f'/article/{self.article_id}')
             self.__info = dict(resp)
             if not 'title' in self.__info.keys(): # In case API call fails
+                time.sleep(5)
                 return self.info # pragma: no cover
         
         return self.__info
