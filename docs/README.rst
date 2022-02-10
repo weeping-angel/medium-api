@@ -27,7 +27,7 @@ Medium APIs
         | Social Profiles:
 
         .. image:: https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white
-                :target: https://user-jain.medium.com
+                :target: https://nishu-jain.medium.com
                 :alt: Author's Blog
 
         .. image:: https://img.shields.io/badge/-Stackoverflow-FE7A16?style=for-the-badge&logo=stack-overflow&logoColor=white
