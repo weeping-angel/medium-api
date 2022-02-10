@@ -1,23 +1,24 @@
-
-name: Convert Terms of service (RST) to PDF
+name: swagger2html + rst2pdf
 on:
   push:
     branches:
       - pages
       
 jobs:
-  rst2pdf:
+  conversion:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
         uses: actions/checkout@v2
 
-      - name: Install rst2pdf
+      - name: Installations
         run: |
+          npm install -g redoc-cli
           pip3 install rst2pdf 
 
-      - name: Run rst2pdf
+      - name: Run tasks
         run: |
+          redoc-cli bundle ./src/main.yml --output index.html
           rst2pdf terms_of_use.rst terms_of_use.pdf
 
       - name: setup git config
@@ -29,6 +30,8 @@ jobs:
       - name: commit
         run: |
           # Stage the file, commit and push
+          git add index.html
+          git commit -m "Updated Swagger documentation"
           git add terms_of_use.pdf
           git commit -m "Updated Terms of Services"
           git push origin pages --force
