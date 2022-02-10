@@ -1,0 +1,34 @@
+
+name: Convert Terms of service (RST) to PDF
+on:
+  push:
+    branches:
+      - pages
+      
+jobs:
+  rst2pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: Install rst2pdf
+        run: |
+          pip3 install rst2pdf 
+
+      - name: Run rst2pdf
+        run: |
+          rst2pdf terms_of_use.rst terms_of_use.pdf
+
+      - name: setup git config
+        run: |
+          # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+
+      - name: commit
+        run: |
+          # Stage the file, commit and push
+          git add terms_of_use.pdf
+          git commit -m "Updated Terms of Services"
+          git push origin pages
