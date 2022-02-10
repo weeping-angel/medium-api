@@ -4,6 +4,7 @@ interacting with the APIs/package using `Medium` Class object via
 different functions provided in it.
 """
 
+import time
 from http.client import HTTPSConnection
 from ujson import loads
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -58,12 +59,31 @@ class Medium:
         self.base_url = base_url
         self.calls = calls
 
-    def __get_resp(self, endpoint):
+    def __get_resp(self, endpoint, retries=0):
         conn = HTTPSConnection(self.base_url)
         conn.request('GET', endpoint, headers=self.headers)
         resp = conn.getresponse()
         self.calls += 1
-        return loads(resp.read()), resp.status
+
+        data = resp.read()
+        status = resp.status
+        
+        if status == 200:
+            json_data = loads(data)
+
+            if not 'error' in json_data.keys():
+                return json_data, status
+            else:
+                if retries < 3:
+                    time.sleep(5)
+                    return self.__get_resp(endpoint=endpoint, retries=retries+1)
+                else:
+                    print(f'[ERROR]: Response: {json_data}')
+                    return {}, status
+        else:
+            print(f'[ERROR]: Status Code: {status}')
+            print(f'[ERROR]: Response: {data}')
+            return {}, status
 
     def user(self, username=None, user_id=None, save_info=True):
         """For getting the Medium User Object
