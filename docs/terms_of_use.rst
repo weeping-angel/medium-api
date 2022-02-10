@@ -20,9 +20,9 @@ All the functionalities and values of this |common_term| entirely depends on "Me
 REST APIs" (|rest_api_link|) on which it is built upon.
 
 You agree that by accessing the |common_term|, you have read, understood, and agree to 
-be bound by all of these Terms of Use, including that of Medium REST APIs (|rest_apis_eula|) . If you do not agree with all of these Terms 
-of Use, then you are expressly prohibited from using the |common_term| and you must 
-discontinue use immediately.
+be bound by all of these Terms of Use, including that of Medium REST APIs (|rest_apis_eula|). 
+If you do not agree with all of these Terms of Use, then you are expressly prohibited from 
+using the |common_term| and you must discontinue use immediately.
 
 Supplemental Terms of Use or documents that may be posted on the |common_term| from 
 time to time are hereby expressly incorporated herein by reference. We reserve the 
@@ -688,4 +688,4 @@ information regarding use of the |common_term|, please contact us at:
 .. |github_link| replace:: https://github.com/weeping-angel/medium-apis
 .. |pypi_link| replace:: https://pypi.org/project/medium-apis/
 .. |rest_api_link| replace:: https://rapidapi.com/nishujain1997.19@gmail.com/api/medium2/
-.. |rest_apis_eula| replace:: https://drive.google.com/file/d/1eMyer0Kr-nfLoUl-vnpUFioS5vYVnc_J/view?usp=sharing
+.. |rest_apis_eula| replace:: https://github.com/weeping-angel/medium-apis/raw/pages/terms_of_use.pdf
