@@ -36,11 +36,7 @@ class TopWriters:
         """
         if self.__ids is None:
             resp, _ = self.__get_resp(f'/top_writers/{self.topic_slug}')
-            if 'top_writers' in resp.keys():
-                self.__ids = list(resp['top_writers'])
-            else:
-                time.sleep(5)
-                return self.ids
+            self.__ids = list(resp['top_writers'])
 
         return self.__ids
 
