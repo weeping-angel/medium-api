@@ -168,7 +168,12 @@ class Article:
         """
         if self.__content is None:
             resp, _ = self.__get_resp(f'/article/{self.article_id}/content')
-            self.__content = str(resp['content'])
+            if 'content' in resp.keys():
+                self.__content = str(resp['content'])
+            else:
+                self.__content = None
+                time.sleep(5)
+                return self.content
 
         return self.__content
 
