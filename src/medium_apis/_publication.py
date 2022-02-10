@@ -1,3 +1,7 @@
+"""
+Publication Module
+"""
+
 class Publication:
     """Publication Class
     
