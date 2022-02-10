@@ -1,7 +1,6 @@
 """
 top_writers module
 """
-import time
 
 class TopWriters:
     """TopWriters Class
