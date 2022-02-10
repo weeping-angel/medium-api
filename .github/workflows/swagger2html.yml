@@ -30,4 +30,4 @@ jobs:
           # Stage the file, commit and push
           git add index.html
           git commit -m "Updated Swagger documentation"
-          git push origin pages
+          git push origin pages --force

@@ -31,4 +31,4 @@ jobs:
           # Stage the file, commit and push
           git add terms_of_use.pdf
           git commit -m "Updated Terms of Services"
-          git push origin pages
+          git push origin pages --force
