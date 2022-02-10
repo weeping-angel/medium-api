@@ -66,6 +66,7 @@ class User:
             self.__info = dict(resp)
             if not 'fullname' in self.__info.keys():
                 time.sleep(5)
+                self.__info = None
                 return self.info
         
         return self.__info

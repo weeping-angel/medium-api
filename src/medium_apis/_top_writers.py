@@ -1,6 +1,7 @@
 """
 top_writers module
 """
+import time
 
 class TopWriters:
     """TopWriters Class
@@ -35,7 +36,11 @@ class TopWriters:
         """
         if self.__ids is None:
             resp, _ = self.__get_resp(f'/top_writers/{self.topic_slug}')
-            self.__ids = list(resp['top_writers'])
+            if 'top_writers' in resp.keys():
+                self.__ids = list(resp['top_writers'])
+            else:
+                time.sleep(5)
+                return self.ids
 
         return self.__ids
 

@@ -139,6 +139,7 @@ class Article:
             self.__info = dict(resp)
             if not 'title' in self.__info.keys(): # In case API call fails
                 time.sleep(5)
+                self.__info = None
                 return self.info # pragma: no cover
         
         return self.__info
