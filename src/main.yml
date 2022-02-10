@@ -13,7 +13,7 @@ info:
     email: nishujain1997.19@gmail.com
     url: https://nishu-jain.medium.com
 
-  termsOfService: https://drive.google.com/file/d/1eMyer0Kr-nfLoUl-vnpUFioS5vYVnc_J/view
+  termsOfService: https://github.com/weeping-angel/medium-apis/raw/pages/terms_of_use.pdf
 
 servers:
   - url: https://medium2.p.rapidapi.com
