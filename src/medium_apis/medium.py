@@ -63,12 +63,12 @@ class Medium:
         conn = HTTPSConnection(self.base_url)
         conn.request('GET', endpoint, headers=self.headers)
         resp = conn.getresponse()
-        self.calls += 1
 
         data = resp.read()
         status = resp.status
         
         if status == 200:
+            self.calls += 1
             json_data = loads(data)
 
             if not 'error' in json_data.keys():

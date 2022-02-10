@@ -1,4 +1,4 @@
-import time
+
 
 class User:
     """User Class
@@ -64,10 +64,6 @@ class User:
         if self.__info is None:
             resp, _ = self.__get_resp(f'/user/{self._id}')
             self.__info = dict(resp)
-            if not 'fullname' in self.__info.keys():
-                time.sleep(5)
-                self.__info = None
-                return self.info
         
         return self.__info
     
