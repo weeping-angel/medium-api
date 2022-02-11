@@ -7,7 +7,7 @@ from medium_apis._user import User
 
 medium = Medium(os.getenv('RAPIDAPI_KEY'))
 
-topic_slug = 'artificial-intelligence'
+topic_slug = 'technology'
 
 top_writers = medium.top_writers(topic_slug=topic_slug)
 
