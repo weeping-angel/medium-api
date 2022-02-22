@@ -1,6 +1,6 @@
 # Documentation for Medium REST APIs
 
-- RapidAPI Listing: https://rapidapi.com/nishujain1997.19@gmail.com/api/medium2/
+- RapidAPI Listing: https://rapidapi.com/nishujain199719-vgIfuFHZxVZ/api/medium2
 - Swagger documentation: https://weeping-angel.github.io/medium-apis/
 
 Terms of Use: 
