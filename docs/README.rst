@@ -40,7 +40,7 @@ Medium APIs
                 :target: https://www.paypal.com/paypalme/sanskarjain1997
                 :alt: Paypal Link
 
-Python Wrapper on top of `Medium APIs (by Nishu Jain) <https://rapidapi.com/nishujain1997.19@gmail.com/api/medium2/>`_ to quickly extract data from Medium's website (https://medium.com).
+Python Wrapper on top of `Medium APIs (by Nishu Jain) <https://rapidapi.com/nishujain199719-vgIfuFHZxVZ/api/medium2>`_ to quickly extract data from Medium's website (https://medium.com).
 
 Installation
 ------------
@@ -83,8 +83,8 @@ How to get your RapidAPI Key
 Steps:
 
         - Sign up on `RapidAPI Platform <https://rapidapi.com/auth/sign-up>`_
-        - Subscribe to `Medium-APIs <https://rapidapi.com/nishujain1997.19@gmail.com/api/medium2/pricing>`_
-        - Go to the API's *Endpoints* tab on the `RapidAPI Hub listing <https://rapidapi.com/nishujain1997.19@gmail.com/api/medium2/>`_ and select the API key from the **X-RapidAPI-Key** dropdown under *Header Parameters* section.
+        - Subscribe to `Medium-APIs <https://rapidapi.com/nishujain199719-vgIfuFHZxVZ/api/medium2/pricing>`_
+        - Go to the API's *Endpoints* tab on the `RapidAPI Hub listing <https://rapidapi.com/nishujain199719-vgIfuFHZxVZ/api/medium2>`_ and select the API key from the **X-RapidAPI-Key** dropdown under *Header Parameters* section.
 
 For more details, see the following links:
 
