@@ -30,7 +30,7 @@ class Medium:
             RapidAPI key, please go to the following URL, register an account 
             and subscribe to Medium APIs (by Nishu Jain).
 
-            https://rapidapi.com/nishujain1997.19@gmail.com/api/medium2
+            https://rapidapi.com/nishujain199719-vgIfuFHZxVZ/api/medium2
 
         base_url (str, optional): It's the base URL of the API that is used by
             all the other endpoints. Currently, it is set to the RapidAPI's 
