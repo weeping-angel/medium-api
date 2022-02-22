@@ -334,4 +334,4 @@ In order to resolve a complaint regarding the |common_term| or to receive furthe
 
 .. |common_term| replace:: *Site/API*
 .. |api_endpoint| replace:: https://medium2.p.rapidapi.com
-.. |rapidapi_link| replace:: https://rapidapi.com/nishujain1997.19@gmail.com/api/medium2/
+.. |rapidapi_link| replace:: https://rapidapi.com/nishujain199719-vgIfuFHZxVZ/api/medium2
