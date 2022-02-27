@@ -13,7 +13,7 @@ class TopFeeds:
 
     Note:
         `TopFeeds` class is NOT intended to be used directly by importing.
-        See :obj:`medium_apis.medium.Medium.topfeeds`.
+        See :obj:`medium_api.medium.Medium.topfeeds`.
 
     """
     def __init__(self, tag, mode, get_resp, fetch_articles):
@@ -49,7 +49,7 @@ class TopFeeds:
             `tag` and `mode`.
         
         """
-        from medium_apis._article import Article
+        from medium_api._article import Article
 
         if self.__articles is None:
             self.__articles = [Article(article_id=article_id, 

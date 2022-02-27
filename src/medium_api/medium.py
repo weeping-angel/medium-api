@@ -1,6 +1,6 @@
 """
 It's the interface module of the package. Developers will start
-interacting with the APIs/package using `Medium` Class object via 
+interacting with the API/package using `Medium` Class object via 
 different functions provided in it.
 """
 
@@ -9,26 +9,26 @@ from http.client import HTTPSConnection
 from ujson import loads
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-from medium_apis._topfeeds import TopFeeds
-from medium_apis._user import User
-from medium_apis._article import Article
-from medium_apis._publication import Publication
-from medium_apis._top_writers import TopWriters
-from medium_apis._latestposts import LatestPosts
+from medium_api._topfeeds import TopFeeds
+from medium_api._user import User
+from medium_api._article import Article
+from medium_api._publication import Publication
+from medium_api._top_writers import TopWriters
+from medium_api._latestposts import LatestPosts
 
 class Medium:
-    """Main Medium APIs Class to access everything
+    """Main Medium API Class to access everything
 
         Typical usage example:
 
-        ``from medium_apis import Medium``
+        ``from medium_api import Medium``
 
         ``medium = Medium('YOUR_RAPIDAPI_KEY')``
 
     Args:
         rapidapi_key (str): A secret alphanumeric string value. To get your 
             RapidAPI key, please go to the following URL, register an account 
-            and subscribe to Medium APIs (by Nishu Jain).
+            and subscribe to Medium API (by Nishu Jain).
 
             https://rapidapi.com/nishujain199719-vgIfuFHZxVZ/api/medium2
 
@@ -111,7 +111,7 @@ class Medium:
                 `True`)
 
         Returns:
-            User: Medium API's User Object (medium_apis.user.User) that can be used 
+            User: Medium API's User Object (medium_api.user.User) that can be used 
             to access all the properties and methods associated to the given Medium
             user.
 
@@ -153,7 +153,7 @@ class Medium:
                 `True`)
 
         Returns:
-            Article: Medium APIs `Article` Object (medium_apis.article.Article) that can be
+            Article: Medium API `Article` Object (medium_api.article.Article) that can be
             used to access all the properties and methods related to a Medium Article.
 
         """
@@ -177,7 +177,7 @@ class Medium:
                 `True`)
 
         Returns:
-            Publication: Medium APIs `Publication` Object (medium_apis.publication.Publication) 
+            Publication: Medium API `Publication` Object (medium_api.publication.Publication) 
             that can be used to access all the properties and methods related to a Medium 
             Publication.
 
@@ -198,7 +198,7 @@ class Medium:
                 a category/niche as classified by the Medium Platform.
 
         Returns:
-            TopWriters: Medium APIs `TopWriters` Object (medium_apis.top_writers.TopWriters) 
+            TopWriters: Medium API `TopWriters` Object (medium_api.top_writers.TopWriters) 
             that can be used to access all the properties and methods related to Medium's 
             Top Writers for the give `topic_slug`.
 
@@ -220,7 +220,7 @@ class Medium:
                 a category/niche as classified by the Medium Platform.
 
         Returns:
-            LatestPosts: Medium APIs `LatestPosts` Object (medium_apis.latestposts.LatestPosts) 
+            LatestPosts: Medium API `LatestPosts` Object (medium_api.latestposts.LatestPosts) 
             that can be used to access all the properties and methods related to Medium's 
             LatestPosts within the given topic.
 
@@ -251,7 +251,7 @@ class Medium:
 
 
         Returns:
-            TopFeeds: Medium APIs `TopFeeds` Object (medium_apis.topfeeds.TopFeeds) 
+            TopFeeds: Medium API `TopFeeds` Object (medium_api.topfeeds.TopFeeds) 
             that can be used to access all the properties and methods, for given `tag` 
             and `mode`.
 

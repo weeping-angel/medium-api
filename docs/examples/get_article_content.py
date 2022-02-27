@@ -1,5 +1,5 @@
 import os
-from medium_apis import Medium
+from medium_api import Medium
 
 medium = Medium(os.getenv('RAPIDAPI_KEY'))
 

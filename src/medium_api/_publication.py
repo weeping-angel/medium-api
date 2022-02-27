@@ -13,7 +13,7 @@ class Publication:
 
     Note:
         `Publication` class is NOT intended to be used directly by importing.
-        See :obj:`medium_apis.medium.Medium.publication`.
+        See :obj:`medium_api.medium.Medium.publication`.
 
     """
     def __init__(self, publication_id, get_resp, save_info=False):

@@ -21,7 +21,7 @@ class User:
 
     Note:
         `User` class is NOT intended to be used directly by importing.
-        See :obj:`medium_apis.medium.Medium.user`.
+        See :obj:`medium_api.medium.Medium.user`.
 
     """
     def __init__(self, user_id, get_resp, fetch_articles, save_info=False):
@@ -113,7 +113,7 @@ class User:
             list[Article]: A list of `Article` objects written by the user
         
         """
-        from medium_apis._article import Article
+        from medium_api._article import Article
 
         if self.__posts is None:
             self.__posts = [Article(i, 
@@ -133,7 +133,7 @@ class User:
             posts on the user's profile. (Usually, in chronological order)
         
         """
-        from medium_apis._article import Article
+        from medium_api._article import Article
 
         if self.__top_articles is None:
             self.__top_articles = [Article(i, 

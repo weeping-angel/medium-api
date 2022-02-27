@@ -14,7 +14,7 @@ class LatestPosts:
 
     Note:
         `LatestPosts` class is NOT intended to be used directly by importing.
-        See :obj:`medium_apis.medium.Medium.latestposts`.
+        See :obj:`medium_api.medium.Medium.latestposts`.
 
     """
     def __init__(self, topic_slug, get_resp, fetch_articles):
@@ -45,7 +45,7 @@ class LatestPosts:
         Returns:
             list[Article]: Returns a list of `Article` objects.
         """
-        from medium_apis._article import Article
+        from medium_api._article import Article
 
         if self.__posts is None:
             self.__posts = [Article(article_id=article_id, 

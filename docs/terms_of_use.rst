@@ -1,7 +1,7 @@
 ============
 Terms of Use
 ============
-| For `"medium-apis"` python package
+| For `"medium-api"` python package
 | Last Updated: 5th February, 2022
 
 
@@ -682,10 +682,10 @@ information regarding use of the |common_term|, please contact us at:
 | nishujain1997.19@gmail.com
 
 
-.. |package_name| replace:: **medium-apis**
+.. |package_name| replace:: **medium-api**
 .. |author| replace:: nishu-jain/weeping-angel/Sanskar Jain
 .. |common_term| replace:: *Package*
-.. |github_link| replace:: https://github.com/weeping-angel/medium-apis
-.. |pypi_link| replace:: https://pypi.org/project/medium-apis/
+.. |github_link| replace:: https://github.com/weeping-angel/medium-api
+.. |pypi_link| replace:: https://pypi.org/project/medium-api/
 .. |rest_api_link| replace:: https://rapidapi.com/nishujain199719-vgIfuFHZxVZ/api/medium2
-.. |rest_apis_eula| replace:: https://github.com/weeping-angel/medium-apis/raw/pages/terms_of_use.pdf
+.. |rest_apis_eula| replace:: https://github.com/weeping-angel/medium-api/raw/pages/terms_of_use.pdf

@@ -20,7 +20,7 @@ class Article:
 
     Note:
         `Article` class is NOT intended to be used directly by importing.
-        See :obj:`medium_apis.medium.Medium.article`.
+        See :obj:`medium_api.medium.Medium.article`.
 
     """
     def __init__(self, article_id, get_resp, fetch_articles, save_info=False):
@@ -74,8 +74,8 @@ class Article:
                 - ``article.image_url`` 
                 - ``article.publication``
         """
-        from medium_apis._user import User
-        from medium_apis._publication import Publication
+        from medium_api._user import User
+        from medium_api._publication import Publication
 
         article = self.info
 

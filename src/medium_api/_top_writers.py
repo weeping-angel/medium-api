@@ -13,7 +13,7 @@ class TopWriters:
 
     Note:
         `TopWriters` class is NOT intended to be used directly by importing.
-        See :obj:`medium_apis.medium.Medium.top_writers`.
+        See :obj:`medium_api.medium.Medium.top_writers`.
 
     """
     def __init__(self, topic_slug, get_resp, fetch_users, fetch_articles):
@@ -46,7 +46,7 @@ class TopWriters:
         Returns:
             list[User]: A list of `User` objects of the top writers for given topic/niche.
         """
-        from medium_apis._user import User
+        from medium_api._user import User
 
         if self.__users is None:
             self.__users = [User(user_id=user_id, 
