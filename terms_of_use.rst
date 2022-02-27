@@ -2,14 +2,14 @@
 Terms of Use
 =============
 
-| *For Medium REST APIs*
+| *For Medium REST API by Nishu Jain*
 | *Last updated: January 20, 2022*
 
 
 Agreement To Terms
 --------------------
 
-These Terms of Use constitute a legally binding agreement made between you, whether personally or on behalf of an entity (“you”) and `Medium APIs by Nishu Jain <|rapidapi_link|>`_ (“we,” “us” or “our”), concerning your access to and use of the |api_endpoint| API endpoints as well as any other media form, media channel, mobile website, associated packages, programs, scripts or mobile application related, linked, or otherwise connected thereto (collectively, the “|common_term|”). 
+These Terms of Use constitute a legally binding agreement made between you, whether personally or on behalf of an entity (“you”) and `Medium API by Nishu Jain <|rapidapi_link|>`_ (“we,” “us” or “our”), concerning your access to and use of the |api_endpoint| API endpoints as well as any other media form, media channel, mobile website, associated packages, programs, scripts or mobile application related, linked, or otherwise connected thereto (collectively, the “|common_term|”). 
 
 You agree that by accessing the |common_term|, you have read, understood, and agree to be bound by all of these Terms of Use. If you do not agree with all of these Terms of Use, then you are expressly prohibited from using the |common_term| and you must discontinue use immediately.
 
@@ -329,8 +329,8 @@ Contact Us
 
 In order to resolve a complaint regarding the |common_term| or to receive further information regarding use of the |common_term|, please contact us at: 
 
-| Medium APIs By Nishu Jain
-| nishujain1997.19@gmail.com
+| Medium API By Nishu Jain
+| nishu@mediumapi.com
 
 .. |common_term| replace:: *Site/API*
 .. |api_endpoint| replace:: https://medium2.p.rapidapi.com
