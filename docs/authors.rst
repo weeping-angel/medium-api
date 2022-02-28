@@ -5,7 +5,7 @@ Credits
 Development Lead
 ----------------
 
-* Nishu Jain <nishujain1997.19@gmail.com>
+* Nishu Jain <nishu@mediumapi.com>
 
 Contributors
 ------------
