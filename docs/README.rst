@@ -18,7 +18,9 @@ Medium API
 
 |
 
-.. image:: https://raw.githubusercontent.com/weeping-angel/medium-api/main/docs/_static/MediumAPI-Banner.png
+.. image:: https://raw.githubusercontent.com/weeping-angel/medium-api/main/docs/_static/MediumAPI-GettingStarted-Thumbnail.png
+        :target: https://www.youtube.com/watch?v=oc8TKG9EQfE
+        :alt: What is Medium API?
         :align: center
 
 |
@@ -41,11 +43,6 @@ Medium API
                 :alt: Paypal Link
 
 Python Wrapper on top of `Medium API (by Nishu Jain) <http://hub.mediumapi.com>`_ to quickly extract data from Medium's website (https://medium.com).
-
-.. image:: https://img.youtube.com/vi/oc8TKG9EQfE/0.jpg
-        :target: https://www.youtube.com/watch?v=oc8TKG9EQfE
-        :alt: What is Medium API?
-        :align: center
 
 Installation
 ------------
