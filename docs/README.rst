@@ -80,6 +80,11 @@ For more examples, see `Usage <https://medium-api.readthedocs.io/en/latest/usage
 How to get your RapidAPI Key
 ----------------------------
 
+.. image:: https://img.youtube.com/vi/-MM1C6mb-mc/0.jpg
+        :align: center
+        :target: https://www.youtube.com/watch?v=-MM1C6mb-mc
+        :alt: How to get your RapidAPI Key (Subscribe to Medium API)
+
 Steps:
 
         - Sign up on `RapidAPI Platform <https://rapidapi.com/auth/sign-up>`_
