@@ -10,8 +10,8 @@ info:
     You can gather data related to users, publications, articles (including its textual content), latest posts & top writers within a topic/niche, etc…
   contact:
     name: Nishu Jain
-    email: nishujain1997.19@gmail.com
-    url: https://nishu-jain.medium.com
+    email: nishu@mediumapi.com
+    url: https://mediumapi.com
 
   termsOfService: https://github.com/weeping-angel/medium-apis/raw/pages/terms_of_use.pdf
 
@@ -19,6 +19,8 @@ servers:
   - url: https://medium2.p.rapidapi.com
 
 paths:
+  /:
+    $ref: './paths/welcome.yml'
   /user/id_for/{username}:
     $ref: './paths/user_id_for.yml'
   /user/{user_id}:
@@ -35,6 +37,8 @@ paths:
     $ref: './paths/article_content.yml'
   /publication/{publication_id}:
     $ref: './paths/publication_info.yml'
+  /publication/{publication_id}/articles:
+    $ref: './paths/publication_articles.yml'
   /topfeeds/{tag}/{mode}:
     $ref: './paths/topfeeds.yml'
   /top_writer/{topic_slug}:

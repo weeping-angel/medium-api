@@ -1,0 +1,35 @@
+get:
+  summary: Get Publication Articles
+  description: >
+    Returns the list of `articles_ids`, of the latest 25 articles, posted in that publication.
+
+    Use the `count` query parameter to limit the number of articles to get (0 < count < 25)
+
+  parameters:
+    - name: publication_id
+      in: path
+      required: true
+      description: It's a unique hash id assigned to every Medium Publication.
+      schema:
+        type: string
+        example: 98111c9905da
+    - name: count
+      in: query
+      required: False
+      description: To set the number of article_ids to receive (less than 25)
+      schema:
+        type: integer
+        example: 20
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+                publication_articles: 
+                  type: array
+                  items: 
+                    type: string
+                    example: 67fa62fc1971

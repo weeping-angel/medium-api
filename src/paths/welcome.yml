@@ -1,0 +1,37 @@
+
+get:
+  summary: Get Welcome
+  description: >
+    **Test Endpoint**
+    
+    Returns the information about the Medium API
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Full name of the API
+                example: Medium API
+              developer:
+                type: string
+                description: Full name of the API's developer
+                example: Nishu Jain
+              email:
+                type: string
+                description: Email ID of the developer
+                example: nishu@mediumapi.com
+              website:
+                type: string
+                description: Link to the Medium API's website
+                example: https://mediumapi.com
+              documentation:
+                type: string
+                description: Link to the Medium API's documentation
+                example: https://docs.mediumapi.com
+              
+              
