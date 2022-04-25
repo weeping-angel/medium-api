@@ -1,6 +1,6 @@
 # Documentation for Medium REST APIs
 
-- RapidAPI Listing: https://rapidapi.com/nishujain199719-vgIfuFHZxVZ/api/medium2
+- RapidAPI Listing: http://hub.mediumapi.com
 - Swagger documentation: https://docs.mediumapi.com
 
 Terms of Use: 
