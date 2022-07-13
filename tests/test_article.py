@@ -38,20 +38,31 @@ def test_article_info():
 
     assert isinstance(article.info, dict)
 
+def test_article_responses():
+    assert isinstance(article.responses, list)
+
 def test_article_content():
     article.save_content()
 
     assert isinstance(article.content, str)
     assert len(article.content) > 0
 
+def test_article_markdown():
+    article.save_markdown()
+
+    assert isinstance(article.markdown, str)
+    assert len(article.markdown) > 0
+
 def test_article_json():
     article.save_info()
     article.save_content()
+    article.save_markdown()
     
     article_json = article.json
 
     assert isinstance(article_json, dict)
     assert 'content' in article_json.keys()
+    assert 'markdown' in article_json.keys()
     assert 'title' in article_json.keys()
 
 def test_article_publication():
