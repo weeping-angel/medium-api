@@ -9,7 +9,7 @@ from medium_api._article import Article
 
 medium = Medium(os.getenv('RAPIDAPI_KEY'))
 
-article_id = '562c5821b5f0'
+article_id = '67fa62fc1971'
 
 article = medium.article(article_id=article_id)
 
@@ -39,8 +39,13 @@ def test_article_info():
 
     assert isinstance(article.info, dict)
 
+def test_article_response_ids():
+    assert isinstance(article.response_ids, list)
+    assert isinstance(article.response_ids[0], str)
+
 def test_article_responses():
     assert isinstance(article.responses, list)
+    assert isinstance(article.responses[0], Article)
 
 def test_article_content():
     article.save_content()

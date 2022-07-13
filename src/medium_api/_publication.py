@@ -126,7 +126,7 @@ class Publication:
                                     article_id=article_id, 
                                     get_resp=self.__get_resp, 
                                     fetch_articles=self.__fetch_articles,
-                                    save_info=False) 
+                                    save_info=True) 
                                 for article_id in self.article_ids]
 
         return self.__articles

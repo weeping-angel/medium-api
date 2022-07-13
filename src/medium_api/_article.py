@@ -52,6 +52,7 @@ class Article:
         self.__info = None
         self.__content = None
         self.__markdown = None
+        self.__response_ids = None
         self.__responses = None
 
         if save_info:
@@ -160,21 +161,35 @@ class Article:
         return self.__info
 
     @property
-    def responses(self):
-        """To get the list of responses on the article
+    def response_ids(self):
+        """To get the list of ids of responses (comments) on the article
         
         Returns:
             list: Returns a list of `response_ids`.
-
-        Note: To see the content of the response, make an `Article` object using 
-        `response_id`, and see the content with `article.content`.
+        """
+        if self.__response_ids is None:
+            resp, _ = self.__get_resp(f'/article/{self.article_id}/responses')
+            self.__response_ids = list(resp['responses'])
         
+        return self.__response_ids
+
+    @property
+    def responses(self):
+        """To get the list of responses (Article Objects)
+
+        Returns:
+            list[Article]: Returns a list of `Article` Objects.
         """
         if self.__responses is None:
-            resp, _ = self.__get_resp(f'/article/{self.article_id}/responses')
-            self.__responses = list(resp['responses'])
-        
+            self.__responses = [Article(
+                                    article_id=response_id, 
+                                    get_resp=self.__get_resp, 
+                                    fetch_articles=self.__fetch_articles,
+                                    save_info=True) 
+                                for response_id in self.response_ids]
+
         return self.__responses
+
 
     @property
     def is_self_published(self):
