@@ -77,6 +77,7 @@ class Article:
                 - ``article.reading_time``
                 - ``article.word_count``
                 - ``article.voters``
+                - ``article.lang``
                 - ``article.image_url`` 
                 - ``article.publication``
         """
