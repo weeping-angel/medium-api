@@ -9,6 +9,7 @@ class Publication:
 
         - publication._id
         - publication.info
+        - publication.articles
         - publication.save_info()
 
     Note:
@@ -16,9 +17,10 @@ class Publication:
         See :obj:`medium_api.medium.Medium.publication`.
 
     """
-    def __init__(self, publication_id, get_resp, save_info=False):
+    def __init__(self, publication_id, get_resp, fetch_articles, save_info=False):
         self.publication_id = str(publication_id)
         self.__get_resp = get_resp
+        self.__fetch_articles = fetch_articles
 
         self.name = None
         self.description = None
@@ -32,6 +34,9 @@ class Publication:
         self.facebook_pagename = None
 
         self.__info = None
+
+        self.__article_ids = None
+        self.__articles = None
 
         if save_info:
             self.save_info()
@@ -93,3 +98,35 @@ class Publication:
         self.twitter_username = publication['twitter_username']
         self.instagram_username = publication['instagram_username']
         self.facebook_pagename = publication['facebook_pagename']
+    
+    @property
+    def article_ids(self):
+        """To get the article_ids (top 25) from the Publication
+
+        Returns:
+            list[str]: Returns a list of article ids (str).
+        """
+        if self.__article_ids is None:
+            resp, _ = self.__get_resp(f'/publication/{self._id}/articles')
+            self.__article_ids = list(resp['publication_articles'])
+
+        return self.__article_ids
+    
+    @property
+    def articles(self):
+        """To get a list of Article objects (top 25) from the Publication
+
+        Returns:
+            list[Article]: Returns a list of `Article` objects.
+        """
+        from medium_api._article import Article
+
+        if self.__articles is None:
+            self.__articles = [Article(
+                                    article_id=article_id, 
+                                    get_resp=self.__get_resp, 
+                                    fetch_articles=self.__fetch_articles,
+                                    save_info=False) 
+                                for article_id in self.article_ids]
+
+        return self.__articles

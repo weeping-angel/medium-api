@@ -108,6 +108,7 @@ class Article:
         if not self.is_self_published:
             self.publication = Publication(publication_id=self.publication_id, 
                                            get_resp=self.__get_resp,
+                                           fetch_articles=self.__fetch_articles,
                                            save_info=False)
 
 

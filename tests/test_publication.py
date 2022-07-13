@@ -4,6 +4,7 @@ import pytest
 from medium_api import Medium
 from medium_api import _publication
 from medium_api._publication import Publication
+from medium_api._article import Article
 
 medium = Medium(os.getenv('RAPIDAPI_KEY'))
 
@@ -17,6 +18,14 @@ def test_publication_instance():
 def test_publication_id():
     assert isinstance(_publication._id, str)
     assert _publication._id == publication_id
+
+def test_publication_article_ids():
+    assert isinstance(_publication.article_ids, list)
+    assert isinstance(_publication.article_ids[0], str)
+
+def test_publication_articles():
+    assert isinstance(_publication.articles, list)
+    assert isinstance(_publication.articles[0], Article)
 
 def test_publication_info():
     _publication.save_info()

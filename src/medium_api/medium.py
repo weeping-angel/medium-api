@@ -184,6 +184,7 @@ class Medium:
         """
         return Publication(publication_id = publication_id, 
                            get_resp=self.__get_resp,
+                           fetch_articles=self.fetch_articles,
                            save_info=save_info)
 
     def top_writers(self, topic_slug):
