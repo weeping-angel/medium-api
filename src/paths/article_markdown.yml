@@ -18,7 +18,7 @@ get:
           schema:
             type: object
             properties:
-              content: 
+              markdown: 
                 type: string
                 example: >
                   # Article title

@@ -20,7 +20,7 @@ get:
           schema:
             type: object
             properties:
-                following: 
+                responses: 
                   type: array
                   items: 
                     type: string
