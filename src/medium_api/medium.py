@@ -54,7 +54,7 @@ class Medium:
     """
     def __init__(self, rapidapi_key, base_url='medium2.p.rapidapi.com', calls=0):
         self.headers = {
-            'x-rapidapi-key': rapidapi_key
+            'X-RapidAPI-Key': rapidapi_key
         }
         self.base_url = base_url
         self.calls = calls

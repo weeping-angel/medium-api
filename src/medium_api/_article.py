@@ -47,6 +47,8 @@ class Article:
 
         self.__info = None
         self.__content = None
+        self.__markdown = None
+        self.__responses = None
 
         if save_info:
             self.save_info()
@@ -114,6 +116,17 @@ class Article:
         """
         self.__content = self.content
 
+    def save_markdown(self):
+        """Saves the markdown of the article
+
+        Can be accessed later using ``article.markdown``
+        
+        Returns:
+            None
+
+        """
+        self.__markdown = self.markdown
+
     @property
     def _id(self):
         """To get the article_id
@@ -138,6 +151,23 @@ class Article:
             self.__info = dict(resp)
         
         return self.__info
+
+    @property
+    def responses(self):
+        """To get the list of responses on the article
+        
+        Returns:
+            list: Returns a list of `response_ids`.
+
+        Note: To see the content of the response, make an `Article` object using 
+        `response_id`, and see the content with `article.content`.
+        
+        """
+        if self.__responses is None:
+            resp, _ = self.__get_resp(f'/article/{self.article_id}/responses')
+            self.__responses = list(resp['responses'])
+        
+        return self.__responses
 
     @property
     def is_self_published(self):
@@ -168,11 +198,25 @@ class Article:
         return self.__content
 
     @property
+    def markdown(self):
+        """To get the Markdown of the Medium Article
+
+        Returns:
+            str: A single string containing `kicker, title, subtitle, paragraphs,
+            images, listicles, etc ...` within an article, in the markdown format 
+        """
+        if self.__markdown is None:
+            resp, _ = self.__get_resp(f'/article/{self.article_id}/markdown')
+            self.__markdown = str(resp['markdown'])
+
+        return self.__markdown
+
+    @property
     def json(self):
         """To get the articles information in JSON format
         
         Returns:
-            dict: Returns a JSON object containing article `info` and `content` if 
+            dict: Returns a JSON object containing article `info`, `content`, and `markdown` if 
             already fetched. Else, returns an empty object.
         
         """
@@ -181,5 +225,7 @@ class Article:
             ret.update(self.info)
         if self.__content:
             ret['content'] = self.content
+        if self.__markdown:
+            ret['markdown'] = self.markdown
 
         return ret
