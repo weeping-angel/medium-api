@@ -1,0 +1,31 @@
+get:
+  summary: Get Article's Markdown
+  description: >
+    Returns the markdown of an article/story from Medium, for the corresponding `article_id`
+  parameters:
+    - name: article_id
+      in: path
+      required: true
+      description: It's a unique hash id assigned to every Medium Article.
+      schema:
+        type: string
+        example: 67fa62fc1971
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              content: 
+                type: string
+                example: >
+                  # Article title
+                
+                  ## Article Subtitle
+                
+                  Article **Content** with lot of _markups_ ....
+
+                  ![Images Alt](Image URL)
+

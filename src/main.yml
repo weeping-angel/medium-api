@@ -35,6 +35,10 @@ paths:
     $ref: './paths/article_info.yml'
   /article/{article_id}/content:
     $ref: './paths/article_content.yml'
+  /article/{article_id}/markdown:
+    $ref: './paths/article_markdown.yml'
+  /article/{article_id}/responses:
+    $ref: './paths/article_responses.yml'
   /publication/{publication_id}:
     $ref: './paths/publication_info.yml'
   /publication/{publication_id}/articles:

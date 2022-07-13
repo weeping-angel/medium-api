@@ -1,0 +1,30 @@
+get:
+  summary: Get Article Responses
+  description: >
+    Returns a list of responses (`response_ids`, same as `article_ids`) for a given article (`article_id`)
+
+    Note: To see the content of the response, use the "Get Article's Content" endpoint
+  parameters:
+    - name: article_id
+      in: path
+      required: true
+      description: It's a unique hash id assigned to every Medium Article.
+      schema:
+        type: string
+        example: 67fa62fc1971
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+                following: 
+                  type: array
+                  items: 
+                    type: string
+                    example: a9bbc22aa1e6
+                id: 
+                  type: string
+                  example: 67fa62fc1971
