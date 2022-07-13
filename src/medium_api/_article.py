@@ -11,12 +11,15 @@ class Article:
 
         - article._id
         - article.info
+        - article.responses
         - article.is_self_published
         - article.content
+        - article.markdown
         - article.json
 
         - article.save_info()
         - article.save_content()
+        - article.save_markdown()
 
     Note:
         `Article` class is NOT intended to be used directly by importing.
@@ -41,6 +44,7 @@ class Article:
         self.reading_time = None
         self.word_count = None
         self.voters = None
+        self.lang = None
         self.image_url = None
 
         self.publication = None
@@ -97,6 +101,7 @@ class Article:
         self.reading_time = article['reading_time']
         self.word_count = article['word_count']
         self.voters = article['voters']
+        self.lang = article['lang']
         self.image_url = article['image_url']
 
         if not self.is_self_published:
