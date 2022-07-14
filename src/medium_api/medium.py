@@ -5,6 +5,8 @@ different functions provided in it.
 """
 
 import time
+import re
+from urllib.parse import urlparse
 from http.client import HTTPSConnection
 from ujson import loads
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -313,3 +315,32 @@ class Medium:
 
             for future in as_completed(future_to_url):
                 future.result()
+
+    def get_article_id(self, article_url):
+        """To get `article_id` from the Article's URL
+
+            Usage example:
+
+            ``article_id = medium.get_article_id("https://nishu-jain.medium.com/about-me-nishu-jain-562c5821b5f0")``
+
+        Args:
+
+            article_url (str): URL as string type
+
+        Returns:
+            str: Returns `article_id` as string for valid URL, else returns `None`.
+
+        """
+        regex = r'(https?://[^\s]+)'
+        urls = re.findall(regex, article_url)
+
+        if urls:
+            urlpath = urlparse(urls[0]).path
+            if urlpath:
+                last_location = urlpath.split('/')[-1]
+                article_id = last_location.split('-')[-1]
+
+                if article_id.isalnum():
+                    return article_id
+
+        return None
