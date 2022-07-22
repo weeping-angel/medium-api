@@ -5,9 +5,13 @@
 Medium API
 ===========
 
-.. image:: https://img.shields.io/pypi/v/medium-api
+.. image:: https://img.shields.io/pypi/v/medium-api?label=PyPI
         :target: https://pypi.python.org/pypi/medium_api
         :alt: PYPI Package Version
+
+.. image:: https://img.shields.io/pypi/dm/medium-api?color=darkgreen&label=Downloads
+        :target: https://pypistats.org/packages/medium-api
+        :alt: PYPI Monthly Download Stats
 
 .. image:: https://readthedocs.org/projects/medium-api/badge/?version=latest
         :target: https://medium-api.readthedocs.io/en/latest/?version=latest
