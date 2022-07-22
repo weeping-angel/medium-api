@@ -20,6 +20,7 @@ class Article:
         - article.save_info()
         - article.save_content()
         - article.save_markdown()
+        - article.fetch_responses()
 
     Note:
         `Article` class is NOT intended to be used directly by importing.
@@ -184,11 +185,26 @@ class Article:
             self.__responses = [Article(
                                     article_id=response_id, 
                                     get_resp=self.__get_resp, 
-                                    fetch_articles=self.__fetch_articles,
-                                    save_info=True) 
+                                    fetch_articles=self.__fetch_articles
+                                )
                                 for response_id in self.response_ids]
 
         return self.__responses
+
+    def fetch_responses(self, content=True):
+        """To fetch all the responses information and content on an article.
+
+        Args:
+            content (bool, optional): Set it to `True` if you want to fetch the 
+                textual content of the article as well. Otherwise, default is `False`.
+
+        Returns:
+            None: All the fetched information will be access via `user.articles`.
+
+            ``article.responses[0].content``
+            ``article.responses[1].claps``
+        """
+        self.__fetch_articles(self.responses, content=content)
 
 
     @property
