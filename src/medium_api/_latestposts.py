@@ -34,7 +34,12 @@ class LatestPosts:
         """
         if self.__ids is None:
             resp, _ = self.__get_resp(f'/latestposts/{self.topic_slug}')
-            self.__ids = list(resp['latestposts'])
+            try:
+                self.__ids = list(resp['latestposts'])
+            except KeyError:
+                print("[ERROR]: An error occurred when calling the latestposts endpoint. Please ensure that you have passed a valid topic slug. If you are unsure if the topic slug you are using is valid, consider using the Topfeeds endpoint instead.")
+                print('\nInput Topic Slug: ', self.topic_slug)
+                self.__ids = []
 
         return self.__ids
 
