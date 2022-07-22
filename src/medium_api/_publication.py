@@ -11,6 +11,7 @@ class Publication:
         - publication.info
         - publication.articles
         - publication.save_info()
+        - publication.fetch_articles()
 
     Note:
         `Publication` class is NOT intended to be used directly by importing.
@@ -126,7 +127,22 @@ class Publication:
                                     article_id=article_id, 
                                     get_resp=self.__get_resp, 
                                     fetch_articles=self.__fetch_articles,
-                                    save_info=True) 
+                                )
                                 for article_id in self.article_ids]
 
         return self.__articles
+
+    def fetch_articles(self, content=False):
+        """To fetch publication articles information (using multithreading)
+
+        Args:
+            content (bool, optional): Set it to `True` if you want to fetch the 
+                textual content of the article as well. Otherwise, default is `False`.
+
+        Returns:
+            None: All the fetched information will be access via publication.articles.
+
+            ``publication.articles[0].title``
+            ``publication.articles[1].claps``
+        """
+        self.__fetch_articles(self.articles, content=content)
