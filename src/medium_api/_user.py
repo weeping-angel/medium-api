@@ -13,11 +13,13 @@ class User:
         - user.articles
         - user.top_article_ids
         - user.top_articles
+        - user.following_ids
         - user.following
         - user.articles_as_json
 
         - user.save_info()
         - user.fetch_articles()
+        - user.fetch_top_articles()
 
     Note:
         `User` class is NOT intended to be used directly by importing.
@@ -29,9 +31,13 @@ class User:
         self.__get_resp = get_resp
         self.__fetch_articles = fetch_articles
 
-        self.__posts = None
         self.__info = None
+        self.__articles = None
+        self.__article_ids = None
         self.__top_articles = None
+        self.__top_article_ids = None
+        self.__following_ids = None
+        self.__following = None
 
         self.fullname = None
         self.username = None
@@ -77,9 +83,11 @@ class User:
             list[str]: A list of `article_ids` (str) written by the user
         
         """
-        resp, _ = self.__get_resp(f'/user/{self._id}/articles')
-        article_ids = resp['associated_articles']
-        return list(article_ids)
+        if self.__article_ids is None:
+            resp, _ = self.__get_resp(f'/user/{self._id}/articles')
+            self.__article_ids = list(resp['associated_articles'])
+
+        return self.__article_ids
 
     @property
     def top_article_ids(self):
@@ -90,21 +98,44 @@ class User:
             on the user's profile. (Usually, in chronological order)
         
         """
-        resp, _ = self.__get_resp(f'/user/{self._id}/top_articles')
-        top_article_ids = resp['top_articles']
-        return list(top_article_ids)
+        if self.__top_article_ids is None:
+            resp, _ = self.__get_resp(f'/user/{self._id}/top_articles')
+            self.__top_article_ids = list(resp['top_articles'])
+
+        return self.__top_article_ids
 
     @property
-    def following(self):
+    def following_ids(self):
         """To get a list of `user_ids` of user's followings
         
         Returns:
             list[str]: A list of `user_ids` (str) of the user's followings.
         
         """
-        resp, _ = self.__get_resp(f'/user/{self._id}/following')
-        return list(resp['following'])
+        if self.__following_ids is None:
+            resp, _ = self.__get_resp(f'/user/{self._id}/following')
+            self.__following_ids = list(resp['following'])
+        
+        return self.__following_ids
 
+    @property
+    def following(self):
+        """To get a full list of following User objects
+        
+        Returns:
+            list[User]: A list of `User` objects followed by the given user
+        
+        """
+        if self.__following is None:
+            self.__following = [User(
+                                user_id = user_id,
+                                get_resp = self.__get_resp,
+                                fetch_articles = self.__fetch_articles,
+                                save_info = False
+                              ) for user_id in self.following_ids]
+        
+        return self.__following
+        
     @property
     def articles(self):
         """To get a full list of user-written Article objects
@@ -115,14 +146,14 @@ class User:
         """
         from medium_api._article import Article
 
-        if self.__posts is None:
-            self.__posts = [Article(i, 
+        if self.__articles is None:
+            self.__articles = [Article(i, 
                                     get_resp = self.__get_resp, 
                                     fetch_articles=self.__fetch_articles, 
                                     save_info=False) 
                             for i in self.article_ids]
             
-        return self.__posts
+        return self.__articles
 
     @property
     def top_articles(self):
@@ -194,4 +225,19 @@ class User:
             ``user.articles[1].claps``
         """
         self.__fetch_articles(self.articles, content=content)
+
+    def fetch_top_articles(self, content=False):
+        """To fetch top 10 user-written top articles information and content
+
+        Args:
+            content (bool, optional): Set it to `True` if you want to fetch the 
+                textual content of the article as well. Otherwise, default is `False`.
+
+        Returns:
+            None: All the fetched information will be access via `user.articles`.
+
+            ``user.top_articles[0].title``
+            ``user.top_articles[1].claps``
+        """
+        self.__fetch_articles(self.top_articles, content=content)
 
