@@ -18,6 +18,8 @@ from medium_api._publication import Publication
 from medium_api._top_writers import TopWriters
 from medium_api._latestposts import LatestPosts
 
+from medium_api import __version__
+
 class Medium:
     """Main Medium API Class to access everything
 
@@ -56,7 +58,8 @@ class Medium:
     """
     def __init__(self, rapidapi_key, base_url='medium2.p.rapidapi.com', calls=0):
         self.headers = {
-            'X-RapidAPI-Key': rapidapi_key
+            'X-RapidAPI-Key': rapidapi_key,
+            'User-Agent': f"medium-api-python-sdk/{__version__}"
         }
         self.base_url = base_url
         self.calls = calls
