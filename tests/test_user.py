@@ -1,5 +1,6 @@
 import os
 import pytest
+from datetime import datetime
 
 from medium_api import Medium
 from medium_api._user import User
@@ -26,10 +27,13 @@ def test_user_info():
     assert isinstance(user.username, str)
     assert isinstance(user.twitter_username, str)
     assert isinstance(user.is_writer_program_enrolled, bool)
-    assert isinstance(user.followers, int)
-    assert isinstance(user.following, list)
+    assert isinstance(user.followers_count, int)
+    assert isinstance(user.following_count, int)
     assert isinstance(user.bio, str)
     assert isinstance(user.image_url, str)
+    assert isinstance(user.is_suspended, bool)
+    assert isinstance(user.allow_notes, bool)
+    assert isinstance(user.medium_member_at, datetime) or user.medium_member_at is None
 
 def test_user_article_ids():
     user_articles_ids = user.article_ids
@@ -54,6 +58,30 @@ def test_user_top_articles_instances():
 
     assert isinstance(top_articles, list)
     assert isinstance(top_articles[0], Article)
+
+def test_user_following():
+    following_ids = user.following_ids
+    following = user.following
+
+    assert isinstance(following_ids, list)
+    if len(following_ids) != 0:
+        assert isinstance(following_ids[0], str)
+
+    assert isinstance(following, list)
+    if len(following) != 0:
+        assert isinstance(following[0], User)
+
+def test_user_followers():
+    followers_ids = user.followers_ids
+    followers = user.followers
+
+    assert isinstance(followers_ids, list)
+    if len(followers_ids) != 0:
+        assert isinstance(followers_ids[0], str)
+
+    assert isinstance(followers, list)
+    if len(followers) != 0:
+        assert isinstance(followers[0], User)
 
 def test_user_articles_as_json():
     user.fetch_articles(content=True)
