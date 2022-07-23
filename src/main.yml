@@ -27,6 +27,8 @@ paths:
     $ref: './paths/user_info.yml'
   /user/{user_id}/following:
     $ref: './paths/user_following.yml'
+  /user/{user_id}/followers:
+    $ref: './paths/user_followers.yml'
   /user/{user_id}/articles:
     $ref: './paths/user_articles.yml'
   /user/{user_id}/top_articles:

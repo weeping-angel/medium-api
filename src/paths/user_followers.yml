@@ -1,0 +1,37 @@
+get:
+  summary: Get User Followers
+  description: >
+    Returns the list of `user_ids` of the user's followers.
+
+
+    **Note:** The length of this followers' list might be different from what you get in 
+    the "Get User Info" Endpoint. It's because, this list doesn't include Medium Users who 
+    left the platform.
+
+    If you really need the exact followers' count, use this endpoint to get the followers' 
+    list and take its length as the exact followers' count
+
+  parameters:
+    - name: user_id
+      in: path
+      required: true
+      description: Unique hash id assigned to every single Medium user.
+      schema:
+        type: string
+        example: 1985b61817c3
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+                followers: 
+                  type: array
+                  items: 
+                    type: string
+                    example: 105e6602fb79
+                id: 
+                  type: string
+                  example: 14d5c41e0264
