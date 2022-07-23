@@ -1,6 +1,7 @@
 '''
 Users Module
 '''
+from datetime import datetime
 
 class User:
     """User Class
@@ -15,6 +16,8 @@ class User:
         - user.top_articles
         - user.following_ids
         - user.following
+        - user.followers_ids
+        - user.followers
         - user.articles_as_json
 
         - user.save_info()
@@ -38,13 +41,19 @@ class User:
         self.__top_article_ids = None
         self.__following_ids = None
         self.__following = None
+        self.__followers_ids = None
+        self.__followers = None
 
         self.fullname = None
         self.username = None
-        self.followers = None
+        self.followers_count = None
+        self.following_count = None
         self.bio = None
         self.twitter_username = None
         self.is_writer_program_enrolled = None
+        self.is_suspended = None
+        self.medium_member_at = None
+        self.allow_notes = None
         self.image_url = None
 
         if save_info:
@@ -119,6 +128,20 @@ class User:
         return self.__following_ids
 
     @property
+    def followers_ids(self):
+        """To get a list of `user_ids` of user's followers
+        
+        Returns:
+            list[str]: A list of `user_ids` (str) of the user's followers.
+        
+        """
+        if self.__followers_ids is None:
+            resp, _ = self.__get_resp(f'/user/{self._id}/followers')
+            self.__followers_ids = list(resp['followers'])
+        
+        return self.__followers_ids
+
+    @property
     def following(self):
         """To get a full list of following User objects
         
@@ -135,6 +158,24 @@ class User:
                               ) for user_id in self.following_ids]
         
         return self.__following
+
+    @property
+    def followers(self):
+        """To get a full list of followers User objects
+        
+        Returns:
+            list[User]: A list of `User` objects of followers
+        
+        """
+        if self.__followers is None:
+            self.__followers = [User(
+                                user_id = user_id,
+                                get_resp = self.__get_resp,
+                                fetch_articles = self.__fetch_articles,
+                                save_info = False
+                              ) for user_id in self.followers_ids]
+        
+        return self.__followers
         
     @property
     def articles(self):
@@ -195,21 +236,29 @@ class User:
 
                 - ``user.fullname``
                 - ``user.username``
-                - ``user.followers``
+                - ``user.followers_count``
+                - ``user.following_count``
                 - ``user.bio``
                 - ``user.twitter_username``
                 - ``user.is_writer_program_enrolled``
+                - ``user.is_suspended``
+                - ``user.allow_notes``
+                - ``user.medium_member_at``
                 - ``user.image_url``
         """
         user = self.info
 
         self.fullname = user['fullname']
         self.username = user['username']
-        self.followers = user['followers']
+        self.followers_count = user['followers_count']
+        self.following_count = user['following_count']
         self.bio = user['bio']
         self.twitter_username = user['twitter_username']
         self.is_writer_program_enrolled = user["is_writer_program_enrolled"]
         self.image_url = user['image_url']
+        self.is_suspended = user['is_suspended']
+        self.allow_notes = user['allow_notes']
+        self.medium_member_at = datetime.strptime(user['medium_member_at'], '%Y-%m-%d %H:%M:%S') if user['medium_member_at']!='' else None
 
     def fetch_articles(self, content=False):
         """To fetch all the user-written articles information and content
