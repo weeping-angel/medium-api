@@ -4,7 +4,7 @@ get:
     Returns the publication related information such as *Publication name, Tagline, Description, Tags, Followers Count, Twitter username, Instagram username, Facebook Page name, etc …*
 
 
-    **Note:** If you don't know the `publication_id`, you can get it from any article published by it. Use endpoint "/article/{articleid}" to retrieve the `publication_id`.
+    **Note:** If you don't know the `publication_id`, you can get it from any article published by it. Use endpoint "/article/{article_id}" to retrieve the `publication_id`.
   parameters:
     - name: publication_id
       in: path
@@ -29,10 +29,10 @@ get:
                 example: Towards AI
               tagline: 
                 type: string
-                example: The World’s Leading AI and Technology Publication
+                example: The World's Leading AI and Technology Publication
               description: 
                 type: string
-                example: Towards AI is the world’s leading AI and technology publication. Publishing unbiased AI and technology-related articles. Read by thought-leaders and decision-makers around the world.
+                example: Towards AI is the world's leading AI and technology publication. Publishing unbiased AI and technology-related articles. Read by thought-leaders and decision-makers around the world.
               tags: 
                 type: array
                 items: 

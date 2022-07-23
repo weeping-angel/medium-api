@@ -38,19 +38,26 @@ get:
               bio: 
                 type: string
                 example: Obsessed with Tech Biz Arts & Words; Does NOT dumb down the writing; Skilled Wordsmith; Delivers the best
-              followers: 
+              followers_count: 
                 type: integer
                 format: int32
-                example: 255
-              following: 
+                example: 354
+              following_count: 
                 type: integer
                 format: int32
-                example: 1
+                example: 4
               twitter_username: 
                 type: string
                 example: vortlog
               is_writer_program_enrolled: 
                 type: boolean
+              is_suspended: 
+                type: boolean
+              allow_notes:
+                type: boolean
+              medium_member_at:
+                type: string
+                example: 2020-06-24 16:05:46
               image_url: 
                 type: string
                 example: https://miro.medium.com/1*C92Hx7k9nRM7TPlrmhgW9w.jpeg
