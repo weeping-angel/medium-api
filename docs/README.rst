@@ -144,7 +144,7 @@ Related REST API Articles:
 Miscellaneous Articles:
 
         - `Best Metric to Judge a Medium Article's Popularity <https://medium.com/p/cac577609bd4>`_
-        - `How To Leverage Medium for Crypto-trading <https://medium.com/p/deedea890da1>`
+        - `How To Leverage Medium for Crypto-trading <https://medium.com/p/deedea890da1>`_
 
 License
 -------
