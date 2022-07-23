@@ -74,7 +74,7 @@ Getting a Medium user's information and fetching his articles.
 
         user = medium.user(username="nishu-jain")
 
-        print(f'{user.fullname} has {user.followers} followers.')
+        print(f'{user.fullname} has {user.followers_count} followers.')
 
         user.fetch_articles()
         for article in user.articles:
@@ -107,9 +107,13 @@ Features
 
 Extract/Scrape/Fetch/Get:
   
-    - Medium User information and user-written articles
-    - Medium Articles information and their textual content 
+    - Medium User information and User-written Articles
+    - Medium User's Followers and Following
+    - Medium Articles information
+    - Medium Article's Textual Content and Markdown
+    - Medium Article's Responses/Comments 
     - Medium Publications information
+    - Medium Publication's Articles
     - Medium's Top Writers
     - Medium's Topfeeds (Trending, Latest, All time best, best of year/month/week)
     - Medium's LatestPosts (distributed articles)
@@ -140,6 +144,7 @@ Related REST API Articles:
 Miscellaneous Articles:
 
         - `Best Metric to Judge a Medium Article's Popularity <https://medium.com/p/cac577609bd4>`_
+        - `How To Leverage Medium for Crypto-trading <https://medium.com/p/deedea890da1>`
 
 License
 -------
