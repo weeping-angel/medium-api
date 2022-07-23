@@ -53,6 +53,7 @@ get:
                 type: boolean
               is_suspended: 
                 type: boolean
+                example: false
               allow_notes:
                 type: boolean
               medium_member_at:
