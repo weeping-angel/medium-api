@@ -152,11 +152,11 @@ class User:
         """
         if self.__following is None:
             self.__following = [User(
-                                user_id = user_id,
-                                get_resp = self.__get_resp,
-                                fetch_articles = self.__fetch_articles,
-                                fetch_users = self.__fetch_users,
-                                save_info = False
+                                    user_id = user_id,
+                                    get_resp = self.__get_resp,
+                                    fetch_articles = self.__fetch_articles,
+                                    fetch_users = self.__fetch_users,
+                                    save_info = False
                               ) for user_id in self.following_ids]
         
         return self.__following
@@ -171,11 +171,11 @@ class User:
         """
         if self.__followers is None:
             self.__followers = [User(
-                                user_id = user_id,
-                                get_resp = self.__get_resp,
-                                fetch_articles = self.__fetch_articles,
-                                fetch_users = self.__fetch_users,
-                                save_info = False
+                                    user_id = user_id,
+                                    get_resp = self.__get_resp,
+                                    fetch_articles = self.__fetch_articles,
+                                    fetch_users = self.__fetch_users,
+                                    save_info = False
                               ) for user_id in self.followers_ids]
         
         return self.__followers
@@ -275,17 +275,21 @@ class User:
         """
         user = self.info
 
-        self.fullname = user['fullname']
-        self.username = user['username']
-        self.followers_count = user['followers_count']
-        self.following_count = user['following_count']
-        self.bio = user['bio']
-        self.twitter_username = user['twitter_username']
-        self.is_writer_program_enrolled = user["is_writer_program_enrolled"]
-        self.image_url = user['image_url']
-        self.is_suspended = user['is_suspended']
-        self.allow_notes = user['allow_notes']
-        self.medium_member_at = datetime.strptime(user['medium_member_at'], '%Y-%m-%d %H:%M:%S') if user['medium_member_at']!='' else None
+        try:
+            self.fullname = user['fullname']
+            self.username = user['username']
+            self.followers_count = user['followers_count']
+            self.following_count = user['following_count']
+            self.bio = user['bio']
+            self.twitter_username = user['twitter_username']
+            self.is_writer_program_enrolled = user["is_writer_program_enrolled"]
+            self.image_url = user['image_url']
+            self.is_suspended = user['is_suspended']
+            self.allow_notes = user['allow_notes']
+            self.medium_member_at = datetime.strptime(user['medium_member_at'], '%Y-%m-%d %H:%M:%S') if user['medium_member_at']!='' else None
+        except KeyError as e:
+            print(f"[ERROR]: Could not retrieve {e} for the given user_id ({self.user_id}). Please check if this user exists.")
+            print(f"[ERROR]: Link to unknown user's profile: https://medium.com/u/{self.user_id}")
 
     def fetch_articles(self, content=False):
         """To fetch all the user-written articles information and content
