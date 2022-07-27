@@ -70,6 +70,7 @@ def test_user_following():
     assert isinstance(following, list)
     if len(following) != 0:
         assert isinstance(following[0], User)
+        assert isinstance(following[0].fullname, str)
 
 def test_user_followers():
     followers_ids = user.followers_ids
@@ -82,6 +83,7 @@ def test_user_followers():
     assert isinstance(followers, list)
     if len(followers) != 0:
         assert isinstance(followers[0], User)
+        assert isinstance(followers[0].fullname, str)
 
 def test_user_articles_as_json():
     user.fetch_articles(content=True)
