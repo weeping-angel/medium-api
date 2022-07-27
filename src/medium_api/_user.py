@@ -154,7 +154,7 @@ class User:
                                 user_id = user_id,
                                 get_resp = self.__get_resp,
                                 fetch_articles = self.__fetch_articles,
-                                save_info = False
+                                save_info = True
                               ) for user_id in self.following_ids]
         
         return self.__following
@@ -172,7 +172,7 @@ class User:
                                 user_id = user_id,
                                 get_resp = self.__get_resp,
                                 fetch_articles = self.__fetch_articles,
-                                save_info = False
+                                save_info = True
                               ) for user_id in self.followers_ids]
         
         return self.__followers
