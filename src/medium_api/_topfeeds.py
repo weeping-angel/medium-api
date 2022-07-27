@@ -16,11 +16,12 @@ class TopFeeds:
         See :obj:`medium_api.medium.Medium.topfeeds`.
 
     """
-    def __init__(self, tag, mode, get_resp, fetch_articles):
+    def __init__(self, tag, mode, get_resp, fetch_articles, fetch_users):
         self.tag = str(tag)
         self.mode = str(mode)
         self.__get_resp = get_resp
         self.__fetch_articles = fetch_articles
+        self.__fetch_users = fetch_users
 
         self.__ids = None
         self.__articles = None
@@ -55,6 +56,7 @@ class TopFeeds:
             self.__articles = [Article(article_id=article_id, 
                                        get_resp=self.__get_resp, 
                                        fetch_articles=self.__fetch_articles,
+                                       fetch_users=self.__fetch_users,
                                        save_info=False) 
                                 for article_id in self.ids]
 

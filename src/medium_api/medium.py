@@ -18,8 +18,6 @@ from medium_api._publication import Publication
 from medium_api._top_writers import TopWriters
 from medium_api._latestposts import LatestPosts
 
-from medium_api import __version__
-
 class Medium:
     """Main Medium API Class to access everything
 
@@ -59,7 +57,7 @@ class Medium:
     def __init__(self, rapidapi_key, base_url='medium2.p.rapidapi.com', calls=0):
         self.headers = {
             'X-RapidAPI-Key': rapidapi_key,
-            'User-Agent': f"medium-api-python-sdk/{__version__}"
+            'User-Agent': f"medium-api-python-sdk"
         }
         self.base_url = base_url
         self.calls = calls
@@ -128,6 +126,7 @@ class Medium:
             return User(user_id = user_id, 
                         get_resp = self.__get_resp, 
                         fetch_articles=self.fetch_articles,
+                        fetch_users=self.fetch_users,
                         save_info = save_info)
         elif username is not None:
             resp, _ = self.__get_resp(f'/user/id_for/{str(username)}')
@@ -135,9 +134,10 @@ class Medium:
             return User(user_id = user_id, 
                         get_resp = self.__get_resp, 
                         fetch_articles=self.fetch_articles,
+                        fetch_users=self.fetch_users,
                         save_info = save_info)
         else:
-            print('Missing parameter: Please provide "user_id" or "username" to call the function')
+            print('[ERROR]: Missing parameter: Please provide "user_id" or "username" to call the function')
             return None
 
     def article(self, article_id, save_info=True):
@@ -165,6 +165,7 @@ class Medium:
         return Article(article_id = article_id, 
                        get_resp = self.__get_resp, 
                        fetch_articles=self.fetch_articles,
+                       fetch_users = self.fetch_users,
                        save_info = save_info)
 
     def publication(self, publication_id, save_info=True):
@@ -190,6 +191,7 @@ class Medium:
         return Publication(publication_id = publication_id, 
                            get_resp=self.__get_resp,
                            fetch_articles=self.fetch_articles,
+                           fetch_users=self.fetch_users,
                            save_info=save_info)
 
     def top_writers(self, topic_slug):
@@ -233,7 +235,9 @@ class Medium:
         """
         return LatestPosts(topic_slug=topic_slug, 
                            get_resp=self.__get_resp, 
-                           fetch_articles=self.fetch_articles)
+                           fetch_articles=self.fetch_articles,
+                           fetch_users=self.fetch_users,
+                        )
 
     def topfeeds(self, tag, mode):
         """For getting the Medium's TopFeeds Object
@@ -264,7 +268,8 @@ class Medium:
         """
         return TopFeeds(tag=tag, mode=mode, 
                         get_resp=self.__get_resp, 
-                        fetch_articles=self.fetch_articles)
+                        fetch_articles=self.fetch_articles,
+                        fetch_users=self.fetch_users)
 
     def fetch_articles(self, articles, content=False):
         """To quickly fetch articles (info and content) using multithreading

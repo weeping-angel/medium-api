@@ -63,6 +63,8 @@ def test_user_following():
     following_ids = user.following_ids
     following = user.following
 
+    user.fetch_following()
+
     assert isinstance(following_ids, list)
     if len(following_ids) != 0:
         assert isinstance(following_ids[0], str)
@@ -75,6 +77,8 @@ def test_user_following():
 def test_user_followers():
     followers_ids = user.followers_ids
     followers = user.followers
+
+    user.fetch_followers()
 
     assert isinstance(followers_ids, list)
     if len(followers_ids) != 0:

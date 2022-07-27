@@ -27,10 +27,11 @@ class Article:
         See :obj:`medium_api.medium.Medium.article`.
 
     """
-    def __init__(self, article_id, get_resp, fetch_articles, save_info=False):
+    def __init__(self, article_id, get_resp, fetch_articles, fetch_users, save_info=False):
         self.__get_resp = get_resp
         self.article_id = str(article_id)
         self.__fetch_articles = fetch_articles
+        self.__fetch_users = fetch_users
 
         self.title = None
         self.subtitle = None
@@ -93,7 +94,8 @@ class Article:
         self.claps = article['claps']
         self.author = User(user_id=article['author'], 
                            get_resp=self.__get_resp, 
-                           fetch_articles=self.__fetch_articles, 
+                           fetch_articles=self.__fetch_articles,
+                           fetch_users=self.__fetch_users,
                            save_info=False)
         self.url = article['url']
         self.published_at = datetime.strptime(article['published_at'], '%Y-%m-%d %H:%M:%S')
@@ -111,6 +113,7 @@ class Article:
             self.publication = Publication(publication_id=self.publication_id, 
                                            get_resp=self.__get_resp,
                                            fetch_articles=self.__fetch_articles,
+                                           fetch_users=self.__fetch_users,
                                            save_info=False)
 
 
@@ -185,7 +188,8 @@ class Article:
             self.__responses = [Article(
                                     article_id=response_id, 
                                     get_resp=self.__get_resp, 
-                                    fetch_articles=self.__fetch_articles
+                                    fetch_articles=self.__fetch_articles,
+                                    fetch_users=self.__fetch_users,
                                 )
                                 for response_id in self.response_ids]
 

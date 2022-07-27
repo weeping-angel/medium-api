@@ -29,10 +29,11 @@ class User:
         See :obj:`medium_api.medium.Medium.user`.
 
     """
-    def __init__(self, user_id, get_resp, fetch_articles, save_info=False):
+    def __init__(self, user_id, get_resp, fetch_articles, fetch_users, save_info=False):
         self.user_id = user_id
         self.__get_resp = get_resp
         self.__fetch_articles = fetch_articles
+        self.__fetch_users = fetch_users
 
         self.__info = None
         self.__articles = None
@@ -154,7 +155,8 @@ class User:
                                 user_id = user_id,
                                 get_resp = self.__get_resp,
                                 fetch_articles = self.__fetch_articles,
-                                save_info = True
+                                fetch_users = self.__fetch_users,
+                                save_info = False
                               ) for user_id in self.following_ids]
         
         return self.__following
@@ -172,10 +174,33 @@ class User:
                                 user_id = user_id,
                                 get_resp = self.__get_resp,
                                 fetch_articles = self.__fetch_articles,
-                                save_info = True
+                                fetch_users = self.__fetch_users,
+                                save_info = False
                               ) for user_id in self.followers_ids]
         
         return self.__followers
+
+    def fetch_following(self):
+        """To user's followings information
+
+        Returns:
+            None: All the fetched information will be access via top_writers.users.
+
+            ``user.following[0].fullname``
+            ``user.following[1].bio``
+        """
+        self.__fetch_users(self.following)
+
+    def fetch_followers(self):
+        """To user's followers information
+
+        Returns:
+            None: All the fetched information will be access via top_writers.users.
+
+            ``user.followers[0].fullname``
+            ``user.followers[1].bio``
+        """
+        self.__fetch_users(self.followers)
         
     @property
     def articles(self):
@@ -191,6 +216,7 @@ class User:
             self.__articles = [Article(i, 
                                     get_resp = self.__get_resp, 
                                     fetch_articles=self.__fetch_articles, 
+                                    fetch_users = self.__fetch_users,
                                     save_info=False) 
                             for i in self.article_ids]
             
@@ -211,6 +237,7 @@ class User:
             self.__top_articles = [Article(i, 
                                            get_resp = self.__get_resp, 
                                            fetch_articles=self.__fetch_articles, 
+                                           fetch_users=self.__fetch_users,
                                            save_info=False) 
                                     for i in self.top_article_ids]
             

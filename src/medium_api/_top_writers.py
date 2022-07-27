@@ -21,6 +21,7 @@ class TopWriters:
         self.__get_resp = get_resp
         self.__fetch_users = fetch_users
         self.__fetch_articles = fetch_articles
+        self.__fetch_users = fetch_users
 
         self.__ids = None
         self.__users = None
@@ -52,6 +53,7 @@ class TopWriters:
             self.__users = [User(user_id=user_id, 
                                  get_resp=self.__get_resp,
                                  fetch_articles=self.__fetch_articles,
+                                 fetch_users = self.__fetch_users,
                                  save_info=False) 
                             for user_id in self.ids]
         
@@ -59,10 +61,6 @@ class TopWriters:
 
     def fetch_users(self):
         """To fetch top writers (user) related information
-
-        Args:
-            content (bool, optional): Set it to `True` if you want to fetch the 
-                textual content of the article as well. Otherwise, default is `False`.
 
         Returns:
             None: All the fetched information will be access via top_writers.users.

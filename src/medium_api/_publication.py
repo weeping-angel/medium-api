@@ -18,10 +18,11 @@ class Publication:
         See :obj:`medium_api.medium.Medium.publication`.
 
     """
-    def __init__(self, publication_id, get_resp, fetch_articles, save_info=False):
+    def __init__(self, publication_id, get_resp, fetch_articles, fetch_users, save_info=False):
         self.publication_id = str(publication_id)
         self.__get_resp = get_resp
         self.__fetch_articles = fetch_articles
+        self.__fetch_users = fetch_users
 
         self.name = None
         self.description = None
@@ -127,6 +128,7 @@ class Publication:
                                     article_id=article_id, 
                                     get_resp=self.__get_resp, 
                                     fetch_articles=self.__fetch_articles,
+                                    fetch_users = self.__fetch_users,
                                 )
                                 for article_id in self.article_ids]
 
