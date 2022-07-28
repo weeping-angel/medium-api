@@ -14,8 +14,8 @@ Get User's ID
 	<script src="https://gist.github.com/weeping-angel/c4e694ee6f2ede9d7261acd87152e8f7.js?file=get_user_id_output.txt"></script>
 
 
-Get User Info
--------------
+Get User's Info
+---------------
 
 .. raw:: html
 
@@ -62,8 +62,8 @@ Get User's Following
 Article
 ~~~~~~~~~
 
-Get Article Info
-----------------
+Get Article's Info
+-------------------
 
 .. raw:: html
 
@@ -80,8 +80,8 @@ Get Article's Content
 	<script src="https://gist.github.com/weeping-angel/dc469baf9aa845282773c50bad54bb4f.js?file=get_article_content_output.txt"></script>
 
 
-Get Article Markdown
---------------------
+Get Article's Markdown
+-----------------------
 
 .. raw:: html
 
@@ -100,8 +100,8 @@ Get Article's Responses
 Publication
 ~~~~~~~~~~~~
 
-Get Publication Info
---------------------
+Get Publication's Info
+------------------------
 
 .. raw:: html
 
@@ -109,8 +109,8 @@ Get Publication Info
 	<script src="https://gist.github.com/weeping-angel/1f9ee9f7fe6f31ba0a26d537ccc2c145.js?file=get_publication_info_output.txt"></script>
 
 
-Get Publication Articles
-------------------------
+Get Publication's Articles
+----------------------------
 
 .. raw:: html
 
