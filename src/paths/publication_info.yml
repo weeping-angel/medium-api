@@ -57,3 +57,11 @@ get:
               twitter_username: 
                 type: string
                 example: towards_AI
+              creator:
+                type: string
+                example: 8a819983d566
+              editors:
+                type: array
+                items:
+                  type: string
+                  example: aea8a19ea239

@@ -1,0 +1,25 @@
+get:
+  summary: Get User's Interests
+  description: >
+    Returns a list of tags that the given user follows.
+  parameters:
+    - name: user_id
+      in: path
+      required: true
+      description: Unique hash id assigned to every single Medium user.
+      schema:
+        type: string
+        example: "1985b61817c3"
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+                tags_followed: 
+                  type: array
+                  items: 
+                    type: string
+                    example: software-engineering

@@ -33,6 +33,8 @@ paths:
     $ref: './paths/user_articles.yml'
   /user/{user_id}/top_articles:
     $ref: './paths/user_top_articles.yml'
+  /user/{user_id}/interests:
+    $ref: './paths/user_interests.yml'
   /article/{article_id}:
     $ref: './paths/article_info.yml'
   /article/{article_id}/content:
@@ -45,6 +47,8 @@ paths:
     $ref: './paths/publication_info.yml'
   /publication/{publication_id}/articles:
     $ref: './paths/publication_articles.yml'
+  /publication/{publication_id}/newsletter:
+    $ref: './paths/publication_newsletter.yml'
   /topfeeds/{tag}/{mode}:
     $ref: './paths/topfeeds.yml'
   /top_writer/{topic_slug}:

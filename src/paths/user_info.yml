@@ -38,6 +38,11 @@ get:
               bio: 
                 type: string
                 example: Obsessed with Tech Biz Arts & Words; Does NOT dumb down the writing; Skilled Wordsmith; Delivers the best
+              top_writer_in:
+                type: array
+                items:
+                  type: string
+                  example: programming
               followers_count: 
                 type: integer
                 format: int32

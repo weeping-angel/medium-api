@@ -1,0 +1,45 @@
+get:
+  summary: Get Publication Newsletter
+  description: >
+    Returns the newsletter related information such as *id, name, description, slug, creator_id, subscribers, image_url, etc …*
+
+
+    **Note:** If you don't know the `publication_id`, you can get it from any article published by it. Use endpoint "/article/{article_id}" to retrieve the `publication_id`.
+  parameters:
+    - name: publication_id
+      in: path
+      required: true
+      description: It's a unique hash id assigned to every Medium Publication.
+      schema:
+        type: string
+        example: 98111c9905da
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id: 
+                type: string
+                example: d710a73cd042
+              name: 
+                type: string
+                example: This AI newsletter is all you need
+              description:
+                type: string
+                example: We have moved our newsletter. Subscribe → https://ws.towardsai.net/subscribe
+              subscribers: 
+                type: integer
+                format: int32
+                example: 6752
+              slug: 
+                type: string
+                example: this-ai-newsletter-is-all-you-need
+              creator_id:
+                type: string
+                example: aea8a19ea239
+              image:
+                type: string
+                example: https://miro.medium.com/1*j2OVd7j2o2FHeE7T8TzpXw.png

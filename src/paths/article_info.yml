@@ -36,6 +36,10 @@ get:
               publication_id: 
                 type: string
                 example: e7040e67514c
+              responses_count:
+                type: integer
+                format: int32
+                example: 10
               word_count: 
                 type: integer
                 format: int32
