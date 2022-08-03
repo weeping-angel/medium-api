@@ -18,6 +18,7 @@ class User:
         - user.following
         - user.followers_ids
         - user.followers
+        - user.interests
         - user.articles_as_json
 
         - user.save_info()
@@ -44,6 +45,7 @@ class User:
         self.__following = None
         self.__followers_ids = None
         self.__followers = None
+        self.__interests = None
 
         self.fullname = None
         self.username = None
@@ -114,6 +116,20 @@ class User:
             self.__top_article_ids = list(resp['top_articles'])
 
         return self.__top_article_ids
+
+    @property
+    def interests(self):
+        """To get a list of `user_ids` of user's followings
+        
+        Returns:
+            list[str]: A list of `user_ids` (str) of the user's followings.
+        
+        """
+        if self.__interests is None:
+            resp, _ = self.__get_resp(f'/user/{self._id}/interests')
+            self.__interests = list(resp['tags_followed'])
+        
+        return self.__interests
 
     @property
     def following_ids(self):

@@ -103,5 +103,11 @@ def test_user_articles_as_json():
     assert 'title' in articles_keys
     assert 'content' in articles_keys
 
+def test_user_interests():
+    interests = user.interests
+
+    assert isinstance(interests, list)
+    if interests:
+        assert isinstance(interests[0], str)
 
 
