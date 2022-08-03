@@ -45,6 +45,7 @@ class Article:
         self.last_modified_at = None
         self.reading_time = None
         self.word_count = None
+        self.responses_count = None
         self.voters = None
         self.lang = None
         self.image_url = None
@@ -79,6 +80,7 @@ class Article:
                 - ``article.last_modified_at``
                 - ``article.reading_time``
                 - ``article.word_count``
+                - ``article.responses_count``
                 - ``article.voters``
                 - ``article.lang``
                 - ``article.image_url`` 
@@ -105,6 +107,7 @@ class Article:
         self.last_modified_at = datetime.strptime(article['last_modified_at'], '%Y-%m-%d %H:%M:%S')
         self.reading_time = article['reading_time']
         self.word_count = article['word_count']
+        self.responses_count = article['responses_count']
         self.voters = article['voters']
         self.lang = article['lang']
         self.image_url = article['image_url']

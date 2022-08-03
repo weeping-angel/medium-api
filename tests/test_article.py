@@ -33,6 +33,7 @@ def test_article_info():
     assert isinstance(article.last_modified_at, datetime)
     assert isinstance(article.reading_time, float)
     assert isinstance(article.word_count, int)
+    assert isinstance(article.responses_count, int)
     assert isinstance(article.voters, int)
     assert isinstance(article.lang, str)
     assert isinstance(article.image_url, str)
