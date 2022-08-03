@@ -5,6 +5,7 @@ from medium_api import Medium
 from medium_api import _publication
 from medium_api._publication import Publication
 from medium_api._article import Article
+from medium_api._user import User
 
 medium = Medium(os.getenv('RAPIDAPI_KEY'))
 
@@ -37,9 +38,14 @@ def test_publication_info():
     assert isinstance(_publication.followers, int)
     assert isinstance(_publication.slug, str)
     assert isinstance(_publication.tags, list)
+    assert isinstance(_publication.domain, str)
     assert isinstance(_publication.twitter_username, str)
     assert isinstance(_publication.instagram_username, str)
     assert isinstance(_publication.facebook_pagename, str)
+    assert isinstance(_publication.creator, User)
+    assert isinstance(_publication.editors, list)
+    if _publication.editors:
+        assert isinstance(_publication.editors[0], User)
 
     assert isinstance(_publication.info, dict)
 

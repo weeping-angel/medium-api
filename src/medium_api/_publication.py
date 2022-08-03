@@ -1,7 +1,7 @@
 """
 Publication Module
 """
-
+from medium_api._user import User
 class Publication:
     """Publication Class
     
@@ -31,6 +31,9 @@ class Publication:
         self.followers = None
         self.slug = None
         self.tags = None
+        self.creator = None
+        self.editors = None
+        self.domain = None
         self.twitter_username = None
         self.instagram_username = None
         self.facebook_pagename = None
@@ -96,10 +99,25 @@ class Publication:
         self.followers = publication['followers']
         self.slug = publication['slug']
         self.tags = publication['tags']
-
+        self.domain = publication['domain']
         self.twitter_username = publication['twitter_username']
         self.instagram_username = publication['instagram_username']
         self.facebook_pagename = publication['facebook_pagename']
+
+        self.creator = User(user_id=publication['creator'], 
+                            get_resp=self.__get_resp, 
+                            fetch_articles=self.__fetch_articles, 
+                            fetch_users=self.__fetch_users, 
+                            save_info=True
+                        )
+                        
+        self.editors = [User(user_id=editor_id, 
+                            get_resp=self.__get_resp, 
+                            fetch_articles=self.__fetch_articles, 
+                            fetch_users=self.__fetch_users, 
+                            save_info=True
+                        ) for editor_id in publication['editors']]
+    @property
     
     @property
     def article_ids(self):
