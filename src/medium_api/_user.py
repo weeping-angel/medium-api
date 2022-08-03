@@ -289,7 +289,7 @@ class User:
             self.is_suspended = user['is_suspended']
             self.allow_notes = user['allow_notes']
             self.medium_member_at = datetime.strptime(user['medium_member_at'], '%Y-%m-%d %H:%M:%S') if user['medium_member_at']!='' else None
-            self.top_writer_in = user['top_writer_in']
+            self.top_writer_in = list(user['top_writer_in'])
 
         except KeyError as e:
             print(f"[ERROR]: Could not retrieve {e} for the given user_id ({self.user_id}). Please check if this user exists.")
