@@ -2,6 +2,79 @@
 Publication Module
 """
 from medium_api._user import User
+
+class Newsletter:
+    """Newsletter Class
+    
+    With `Newsletter` object, you can use the following properties and methods:
+
+        - newsletter.id
+        - newsletter.info
+
+        - newsletter.save_info()
+
+    Note:
+        `Newsletter` class is NOT intended to be used directly by importing.
+        See :obj:`medium_api.medium.Medium.publication.newsletter`.
+
+    """
+    def __init__(self, publication_id, get_resp, fetch_articles, fetch_users, save_info=False):
+        self.publication_id = publication_id
+        self.__get_resp = get_resp
+        self.__fetch_articles = fetch_articles
+        self.__fetch_users = fetch_users
+
+        self.__info = None
+
+        if save_info:
+            self.save_info()
+    
+    @property
+    def info(self):
+        """To get the newsletter related information
+        
+        Returns:
+            dict: A dictionary object containing `id, name, slug, subscribers,
+            description, image_url, etc ...`
+        
+        """
+        if self.__info is None:
+            resp, _ = self.__get_resp(f'/publication/{self.publication_id}/newsletter')
+            self.__info = dict(resp)
+
+        return self.__info
+
+    def save_info(self):
+        """Saves the information related to the publication
+
+        Note:
+            Only after running ``newsletter.save_info()`` you can use the following
+            variables:
+
+                - ``newsletter.name``
+                - ``newsletter.description``
+                - ``newsletter.id``
+                - ``newsletter.subscribers``
+                - ``newsletter.image_url``
+                - ``newsletter.slug``
+                - ``newsletter.creator``
+
+        """
+        newsletter = self.info
+
+        self.id = newsletter['id']
+        self.name = newsletter['name']
+        self.subscribers = newsletter['subscribers']
+        self.slug = newsletter['slug']
+        self.description = newsletter['description']
+        self.image_url = newsletter['image']
+        
+        self.creator = User(user_id=newsletter['creator_id'], 
+                            get_resp=self.__get_resp, 
+                            fetch_articles=self.__fetch_articles, 
+                            fetch_users=self.__fetch_users
+                        )
+
 class Publication:
     """Publication Class
     
@@ -37,6 +110,12 @@ class Publication:
         self.twitter_username = None
         self.instagram_username = None
         self.facebook_pagename = None
+
+        self.newsletter = Newsletter(publication_id=publication_id, 
+                                     get_resp = self.__get_resp,
+                                     fetch_articles = self.__fetch_articles,
+                                     fetch_users = self.__fetch_users,
+                                     save_info=save_info)
 
         self.__info = None
 

@@ -3,7 +3,7 @@ import pytest
 
 from medium_api import Medium
 from medium_api import _publication
-from medium_api._publication import Publication
+from medium_api._publication import Publication, Newsletter
 from medium_api._article import Article
 from medium_api._user import User
 
@@ -46,6 +46,15 @@ def test_publication_info():
     assert isinstance(_publication.editors, list)
     if _publication.editors:
         assert isinstance(_publication.editors[0], User)
+
+    assert isinstance(_publication.newsletter, Newsletter)
+    assert isinstance(_publication.newsletter.id, str)
+    assert isinstance(_publication.newsletter.name, str)
+    assert isinstance(_publication.newsletter.slug, str)
+    assert isinstance(_publication.newsletter.description, str)
+    assert isinstance(_publication.newsletter.image_url, str)
+    assert isinstance(_publication.newsletter.subscribers, int)
+    assert isinstance(_publication.newsletter.creator, User)
 
     assert isinstance(_publication.info, dict)
 
