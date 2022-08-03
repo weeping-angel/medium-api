@@ -85,6 +85,9 @@ class Publication:
                 - ``publication.followers``
                 - ``publication.slug``
                 - ``publication.tags``
+                - ``publication.domain``
+                - ``publication.creator``
+                - ``publication.editors``
                 - ``publication.twitter_username``
                 - ``publication.instagram_username``
                 - ``publication.facebook_pagename``
@@ -110,14 +113,13 @@ class Publication:
                             fetch_users=self.__fetch_users, 
                             save_info=True
                         )
-                        
+
         self.editors = [User(user_id=editor_id, 
                             get_resp=self.__get_resp, 
                             fetch_articles=self.__fetch_articles, 
                             fetch_users=self.__fetch_users, 
                             save_info=True
                         ) for editor_id in publication['editors']]
-    @property
     
     @property
     def article_ids(self):
