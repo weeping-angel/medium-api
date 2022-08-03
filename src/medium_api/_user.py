@@ -119,10 +119,10 @@ class User:
 
     @property
     def interests(self):
-        """To get a list of `user_ids` of user's followings
+        """To get a list of tags that the user follows.
         
         Returns:
-            list[str]: A list of `user_ids` (str) of the user's followings.
+            list[str]: A list of tags (str) followed by the user.
         
         """
         if self.__interests is None:
