@@ -32,6 +32,15 @@ Get User's Articles
 	<script src="https://gist.github.com/weeping-angel/9029e637155ebc4038ecc3930af93913.js?file=get_user_articles_output.txt"></script>
 
 
+Get User's Interests
+---------------------
+
+.. raw:: html
+
+	<script src="https://gist.github.com/weeping-angel/9f5e2e0d2ce6d00694406dcd7487d5b3.js?file=get_user_interests.py"></script>
+	<script src="https://gist.github.com/weeping-angel/9f5e2e0d2ce6d00694406dcd7487d5b3.js?file=get_user_interests_output.txt"></script>
+
+
 Get User's Top Articles
 -----------------------
 
@@ -116,6 +125,15 @@ Get Publication's Articles
 
 	<script src="https://gist.github.com/weeping-angel/ae1f46c117a69428218beb74fc641c3e.js?file=get_publication_articles.py"></script>
 	<script src="https://gist.github.com/weeping-angel/ae1f46c117a69428218beb74fc641c3e.js?file=get_publication_articles_output.txt"></script>
+
+
+Get Publication's Newsletter
+-------------------------------
+
+.. raw:: html
+
+	<script src="https://gist.github.com/weeping-angel/4690dfa2431d3909789917a45183eb5f.js?file=get_publication_newsletter.py"></script>
+	<script src="https://gist.github.com/weeping-angel/4690dfa2431d3909789917a45183eb5f.js?file=get_publication_newsletter_output.txt"></script>
 
 
 Misc
