@@ -34,6 +34,7 @@ def test_user_info():
     assert isinstance(user.is_suspended, bool)
     assert isinstance(user.allow_notes, bool)
     assert isinstance(user.medium_member_at, datetime) or user.medium_member_at is None
+    assert isinstance(user.top_writer_in, list)
 
 def test_user_article_ids():
     user_articles_ids = user.article_ids
