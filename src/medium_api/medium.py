@@ -324,7 +324,7 @@ class Medium:
             for future in as_completed(future_to_url):
                 future.result()
 
-    def get_article_id(self, article_url):
+    def extract_article_id(self, article_url):
         """To get `article_id` from the Article's URL
 
             Usage example:

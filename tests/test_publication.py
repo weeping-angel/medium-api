@@ -20,13 +20,29 @@ def test_publication_id():
     assert isinstance(_publication._id, str)
     assert _publication._id == publication_id
 
-def test_publication_article_ids():
-    assert isinstance(_publication.article_ids, list)
-    assert isinstance(_publication.article_ids[0], str)
-
 def test_publication_articles():
-    assert isinstance(_publication.articles, list)
-    assert isinstance(_publication.articles[0], Article)
+    from datetime import datetime, timedelta
+    
+    # Correct input
+    _from = datetime.now()
+    _to = _from - timedelta(days=5)
+
+    articles = _publication.get_articles_between(_from=_from, _to=_to)
+
+    assert isinstance(articles, list)
+    assert isinstance(articles[0], Article)
+
+    # No input
+    articles = _publication.get_articles_between()
+
+    assert isinstance(articles, list)
+    assert isinstance(articles[0], Article)
+
+    # Incorrect Input
+    articles = _publication.get_articles_between(_from=_to, _to=_from)
+
+    assert isinstance(articles, list)
+    assert len(articles)==0
 
 def test_publication_info():
     _publication.save_info()
@@ -46,6 +62,8 @@ def test_publication_info():
     assert isinstance(_publication.editors, list)
     if _publication.editors:
         assert isinstance(_publication.editors[0], User)
+
+    _publication.newsletter.save_info()
 
     assert isinstance(_publication.newsletter, Newsletter)
     assert isinstance(_publication.newsletter.id, str)

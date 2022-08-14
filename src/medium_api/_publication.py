@@ -1,8 +1,9 @@
 """
 Publication Module
 """
+from functools import lru_cache
+from datetime import datetime
 from medium_api._user import User
-
 class Newsletter:
     """Newsletter Class
     
@@ -115,11 +116,11 @@ class Publication:
                                      get_resp = self.__get_resp,
                                      fetch_articles = self.__fetch_articles,
                                      fetch_users = self.__fetch_users,
-                                     save_info=save_info)
+                                     save_info=False)
 
         self.__info = None
 
-        self.__article_ids = None
+        #self.__article_ids = None
         self.__articles = None
 
         if save_info:
@@ -200,50 +201,97 @@ class Publication:
                             save_info=True
                         ) for editor_id in publication['editors']]
     
-    @property
-    def article_ids(self):
-        """To get the article_ids (top 25) from the Publication
+   
+    def articles_from_ids(self, article_ids):
+        """A generic function to get `Article` Objects from article_ids (list).
+
+        Args:
+            article_ids (list[str]): List of ``article_ids`` (string)
 
         Returns:
-            list[str]: Returns a list of article ids (str).
-        """
-        if self.__article_ids is None:
-            resp, _ = self.__get_resp(f'/publication/{self._id}/articles')
-            self.__article_ids = list(resp['publication_articles'])
+            list[Article]: Returns a list of Article Objects.
 
-        return self.__article_ids
-    
-    @property
-    def articles(self):
-        """To get a list of Article objects (top 25) from the Publication
-
-        Returns:
-            list[Article]: Returns a list of `Article` objects.
         """
         from medium_api._article import Article
 
-        if self.__articles is None:
-            self.__articles = [Article(
-                                    article_id=article_id, 
-                                    get_resp=self.__get_resp, 
-                                    fetch_articles=self.__fetch_articles,
-                                    fetch_users = self.__fetch_users,
-                                )
-                                for article_id in self.article_ids]
+        return [Article(
+                        article_id=article_id, 
+                        get_resp=self.__get_resp, 
+                        fetch_articles=self.__fetch_articles,
+                        fetch_users = self.__fetch_users,
+                    )
+                for article_id in article_ids]
+    
+    
+    @lru_cache
+    def get_articles_between(self, _from=None, _to=None):
+        """To get publication articles within a datetime range.
 
-        return self.__articles
-
-    def fetch_articles(self, content=False):
-        """To fetch publication articles information (using multithreading)
+            Example usage:
+                
+            ``publication.get_articles_between(_from=datetime.now(), _to=datetime.now() - timedelta(days=15))``
 
         Args:
-            content (bool, optional): Set it to `True` if you want to fetch the 
-                textual content of the article as well. Otherwise, default is `False`.
+            _from (datetime.datetime): Starting date of the interval
+
+            _to (datetime.datetime): Ending date of the interval
 
         Returns:
-            None: All the fetched information will be access via publication.articles.
+            list[Article]: Returns a list of Article Objects (publication articles).
+
+        Note:
+            - If the ``_to`` parameter is not provided, then the function will return recent 25 
+              articles from the given date (in ``_from`` parameter)
+
+            - If the ``_from`` parameter is not provided, then the function will take current
+              datetime value (``datetime.now()``)
+
+            - If both the parameters, ``_from`` and ``_to``, are not provided, then the function 
+              will return top recent 25 articles from the current datetime.
+
+        
+        """
+        if _from is None:
+            _from = datetime.now()
+        
+        if _from and _to:
+            if _to < _from:
+                resp,_ = self.__get_resp(f'/publication/{self._id}/articles?from={_from.isoformat()}')
+                articles = self.articles_from_ids(resp['publication_articles'][::-1])
+                next_to = datetime.strptime(resp['to'], '%Y-%m-%d %H:%M:%S')
+
+                while next_to > _to:
+                    resp,_ = self.__get_resp(f'/publication/{self._id}/articles?from={next_to.isoformat()}')
+                    articles += self.articles_from_ids(resp['publication_articles'][::-1])
+                    next_to = datetime.strptime(resp['to'], '%Y-%m-%d %H:%M:%S')
+            
+                self.__fetch_articles(articles)
+
+                self.__articles = [article for article in articles if (_to <= article.published_at <= _from)]
+
+            else:
+                print('[ERROR]: "from" date should be greated that "to" date. Try swapping both.')
+                return []
+        else:
+            resp,_ = self.__get_resp(f'/publication/{self._id}/articles?from={_from.isoformat()}')
+            self.__articles = self.articles_from_ids(resp['publication_articles'])
+            self.__fetch_articles(self.__articles)
+        
+        return self.__articles
+    
+    @property
+    def articles(self):
+        """Returns top recent 25 articles
+
+            Typical Example Usage:
 
             ``publication.articles[0].title``
-            ``publication.articles[1].claps``
+            ``publication.articles[1].author``
+
+        Returns:
+            list[Article]: Returns a list of Article Objects
         """
-        self.__fetch_articles(self.articles, content=content)
+        if self.__articles is None:
+            self.__articles = self.get_articles_between()
+        
+        return self.__articles
