@@ -223,7 +223,7 @@ class Publication:
                 for article_id in article_ids]
     
     
-    @lru_cache
+    @lru_cache(maxsize=16)
     def get_articles_between(self, _from=None, _to=None):
         """To get publication articles within a datetime range.
 
