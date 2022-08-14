@@ -11,3 +11,4 @@ venv
 dist
 _build
 build
+test_scripts
