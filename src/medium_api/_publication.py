@@ -270,7 +270,7 @@ class Publication:
                 self.__articles = [article for article in articles if (_to <= article.published_at <= _from)]
 
             else:
-                print('[ERROR]: "from" date should be greated that "to" date. Try swapping both.')
+                print('[ERROR]: "from" date should be greater than "to" date. Try swapping both.')
                 return []
         else:
             resp,_ = self.__get_resp(f'/publication/{self._id}/articles?from={_from.isoformat()}')
