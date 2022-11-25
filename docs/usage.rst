@@ -164,3 +164,10 @@ Get Top Writers
 	<script src="https://gist.github.com/weeping-angel/eecb654b0b04224de5473167302e964a.js?file=get_top_writers.py"></script>
 	<script src="https://gist.github.com/weeping-angel/eecb654b0b04224de5473167302e964a.js?file=get_top_writers_output.txt"></script>
 
+Get Related Tags
+----------------
+
+.. raw:: html
+
+	<script src="https://gist.github.com/weeping-angel/3a10f33e695e1286b14dcc98d6df81c3.js?file=get_related_tags.py"></script>
+	<script src="https://gist.github.com/weeping-angel/3a10f33e695e1286b14dcc98d6df81c3.js?file=get_related_tags_output.txt"></script>
