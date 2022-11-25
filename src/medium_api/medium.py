@@ -290,7 +290,7 @@ class Medium:
 
         return resp['related_tags']
 
-    def fetch_articles(self, articles:list[Article], content:bool = False):
+    def fetch_articles(self, articles:list, content:bool = False):
         """To quickly fetch articles (info and content) using multithreading
 
             Typical usage example:
@@ -320,7 +320,7 @@ class Medium:
             for future in as_completed(future_to_url):
                 future.result()
 
-    def fetch_users(self, users:list[User]):
+    def fetch_users(self, users:list):
         """To quickly fetch users info using multithreading
 
             Typical usage example:
