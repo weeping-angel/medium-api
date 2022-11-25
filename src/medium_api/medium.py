@@ -54,7 +54,7 @@ class Medium:
         See https://docs.rapidapi.com/docs/keys to learn more about RapidAPI keys.
 
     """
-    def __init__(self, rapidapi_key, base_url='medium2.p.rapidapi.com', calls=0):
+    def __init__(self, rapidapi_key:str, base_url:str='medium2.p.rapidapi.com', calls:int=0):
         self.headers = {
             'X-RapidAPI-Key': rapidapi_key,
             'User-Agent': f"medium-api-python-sdk"
@@ -62,7 +62,7 @@ class Medium:
         self.base_url = base_url
         self.calls = calls
 
-    def __get_resp(self, endpoint, retries=0):
+    def __get_resp(self, endpoint:str, retries:int=0):
         conn = HTTPSConnection(self.base_url)
         conn.request('GET', endpoint, headers=self.headers)
         resp = conn.getresponse()
@@ -88,7 +88,7 @@ class Medium:
             print(f'[ERROR]: Response: {data}')
             return {}, status
 
-    def user(self, username=None, user_id=None, save_info=True):
+    def user(self, username:str = None, user_id:str = None, save_info:bool = True):
         """For getting the Medium User Object
 
             Typical usage example:
@@ -140,7 +140,7 @@ class Medium:
             print('[ERROR]: Missing parameter: Please provide "user_id" or "username" to call the function')
             return None
 
-    def article(self, article_id, save_info=True):
+    def article(self, article_id:str, save_info:bool = True):
         """For getting the Medium Article Object
 
             Typical usage example:
@@ -168,7 +168,7 @@ class Medium:
                        fetch_users = self.fetch_users,
                        save_info = save_info)
 
-    def publication(self, publication_id, save_info=True):
+    def publication(self, publication_id:str, save_info:bool = True):
         """For getting the Medium Publication Object
 
             Typical usage example:
@@ -194,7 +194,7 @@ class Medium:
                            fetch_users=self.fetch_users,
                            save_info=save_info)
 
-    def top_writers(self, topic_slug):
+    def top_writers(self, topic_slug:str):
         """For getting the Medium's TopWriters Object
 
             Typical usage example:
@@ -216,7 +216,7 @@ class Medium:
                           fetch_users=self.fetch_users,
                           fetch_articles=self.fetch_articles)
 
-    def latestposts(self, topic_slug):
+    def latestposts(self, topic_slug:str):
         """For getting the Medium's LatestPosts Object
 
             Typical usage example:
@@ -239,7 +239,7 @@ class Medium:
                            fetch_users=self.fetch_users,
                         )
 
-    def topfeeds(self, tag, mode):
+    def topfeeds(self, tag:str, mode:str):
         """For getting the Medium's TopFeeds Object
 
             Typical usage example:
@@ -271,7 +271,26 @@ class Medium:
                         fetch_articles=self.fetch_articles,
                         fetch_users=self.fetch_users)
 
-    def fetch_articles(self, articles, content=False):
+    def related_tags(self, given_tag:str):
+        """For getting the list of related tags
+
+            Typical usage example:
+
+            ``related_tags = medium.related_tag(given_tag="blockchain")``
+
+        Args:
+            given_tag (str): It's a string (smallcase, hyphen-separated) which specifies
+                             a category/niche as classified by the Medium Platform.
+
+        Returns:
+            list[str]: List of Related Tags (strings).
+
+        """
+        resp, _ = self.__get_resp(f'/related_tags/{given_tag}')
+
+        return resp['related_tags']
+
+    def fetch_articles(self, articles:list[Article], content:bool = False):
         """To quickly fetch articles (info and content) using multithreading
 
             Typical usage example:
@@ -301,7 +320,7 @@ class Medium:
             for future in as_completed(future_to_url):
                 future.result()
 
-    def fetch_users(self, users):
+    def fetch_users(self, users:list[User]):
         """To quickly fetch users info using multithreading
 
             Typical usage example:
@@ -324,7 +343,7 @@ class Medium:
             for future in as_completed(future_to_url):
                 future.result()
 
-    def extract_article_id(self, article_url):
+    def extract_article_id(self, article_url:str):
         """To get `article_id` from the Article's URL
 
             Usage example:
