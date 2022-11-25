@@ -1,0 +1,31 @@
+get:
+  summary: Get Related Tags
+  description: >
+    Returns a list of `related_tags` for the given `tag`.
+    
+  parameters:
+    - name: tag
+      in: path
+      required: true
+      description: It's a unique string, usually hyphen-separated, representing a class of content.
+      schema:
+        type: string
+        example: blockchain
+
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              related_tags: 
+                type: array
+                items: 
+                  type: string
+                  example: cryptocurrency
+              
+              given_tag:
+                type: string
+                example: blockchain

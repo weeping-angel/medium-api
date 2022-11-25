@@ -55,6 +55,8 @@ paths:
     $ref: './paths/top_writers.yml'
   /latestposts/{topic_slug}:
     $ref: './paths/latestposts.yml'
+  /related_tags/{tag}:
+    $ref: './paths/related_tags.yml'
 
   
 components:
