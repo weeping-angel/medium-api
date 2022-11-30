@@ -1,0 +1,33 @@
+get:
+  summary: Get Publication ID
+  description: >
+    Returns the unique `publication_id` for the given `publication_slug`.
+
+    
+    **Note:** You can find the `publication_slug` from the publication's homepage URL.
+    
+    - medium.com/**publication_slug**
+  parameters:
+    - name: publication_slug
+      in: path
+      required: true
+      description: It's a lowercased hyphen-separated unique string alloted to each Medium Publication.
+      schema:
+        type: string
+        example: codex
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              publication_id:
+                type: string
+                description: Unique hash id of the publication.
+                example: 29038077e4c6
+              publication_slug:
+                type: string
+                description: Same publication slug that you passed in the path parameters.
+                example: codex
