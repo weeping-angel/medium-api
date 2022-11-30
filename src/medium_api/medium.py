@@ -168,7 +168,7 @@ class Medium:
                        fetch_users = self.fetch_users,
                        save_info = save_info)
 
-    def publication(self, publication_id:str, save_info:bool = True):
+    def publication(self, publication_slug:str = None, publication_id:str = None, save_info:bool = True):
         """For getting the Medium Publication Object
 
             Typical usage example:
@@ -176,7 +176,12 @@ class Medium:
             ``publication = medium.publication(publication_id = "98111c9905da")``
 
         Args:
-            publication_id (str): It's the unique hash id of a Medium Publication.
+            publication_slug (str, optional): It's a lowercased hyphen-separated unique string 
+                alloted to each Medium Publication. It's optional only if you've already provided 
+                the `publication_id`.
+
+            publication_id (str, optional): It's the unique hash id of a Medium Publication. 
+                It's optional only if you've already provided the `publication_slug`.
 
             save_info (bool, optional): If `False`, creates an empty `Publication` object which
                 needs to be filled using ``publication.save_info()`` method later. (Default is 
@@ -187,12 +192,29 @@ class Medium:
             that can be used to access all the properties and methods related to a Medium 
             Publication.
 
+        Note:
+            You have to provide either `publication_slug` or `publication_id` to get the Publication object. 
+            You cannot omit both. 
+
         """
-        return Publication(publication_id = publication_id, 
-                           get_resp=self.__get_resp,
-                           fetch_articles=self.fetch_articles,
-                           fetch_users=self.fetch_users,
-                           save_info=save_info)
+        if publication_id is not None:
+            return Publication(publication_id = publication_id, 
+                        get_resp = self.__get_resp, 
+                        fetch_articles=self.fetch_articles,
+                        fetch_users=self.fetch_users,
+                        save_info = save_info)
+
+        elif publication_slug is not None:
+            resp, _ = self.__get_resp(f'/publication/id_for/{str(publication_slug)}')
+            publication_id = resp['publication_id']
+            return Publication(publication_id = publication_id, 
+                        get_resp = self.__get_resp, 
+                        fetch_articles=self.fetch_articles,
+                        fetch_users=self.fetch_users,
+                        save_info = save_info)
+        else:
+            print('[ERROR]: Missing parameter: Please provide "publication_id" or "publication_slug" to call this function')
+            return None
 
     def top_writers(self, topic_slug:str):
         """For getting the Medium's TopWriters Object

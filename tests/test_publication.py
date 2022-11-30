@@ -10,13 +10,12 @@ from medium_api._user import User
 medium = Medium(os.getenv('RAPIDAPI_KEY'))
 
 publication_id = '98111c9905da'
+publication_slug = 'towards-artificial-intelligence'
 
-_publication = medium.publication(publication_id=publication_id)
+_publication = medium.publication(publication_slug=publication_slug)
 
 def test_publication_instance():
     assert isinstance(_publication, Publication)
-
-def test_publication_id():
     assert isinstance(_publication._id, str)
     assert _publication._id == publication_id
 
