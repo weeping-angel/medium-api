@@ -173,6 +173,7 @@ class Medium:
 
             Typical usage example:
 
+            ``publication = medium.publication(publication_slug = "towards-artificial-intelligence")``
             ``publication = medium.publication(publication_id = "98111c9905da")``
 
         Args:

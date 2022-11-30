@@ -109,6 +109,15 @@ Get Article's Responses
 Publication
 ~~~~~~~~~~~~
 
+Get Publication ID
+------------------------
+
+.. raw:: html
+
+	<script src="https://gist.github.com/weeping-angel/4e15df195145eae3ecc9cdb5a84e2428.js?file=get_publication_id.py"></script>
+	<script src="https://gist.github.com/weeping-angel/4e15df195145eae3ecc9cdb5a84e2428.js?file=get_publication_id_output.txt"></script>
+
+
 Get Publication's Info
 ------------------------
 
