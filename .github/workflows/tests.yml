@@ -5,7 +5,7 @@ on:
     paths:
       - tests/**
       - src/**
-      - .github/workflow/**
+      - .github/workflows/**
 
   schedule:
     - cron: '30 2 * * *'
