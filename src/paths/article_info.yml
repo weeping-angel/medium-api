@@ -65,6 +65,12 @@ get:
                 type: integer
                 format: int32
                 example: 3
+              is_series:
+                type: boolean
+                example: false
+              is_locked:
+                type: boolean
+                example: true
               lang:
                 type: string
                 example: en
