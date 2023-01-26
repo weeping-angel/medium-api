@@ -8,7 +8,7 @@ import time
 import re
 from urllib.parse import urlparse
 from http.client import HTTPSConnection
-from ujson import loads
+from json import loads
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from medium_api._topfeeds import TopFeeds

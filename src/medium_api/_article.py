@@ -49,6 +49,8 @@ class Article:
         self.voters = None
         self.lang = None
         self.image_url = None
+        self.is_series = None
+        self.is_locked = None
 
         self.publication = None
 
@@ -83,6 +85,8 @@ class Article:
                 - ``article.responses_count``
                 - ``article.voters``
                 - ``article.lang``
+                - ``article.is_series``
+                - ``article.is_locked``
                 - ``article.image_url`` 
                 - ``article.publication``
         """
@@ -110,6 +114,8 @@ class Article:
         self.responses_count = article['responses_count']
         self.voters = article['voters']
         self.lang = article['lang']
+        self.is_series = article['is_series']
+        self.is_locked = article['is_locked']
         self.image_url = article['image_url']
 
         if not self.is_self_published:

@@ -36,6 +36,8 @@ def test_article_info():
     assert isinstance(article.responses_count, int)
     assert isinstance(article.voters, int)
     assert isinstance(article.lang, str)
+    assert isinstance(article.is_series, bool)
+    assert isinstance(article.is_locked, bool)
     assert isinstance(article.image_url, str)
 
     assert isinstance(article.info, dict)
