@@ -1,4 +1,3 @@
-
 get:
   summary: Get Welcome
   description: >
@@ -33,5 +32,13 @@ get:
                 type: string
                 description: Link to the Medium API's documentation
                 example: https://docs.mediumapi.com
+              twitter:
+                type: string
+                description: Twitter Profile URL
+                example: https://twitter.com/medium_api
+              linkedin:
+                type: string
+                description: LinkedIn Page URL
+                example: https://www.linkedin.com/company/medium-api
               
               
