@@ -43,7 +43,7 @@ Medium API
 
 |
 
-Python Wrapper on top of `Medium API (by Nishu Jain) <http://hub.mediumapi.com>`_ to quickly extract data from Medium's website (https://medium.com).
+Python Wrapper on top of `Medium API <http://hub.mediumapi.com>`_ to quickly extract data from Medium's website (https://medium.com).
 
 Installation
 ------------
@@ -54,7 +54,6 @@ Install from `PyPI <https://pypi.org/project/medium-api/>`_
 
         $ pip install medium-api
 
-Dependency: `ujson`
 
 | For more information, see `Detailed Installation <https://medium-api.readthedocs.io/en/latest/installation.html>`_
 
@@ -111,13 +110,11 @@ Extract/Scrape/Fetch/Get:
     - Medium Article's Responses/Comments 
     - Medium Publications information
     - Medium Publication's Articles
+    - Medium Publication's Newsletter Info
     - Medium's Top Writers
     - Medium's Topfeeds (Trending, Latest, All time best, best of year/month/week)
     - Medium's LatestPosts (distributed articles)
 
- .. 
-        Applications
-        ------------
 
 Documentation
 -------------
@@ -129,13 +126,16 @@ Other Materials
 
 Medium REST API:
 
-        - Swagger Documentation: https://weeping-angel.github.io/medium-api
+        - Swagger Documentation: https://docs.mediumapi.com
 
-Related REST API Articles:
+Related Articles:
 
-        - `Medium API - Documentation <https://medium.com/p/3384e2d08667>`_
+        - `Medium API - Documentation <https://medium.com/p/90a01549d8db>`_
+        - `Medium API: Get Posts Using Python <https://medium.com/p/126d6d859ca8>`_
+        - `Authenticate Medium Users Using Medium API <https://medium.com/p/ed7c1c1bcd66>`_
+        - `Medium Notification Service <https://medium.com/p/ff6369938b63>`_
+        - `How To List Hundreds of Niche Top Writers of Medium <https://medium.com/p/78e426bb7b39>`_
         - `How To Retrieve Medium Stories of a User Using API? <https://medium.com/p/fcdb1576558a>`_
-        - `Medium API: Get Posts Using Python <https://medium.com/p/e8ca4331845e>`_
         - `Medium API: Get Posts Using Node.js & Axios <https://medium.com/p/a43894efaeab>`_
 
 Miscellaneous Articles:
