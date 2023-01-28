@@ -12,6 +12,9 @@ info:
     name: Nishu Jain
     email: nishu@mediumapi.com
     url: https://mediumapi.com
+    x-twitter: '@medium_api'
+    x-linkedin: 'https://www.linkedin.com/company/medium-api'
+
 
   termsOfService: https://github.com/weeping-angel/medium-apis/raw/pages/terms_of_use.pdf
 
