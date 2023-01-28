@@ -41,22 +41,7 @@ Medium API
         :target: https://nishu-jain.medium.com
         :alt: Medium
 
-..
-        | Social Profiles:
-
-        .. image:: https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white
-                :target: https://nishu-jain.medium.com
-                :alt: Author's Blog
-
-        .. image:: https://img.shields.io/badge/-Stackoverflow-FE7A16?style=for-the-badge&logo=stack-overflow&logoColor=white
-                :target: https://stackoverflow.com/users/17500503/weeping-angel
-                :alt: StackOverflow Profile
-
-        | Funding
-
-        .. image:: https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white
-                :target: https://www.paypal.com/paypalme/sanskarjain1997
-                :alt: Paypal Link
+|
 
 Python Wrapper on top of `Medium API (by Nishu Jain) <http://hub.mediumapi.com>`_ to quickly extract data from Medium's website (https://medium.com).
 
