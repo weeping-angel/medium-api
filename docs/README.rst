@@ -29,6 +29,18 @@ Medium API
 
 |
 
+.. image:: https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white
+        :target: https://twitter.com/medium_api
+        :alt: Twitter
+
+.. image:: https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white
+        :target: https://www.linkedin.com/company/medium-api
+        :alt: LinkedIn
+
+.. image:: https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white
+        :target: https://nishu-jain.medium.com
+        :alt: Medium
+
 ..
         | Social Profiles:
 
