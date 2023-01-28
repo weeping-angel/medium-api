@@ -3,6 +3,8 @@ openapi: '3.0.2'
 info:
   title: Medium API
   version: '1.0'
+  x-twitter: 'https://twitter.com/medium_api'
+  x-linkedin: 'https://www.linkedin.com/company/medium-api'
   description: >
     Medium API helps you to quickly extract data from Medium's Website (https://medium.com). 
     
@@ -12,8 +14,6 @@ info:
     name: Nishu Jain
     email: nishu@mediumapi.com
     url: https://mediumapi.com
-    x-twitter: '@medium_api'
-    x-linkedin: 'https://www.linkedin.com/company/medium-api'
 
 
   termsOfService: https://github.com/weeping-angel/medium-apis/raw/pages/terms_of_use.pdf
