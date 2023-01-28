@@ -17,8 +17,11 @@ info:
     email: nishu@mediumapi.com
     url: https://mediumapi.com
 
-
   termsOfService: https://github.com/weeping-angel/medium-apis/raw/pages/terms_of_use.pdf
+
+externalDocs:
+  description: Read more on Medium
+  url: 'https://medium.com/geekculture/medium-api-documentation-90a01549d8db'
 
 servers:
   - url: https://medium2.p.rapidapi.com
