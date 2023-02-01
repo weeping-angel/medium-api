@@ -175,31 +175,35 @@ class Publication:
         """
         publication = self.info
 
-        self.name = publication['name']
-        self.description = publication['description']
-        self.url = publication['url']
-        self.tagline = publication['tagline']
-        self.followers = publication['followers']
-        self.slug = publication['slug']
-        self.tags = publication['tags']
-        self.domain = publication['domain']
-        self.twitter_username = publication['twitter_username']
-        self.instagram_username = publication['instagram_username']
-        self.facebook_pagename = publication['facebook_pagename']
+        self.name = publication.get('name')
+        self.description = publication.get('description')
+        self.url = publication.get('url')
+        self.tagline = publication.get('tagline')
+        self.followers = publication.get('followers')
+        self.slug = publication.get('slug')
+        self.tags = publication.get('tags')
+        self.domain = publication.get('domain')
+        self.twitter_username = publication.get('twitter_username')
+        self.instagram_username = publication.get('instagram_username')
+        self.facebook_pagename = publication.get('facebook_pagename')
 
         self.creator = User(user_id=publication['creator'], 
                             get_resp=self.__get_resp, 
                             fetch_articles=self.__fetch_articles, 
                             fetch_users=self.__fetch_users, 
                             save_info=True
-                        )
+                        ) if publication.get('creator') else None
 
         self.editors = [User(user_id=editor_id, 
                             get_resp=self.__get_resp, 
                             fetch_articles=self.__fetch_articles, 
                             fetch_users=self.__fetch_users, 
                             save_info=True
-                        ) for editor_id in publication['editors']]
+                        ) for editor_id in publication.get('editors') if editor_id]
+
+        if self.name is None:
+            print(f"[ERROR]: Could not retrieve publication for the given id ({self.publication_id}). Please check if this publication exists.")
+            print(f"[ERROR]: Link to unknown publication: https://medium.com/u/{self.publication_id}")
     
    
     def articles_from_ids(self, article_ids):

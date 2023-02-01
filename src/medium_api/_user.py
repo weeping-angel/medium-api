@@ -293,22 +293,21 @@ class User:
         """
         user = self.info
 
-        try:
-            self.fullname = user['fullname']
-            self.username = user['username']
-            self.followers_count = user['followers_count']
-            self.following_count = user['following_count']
-            self.bio = user['bio']
-            self.twitter_username = user['twitter_username']
-            self.is_writer_program_enrolled = user["is_writer_program_enrolled"]
-            self.image_url = user['image_url']
-            self.is_suspended = user['is_suspended']
-            self.allow_notes = user['allow_notes']
-            self.medium_member_at = datetime.strptime(user['medium_member_at'], '%Y-%m-%d %H:%M:%S') if user['medium_member_at']!='' else None
-            self.top_writer_in = list(user['top_writer_in'])
+        self.fullname = user.get('fullname')
+        self.username = user.get('username')
+        self.followers_count = user.get('followers_count')
+        self.following_count = user.get('following_count')
+        self.bio = user.get('bio')
+        self.twitter_username = user.get('twitter_username')
+        self.is_writer_program_enrolled = user.get("is_writer_program_enrolled")
+        self.image_url = user.get('image_url')
+        self.is_suspended = user.get('is_suspended')
+        self.allow_notes = user.get('allow_notes')
+        self.medium_member_at = datetime.strptime(user.get('medium_member_at'), '%Y-%m-%d %H:%M:%S') if user.get('medium_member_at')!='' else None
+        self.top_writer_in = list(user.get('top_writer_in'))
 
-        except KeyError as e:
-            print(f"[ERROR]: Could not retrieve {e} for the given user_id ({self.user_id}). Please check if this user exists.")
+        if self.fullname is None:
+            print(f"[ERROR]: Could not retrieve user for the given user_id ({self.user_id}). Please check if this user exists.")
             print(f"[ERROR]: Link to unknown user's profile: https://medium.com/u/{self.user_id}")
 
     def fetch_articles(self, content=False):

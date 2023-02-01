@@ -95,28 +95,28 @@ class Article:
 
         article = self.info
 
-        self.title = article['title']
-        self.subtitle = article['subtitle']
-        self.claps = article['claps']
-        self.author = User(user_id=article['author'], 
+        self.title = article.get('title')
+        self.subtitle = article.get('subtitle')
+        self.claps = article.get('claps')
+        self.author = User(user_id=article.get('author'), 
                            get_resp=self.__get_resp, 
                            fetch_articles=self.__fetch_articles,
                            fetch_users=self.__fetch_users,
                            save_info=False)
-        self.url = article['url']
-        self.published_at = datetime.strptime(article['published_at'], '%Y-%m-%d %H:%M:%S')
-        self.publication_id = article['publication_id']
-        self.tags = article['tags']
-        self.topics = article['topics']
-        self.last_modified_at = datetime.strptime(article['last_modified_at'], '%Y-%m-%d %H:%M:%S')
-        self.reading_time = article['reading_time']
-        self.word_count = article['word_count']
-        self.responses_count = article['responses_count']
-        self.voters = article['voters']
-        self.lang = article['lang']
-        self.is_series = article['is_series']
-        self.is_locked = article['is_locked']
-        self.image_url = article['image_url']
+        self.url = article.get('url')
+        self.published_at = datetime.strptime(article.get('published_at'), '%Y-%m-%d %H:%M:%S')
+        self.publication_id = article.get('publication_id')
+        self.tags = article.get('tags')
+        self.topics = article.get('topics')
+        self.last_modified_at = datetime.strptime(article.get('last_modified_at'), '%Y-%m-%d %H:%M:%S')
+        self.reading_time = article.get('reading_time')
+        self.word_count = article.get('word_count')
+        self.responses_count = article.get('responses_count')
+        self.voters = article.get('voters')
+        self.lang = article.get('lang')
+        self.is_series = article.get('is_series')
+        self.is_locked = article.get('is_locked')
+        self.image_url = article.get('image_url')
 
         if not self.is_self_published:
             self.publication = Publication(publication_id=self.publication_id, 
@@ -124,6 +124,10 @@ class Article:
                                            fetch_articles=self.__fetch_articles,
                                            fetch_users=self.__fetch_users,
                                            save_info=False)
+        
+        if self.title is None:
+            print(f"[ERROR]: Could not retrieve article for the given article_id ({self.article_id}). Please check if this article exists.")
+            print(f"[ERROR]: Link to unknown article: https://medium.com/p/{self.article_id}")
 
 
     def save_content(self):
