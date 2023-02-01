@@ -305,7 +305,7 @@ class User:
         self.allow_notes = user.get('allow_notes')
         if user.get('medium_member_at'):
             self.medium_member_at = datetime.strptime(user['medium_member_at'], '%Y-%m-%d %H:%M:%S') if user['medium_member_at']!='' else None
-        self.top_writer_in = list(user.get('top_writer_in'))
+        self.top_writer_in = list(user['top_writer_in']) if user.get('top_writer_in') else []
 
         if self.fullname is None:
             print(f"[ERROR]: Could not retrieve user for the given user_id ({self.user_id}). Please check if this user exists.")
