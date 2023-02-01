@@ -303,7 +303,8 @@ class User:
         self.image_url = user.get('image_url')
         self.is_suspended = user.get('is_suspended')
         self.allow_notes = user.get('allow_notes')
-        self.medium_member_at = datetime.strptime(user.get('medium_member_at'), '%Y-%m-%d %H:%M:%S') if user.get('medium_member_at')!='' else None
+        if user.get('medium_member_at'):
+            self.medium_member_at = datetime.strptime(user['medium_member_at'], '%Y-%m-%d %H:%M:%S') if user['medium_member_at']!='' else None
         self.top_writer_in = list(user.get('top_writer_in'))
 
         if self.fullname is None:
