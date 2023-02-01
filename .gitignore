@@ -12,3 +12,4 @@ dist
 _build
 build
 test_scripts
+to_pypi.sh
