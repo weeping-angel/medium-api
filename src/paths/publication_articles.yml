@@ -13,13 +13,13 @@ get:
       schema:
         type: string
         example: 98111c9905da
-    - name: count
+    - name: from
       in: query
       required: False
-      description: To set the number of article_ids to receive (less than 25)
+      description: To get the articles before specified date and time.
       schema:
-        type: integer
-        example: 20
+        type: string
+        example: "2023-01-31T13:10:00"
   responses:
     '200':
       description: OK

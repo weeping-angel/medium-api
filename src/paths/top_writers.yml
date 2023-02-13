@@ -25,7 +25,7 @@ get:
     - name: count
       in: query
       required: false
-      description: Limits the number of article_ids in the result.
+      description: Limits the number of `article_ids` in the result.
       schema:
         type: int
         example: 10

@@ -27,6 +27,25 @@ get:
       schema:
         type: string
         example: new
+    
+    - name: after
+      in: query
+      required: false
+      description: To get the subsequent top feeds. (`after` < 250)
+      schema:
+        type: int
+        example: 10
+        default: 0
+
+    - name: count
+      in: query
+      required: false
+      description: To limit the number of top feeds. (`count` < 25)
+      schema:
+        type: int
+        example: 20
+        default: 25
+
 
   responses:
     '200':
