@@ -12,7 +12,7 @@ get:
     - artificial-intelligence, etc ...
     
     
-    **Note:** You can use count query string parameter to limit the number of results. 
+    **Note:** You can use optional `count` query parameter to limit the number of results. 
     The maximum number of top writers within a topic/niche will be 250.
   parameters:
     - name: topic_slug
