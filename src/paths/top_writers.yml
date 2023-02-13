@@ -12,7 +12,8 @@ get:
     - artificial-intelligence, etc ...
     
     
-    **Note:** Maximum number of top writers within a topic/niche will be 250.
+    **Note:** You can use count query string parameter to limit the number of results. 
+    The maximum number of top writers within a topic/niche will be 250.
   parameters:
     - name: topic_slug
       in: path
@@ -21,6 +22,13 @@ get:
       schema:
         type: string
         example: relationships
+    - name: count
+      in: query
+      required: false
+      description: Limits the number of article_ids in the result.
+      schema:
+        type: int
+        example: 10
   responses:
     '200':
       description: OK
