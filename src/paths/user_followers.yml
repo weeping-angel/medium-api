@@ -19,6 +19,14 @@ get:
       schema:
         type: string
         example: 1985b61817c3
+    
+    - name: count
+      in: query
+      required: false
+      description: To limit the number of results. (count < 1500)
+      schema:
+        type: int
+        example: 10
   responses:
     '200':
       description: OK
