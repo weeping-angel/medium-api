@@ -16,8 +16,9 @@ class TopWriters:
         See :obj:`medium_api.medium.Medium.top_writers`.
 
     """
-    def __init__(self, topic_slug, get_resp, fetch_users, fetch_articles):
+    def __init__(self, topic_slug:str, count:int, get_resp, fetch_users, fetch_articles):
         self.topic_slug = str(topic_slug)
+        self.count = count if (0 < count < 250) else 100
         self.__get_resp = get_resp
         self.__fetch_users = fetch_users
         self.__fetch_articles = fetch_articles
@@ -35,7 +36,7 @@ class TopWriters:
         
         """
         if self.__ids is None:
-            resp, _ = self.__get_resp(f'/top_writers/{self.topic_slug}')
+            resp, _ = self.__get_resp(f'/top_writers/{self.topic_slug}?count={self.count}')
             self.__ids = list(resp['top_writers'])
 
         return self.__ids

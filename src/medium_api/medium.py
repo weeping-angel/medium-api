@@ -217,7 +217,7 @@ class Medium:
             print('[ERROR]: Missing parameter: Please provide "publication_id" or "publication_slug" to call this function')
             return None
 
-    def top_writers(self, topic_slug:str):
+    def top_writers(self, topic_slug:str, count:int = 100):
         """For getting the Medium's TopWriters Object
 
             Typical usage example:
@@ -228,6 +228,8 @@ class Medium:
             topic_slug (str): It's a string (smallcase, hyphen-separated) which specifies
                 a category/niche as classified by the Medium Platform.
 
+            count (int): Number of Top writers you want to fetch (less than 250).
+
         Returns:
             TopWriters: Medium API `TopWriters` Object (medium_api.top_writers.TopWriters) 
             that can be used to access all the properties and methods related to Medium's 
@@ -235,6 +237,7 @@ class Medium:
 
         """
         return TopWriters(topic_slug=topic_slug, 
+                          count = count,
                           get_resp=self.__get_resp, 
                           fetch_users=self.fetch_users,
                           fetch_articles=self.fetch_articles)
@@ -262,7 +265,7 @@ class Medium:
                            fetch_users=self.fetch_users,
                         )
 
-    def topfeeds(self, tag:str, mode:str):
+    def topfeeds(self, tag:str, mode:str, count:int = 25):
         """For getting the Medium's TopFeeds Object
 
             Typical usage example:
@@ -272,6 +275,8 @@ class Medium:
         Args:
             tag (str): It's a string (smallcase, hyphen-separated) which specifies
                 a category/niche as classified by the Medium Platform.
+            
+            count (int): Number of top feed articles you want to fetch (less than 250).
 
             mode (str): There are 6 modes as follows:
 
@@ -289,7 +294,7 @@ class Medium:
             and `mode`.
 
         """
-        return TopFeeds(tag=tag, mode=mode, 
+        return TopFeeds(tag=tag, mode=mode, count=count,
                         get_resp=self.__get_resp, 
                         fetch_articles=self.fetch_articles,
                         fetch_users=self.fetch_users)

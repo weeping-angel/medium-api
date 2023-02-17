@@ -16,14 +16,15 @@ class TopFeeds:
         See :obj:`medium_api.medium.Medium.topfeeds`.
 
     """
-    def __init__(self, tag, mode, get_resp, fetch_articles, fetch_users):
+    def __init__(self, tag, mode, count, get_resp, fetch_articles, fetch_users):
         self.tag = str(tag)
         self.mode = str(mode)
+        self.count = count if (0 < count < 250) else 100
         self.__get_resp = get_resp
         self.__fetch_articles = fetch_articles
         self.__fetch_users = fetch_users
 
-        self.__ids = None
+        self.__ids = []
         self.__articles = None
 
     @property
@@ -35,11 +36,15 @@ class TopFeeds:
             `tag` and `mode`.
         
         """
-        if self.__ids is None:
-            resp, _ = self.__get_resp(f'/topfeeds/{self.tag}/{self.mode}')
-            self.__ids = list(resp['topfeeds'])
+        if self.__ids == []:
+            count_per_call = 25
+            calls = int(self.count/count_per_call) + (1 if self.count % count_per_call != 0 else 0)
 
-        return self.__ids
+            for i in range(0, calls):
+                resp, _ = self.__get_resp(f'/topfeeds/{self.tag}/{self.mode}?after={i*count_per_call}&count={count_per_call}')
+                self.__ids += list(resp['topfeeds'])
+
+        return self.__ids[:self.count]
 
     @property
     def articles(self):
