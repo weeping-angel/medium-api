@@ -1,0 +1,29 @@
+get:
+  summary: Get List Responses
+  description: >
+    Returns an array of `response_ids` (same as `article_ids`) on the given Medium List.
+
+  parameters:
+    - name: list_id
+      in: path
+      required: true
+      description: It's a unique hash id assigned to every Medium List.
+      schema:
+        type: string
+        example: 38f9e0f9bea6
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id: 
+                type: string
+                example: 38f9e0f9bea6
+              responses:
+                type: array
+                items:
+                  type: str
+                  example: f31a257b42e8

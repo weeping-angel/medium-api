@@ -1,0 +1,31 @@
+get:
+  summary: Get Related Articles
+  description: >
+    Returns a list of `article_ids` of the related posts. (Length = 5)
+
+    **Note:** If the given article is self-published, related posts will belong to the same author, 
+    else related posts will belong to the publication in which the article is published.
+  parameters:
+    - name: article_id
+      in: path
+      required: true
+      description: It's a unique hash id assigned to every Medium Article.
+      schema:
+        type: string
+        example: 67fa62fc1971
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+                related_articles: 
+                  type: array
+                  items: 
+                    type: string
+                    example: f393206c6626
+                id: 
+                  type: string
+                  example: 67fa62fc1971

@@ -1,0 +1,28 @@
+get:
+  summary: Get User's Publications
+  description: >
+    Returns a list of publication_ids where the user is the editor and/or creator.
+  parameters:
+    - name: user_id
+      in: path
+      required: true
+      description: Unique hash id assigned to every single Medium user.
+      schema:
+        type: string
+        example: "14d5c41e0264"
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+                publications: 
+                  type: array
+                  items: 
+                    type: string
+                    example: bff2346ccdf1
+                user_id:
+                  type: string
+                  example: 14d5c41e0264

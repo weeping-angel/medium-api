@@ -1,0 +1,31 @@
+get:
+  summary: Search Tags
+  description: >
+    Returns a list of `tags` for the given search query results. (Max Length = 1000)
+    
+  parameters:
+    - name: query
+      in: query
+      required: true
+      description: Search query
+      schema:
+        type: string
+        example: blockchain
+
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              tags: 
+                type: array
+                items: 
+                  type: string
+                  example: blockchain-technology
+              
+              search_query:
+                type: string
+                example: blockchain

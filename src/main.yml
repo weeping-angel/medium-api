@@ -29,6 +29,9 @@ servers:
 paths:
   /:
     $ref: './paths/welcome.yml'
+
+  # User Endpoints
+
   /user/id_for/{username}:
     $ref: './paths/user_id_for.yml'
   /user/{user_id}:
@@ -43,6 +46,13 @@ paths:
     $ref: './paths/user_top_articles.yml'
   /user/{user_id}/interests:
     $ref: './paths/user_interests.yml'
+  /user/{user_id}/lists:
+    $ref: './paths/user_lists.yml'
+  /user/{user_id}/publications:
+    $ref: './paths/user_publications.yml'
+
+  # Article Endpoints
+  
   /article/{article_id}:
     $ref: './paths/article_info.yml'
   /article/{article_id}/content:
@@ -51,6 +61,13 @@ paths:
     $ref: './paths/article_markdown.yml'
   /article/{article_id}/responses:
     $ref: './paths/article_responses.yml'
+  /article/{article_id}/fans:
+    $ref: './paths/article_fans.yml'
+  /article/{article_id}/related:
+    $ref: './paths/related_articles.yml'
+  
+  # Publication Endpoints
+  
   /publication/id_for/{publication_slug}:
     $ref: './paths/publication_id_for.yml'
   /publication/{publication_id}:
@@ -59,6 +76,9 @@ paths:
     $ref: './paths/publication_articles.yml'
   /publication/{publication_id}/newsletter:
     $ref: './paths/publication_newsletter.yml'
+  
+  # Misc Endpoints
+  
   /topfeeds/{tag}/{mode}:
     $ref: './paths/topfeeds.yml'
   /top_writer/{topic_slug}:
@@ -67,6 +87,20 @@ paths:
     $ref: './paths/latestposts.yml'
   /related_tags/{tag}:
     $ref: './paths/related_tags.yml'
+
+  # List Endpoints
+
+  /list/{list_id}:
+    $ref: './paths/list_info.yml'
+  /list/{list_id}/articles:
+    $ref: './paths/list_articles.yml'
+  /list/{list_id}/responses:
+    $ref: './paths/list_responses.yml'
+
+  # Search Endpoints
+
+  /search/tags?query={query}:
+    $ref: './paths/search_tags.yml'
 
   
 components:

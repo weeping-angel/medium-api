@@ -46,24 +46,30 @@ get:
               followers_count: 
                 type: integer
                 format: int32
-                example: 354
+                example: 450
               following_count: 
                 type: integer
                 format: int32
                 example: 4
               twitter_username: 
                 type: string
-                example: vortlog
+                example: one_anachronism
               is_writer_program_enrolled: 
                 type: boolean
               is_suspended: 
+                type: boolean
+                example: false
+              has_list:
+                type: boolean
+                example: true
+              is_book_author:
                 type: boolean
                 example: false
               allow_notes:
                 type: boolean
               medium_member_at:
                 type: string
-                example: 2020-06-24 16:05:46
+                example: "2020-06-24 16:05:46"
               image_url: 
                 type: string
                 example: https://miro.medium.com/1*C92Hx7k9nRM7TPlrmhgW9w.jpeg

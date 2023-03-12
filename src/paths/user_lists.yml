@@ -1,0 +1,31 @@
+get:
+  summary: Get User's Lists
+  description: >
+    Returns an array of `list_ids` created by the user.
+
+    **Note:** You can check whether the use has created lists or not beforehand. Check the 
+    `has_list` attribute in the "Article Info" endpoint.
+  parameters:
+    - name: user_id
+      in: path
+      required: true
+      description: Unique hash id assigned to every single Medium user.
+      schema:
+        type: string
+        example: "5142451174a3"
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+                lists: 
+                  type: array
+                  items: 
+                    type: string
+                    example: 95b41261bee0
+                user_id:
+                  type: string
+                  example: 5142451174a3

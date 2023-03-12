@@ -1,0 +1,61 @@
+get:
+  summary: Get List Info
+  description: >
+    Returns the list-related information such as Id, Name, Author, Description, 
+    Thumbnail Image URL, Creation Datetime, Last Modified Datetime, 
+    number of articles in the list, claps, voters, and comments/responses.
+
+  parameters:
+    - name: list_id
+      in: path
+      required: true
+      description: It's a unique hash id assigned to every Medium List.
+      schema:
+        type: string
+        example: 38f9e0f9bea6
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id: 
+                type: string
+                example: 38f9e0f9bea6
+              name: 
+                type: string
+                example: Medium API
+              description: 
+                type: string
+                example: Collections of all the articles and resources related to Medium API
+              author: 
+                type: string
+                example: 1985b61817c3
+              count: 
+                type: integer
+                format: int32
+                description: Number of articles in the list
+                example: 18
+              responses_count:
+                type: integer
+                format: int32
+                example: 1
+              claps: 
+                type: integer
+                format: int32
+                example: 48
+              voters: 
+                type: integer
+                format: int32
+                example: 1
+              created_at: 
+                type: string
+                example: "2023-03-12 06:46:46"
+              last_item_inserted_at: 
+                type: string
+                example: "2023-03-12 06:53:02"
+              thumbnail: 
+                type: string
+                example: https://miro.medium.com/0*8f634a2860234802375db89fbfcccb5cc717f3fd.jpeg

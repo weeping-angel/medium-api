@@ -1,0 +1,33 @@
+get:
+  summary: Get Article Fans
+  description: >
+    Returns a list of user_ids of the people who clapped on the article.
+
+  parameters:
+    - name: article_id
+      in: path
+      required: true
+      description: It's a unique hash id assigned to every Medium Article.
+      schema:
+        type: string
+        example: 67fa62fc1971
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+                voters: 
+                  type: array
+                  items: 
+                    type: string
+                    example: fa40650a485
+                article_id: 
+                  type: string
+                  example: 67fa62fc1971
+                count:
+                  type: integer
+                  format: int32
+                  example: 145
