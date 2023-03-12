@@ -1,0 +1,31 @@
+get:
+  summary: Search Users
+  description: >
+    Returns a list of `user_ids` for the given search query results. (Max Length = 1000)
+    
+  parameters:
+    - name: query
+      in: query
+      required: true
+      description: Search query
+      schema:
+        type: string
+        example: data engineer
+
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              users: 
+                type: array
+                items: 
+                  type: string
+                  example: 1985b61817c3
+              
+              search_query:
+                type: string
+                example: data engineer

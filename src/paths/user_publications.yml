@@ -1,7 +1,7 @@
 get:
   summary: Get User's Publications
   description: >
-    Returns a list of publication_ids where the user is the editor and/or creator.
+    Returns a list of `publication_ids` where the user is the editor and/or creator.
   parameters:
     - name: user_id
       in: path

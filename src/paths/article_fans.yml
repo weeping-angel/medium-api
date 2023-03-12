@@ -1,7 +1,7 @@
 get:
   summary: Get Article Fans
   description: >
-    Returns a list of user_ids of the people who clapped on the article.
+    Returns a list of `user_ids` of the people who clapped on the article (a.k.a `voters`).
 
   parameters:
     - name: article_id

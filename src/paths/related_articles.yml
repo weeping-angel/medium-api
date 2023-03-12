@@ -3,6 +3,7 @@ get:
   description: >
     Returns a list of `article_ids` of the related posts. (Length = 5)
 
+
     **Note:** If the given article is self-published, related posts will belong to the same author, 
     else related posts will belong to the publication in which the article is published.
   parameters:

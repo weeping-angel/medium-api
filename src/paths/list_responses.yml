@@ -1,7 +1,7 @@
 get:
   summary: Get List Responses
   description: >
-    Returns an array of `response_ids` (same as `article_ids`) on the given Medium List.
+    Returns an array of `response_ids` of the comments (same as `article_ids`) on the given Medium List.
 
   parameters:
     - name: list_id

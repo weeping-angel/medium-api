@@ -1,0 +1,31 @@
+get:
+  summary: Search Lists
+  description: >
+    Returns an array of `list_ids` for the given search query results. (Max Length = 1000)
+    
+  parameters:
+    - name: query
+      in: query
+      required: true
+      description: Search query
+      schema:
+        type: string
+        example: artificial intelligence
+
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              lists: 
+                type: array
+                items: 
+                  type: string
+                  example: a8266c175cda
+              
+              search_query:
+                type: string
+                example: artificial intelligence

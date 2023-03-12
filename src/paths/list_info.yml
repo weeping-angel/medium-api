@@ -1,9 +1,9 @@
 get:
   summary: Get List Info
   description: >
-    Returns the list-related information such as Id, Name, Author, Description, 
-    Thumbnail Image URL, Creation Datetime, Last Modified Datetime, 
-    number of articles in the list, claps, voters, and comments/responses.
+    Returns the list-related information such as *id, name, author, description, 
+    thumbnail image url, creation datetime, last article inserted datetime, 
+    number of articles in the list, claps, voters, and comments/responses*.
 
   parameters:
     - name: list_id
@@ -32,6 +32,7 @@ get:
                 example: Collections of all the articles and resources related to Medium API
               author: 
                 type: string
+                description: "`user_id` of the author"
                 example: 1985b61817c3
               count: 
                 type: integer
@@ -58,4 +59,5 @@ get:
                 example: "2023-03-12 06:53:02"
               thumbnail: 
                 type: string
+                description: Image URL
                 example: https://miro.medium.com/0*8f634a2860234802375db89fbfcccb5cc717f3fd.jpeg

@@ -99,8 +99,16 @@ paths:
 
   # Search Endpoints
 
+  /search/users?query={query}:
+    $ref: './paths/search_users.yml'
+  /search/publications?query={query}:
+    $ref: './paths/search_publications.yml'
+  /search/articles?query={query}:
+    $ref: './paths/search_articles.yml'
   /search/tags?query={query}:
     $ref: './paths/search_tags.yml'
+  /search/lists?query={query}:
+    $ref: './paths/search_lists.yml'
 
   
 components:
