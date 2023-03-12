@@ -1,6 +1,6 @@
 get:
   summary: Get Welcome
-  tag:
+  tags:
     - Welcome
   description: >
     **Test Endpoint**
