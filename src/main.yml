@@ -20,6 +20,7 @@ info:
   termsOfService: https://github.com/weeping-angel/medium-apis/raw/pages/terms_of_use.pdf
 
 tags: 
+  - name: Welcome
   - name: User
   - name: Publication
   - name: Article
