@@ -1,5 +1,7 @@
 get:
   summary: Search Users
+  tags:
+    - Search
   description: >
     Returns a list of `user_ids` for the given search query results. (Max Length = 1000)
     

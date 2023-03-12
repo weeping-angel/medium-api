@@ -1,5 +1,7 @@
 get:
   summary: Search Lists
+  tags:
+    - Search
   description: >
     Returns an array of `list_ids` for the given search query results. (Max Length = 1000)
     

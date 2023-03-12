@@ -1,5 +1,7 @@
 get:
   summary: Get Publication Articles
+  tags:
+    - Publication
   description: >
     Returns the list of `articles_ids`, of the latest 25 articles, posted in that publication.
 

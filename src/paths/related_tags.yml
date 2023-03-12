@@ -1,5 +1,7 @@
 get:
   summary: Get Related Tags
+  tags:
+    - Misc
   description: >
     Returns a list of `related_tags` for the given `tag`.
     

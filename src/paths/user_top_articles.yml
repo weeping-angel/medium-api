@@ -1,5 +1,7 @@
 get:
   summary: Get User's Top Articles
+  tags:
+    - User
   description: >
     Returns a list of `article_ids` of the top 10 articles on the user's profile, for a given `user_id`.
   parameters:

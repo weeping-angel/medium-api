@@ -1,5 +1,7 @@
 get:
   summary: Search Articles
+  tags:
+    - Search
   description: >
     Returns the list of `articles_ids` for the given search query results. (Max Length = 1000)
     

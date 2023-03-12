@@ -1,5 +1,7 @@
 get:
   summary: Get Article Responses
+  tags:
+    - Article
   description: >
     Returns a list of responses (`response_ids`, same as `article_ids`) for a given article (`article_id`)
 

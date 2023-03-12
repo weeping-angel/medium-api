@@ -1,5 +1,7 @@
 get:
   summary: Get Article Info
+  tags:
+    - Article
   description: >
     Returns the article related information such as *Title, Subtitle, Tags, 
     Topics* (assigned by Medium), *Publication, Published date and time, 

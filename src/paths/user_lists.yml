@@ -1,5 +1,7 @@
 get:
   summary: Get User's Lists
+  tags:
+    - User
   description: >
     Returns an array of `list_ids` created by the user.
 

@@ -1,5 +1,7 @@
 get:
   summary: Get Latest Posts
+  tags:
+    - Misc
   description: >
     Returns a list of latest posts (`article_ids`) for a topic/niche (as classified by the Medium platform). Example of a topic/niche can be:
 

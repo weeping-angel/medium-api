@@ -1,5 +1,7 @@
 get:
   summary: Get Publication Newsletter
+  tags:
+    - Publication
   description: >
     Returns the newsletter related information such as *id, name, description, slug, creator_id, subscribers, image_url, etc …*
 

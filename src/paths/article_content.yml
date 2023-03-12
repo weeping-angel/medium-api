@@ -1,5 +1,7 @@
 get:
   summary: Get Article's Content
+  tags:
+    - Article
   description: >
     Returns the content of an article/story, for the corresponding `article_id`
   parameters:

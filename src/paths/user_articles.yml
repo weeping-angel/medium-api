@@ -1,5 +1,7 @@
 get:
   summary: Get User's Articles
+  tags:
+    - User
   description: >
     Returns the list of articles (`article_ids`) written by the user.
   parameters:

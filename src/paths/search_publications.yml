@@ -1,5 +1,7 @@
 get:
   summary: Search Publications
+  tags:
+    - Search
   description: >
     Returns the list of `publication_ids` for the given search query results. (Max Length = 1000)
     

@@ -1,5 +1,7 @@
 get:
   summary: Get User Info
+  tags:
+    - User
   description: >
     Returns user related information like *Full name, Bio, Followers count, Following count, Twitter username, Profile-image URL, User ID, etc...* 
     

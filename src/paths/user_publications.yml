@@ -1,5 +1,7 @@
 get:
   summary: Get User's Publications
+  tags:
+    - User
   description: >
     Returns a list of `publication_ids` where the user is the editor and/or creator.
   parameters:

@@ -1,5 +1,7 @@
 get:
   summary: Get User Following
+  tags:
+    - User
   description: >
     Returns the list of `user_ids` of the user's followings.
 

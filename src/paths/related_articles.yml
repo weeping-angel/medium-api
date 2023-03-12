@@ -1,5 +1,7 @@
 get:
   summary: Get Related Articles
+  tags:
+    - Article
   description: >
     Returns a list of `article_ids` of the related posts. (Length = 5)
 

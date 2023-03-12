@@ -1,5 +1,7 @@
 get:
   summary: Get List Articles
+  tags:
+    - List
   description: >
     Returns an array of `articles_ids` present in the given Medium List.
 

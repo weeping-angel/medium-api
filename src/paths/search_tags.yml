@@ -1,5 +1,7 @@
 get:
   summary: Search Tags
+  tags:
+    - Search
   description: >
     Returns a list of `tags` for the given search query results. (Max Length = 1000)
     

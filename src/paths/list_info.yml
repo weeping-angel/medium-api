@@ -1,5 +1,7 @@
 get:
   summary: Get List Info
+  tags:
+    - List
   description: >
     Returns the list-related information such as *id, name, author, description, 
     thumbnail image url, creation datetime, last article inserted datetime, 

@@ -1,5 +1,7 @@
 get:
   summary: Get Publication ID
+  tags:
+    - Publication
   description: >
     Returns the unique `publication_id` for the given `publication_slug`.
 

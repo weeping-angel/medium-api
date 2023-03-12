@@ -1,5 +1,7 @@
 get:
   summary: Get Article's Markdown
+  tags:
+    - Article
   description: >
     Returns the markdown of an article/story from Medium, for the corresponding `article_id`
   parameters:

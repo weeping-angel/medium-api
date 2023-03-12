@@ -1,5 +1,7 @@
 get:
   summary: Get User's Interests
+  tags:
+    - User
   description: >
     Returns a list of tags that the given user follows.
   parameters:

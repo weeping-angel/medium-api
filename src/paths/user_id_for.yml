@@ -1,5 +1,7 @@
 get:
   summary: Get User ID
+  tags:
+    - User
   description: >
     Returns the unique `user_id` for the given `username`.
 

@@ -1,5 +1,7 @@
 get:
   summary: Get Publication Info
+  tags:
+    - Publication
   description: >
     Returns the publication related information such as *Publication name, Tagline, Description, Tags, Followers Count, Twitter username, Instagram username, Facebook Page name, etc …*
 
