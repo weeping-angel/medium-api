@@ -6,7 +6,7 @@ different functions provided in it.
 
 import time
 import re
-from urllib.parse import urlparse
+from urllib.parse import urlparse, quote
 from http.client import HTTPSConnection
 from json import loads
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -347,6 +347,65 @@ class Medium:
                         fetch_publications=self.fetch_publications,
                         fetch_lists=self.fetch_lists,
                     )
+    
+    def search_articles(self, query:str, save_info:bool=False):
+        resp, _ = self.__get_resp(f'/search/articles?query={quote(query)}')
+
+        article_ids = resp['articles']
+        articles = []
+
+        if article_ids:
+            articles = [self.article(article_id=article_id, save_info=False) for article_id in article_ids]
+            if save_info:
+                self.fetch_articles(articles)
+
+        return articles
+    
+    def search_publications(self, query:str, save_info:bool=False):
+        resp, _ = self.__get_resp(f'/search/publications?query={quote(query)}')
+
+        publication_ids = resp['publications']
+        publications = []
+        
+        if publication_ids:
+            publications = [self.publication(publication_id=publication_id, save_info=False) for publication_id in publication_ids]
+            if save_info:
+                self.fetch_publications(publications)
+
+        return publications
+    
+    def search_users(self, query:str, save_info:bool=False):
+        resp, _ = self.__get_resp(f'/search/users?query={quote(query)}')
+
+        user_ids = resp['users']
+        users = []
+        
+        if user_ids:
+            users = [self.user(user_id=user_id, save_info=False) for user_id in user_ids]
+            if save_info:
+                self.fetch_users(users)
+
+        return users
+    
+    def search_lists(self, query:str, save_info:bool=False):
+        resp, _ = self.__get_resp(f'/search/lists?query={quote(query)}')
+
+        list_ids = resp['lists']
+        lists = []
+        
+        if list_ids:
+            lists = [self.list(list_id=list_id, save_info=False) for list_id in list_ids]
+            if save_info:
+                self.fetch_lists(lists)
+
+        return lists
+    
+    def search_tags(self, query:str):
+        resp, _ = self.__get_resp(f'/search/tags?query={quote(query)}')
+
+        tags = resp['tags']
+
+        return tags if tags else []
 
     def related_tags(self, given_tag:str):
         """For getting the list of related tags
