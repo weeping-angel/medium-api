@@ -23,11 +23,14 @@ class MediumList:
         See :obj:`medium_api.medium.Medium.Mediumlist`.
 
     """
-    def __init__(self, list_id, get_resp, fetch_articles, fetch_users, save_info=False):
+    def __init__(self, list_id, get_resp, fetch_articles, fetch_users, fetch_publications, fetch_lists, save_info=False):
         self.list_id = list_id
         self.__get_resp = get_resp
+        
         self.__fetch_articles = fetch_articles
         self.__fetch_users = fetch_users
+        self.__fetch_publications = fetch_publications
+        self.__fetch_lists = fetch_lists
 
         self.__article_ids = []
         self.__articles = None
@@ -107,6 +110,8 @@ class MediumList:
                             get_resp = self.__get_resp, 
                             fetch_articles=self.__fetch_articles, 
                             fetch_users=self.__fetch_users, 
+                            fetch_publications=self.__fetch_publications,
+                            fetch_lists=self.__fetch_lists,
                             save_info=False
                           ) if medium_list.get('author') else None
         
@@ -162,6 +167,8 @@ class MediumList:
                                        get_resp=self.__get_resp, 
                                        fetch_articles=self.__fetch_articles,
                                        fetch_users=self.__fetch_users,
+                                       fetch_publications=self.__fetch_publications,
+                                       fetch_lists=self.__fetch_lists,
                                        save_info=False) 
                                 for article_id in self.article_ids]
 
@@ -182,6 +189,8 @@ class MediumList:
                                        get_resp=self.__get_resp, 
                                        fetch_articles=self.__fetch_articles,
                                        fetch_users=self.__fetch_users,
+                                       fetch_publications=self.__fetch_publications,
+                                       fetch_lists=self.__fetch_lists,
                                        save_info=False) 
                                 for response_id in self.response_ids]
 

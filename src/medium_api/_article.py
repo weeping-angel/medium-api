@@ -12,6 +12,10 @@ class Article:
         - article._id
         - article.info
         - article.responses
+        - article.fans_ids
+        - article.fans
+        - article.related_articles_ids
+        - article.related_articles
         - article.is_self_published
         - article.content
         - article.markdown
@@ -21,17 +25,22 @@ class Article:
         - article.save_content()
         - article.save_markdown()
         - article.fetch_responses()
+        - article.fetch_fans()
+        - article.fetch_related_articles()
 
     Note:
         `Article` class is NOT intended to be used directly by importing.
         See :obj:`medium_api.medium.Medium.article`.
 
     """
-    def __init__(self, article_id, get_resp, fetch_articles, fetch_users, save_info=False):
+    def __init__(self, article_id, get_resp, fetch_articles, fetch_users, fetch_publications, fetch_lists, save_info=False):
         self.__get_resp = get_resp
         self.article_id = str(article_id)
+
         self.__fetch_articles = fetch_articles
         self.__fetch_users = fetch_users
+        self.__fetch_publications = fetch_publications
+        self.__fetch_lists = fetch_lists
 
         self.title = None
         self.subtitle = None
@@ -59,6 +68,10 @@ class Article:
         self.__markdown = None
         self.__response_ids = None
         self.__responses = None
+        self.__fans_ids = None
+        self.__fans = None
+        self.__related_articles_ids = None
+        self.__related_articles = None
 
         if save_info:
             self.save_info()
@@ -102,6 +115,8 @@ class Article:
                            get_resp=self.__get_resp, 
                            fetch_articles=self.__fetch_articles,
                            fetch_users=self.__fetch_users,
+                           fetch_publications=self.__fetch_publications,
+                           fetch_lists=self.__fetch_lists,
                            save_info=False) if article.get('author') else None
         self.url = article.get('url')
         self.published_at = datetime.strptime(article['published_at'], '%Y-%m-%d %H:%M:%S') if article.get('published_at') else None
@@ -123,6 +138,8 @@ class Article:
                                            get_resp=self.__get_resp,
                                            fetch_articles=self.__fetch_articles,
                                            fetch_users=self.__fetch_users,
+                                           fetch_publications=self.__fetch_publications,
+                                           fetch_lists=self.__fetch_lists,
                                            save_info=False)
         
         if self.title is None:
@@ -203,26 +220,97 @@ class Article:
                                     get_resp=self.__get_resp, 
                                     fetch_articles=self.__fetch_articles,
                                     fetch_users=self.__fetch_users,
+                                    fetch_publications=self.__fetch_publications,
+                                    fetch_lists=self.__fetch_lists,
                                 )
                                 for response_id in self.response_ids]
 
         return self.__responses
 
-    def fetch_responses(self, content=True):
-        """To fetch all the responses information and content on an article.
+    def fetch_responses(self, content=False):
+        """To fetch all the responses/comments information and textual content.
 
         Args:
             content (bool, optional): Set it to `True` if you want to fetch the 
-                textual content of the article as well. Otherwise, default is `False`.
+                textual content of the response as well. Otherwise, default is `False`.
 
         Returns:
-            None: All the fetched information will be access via `user.articles`.
+            None: All the fetched information will be access via `article.responses`.
 
             ``article.responses[0].content``
             ``article.responses[1].claps``
         """
         self.__fetch_articles(self.responses, content=content)
 
+    @property
+    def fans_ids(self):
+        """To get the list of `user_ids` of the people who clapped on the article (voters or fans)
+        
+        Returns:
+            list: Returns a list of `user_ids`.
+        """
+        if self.__fans_ids is None:
+            resp, _ = self.__get_resp(f'/article/{self.article_id}/fans')
+            self.__fans_ids = list(resp['voters'])
+        
+        return self.__fans_ids
+
+    @property
+    def fans(self):
+        """To get the list of Users who clapped on the article (voters/fans).
+
+        Returns:
+            list[User]: Returns a list of `User` Objects.
+        """
+        from medium_api._user import User
+
+        if self.__fans is None:
+            self.__fans = [User(
+                                user_id=fan_id, 
+                                get_resp=self.__get_resp, 
+                                fetch_articles=self.__fetch_articles,
+                                fetch_users=self.__fetch_users,
+                                fetch_publications=self.__fetch_publications,
+                                fetch_lists=self.__fetch_lists,
+                                save_info=False
+                            )
+                            for fan_id in self.fans_ids]
+
+        return self.__fans
+
+    @property
+    def related_articles_ids(self):
+        """To get the list of `article_ids` of the related posts.
+        
+        Returns:
+            list: Returns a list of `article_ids`.
+        """
+        if self.__related_articles_ids is None:
+            resp, _ = self.__get_resp(f'/article/{self.article_id}/related')
+            self.__related_articles_ids = list(resp['related_articles'])
+        
+        return self.__related_articles_ids
+
+    @property
+    def related_articles(self):
+        """To get the list of related articles (Article Objects)
+
+        Returns:
+            list[Article]: Returns a list of `Article` Objects.
+        """
+        if self.__related_articles is None:
+            self.__related_articles = [Article(
+                                                article_id=related_article_id, 
+                                                get_resp=self.__get_resp, 
+                                                fetch_articles=self.__fetch_articles,
+                                                fetch_users=self.__fetch_users,
+                                                fetch_publications=self.__fetch_publications,
+                                                fetch_lists=self.__fetch_lists,
+                                                save_info=False
+                                              )
+                                for related_article_id in self.related_articles_ids]
+
+        return self.__related_articles
 
     @property
     def is_self_published(self):
@@ -284,3 +372,31 @@ class Article:
             ret['markdown'] = self.markdown
 
         return ret
+    
+    def fetch_fans(self):
+        """To fetch user-related information of the people who clapped on the article (voters/fans), using multi-threading
+
+        Returns:
+            None: All the fetched information will be access via `article.fans`.
+
+            ``article.fans[0].name``
+            ``article.fans[2].twitter_username``
+            ``article.fans[1].bio``
+        """
+        self.__fetch_users(self.fans)
+
+    def fetch_related_articles(self, content=False):
+        """To fetch all the related articles information and textual content, using multi-threading
+
+        Args:
+            content (bool, optional): Set it to `True` if you want to fetch the 
+                textual content of the related articles as well. Otherwise, default is `False`.
+
+        Returns:
+            None: All the fetched information will be access via `article.related_articles`.
+
+            ``article.related_articles[0].content``
+            ``article.related_articles[2].title``
+            ``article.related_articles[1].claps``
+        """
+        self.__fetch_articles(self.related_articles, content=content)

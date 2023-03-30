@@ -16,13 +16,15 @@ class TopWriters:
         See :obj:`medium_api.medium.Medium.top_writers`.
 
     """
-    def __init__(self, topic_slug:str, count:int, get_resp, fetch_users, fetch_articles):
+    def __init__(self, topic_slug:str, count:int, get_resp, fetch_users, fetch_articles, fetch_publications, fetch_lists):
         self.topic_slug = str(topic_slug)
-        self.count = count if (0 < count < 250) else 100
+        self.count = count if (0 < count <= 250) else 100
         self.__get_resp = get_resp
+
         self.__fetch_users = fetch_users
         self.__fetch_articles = fetch_articles
-        self.__fetch_users = fetch_users
+        self.__fetch_publications = fetch_publications
+        self.__fetch_lists = fetch_lists
 
         self.__ids = None
         self.__users = None
@@ -55,6 +57,8 @@ class TopWriters:
                                  get_resp=self.__get_resp,
                                  fetch_articles=self.__fetch_articles,
                                  fetch_users = self.__fetch_users,
+                                 fetch_publications=self.__fetch_publications,
+                                 fetch_lists=self.__fetch_lists,
                                  save_info=False) 
                             for user_id in self.ids]
         

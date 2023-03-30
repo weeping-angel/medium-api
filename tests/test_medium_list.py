@@ -11,7 +11,7 @@ medium = Medium(os.getenv('RAPIDAPI_KEY'))
 
 list_id = '38f9e0f9bea6'
 
-medium_list = medium.list(list_id=list_id)
+medium_list = medium.list(list_id=list_id, save_info=False)
 
 def test_medium_list_instance():
     assert isinstance(medium_list, MediumList)
@@ -41,6 +41,21 @@ def test_medium_list_responses():
     assert isinstance(responses[0], Article)
 
 def test_medium_list_info():
+    # Before save_info
+
+    assert medium_list.name is None
+    assert medium_list.description is None
+    assert medium_list.thumbnail is None
+    assert medium_list.count is None
+    assert medium_list.responses_count is None
+    assert medium_list.claps is None
+    assert medium_list.voters is None
+    assert medium_list.created_at is None
+    assert medium_list.last_item_inserted_at is None
+    assert medium_list.author is None
+
+    # After save_info
+    
     medium_list.save_info()
 
     assert isinstance(medium_list.info, dict)

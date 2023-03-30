@@ -42,13 +42,44 @@ def test_article_info():
 
     assert isinstance(article.info, dict)
 
-def test_article_response_ids():
+def test_article_responses():
     assert isinstance(article.response_ids, list)
     assert isinstance(article.response_ids[0], str)
 
-def test_article_responses():
     assert isinstance(article.responses, list)
     assert isinstance(article.responses[0], Article)
+
+    assert article.responses[0].title is None
+
+    article.fetch_responses()
+
+    assert article.responses[0].title is not None
+
+def test_article_fans():
+    assert isinstance(article.fans_ids, list)
+    assert isinstance(article.fans_ids[0], str)
+
+    assert isinstance(article.fans, list)
+    assert isinstance(article.fans[0], User)
+
+    assert article.fans[0].fullname is None
+
+    article.fetch_fans()
+
+    assert article.fans[0].fullname is not None
+
+def test_related_articles():
+    assert isinstance(article.related_articles_ids, list)
+    assert isinstance(article.related_articles_ids[0], str)
+
+    assert isinstance(article.related_articles, list)
+    assert isinstance(article.related_articles[0], Article)
+
+    assert article.related_articles[0].title is None
+
+    article.fetch_related_articles()
+
+    assert article.related_articles[0].title is not None
 
 def test_article_content():
     article.save_content()

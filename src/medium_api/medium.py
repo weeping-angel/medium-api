@@ -17,6 +17,7 @@ from medium_api._article import Article
 from medium_api._publication import Publication
 from medium_api._top_writers import TopWriters
 from medium_api._latestposts import LatestPosts
+from medium_api._medium_list import MediumList
 
 class Medium:
     """Main Medium API Class to access everything
@@ -127,6 +128,8 @@ class Medium:
                         get_resp = self.__get_resp, 
                         fetch_articles=self.fetch_articles,
                         fetch_users=self.fetch_users,
+                        fetch_publications=self.fetch_publications,
+                        fetch_lists=self.fetch_lists,
                         save_info = save_info)
         elif username is not None:
             resp, _ = self.__get_resp(f'/user/id_for/{str(username)}')
@@ -135,6 +138,8 @@ class Medium:
                         get_resp = self.__get_resp, 
                         fetch_articles=self.fetch_articles,
                         fetch_users=self.fetch_users,
+                        fetch_publications=self.fetch_publications,
+                        fetch_lists=self.fetch_lists,
                         save_info = save_info)
         else:
             print('[ERROR]: Missing parameter: Please provide "user_id" or "username" to call the function')
@@ -166,6 +171,38 @@ class Medium:
                        get_resp = self.__get_resp, 
                        fetch_articles=self.fetch_articles,
                        fetch_users = self.fetch_users,
+                       fetch_publications=self.fetch_publications,
+                       fetch_lists=self.fetch_lists,
+                       save_info = save_info)
+    
+    def list(self, list_id:str, save_info:bool = True):
+        """For getting the Medium List Object
+
+            Typical usage example:
+
+            ``medium_list = medium.list(list_id = "38f9e0f9bea6")``
+
+        Args:
+            list_id (str): It's the unique hash at the end of every Medium List URL.
+                You can see it at the end of URL as shown below:
+
+                - https://nishu-jain.medium.com/list/medium-api-38f9e0f9bea6
+
+            save_info (bool, optional): If `False`, creates an empty `Medium List` object which
+                needs to be filled using ``medium_list.save_info()`` method later. (Default is 
+                `True`)
+
+        Returns:
+            Medium List: Medium API `Medium List` Object (medium_api.article.MediumList) that can be
+            used to access all the properties and methods related to a Medium List.
+
+        """
+        return MediumList(list_id = list_id, 
+                       get_resp = self.__get_resp, 
+                       fetch_articles=self.fetch_articles,
+                       fetch_users = self.fetch_users,
+                       fetch_publications=self.fetch_publications,
+                       fetch_lists=self.fetch_lists,
                        save_info = save_info)
 
     def publication(self, publication_slug:str = None, publication_id:str = None, save_info:bool = True):
@@ -203,6 +240,8 @@ class Medium:
                         get_resp = self.__get_resp, 
                         fetch_articles=self.fetch_articles,
                         fetch_users=self.fetch_users,
+                        fetch_publications=self.fetch_publications,
+                        fetch_lists=self.fetch_lists,
                         save_info = save_info)
 
         elif publication_slug is not None:
@@ -212,6 +251,8 @@ class Medium:
                         get_resp = self.__get_resp, 
                         fetch_articles=self.fetch_articles,
                         fetch_users=self.fetch_users,
+                        fetch_publications=self.fetch_publications,
+                        fetch_lists=self.fetch_lists,
                         save_info = save_info)
         else:
             print('[ERROR]: Missing parameter: Please provide "publication_id" or "publication_slug" to call this function')
@@ -240,7 +281,10 @@ class Medium:
                           count = count,
                           get_resp=self.__get_resp, 
                           fetch_users=self.fetch_users,
-                          fetch_articles=self.fetch_articles)
+                          fetch_articles=self.fetch_articles,
+                          fetch_publications=self.fetch_publications,
+                          fetch_lists=self.fetch_lists,
+                          )
 
     def latestposts(self, topic_slug:str):
         """For getting the Medium's LatestPosts Object
@@ -263,6 +307,8 @@ class Medium:
                            get_resp=self.__get_resp, 
                            fetch_articles=self.fetch_articles,
                            fetch_users=self.fetch_users,
+                           fetch_publications=self.fetch_publications,
+                           fetch_lists=self.fetch_lists,
                         )
 
     def topfeeds(self, tag:str, mode:str, count:int = 25):
@@ -297,7 +343,10 @@ class Medium:
         return TopFeeds(tag=tag, mode=mode, count=count,
                         get_resp=self.__get_resp, 
                         fetch_articles=self.fetch_articles,
-                        fetch_users=self.fetch_users)
+                        fetch_users=self.fetch_users,
+                        fetch_publications=self.fetch_publications,
+                        fetch_lists=self.fetch_lists,
+                    )
 
     def related_tags(self, given_tag:str):
         """For getting the list of related tags
@@ -347,9 +396,57 @@ class Medium:
 
             for future in as_completed(future_to_url):
                 future.result()
+    
+    def fetch_publications(self, publications:list):
+        """To quickly fetch publications' info using multithreading
+
+            Typical usage example:
+
+            ``medium.fetch_publications(user.publications)``
+            ``medium.fetch_publications(list_of_publications_obj)``
+
+        Args:
+
+            publications (list[Publication]): List of (empty) Publications objects to fill information into it.
+
+        Returns:
+            None: This method doesn't return anything since it fills the values in the passed
+            list of Publication(s) objects itself.
+
+        """
+        with ThreadPoolExecutor(max_workers=100) as executor:
+            future_to_url = [executor.submit(publication.save_info) for publication in publications if publication.name is None]
+
+            for future in as_completed(future_to_url):
+                future.result()
+
+    def fetch_lists(self, medium_lists:list):
+        """To quickly fetch Medium List related info using multithreading
+
+            Typical usage example:
+
+            ``medium.fetch_lists(user.lists)``
+            ``medium.fetch_lists(arr_of_medium_list_objs)``
+
+        Args:
+
+            medium_lists (list[MediumList]): An array of (empty) `MediumList` objects to fill information into it.
+
+        Returns:
+            None: This method doesn't return anything since it fills the values in the passed
+            array of MediumList(s) objects itself.
+
+        """
+        with ThreadPoolExecutor(max_workers=100) as executor:
+            future_to_url = [executor.submit(medium_list.save_info) 
+                             for medium_list in medium_lists 
+                             if medium_list.name is None]
+
+            for future in as_completed(future_to_url):
+                future.result()
 
     def fetch_users(self, users:list):
-        """To quickly fetch users info using multithreading
+        """To quickly fetch users' info using multithreading
 
             Typical usage example:
 

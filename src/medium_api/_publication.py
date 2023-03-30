@@ -19,11 +19,14 @@ class Newsletter:
         See :obj:`medium_api.medium.Medium.publication.newsletter`.
 
     """
-    def __init__(self, publication_id, get_resp, fetch_articles, fetch_users, save_info=False):
+    def __init__(self, publication_id, get_resp, fetch_articles, fetch_users, fetch_publications, fetch_lists, save_info=False):
         self.publication_id = publication_id
         self.__get_resp = get_resp
+        
         self.__fetch_articles = fetch_articles
         self.__fetch_users = fetch_users
+        self.__fetch_publications = fetch_publications
+        self.__fetch_lists = fetch_lists
 
         self.__info = None
 
@@ -73,7 +76,10 @@ class Newsletter:
         self.creator = User(user_id=newsletter['creator_id'], 
                             get_resp=self.__get_resp, 
                             fetch_articles=self.__fetch_articles, 
-                            fetch_users=self.__fetch_users
+                            fetch_users=self.__fetch_users,
+                            fetch_publications=self.__fetch_publications,
+                            fetch_lists=self.__fetch_lists,
+                            save_info=False
                         )
 
 class Publication:
@@ -92,11 +98,13 @@ class Publication:
         See :obj:`medium_api.medium.Medium.publication`.
 
     """
-    def __init__(self, publication_id, get_resp, fetch_articles, fetch_users, save_info=False):
+    def __init__(self, publication_id, get_resp, fetch_articles, fetch_users, fetch_publications, fetch_lists, save_info=False):
         self.publication_id = str(publication_id)
         self.__get_resp = get_resp
         self.__fetch_articles = fetch_articles
         self.__fetch_users = fetch_users
+        self.__fetch_publications = fetch_publications
+        self.__fetch_lists = fetch_lists
 
         self.name = None
         self.description = None
@@ -116,6 +124,8 @@ class Publication:
                                      get_resp = self.__get_resp,
                                      fetch_articles = self.__fetch_articles,
                                      fetch_users = self.__fetch_users,
+                                     fetch_publications=self.__fetch_publications,
+                                     fetch_lists=self.__fetch_lists,
                                      save_info=False)
 
         self.__info = None
@@ -191,14 +201,18 @@ class Publication:
                             get_resp=self.__get_resp, 
                             fetch_articles=self.__fetch_articles, 
                             fetch_users=self.__fetch_users, 
-                            save_info=True
+                            fetch_publications=self.__fetch_publications,
+                            fetch_lists=self.__fetch_lists,
+                            save_info=False
                         ) if publication.get('creator') else None
 
         self.editors = [User(user_id=editor_id, 
                             get_resp=self.__get_resp, 
                             fetch_articles=self.__fetch_articles, 
                             fetch_users=self.__fetch_users, 
-                            save_info=True
+                            fetch_publications=self.__fetch_publications,
+                            fetch_lists=self.__fetch_lists,
+                            save_info=False
                         ) for editor_id in publication.get('editors') if editor_id]
 
         if self.name is None:
@@ -223,6 +237,8 @@ class Publication:
                         get_resp=self.__get_resp, 
                         fetch_articles=self.__fetch_articles,
                         fetch_users = self.__fetch_users,
+                        fetch_publications=self.__fetch_publications,
+                        fetch_lists=self.__fetch_lists,
                     )
                 for article_id in article_ids]
     

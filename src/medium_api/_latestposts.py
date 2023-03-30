@@ -17,11 +17,14 @@ class LatestPosts:
         See :obj:`medium_api.medium.Medium.latestposts`.
 
     """
-    def __init__(self, topic_slug, get_resp, fetch_articles, fetch_users):
+    def __init__(self, topic_slug, get_resp, fetch_articles, fetch_users, fetch_publications, fetch_lists):
         self.topic_slug = str(topic_slug)
         self.__get_resp = get_resp
+        
         self.__fetch_articles = fetch_articles
         self.__fetch_users = fetch_users
+        self.__fetch_publications = fetch_publications
+        self.__fetch_lists = fetch_lists
 
         self.__ids = None
         self.__posts = None
@@ -58,6 +61,8 @@ class LatestPosts:
                                     get_resp=self.__get_resp, 
                                     fetch_articles=self.__fetch_articles,
                                     fetch_users = self.__fetch_users,
+                                    fetch_publications=self.__fetch_publications,
+                                    fetch_lists=self.__fetch_lists,
                                     save_info=False) 
                             for article_id in self.ids]
 
