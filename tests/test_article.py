@@ -23,22 +23,28 @@ def test_article_info():
 
     assert isinstance(article.title, str)
     assert isinstance(article.subtitle, str)
-    assert isinstance(article.claps, int)
-    assert isinstance(article.author, User)
     assert isinstance(article.url, str)
-    assert isinstance(article.published_at, datetime)
     assert isinstance(article.publication_id, str)
-    assert isinstance(article.tags, list)
-    assert isinstance(article.topics, list)
-    assert isinstance(article.last_modified_at, datetime)
-    assert isinstance(article.reading_time, float)
+    assert isinstance(article.lang, str)
+    assert isinstance(article.image_url, str)
+    
+    assert isinstance(article.claps, int)
     assert isinstance(article.word_count, int)
     assert isinstance(article.responses_count, int)
     assert isinstance(article.voters, int)
-    assert isinstance(article.lang, str)
+
     assert isinstance(article.is_series, bool)
     assert isinstance(article.is_locked, bool)
-    assert isinstance(article.image_url, str)
+
+    assert isinstance(article.reading_time, float)
+
+    assert isinstance(article.tags, list)
+    assert isinstance(article.topics, list)
+
+    assert isinstance(article.published_at, datetime)
+    assert isinstance(article.last_modified_at, datetime)
+
+    assert isinstance(article.author, User)
 
     assert isinstance(article.info, dict)
 

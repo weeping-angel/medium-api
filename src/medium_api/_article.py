@@ -222,6 +222,7 @@ class Article:
                                     fetch_users=self.__fetch_users,
                                     fetch_publications=self.__fetch_publications,
                                     fetch_lists=self.__fetch_lists,
+                                    save_info=False
                                 )
                                 for response_id in self.response_ids]
 
@@ -306,7 +307,7 @@ class Article:
                                                 fetch_users=self.__fetch_users,
                                                 fetch_publications=self.__fetch_publications,
                                                 fetch_lists=self.__fetch_lists,
-                                                save_info=False
+                                                save_info=False,
                                               )
                                 for related_article_id in self.related_articles_ids]
 
