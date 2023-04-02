@@ -369,8 +369,7 @@ class Medium:
             The resultant list will contain 1000 `Article` objects at max.
         
         Warnings:
-            OveruseWarning: Don't set ``save_info = True`` unless you have enough API calls in your 
-                subscribed plan. You might either exhaust your current plan or incur overage.
+            OveruseWarning: Don't set ``save_info = True`` unless you have enough API calls in your subscribed plan. You might either exhaust your current plan or incur overage.
         """
         resp, _ = self.__get_resp(f'/search/articles?query={quote(query)}')
 
@@ -405,8 +404,7 @@ class Medium:
             The resultant list will contain 1000 `Publication` objects at max.
         
         Warnings:
-            OveruseWarning: Don't set ``save_info = True`` unless you have enough API calls in your 
-                subscribed plan. You might either exhaust your current plan or incur overage.
+            OveruseWarning: Don't set ``save_info = True`` unless you have enough API calls in your subscribed plan. You might either exhaust your current plan or incur overage.
         """
         resp, _ = self.__get_resp(f'/search/publications?query={quote(query)}')
 
@@ -441,8 +439,7 @@ class Medium:
             The resultant list will contain 1000 `User` objects at max.
         
         Warnings:
-            OveruseWarning: Don't set ``save_info = True`` unless you have enough API calls in your 
-                subscribed plan. You might either exhaust your current plan or incur overage.
+            OveruseWarning: Don't set ``save_info = True`` unless you have enough API calls in your subscribed plan. You might either exhaust your current plan or incur overage.
         """
         resp, _ = self.__get_resp(f'/search/users?query={quote(query)}')
 
@@ -477,8 +474,7 @@ class Medium:
             The resultant list will contain 1000 `MediumList` objects at max.
         
         Warnings:
-            OveruseWarning: Don't set ``save_info = True`` unless you have enough API calls in your 
-                subscribed plan. You might either exhaust your current plan or incur overage.
+            OveruseWarning: Don't set ``save_info = True`` unless you have enough API calls in your subscribed plan. You might either exhaust your current plan or incur overage.
         """
         resp, _ = self.__get_resp(f'/search/lists?query={quote(query)}')
 
@@ -503,7 +499,7 @@ class Medium:
             query (str): It's the search query to get results from Medium Platform.
 
         Returns:
-            list[str]: List of lowercased, hyphen-separated strings
+            list[str]: List of lowercased, hyphen-separated strings of tags
 
         Note:
             The resultant list will contain 1000 tags at max.
@@ -546,7 +542,7 @@ class Medium:
 
         Returns:
             dict: Contains tag-related information
-            
+
         """
         resp, _ = self.__get_resp(f'/tag/{tag}')
 

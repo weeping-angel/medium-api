@@ -34,6 +34,12 @@ Publication class
 .. autoclass:: medium_api._publication.Publication
    :members:
 
+MediumList class
+^^^^^^^^^^^^^^^^^
+
+.. autoclass:: medium_api._medium_list.MediumList
+   :members:
+
 LatestPosts class
 ^^^^^^^^^^^^^^^^^
 
