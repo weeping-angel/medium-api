@@ -115,7 +115,7 @@ class Medium:
                 `True`)
 
         Returns:
-            User: Medium API's User Object (medium_api.user.User) that can be used 
+            User: Medium API's User Object (medium_api._user.User) that can be used 
             to access all the properties and methods associated to the given Medium
             user.
 
@@ -163,7 +163,7 @@ class Medium:
                 `True`)
 
         Returns:
-            Article: Medium API `Article` Object (medium_api.article.Article) that can be
+            Article: Medium API `Article` Object (medium_api._article.Article) that can be
             used to access all the properties and methods related to a Medium Article.
 
         """
@@ -193,7 +193,7 @@ class Medium:
                 `True`)
 
         Returns:
-            Medium List: Medium API `Medium List` Object (medium_api.article.MediumList) that can be
+            MediumList: Medium API `Medium List` Object (medium_api._medium_list.MediumList) that can be
             used to access all the properties and methods related to a Medium List.
 
         """
@@ -226,7 +226,7 @@ class Medium:
                 `True`)
 
         Returns:
-            Publication: Medium API `Publication` Object (medium_api.publication.Publication) 
+            Publication: Medium API `Publication` Object (medium_api._publication.Publication) 
             that can be used to access all the properties and methods related to a Medium 
             Publication.
 
@@ -272,7 +272,7 @@ class Medium:
             count (int): Number of Top writers you want to fetch (less than 250).
 
         Returns:
-            TopWriters: Medium API `TopWriters` Object (medium_api.top_writers.TopWriters) 
+            TopWriters: Medium API `TopWriters` Object (medium_api._top_writers.TopWriters) 
             that can be used to access all the properties and methods related to Medium's 
             Top Writers for the give `topic_slug`.
 
@@ -298,7 +298,7 @@ class Medium:
                 a category/niche as classified by the Medium Platform.
 
         Returns:
-            LatestPosts: Medium API `LatestPosts` Object (medium_api.latestposts.LatestPosts) 
+            LatestPosts: Medium API `LatestPosts` Object (medium_api._latestposts.LatestPosts) 
             that can be used to access all the properties and methods related to Medium's 
             LatestPosts within the given topic.
 
@@ -335,7 +335,7 @@ class Medium:
 
 
         Returns:
-            TopFeeds: Medium API `TopFeeds` Object (medium_api.topfeeds.TopFeeds) 
+            TopFeeds: Medium API `TopFeeds` Object (medium_api._topfeeds.TopFeeds) 
             that can be used to access all the properties and methods, for given `tag` 
             and `mode`.
 
