@@ -121,10 +121,10 @@ class User:
     
     @property
     def publication_ids(self):
-        """To get a full list of publication_ids
+        """To get a list of publication_ids where user is either creator and/or editor
         
         Returns:
-            list[str]: A list of `publication_ids` (str) where the user is either creator or editor
+            list[str]: A list of `publication_ids` (strings)
         
         """
         if self.__publication_ids is None:

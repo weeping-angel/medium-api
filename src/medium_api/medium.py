@@ -349,6 +349,29 @@ class Medium:
                     )
     
     def search_articles(self, query:str, save_info:bool=False):
+        """To get the list of `Articles` for the given search query, from the Medium Platform.
+
+            Typical usage example:
+
+            ``ai_articles = medium.search_articles(query = "artificial intelligence")``
+
+        Args:
+            query (str): It's the search query to get results from Medium Platform.
+
+            save_info (bool, optional): If `True`, the function will fetch article-related info for all the
+                articles in the search result, using multi-threading. Else, the returned list will contain
+                the empty `Article` objects. Default is `False`.
+
+        Returns:
+            list[Article]: List of `Article` objects from the search results.
+
+        Note:
+            The resultant list will contain 1000 `Article` objects at max.
+        
+        Warnings:
+            OveruseWarning: Don't set ``save_info = True`` unless you have enough API calls in your 
+                subscribed plan. You might either exhaust your current plan or incur overage.
+        """
         resp, _ = self.__get_resp(f'/search/articles?query={quote(query)}')
 
         article_ids = resp['articles']
@@ -362,6 +385,29 @@ class Medium:
         return articles
     
     def search_publications(self, query:str, save_info:bool=False):
+        """To get the list of `Publications` for the given search query, from the Medium Platform.
+
+            Typical usage example:
+
+            ``mental_health_pubs = medium.search_publications(query = "mental health")``
+
+        Args:
+            query (str): It's the search query to get results from Medium Platform.
+
+            save_info (bool, optional): If `True`, the function will fetch publication-related info for all the
+                publications in the search result, using multi-threading. Else, the returned list will contain
+                the empty `Publication` objects. Default is `False`.
+
+        Returns:
+            list[Publication]: List of `Publication` objects from the search results.
+
+        Note:
+            The resultant list will contain 1000 `Publication` objects at max.
+        
+        Warnings:
+            OveruseWarning: Don't set ``save_info = True`` unless you have enough API calls in your 
+                subscribed plan. You might either exhaust your current plan or incur overage.
+        """
         resp, _ = self.__get_resp(f'/search/publications?query={quote(query)}')
 
         publication_ids = resp['publications']
@@ -375,6 +421,29 @@ class Medium:
         return publications
     
     def search_users(self, query:str, save_info:bool=False):
+        """To get the list of `Users` for the given search query, from the Medium Platform.
+
+            Typical usage example:
+
+            ``data_engineers = medium.search_users(query = "data engineer")``
+
+        Args:
+            query (str): It's the search query to get results from Medium Platform.
+
+            save_info (bool, optional): If `True`, the function will fetch user-related info for all the
+                users in the search result, using multi-threading. Else, the returned list will contain
+                the empty `User` objects. Default is `False`.
+
+        Returns:
+            list[User]: List of `User` objects from the search results.
+
+        Note:
+            The resultant list will contain 1000 `User` objects at max.
+        
+        Warnings:
+            OveruseWarning: Don't set ``save_info = True`` unless you have enough API calls in your 
+                subscribed plan. You might either exhaust your current plan or incur overage.
+        """
         resp, _ = self.__get_resp(f'/search/users?query={quote(query)}')
 
         user_ids = resp['users']
@@ -388,6 +457,29 @@ class Medium:
         return users
     
     def search_lists(self, query:str, save_info:bool=False):
+        """To get an array of `MediumList` objects for the given search query, from the Medium Platform.
+
+            Typical usage example:
+
+            ``startup_lists = medium.search_lists(query = "startup")``
+
+        Args:
+            query (str): It's the search query to get results from Medium Platform.
+
+            save_info (bool, optional): If `True`, the function will fetch List-related info for all the
+                Medium Lists in the search result, using multi-threading. Else, the returned array will contain
+                the empty `MediumList` objects. Default is `False`.
+
+        Returns:
+            list[MediumList]: Array of `MediumList` objects from the search results.
+
+        Note:
+            The resultant list will contain 1000 `MediumList` objects at max.
+        
+        Warnings:
+            OveruseWarning: Don't set ``save_info = True`` unless you have enough API calls in your 
+                subscribed plan. You might either exhaust your current plan or incur overage.
+        """
         resp, _ = self.__get_resp(f'/search/lists?query={quote(query)}')
 
         list_ids = resp['lists']
@@ -401,6 +493,21 @@ class Medium:
         return lists
     
     def search_tags(self, query:str):
+        """To get the list of tags for the given search query, from the Medium Platform.
+
+            Typical usage example:
+
+            ``blockchain_tags = medium.search_tags(query = "blockchain")``
+
+        Args:
+            query (str): It's the search query to get results from Medium Platform.
+
+        Returns:
+            list[str]: List of lowercased, hyphen-separated strings
+
+        Note:
+            The resultant list will contain 1000 tags at max.
+        """
         resp, _ = self.__get_resp(f'/search/tags?query={quote(query)}')
 
         tags = resp['tags']
@@ -415,7 +522,7 @@ class Medium:
             ``related_tags = medium.related_tag(given_tag="blockchain")``
 
         Args:
-            given_tag (str): It's a string (smallcase, hyphen-separated) which specifies
+            given_tag (str): It's a string (lowercase, hyphen-separated) which specifies
                              a category/niche as classified by the Medium Platform.
 
         Returns:

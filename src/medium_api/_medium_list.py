@@ -64,11 +64,11 @@ class MediumList:
     
     @property
     def info(self):
-        """To get the list related information
+        """To get the MediumList-related information
         
         Returns:
-            dict: A dictionary object containing `name, description, claps,
-            voters, responses_count, thumbnail, etc ...`
+            dict: A dictionary object containing `name, description, author, claps,
+            voters, responses_count, thumbnail, article count, etc ...`
         
         """
         if self.__info is None:
@@ -179,7 +179,7 @@ class MediumList:
         """To get an array of Responses/Comments on Medium List (`Article` objects)
         
         Returns:
-            list[Article]: A list of `Article` objects of the comments/responses on the Medium List.
+            list[Article]: A list of `Article` objects for the comments/responses on the Medium List.
         
         """
         from medium_api._article import Article
