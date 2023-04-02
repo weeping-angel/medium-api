@@ -96,6 +96,8 @@ paths:
     $ref: './paths/latestposts.yml'
   /related_tags/{tag}:
     $ref: './paths/related_tags.yml'
+  /tag/{tag}:
+    $ref: './paths/tag_info.yml'
 
   # List Endpoints
 

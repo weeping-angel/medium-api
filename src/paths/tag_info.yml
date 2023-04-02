@@ -1,0 +1,50 @@
+get:
+  summary: Get Tag Info
+  tags:
+    - Misc
+  description: >
+    Returns tag-related information.
+
+    - Name
+    - Number of stories
+    - Number of writers
+    - Number of latest stories
+    - Number of latest writers
+
+  parameters:
+    - name: tag
+      in: path
+      required: true
+      description: It's a unique string, usually hyphen-separated, representing a class of content.
+      schema:
+        type: string
+        example: artificial-intelligence
+
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              tag:
+                type: string
+                example: artificial-intelligence
+              name:
+                type: string
+                example: Artificial Intelligence
+              articles_count:
+                type: integer
+                example: 234250
+              authors_count:
+                type: integer
+                example: 87802
+              latest_articles_count:
+                type: integer
+                example: 483
+              latest_authors_count:
+                type: integer
+                example: 296
+              
+              
