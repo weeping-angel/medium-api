@@ -532,6 +532,25 @@ class Medium:
         resp, _ = self.__get_resp(f'/related_tags/{given_tag}')
 
         return resp['related_tags']
+    
+    def tag_info(self, tag:str):
+        """To get the tag-related information
+
+            Typical usage example:
+
+            ``blockchain_tag = medium.tag_info(given_tag="blockchain")``
+
+        Args:
+            tag (str): It's a string (lowercase, hyphen-separated) which specifies
+                       a category/niche as classified by the Medium Platform.
+
+        Returns:
+            dict: Contains tag-related information
+            
+        """
+        resp, _ = self.__get_resp(f'/tag/{tag}')
+
+        return resp
 
     def fetch_articles(self, articles:list, content:bool = False):
         """To quickly fetch articles (info and content) using multithreading
