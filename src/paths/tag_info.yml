@@ -40,6 +40,9 @@ get:
               name:
                 type: string
                 example: Artificial Intelligence
+              followers:
+                type: integer
+                example: 1581563
               articles_count:
                 type: integer
                 example: 234250
