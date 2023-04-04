@@ -68,6 +68,23 @@ Get User's Following
 	<script src="https://gist.github.com/weeping-angel/cc9b4660765d52bff85fa9a80c66002c.js?file=get_user_following_output.txt"></script>
 
 
+Get User's Publications
+-----------------------
+
+.. raw:: html
+
+	<script src="https://gist.github.com/weeping-angel/180349f95b84da9a8fd0f5e8fa0ab78a.js?file=get_user_publications.py"></script>
+	<script src="https://gist.github.com/weeping-angel/180349f95b84da9a8fd0f5e8fa0ab78a.js?file=get_user_publications_output.txt"></script>
+
+
+Get User's Lists
+----------------
+
+.. raw:: html
+	
+	<script src="https://gist.github.com/weeping-angel/bd3e881e86c41222f2f7b88ff5b40529.js?file=get_user_lists.py"></script>
+	<script src="https://gist.github.com/weeping-angel/bd3e881e86c41222f2f7b88ff5b40529.js?file=get_user_lists_output.txt"></script>
+
 Article
 ~~~~~~~~~
 
@@ -105,6 +122,25 @@ Get Article's Responses
 
 	<script src="https://gist.github.com/weeping-angel/02c8403dd20baab9a92abe73253f89c1.js?file=get_article_responses.py"></script>
 	<script src="https://gist.github.com/weeping-angel/02c8403dd20baab9a92abe73253f89c1.js?file=get_article_responses_output.txt"></script>
+
+
+Get Article's Fans
+------------------
+
+.. raw:: html
+
+	<script src="https://gist.github.com/weeping-angel/8f9239e43ef6ed284f943ba54166b89f.js?file=get_article_fans.py"></script>
+	<script src="https://gist.github.com/weeping-angel/8f9239e43ef6ed284f943ba54166b89f.js?file=get_article_fans_output.txt"></script>
+
+
+Get Related Articles
+--------------------
+
+.. raw:: html
+
+	<script src="https://gist.github.com/weeping-angel/ee02d67dcf886bed39494c2874cb8fc7.js?file=get_related_articles.py"></script>
+	<script src="https://gist.github.com/weeping-angel/ee02d67dcf886bed39494c2874cb8fc7.js?file=get_related_articles_output.txt"></script>
+
 
 Publication
 ~~~~~~~~~~~~
@@ -180,3 +216,85 @@ Get Related Tags
 
 	<script src="https://gist.github.com/weeping-angel/3a10f33e695e1286b14dcc98d6df81c3.js?file=get_related_tags.py"></script>
 	<script src="https://gist.github.com/weeping-angel/3a10f33e695e1286b14dcc98d6df81c3.js?file=get_related_tags_output.txt"></script>
+
+Get Tag Info
+------------
+
+.. raw:: html
+
+	<script src="https://gist.github.com/weeping-angel/65d7f3c442d498c9a9cf7f2d8f029465.js?file=get_tag_info.py"></script>
+	<script src="https://gist.github.com/weeping-angel/65d7f3c442d498c9a9cf7f2d8f029465.js?file=get_tag_info_output.txt"></script>
+
+
+List
+~~~~~
+
+Get List Info
+-------------
+
+.. raw:: html
+
+	<script src="https://gist.github.com/weeping-angel/de5848b12a4e0d771400fbe245468624.js?file=get_list_info.py"></script>
+	<script src="https://gist.github.com/weeping-angel/de5848b12a4e0d771400fbe245468624.js?file=get_list_info_output.txt"></script>
+
+
+Get List Articles
+-----------------
+
+.. raw:: html
+
+	<script src="https://gist.github.com/weeping-angel/c2a12b9072ec6d123bd7931fcecb1d12.js?file=get_list_articles.py"></script>
+	<script src="https://gist.github.com/weeping-angel/c2a12b9072ec6d123bd7931fcecb1d12.js?file=get_list_articles_output.txt"></script>
+
+
+Get List Responses
+------------------
+
+.. raw:: html
+
+	<script src="https://gist.github.com/weeping-angel/f852d675231cf76bebf992e04d8893e3.js?file=get_list_responses.py"></script>
+	<script src="https://gist.github.com/weeping-angel/f852d675231cf76bebf992e04d8893e3.js?file=get_list_responses_output.txt"></script>
+
+
+Search
+~~~~~~~
+
+Search Articles
+---------------
+
+.. raw:: html
+
+	<script src="https://gist.github.com/weeping-angel/6e7622280ad94e4989e54b799b5656c9.js?file=search_articles.py"></script>
+	<script src="https://gist.github.com/weeping-angel/6e7622280ad94e4989e54b799b5656c9.js?file=search_articles_output.txt"></script>
+
+Search Users
+------------
+
+.. raw:: html
+
+	<script src="https://gist.github.com/weeping-angel/c1f269e4fe84d744d88a51a98dc1726c.js?file=search_users.py"></script>
+	<script src="https://gist.github.com/weeping-angel/c1f269e4fe84d744d88a51a98dc1726c.js?file=search_users_output.txt"></script>
+
+Search Publications
+-------------------
+
+.. raw:: html
+
+	<script src="https://gist.github.com/weeping-angel/9ec8154872661b099b18c42d5ac353c2.js?file=search_publications.py"></script>
+	<script src="https://gist.github.com/weeping-angel/9ec8154872661b099b18c42d5ac353c2.js?file=search_publications_output.txt"></script>
+
+Search Lists
+------------
+
+.. raw:: html
+
+	<script src="https://gist.github.com/weeping-angel/a856219173fa4f9e144fedbdcc393ec4.js?file=search_lists.py"></script>
+	<script src="https://gist.github.com/weeping-angel/a856219173fa4f9e144fedbdcc393ec4.js?file=search_lists_output.txt"></script>
+
+Search Tags
+-----------
+
+.. raw:: html
+
+	<script src="https://gist.github.com/weeping-angel/4052a40155f92c60cbc55774bc1af890.js?file=search_tags.py"></script>
+	<script src="https://gist.github.com/weeping-angel/4052a40155f92c60cbc55774bc1af890.js?file=search_tags_output.txt"></script>
