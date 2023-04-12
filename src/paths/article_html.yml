@@ -1,0 +1,39 @@
+get:
+  summary: Get Article's HTML
+  tags:
+    - Article
+  description: >
+    Returns the plain HTML of a Medium Article, for the corresponding `article_id`
+  parameters:
+    - name: article_id
+      in: path
+      required: true
+      description: It's a unique hash id assigned to every Medium Article.
+      schema:
+        type: string
+        example: ff6369938b63
+
+    - name: fullpage
+      in: query
+      required: false
+      description: If 'true', returns full HTML page with head, body, title and meta tags. Else, returns HTML inside body only.
+      schema:
+        type: bool
+        example: false
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              html: 
+                type: string
+                example: >
+                  <div class="blog">
+                    <h1 id="abcd">Article Title<h1>
+                    <p>This is a <b>paragraph</b></p>
+                    <img src="https://example.com/img.png" alt="Image caption" />
+                  </div>
+

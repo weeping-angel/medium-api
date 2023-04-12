@@ -68,6 +68,8 @@ paths:
     $ref: './paths/article_content.yml'
   /article/{article_id}/markdown:
     $ref: './paths/article_markdown.yml'
+  /article/{article_id}/html:
+    $ref: './paths/article_html.yml'
   /article/{article_id}/responses:
     $ref: './paths/article_responses.yml'
   /article/{article_id}/fans:
@@ -90,7 +92,7 @@ paths:
   
   /topfeeds/{tag}/{mode}:
     $ref: './paths/topfeeds.yml'
-  /top_writer/{topic_slug}:
+  /top_writers/{topic_slug}:
     $ref: './paths/top_writers.yml'
   /latestposts/{topic_slug}:
     $ref: './paths/latestposts.yml'
