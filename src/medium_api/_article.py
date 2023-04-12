@@ -66,6 +66,7 @@ class Article:
         self.__info = None
         self.__content = None
         self.__markdown = None
+        self.__html = None
         self.__response_ids = None
         self.__responses = None
         self.__fans_ids = None
@@ -354,6 +355,34 @@ class Article:
             self.__markdown = str(resp['markdown'])
 
         return self.__markdown
+    
+    @property
+    def html(self):
+        """To get the Medium Article in plain HTML format
+
+        Returns:
+            str: A single string containing the entire article in HTML format 
+        """
+        if self.__html is None:
+            self.save_html(fullpage=False)
+
+        return self.__html
+    
+    def save_html(self, fullpage:bool=False):
+        """Saves the article in plain HTML format
+
+        Args:
+
+            fullpage (bool, optional): If 'True', saves full HTML page with head, body, title and meta tags. 
+                Else, saves HTML inside body only.
+        
+        Returns:
+            None
+
+        """
+        fullpage = 'true' if fullpage else 'false'
+        resp, _ = self.__get_resp(f'/article/{self.article_id}/html?fullpage={fullpage}')
+        self.__html = str(resp['html'])
 
     @property
     def json(self):
