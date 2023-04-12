@@ -19,11 +19,13 @@ class Article:
         - article.is_self_published
         - article.content
         - article.markdown
+        - article.html
         - article.json
 
         - article.save_info()
         - article.save_content()
         - article.save_markdown()
+        - article.save_html()
         - article.fetch_responses()
         - article.fetch_fans()
         - article.fetch_related_articles()
