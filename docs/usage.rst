@@ -115,6 +115,15 @@ Get Article's Markdown
 	<script src="https://gist.github.com/weeping-angel/f361d734893eabe095492e86c5f5b1aa.js?file=get_article_markdown_output.txt"></script>
 
 
+Get Article's HTML
+-------------------
+
+.. raw:: html
+
+	<script src="https://gist.github.com/weeping-angel/222a0fe71fb1d9bed6bcfd51020ae80b.js?file=get_article_html.py"></script>
+	<script src="https://gist.github.com/weeping-angel/222a0fe71fb1d9bed6bcfd51020ae80b.js?file=get_article_html_output.txt"></script>
+
+
 Get Article's Responses
 -----------------------
 
