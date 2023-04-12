@@ -99,6 +99,13 @@ def test_article_markdown():
     assert isinstance(article.markdown, str)
     assert len(article.markdown) > 0
 
+def test_article_html():
+    article.save_html(fullpage=True)
+
+    assert isinstance(article.html, str)
+    assert len(article.html) > 0
+    assert article.html[:len('<html')] == '<html'
+
 def test_article_json():
     article.save_info()
     article.save_content()
