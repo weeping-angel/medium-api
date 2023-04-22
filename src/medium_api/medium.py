@@ -570,7 +570,7 @@ class Medium:
             list of Article(s) objects itself.
 
         """
-        with ThreadPoolExecutor(max_workers=100) as executor:
+        with ThreadPoolExecutor(max_workers=20) as executor:
             future_to_url = [executor.submit(article.save_info) for article in articles if article.title is None]
             if content:
                 future_to_url += [executor.submit(article.save_content) for article in articles]
@@ -595,7 +595,7 @@ class Medium:
             list of Publication(s) objects itself.
 
         """
-        with ThreadPoolExecutor(max_workers=100) as executor:
+        with ThreadPoolExecutor(max_workers=20) as executor:
             future_to_url = [executor.submit(publication.save_info) for publication in publications if publication.name is None]
 
             for future in as_completed(future_to_url):
@@ -618,7 +618,7 @@ class Medium:
             array of MediumList(s) objects itself.
 
         """
-        with ThreadPoolExecutor(max_workers=100) as executor:
+        with ThreadPoolExecutor(max_workers=20) as executor:
             future_to_url = [executor.submit(medium_list.save_info) 
                              for medium_list in medium_lists 
                              if medium_list.name is None]
@@ -643,7 +643,7 @@ class Medium:
             passed list of User(s) objects itself.
 
         """
-        with ThreadPoolExecutor(max_workers=100) as executor:
+        with ThreadPoolExecutor(max_workers=20) as executor:
             future_to_url = (executor.submit(user.save_info) for user in users if user.fullname is None)
 
             for future in as_completed(future_to_url):
