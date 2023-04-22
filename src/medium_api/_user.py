@@ -365,6 +365,8 @@ class User:
                 - ``user.twitter_username``
                 - ``user.is_writer_program_enrolled``
                 - ``user.is_suspended``
+                - ``user.has_list``
+                - ``user.is_book_author``
                 - ``user.allow_notes``
                 - ``user.medium_member_at``
                 - ``user.top_writer_in``
