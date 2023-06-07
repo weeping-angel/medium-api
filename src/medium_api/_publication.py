@@ -169,7 +169,6 @@ class Publication:
 
                 - ``publication.name``
                 - ``publication.description``
-                - ``publication.url``
                 - ``publication.tagline``
                 - ``publication.followers``
                 - ``publication.slug``
