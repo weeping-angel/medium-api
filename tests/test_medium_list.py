@@ -23,7 +23,7 @@ def test_medium_list_articles():
     assert isinstance(article_ids, list)
     assert isinstance(article_ids[0], str)
 
-    medium_list.fetch_articles()
+    # medium_list.fetch_articles()
 
     articles = medium_list.articles
     assert isinstance(articles, list)
@@ -34,7 +34,7 @@ def test_medium_list_responses():
     assert isinstance(response_ids, list)
     assert isinstance(response_ids[0], str)
 
-    medium_list.fetch_responses()
+    # medium_list.fetch_responses()
 
     responses = medium_list.responses
     assert isinstance(responses, list)

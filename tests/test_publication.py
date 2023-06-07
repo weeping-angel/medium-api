@@ -48,7 +48,6 @@ def test_publication_info():
 
     assert isinstance(_publication.name, str)
     assert isinstance(_publication.description, str)
-    assert isinstance(_publication.url, str)
     assert isinstance(_publication.tagline, str)
     assert isinstance(_publication.followers, int)
     assert isinstance(_publication.slug, str)

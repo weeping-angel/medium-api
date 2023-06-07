@@ -108,7 +108,6 @@ class Publication:
 
         self.name = None
         self.description = None
-        self.url = None
         self.tagline = None
         self.followers = None
         self.slug = None
@@ -187,7 +186,6 @@ class Publication:
 
         self.name = publication.get('name')
         self.description = publication.get('description')
-        self.url = publication.get('url')
         self.tagline = publication.get('tagline')
         self.followers = publication.get('followers')
         self.slug = publication.get('slug')
@@ -244,7 +242,7 @@ class Publication:
     
     
     @lru_cache(maxsize=16)
-    def get_articles_between(self, _from=None, _to=None):
+    def get_articles_between(self, _from=None, _to=None, content=False, markdown=False, html=False, html_fullpage=True):
         """To get publication articles within a datetime range.
 
             Example usage:
@@ -255,6 +253,19 @@ class Publication:
             _from (datetime.datetime): Starting date of the interval
 
             _to (datetime.datetime): Ending date of the interval
+
+            content (bool, optional): Set it to `True` if you want to fetch the 
+                textual content of the article as well. Otherwise, default is `False`.
+
+            markdown(bool, optional): Set it to `True` if you want to fetch the markdown of 
+                the article as well. Otherwise, default is `False`
+
+            html(bool, optional): Set it to `True` if you want to fetch the article in HTML 
+                format as well. Otherwise, default is `False`
+
+            html_fullpage(bool, optional): Set it to `False` if you only want to fetch the HTML 
+                inside body tag of the article. Otherwise, default is `True`, which fetches the 
+                entire HTML of the article.
 
         Returns:
             list[Article]: Returns a list of Article Objects (publication articles).
@@ -285,7 +296,13 @@ class Publication:
                     articles += self.articles_from_ids(resp['publication_articles'][::-1])
                     next_to = datetime.strptime(resp['to'], '%Y-%m-%d %H:%M:%S')
             
-                self.__fetch_articles(articles)
+                self.__fetch_articles(
+                                articles, 
+                                content=content,
+                                markdown=markdown, 
+                                html=html, 
+                                html_fullpage=html_fullpage
+                            )
 
                 self.__articles = [article for article in articles if (_to <= article.published_at <= _from)]
 
@@ -295,7 +312,13 @@ class Publication:
         else:
             resp,_ = self.__get_resp(f'/publication/{self._id}/articles?from={_from.isoformat()}')
             self.__articles = self.articles_from_ids(resp['publication_articles'])
-            self.__fetch_articles(self.__articles)
+            self.__fetch_articles(
+                        self.__articles,
+                        content=content,
+                        markdown=markdown, 
+                        html=html, 
+                        html_fullpage=html_fullpage
+                    )
         
         return self.__articles
     

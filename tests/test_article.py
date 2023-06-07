@@ -110,12 +110,14 @@ def test_article_json():
     article.save_info()
     article.save_content()
     article.save_markdown()
+    article.save_html(fullpage=True)
     
     article_json = article.json
 
     assert isinstance(article_json, dict)
     assert 'content' in article_json.keys()
     assert 'markdown' in article_json.keys()
+    assert 'html' in article_json.keys()
     assert 'title' in article_json.keys()
 
 def test_article_publication():

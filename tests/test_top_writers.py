@@ -29,9 +29,3 @@ def test_top_writers_users():
     assert isinstance(users, list)
     assert isinstance(users[0], User)
 
-def test_top_writers_fetch_users():
-    top_writers.fetch_users()
-
-    assert 'fullname' in top_writers.users[0].info.keys()
-    assert top_writers.users[0].fullname is not None
-

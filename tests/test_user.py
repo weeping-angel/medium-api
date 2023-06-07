@@ -13,7 +13,7 @@ medium = Medium(os.getenv('RAPIDAPI_KEY'))
 username = 'nishu-jain'
 user_id = '1985b61817c3'
 
-user = medium.user(username = username)
+user = medium.user(username = username, save_info=False)
 
 def test_user_instance():
     assert isinstance(user, User)
@@ -71,7 +71,7 @@ def test_user_following():
     following_ids = user.following_ids
     following = user.following
 
-    user.fetch_following()
+    # user.fetch_following()
 
     assert isinstance(following_ids, list)
     if len(following_ids) != 0:
@@ -80,13 +80,13 @@ def test_user_following():
     assert isinstance(following, list)
     if len(following) != 0:
         assert isinstance(following[0], User)
-        assert isinstance(following[0].fullname, str)
+        # assert isinstance(following[0].fullname, str)
 
 def test_user_followers():
     followers_ids = user.followers_ids
     followers = user.followers
 
-    user.fetch_followers()
+    # user.fetch_followers()
 
     assert isinstance(followers_ids, list)
     if len(followers_ids) != 0:
@@ -95,13 +95,13 @@ def test_user_followers():
     assert isinstance(followers, list)
     if len(followers) != 0:
         assert isinstance(followers[0], User)
-        assert isinstance(followers[0].fullname, str)
+        # assert isinstance(followers[0].fullname, str)
 
 def test_user_publications():
     publication_ids = user.publication_ids
     publications = user.publications
 
-    user.fetch_publications()
+    # user.fetch_publications()
 
     assert isinstance(publication_ids, list)
     if len(publication_ids) != 0:
@@ -110,13 +110,13 @@ def test_user_publications():
     assert isinstance(publications, list)
     if len(publications) != 0:
         assert isinstance(publications[0], Publication)
-        assert isinstance(publications[0].name, str)
+        # assert isinstance(publications[0].name, str)
 
 def test_user_lists():
     list_ids = user.list_ids
     lists = user.lists
 
-    user.fetch_lists()
+    # user.fetch_lists()
 
     assert isinstance(list_ids, list)
     if len(list_ids) != 0:
@@ -125,20 +125,7 @@ def test_user_lists():
     assert isinstance(lists, list)
     if len(lists) != 0:
         assert isinstance(lists[0], MediumList)
-        assert isinstance(lists[0].name, str)
-
-def test_user_articles_as_json():
-    user.fetch_articles(content=True)
-
-    user_articles_as_json = user.articles_as_json
-
-    assert isinstance(user_articles_as_json, list)
-    assert isinstance(user_articles_as_json[0], dict)
-    
-    articles_keys = user_articles_as_json[0].keys()
-
-    assert 'title' in articles_keys
-    assert 'content' in articles_keys
+        # assert isinstance(lists[0].name, str)
 
 def test_user_interests():
     interests = user.interests

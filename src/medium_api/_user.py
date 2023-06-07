@@ -395,7 +395,7 @@ class User:
             print(f"[ERROR]: Could not retrieve user for the given user_id ({self.user_id}). Please check if this user exists.")
             print(f"[ERROR]: Link to unknown user's profile: https://medium.com/u/{self.user_id}")
 
-    def fetch_articles(self, content=False):
+    def fetch_articles(self, content=False, markdown=False, html=False, html_fullpage=True):
         """To fetch all the user-written articles information and content
 
         Args:

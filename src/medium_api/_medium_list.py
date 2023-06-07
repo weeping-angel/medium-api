@@ -196,12 +196,22 @@ class MediumList:
 
         return self.__responses
 
-    def fetch_articles(self, content=False):
+    def fetch_articles(self, content=False, markdown=False, html=False, html_fullpage=True):
         """To fetch all the Medium List's articles information (using multithreading)
 
         Args:
             content (bool, optional): Set it to `True` if you want to fetch the 
                 textual content of the article as well. Otherwise, default is `False`.
+
+            markdown(bool, optional): Set it to `True` if you want to fetch the markdown of 
+                the article as well. Otherwise, default is `False`
+
+            html(bool, optional): Set it to `True` if you want to fetch the article in HTML 
+                format as well. Otherwise, default is `False`
+
+            html_fullpage(bool, optional): Set it to `False` if you only want to fetch the HTML 
+                inside body tag of the article. Otherwise, default is `True`, which fetches the 
+                entire HTML of the article.
 
         Returns:
             None: All the fetched information will be access via medium_list.articles.
@@ -209,7 +219,13 @@ class MediumList:
             ``medium_list.articles[0].title``
             ``medium_list.articles[1].claps``
         """
-        self.__fetch_articles(self.articles, content=content)
+        self.__fetch_articles(
+                    self.articles, 
+                    content=content,
+                    markdown=markdown, 
+                    html=html, 
+                    html_fullpage=html_fullpage
+                )
 
     def fetch_responses(self, content=False):
         """To fetch all the Medium List's Responses information (using multithreading)

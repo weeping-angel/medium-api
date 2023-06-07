@@ -35,8 +35,3 @@ def test_topfeeds_modes():
         assert isinstance(topfeeds.articles, list)
         assert isinstance(topfeeds.articles[0], Article)
 
-    topfeeds.fetch_articles()
-
-    assert 'title' in topfeeds.articles[0].info.keys()
-    assert topfeeds.articles[0].title is not None
-

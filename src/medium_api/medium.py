@@ -56,12 +56,15 @@ class Medium:
 
     """
     def __init__(self, rapidapi_key:str, base_url:str='medium2.p.rapidapi.com', calls:int=0):
-        self.headers = {
-            'X-RapidAPI-Key': rapidapi_key,
-            'User-Agent': f"medium-api-python-sdk"
-        }
-        self.base_url = base_url
-        self.calls = calls
+        if rapidapi_key and isinstance(rapidapi_key, str):
+            self.headers = {
+                'X-RapidAPI-Key': rapidapi_key,
+                'User-Agent': f"medium-api-python-sdk"
+            }
+            self.base_url = base_url
+            self.calls = calls
+        else:
+            print('[ERROR]: Please pass the API Key in string format')
 
     def __get_resp(self, endpoint:str, retries:int=0):
         conn = HTTPSConnection(self.base_url)
@@ -548,7 +551,7 @@ class Medium:
 
         return resp
 
-    def fetch_articles(self, articles:list, content:bool = False):
+    def fetch_articles(self, articles:list, content:bool = False, markdown:bool = False, html:bool = False, html_fullpage:bool = True):
         """To quickly fetch articles (info and content) using multithreading
 
             Typical usage example:
@@ -565,6 +568,16 @@ class Medium:
             content(bool, optional): Set it to `True` if you want to fetch the content of 
                 the article as well. Otherwise, default is `False`
 
+            markdown(bool, optional): Set it to `True` if you want to fetch the markdown of 
+                the article as well. Otherwise, default is `False`
+
+            html(bool, optional): Set it to `True` if you want to fetch the article in HTML 
+                format as well. Otherwise, default is `False`
+
+            html_fullpage(bool, optional): Set it to `False` if you only want to fetch the HTML 
+                inside body tag of the article. Otherwise, default is `True`, which fetches the 
+                entire HTML of the article.
+
         Returns:
             None: This method doesn't return anything since it fills the values in the passed
             list of Article(s) objects itself.
@@ -574,6 +587,12 @@ class Medium:
             future_to_url = [executor.submit(article.save_info) for article in articles if article.title is None]
             if content:
                 future_to_url += [executor.submit(article.save_content) for article in articles]
+
+            if markdown:
+                future_to_url += [executor.submit(article.save_markdown) for article in articles]
+
+            if html:
+                future_to_url += [executor.submit(article.save_html, html_fullpage) for article in articles]
 
             for future in as_completed(future_to_url):
                 future.result()

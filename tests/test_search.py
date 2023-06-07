@@ -9,28 +9,28 @@ from medium_api._medium_list import MediumList
 medium = Medium(os.getenv('RAPIDAPI_KEY'))
 
 def test_search_articles():
-    results = medium.search_articles(query = "data science")
+    results = medium.search_articles(query = "data science", save_info=False)
 
     assert isinstance(results, list)
     assert len(results) > 0
     assert isinstance(results[0], Article)
 
 def test_search_publications():
-    results = medium.search_publications(query = "mental health")
+    results = medium.search_publications(query = "mental health", save_info=False)
 
     assert isinstance(results, list)
     assert len(results) > 0
     assert isinstance(results[0], Publication)
 
 def test_search_users():
-    results = medium.search_users(query = "data engineer")
+    results = medium.search_users(query = "data engineer", save_info=False)
 
     assert isinstance(results, list)
     assert len(results) > 0
     assert isinstance(results[0], User)
 
 def test_search_lists():
-    results = medium.search_lists(query = "medium")
+    results = medium.search_lists(query = "medium", save_info=False)
 
     assert isinstance(results, list)
     assert len(results) > 0

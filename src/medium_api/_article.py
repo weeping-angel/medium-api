@@ -391,7 +391,7 @@ class Article:
         """To get the articles information in JSON format
         
         Returns:
-            dict: Returns a JSON object containing article `info`, `content`, and `markdown` if 
+            dict: Returns a JSON object containing article `info`, `content`, `markdown` and `html` if 
             already fetched. Else, returns an empty object.
         
         """
@@ -402,6 +402,8 @@ class Article:
             ret['content'] = self.content
         if self.__markdown:
             ret['markdown'] = self.markdown
+        if self.__html:
+            ret['html'] = self.html
 
         return ret
     

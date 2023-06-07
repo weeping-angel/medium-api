@@ -7,9 +7,6 @@ on:
       - src/**
       - .github/workflows/**
 
-  schedule:
-    - cron: '30 2 */2 * *'
-
 jobs:
   test:
     runs-on: ${{ matrix.os }}
