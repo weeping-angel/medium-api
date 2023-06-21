@@ -1,9 +1,9 @@
 ..
         Readme page for github and PyPI
 
-===========
-Medium API
-===========
+========================
+Medium API (Unofficial)
+========================
 
 .. image:: https://img.shields.io/pypi/v/medium-api?label=PyPI
         :target: https://pypi.python.org/pypi/medium_api
@@ -90,7 +90,7 @@ How to get your RapidAPI Key
 Steps:
 
         - Sign up on `RapidAPI Platform <https://rapidapi.com/auth/sign-up>`_
-        - Subscribe to `Medium-API <http://hub.mediumapi.com/pricing>`_
+        - Subscribe to our `Unofficial Medium-API <http://hub.mediumapi.com/pricing>`_
         - Go to the API's *Endpoints* tab on the `RapidAPI Hub listing <http://hub.mediumapi.com>`_ and select the API key from the **X-RapidAPI-Key** dropdown under *Header Parameters* section.
 
 For more details, see the following links:
