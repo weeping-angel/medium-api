@@ -43,7 +43,7 @@ Medium API
 
 |
 
-Python Wrapper on top of `Medium API <http://hub.mediumapi.com>`_ to quickly extract data from Medium's website (https://medium.com).
+Python Wrapper on top of `Unofficial Medium API <http://hub.mediumapi.com>`_ to quickly extract data from Medium's website (https://medium.com).
 
 Installation
 ------------
@@ -128,20 +128,20 @@ Medium REST API:
 
         - Swagger Documentation: https://docs.mediumapi.com
 
-Related Articles:
+.. Related Articles:
 
-        - `Medium API - Documentation <https://medium.com/p/90a01549d8db>`_
-        - `Medium API: Get Posts Using Python <https://medium.com/p/126d6d859ca8>`_
-        - `Authenticate Medium Users Using Medium API <https://medium.com/p/ed7c1c1bcd66>`_
-        - `Medium Notification Service <https://medium.com/p/ff6369938b63>`_
-        - `How To List Hundreds of Niche Top Writers of Medium <https://medium.com/p/78e426bb7b39>`_
-        - `How To Retrieve Medium Stories of a User Using API? <https://medium.com/p/fcdb1576558a>`_
-        - `Medium API: Get Posts Using Node.js & Axios <https://medium.com/p/a43894efaeab>`_
+..         - `Medium API - Documentation <https://medium.com/p/90a01549d8db>`_
+..         - `Medium API: Get Posts Using Python <https://medium.com/p/126d6d859ca8>`_
+..         - `Authenticate Medium Users Using Medium API <https://medium.com/p/ed7c1c1bcd66>`_
+..         - `Medium Notification Service <https://medium.com/p/ff6369938b63>`_
+..         - `How To List Hundreds of Niche Top Writers of Medium <https://medium.com/p/78e426bb7b39>`_
+..         - `How To Retrieve Medium Stories of a User Using API? <https://medium.com/p/fcdb1576558a>`_
+..         - `Medium API: Get Posts Using Node.js & Axios <https://medium.com/p/a43894efaeab>`_
 
-Miscellaneous Articles:
+.. Miscellaneous Articles:
 
-        - `Best Metric to Judge a Medium Article's Popularity <https://medium.com/p/cac577609bd4>`_
-        - `How To Leverage Medium for Crypto-trading <https://medium.com/p/deedea890da1>`_
+..         - `Best Metric to Judge a Medium Article's Popularity <https://medium.com/p/cac577609bd4>`_
+..         - `How To Leverage Medium for Crypto-trading <https://medium.com/p/deedea890da1>`_
 
 License
 -------
