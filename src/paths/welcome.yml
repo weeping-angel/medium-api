@@ -5,7 +5,7 @@ get:
   description: >
     **Test Endpoint**
     
-    Returns the information about the Medium API
+    Returns the information about the Unofficial Medium API
   responses:
     '200':
       description: OK
@@ -17,7 +17,7 @@ get:
               name:
                 type: string
                 description: Full name of the API
-                example: Medium API
+                example: Unofficial Medium API
               developer:
                 type: string
                 description: Full name of the API's developer
@@ -32,7 +32,7 @@ get:
                 example: https://mediumapi.com
               documentation:
                 type: string
-                description: Link to the Medium API's documentation
+                description: Link to the API's documentation
                 example: https://docs.mediumapi.com
               twitter:
                 type: string
