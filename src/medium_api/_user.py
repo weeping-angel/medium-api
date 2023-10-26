@@ -18,6 +18,8 @@ class User:
         - user.following
         - user.followers_ids
         - user.followers
+        - user.all_followers_ids
+        - user.all_followers
         - user.interests
         - user.articles_as_json
         - user.publication_ids
@@ -30,6 +32,7 @@ class User:
         - user.fetch_top_articles()
         - user.fetch_following()
         - user.fetch_followers()
+        - user.fetch_all_followers()
         - user.fetch_publications()
         - user.fetch_lists()
 
