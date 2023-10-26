@@ -97,6 +97,17 @@ def test_user_followers():
         assert isinstance(followers[0], User)
         # assert isinstance(followers[0].fullname, str)
 
+    all_followers_ids = user.all_followers_ids
+    all_followers = user.all_followers
+
+    assert isinstance(all_followers_ids, list)
+    if len(all_followers_ids) != 0:
+        assert isinstance(all_followers_ids[0], str)
+
+    assert isinstance(all_followers, list)
+    if len(all_followers) != 0:
+        assert isinstance(all_followers[0], User)
+
 def test_user_publications():
     publication_ids = user.publication_ids
     publications = user.publications

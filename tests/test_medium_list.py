@@ -9,7 +9,7 @@ from medium_api._user import User
 
 medium = Medium(os.getenv('RAPIDAPI_KEY'))
 
-list_id = '38f9e0f9bea6'
+list_id = '35ba15f348d7'
 
 medium_list = medium.list(list_id=list_id, save_info=False)
 
@@ -73,12 +73,3 @@ def test_medium_list_info():
     assert isinstance(medium_list.last_item_inserted_at, datetime)
 
     assert isinstance(medium_list.author, User)
-    
-    
-    
-    
-    
-    
-
-
-

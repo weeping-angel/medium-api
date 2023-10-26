@@ -56,6 +56,8 @@ class User:
         self.__following = None
         self.__followers_ids = None
         self.__followers = None
+        self.__all_followers_ids = None
+        self.__all_followers = None
         self.__interests = None
         self.__list_ids = None
         self.__publication_ids = None
@@ -240,10 +242,10 @@ class User:
 
     @property
     def followers_ids(self):
-        """To get a list of `user_ids` of user's followers
+        """To get a list of `user_ids` of user's followers (length = 25)
         
         Returns:
-            list[str]: A list of `user_ids` (str) of the user's followers.
+            list[str]: A list of `user_ids` (str) of the user's followers (length = 25).
         
         """
         if self.__followers_ids is None:
@@ -251,6 +253,24 @@ class User:
             self.__followers_ids = list(resp['followers'])
         
         return self.__followers_ids
+    
+    @property
+    def all_followers_ids(self):
+        """To get a list of `user_ids` of user's followers (all)
+        
+        Returns:
+            list[str]: A list of `user_ids` (str) of the user's followers (all).
+        
+        """
+        if self.__all_followers_ids is None:
+            resp, _ = self.__get_resp(f'/user/{self._id}/followers')
+            self.__all_followers_ids = list(resp['followers'])
+
+            while resp['next']:
+                resp, _ = self.__get_resp(f'/user/{self._id}/followers?count=25&after={resp["next"]}')
+                self.__all_followers_ids += list(resp['followers'])
+        
+        return self.__all_followers_ids
 
     @property
     def following(self):
@@ -293,6 +313,27 @@ class User:
                               ) for user_id in self.followers_ids]
         
         return self.__followers
+    
+    @property
+    def all_followers(self):
+        """To get a full list of followers User objects
+        
+        Returns:
+            list[User]: A list of `User` objects of followers
+        
+        """
+        if self.__all_followers is None:
+            self.__all_followers = [User(
+                                    user_id = user_id,
+                                    get_resp = self.__get_resp,
+                                    fetch_articles = self.__fetch_articles,
+                                    fetch_users = self.__fetch_users,
+                                    fetch_publications=self.__fetch_publications,
+                                    fetch_lists=self.__fetch_lists,
+                                    save_info = False
+                              ) for user_id in self.all_followers_ids]
+        
+        return self.__all_followers
         
     @property
     def articles(self):
@@ -448,7 +489,7 @@ class User:
         self.__fetch_users(self.following)
 
     def fetch_followers(self):
-        """To get user's followers information
+        """To get user's followers information (first 25)
 
         Returns:
             None: All the fetched information will be access via `user.followers`
@@ -457,6 +498,17 @@ class User:
             ``user.followers[1].bio``
         """
         self.__fetch_users(self.followers)
+
+    def fetch_all_followers(self):
+        """To get user's followers information (all)
+
+        Returns:
+            None: All the fetched information will be access via `user.all_followers`
+
+            ``user.all_followers[0].fullname``
+            ``user.all_followers[1].bio``
+        """
+        self.__fetch_users(self.all_followers)
 
     def fetch_lists(self):
         """To get user's lists' related information
