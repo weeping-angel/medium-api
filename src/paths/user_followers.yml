@@ -6,12 +6,9 @@ get:
     Returns the list of `user_ids` of the user's followers.
 
 
-    **Note:** The length of this followers' list might be different from what you get in 
-    the "Get User Info" Endpoint. It's because, this list doesn't include Medium Users who 
-    left the platform.
-
-    If you really need the exact followers' count, use this endpoint to get the followers' 
-    list and take its length as the exact followers' count
+    **Note:** When you get the response from the API, it will include an attribute called next. 
+    You can use this next attribute as query string parameter (after) when you make your next API request. 
+    This way, you can get the followers that come after the one you're currently looking at.
 
   parameters:
     - name: user_id
