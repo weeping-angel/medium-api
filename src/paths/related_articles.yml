@@ -3,11 +3,8 @@ get:
   tags:
     - Article
   description: >
-    Returns a list of `article_ids` of the related posts. (Length = 5)
+    Returns a list of `article_ids` of the related posts. (Length = 4)
 
-
-    **Note:** If the given article is self-published, related posts will belong to the same author, 
-    else related posts will belong to the publication in which the article is published.
   parameters:
     - name: article_id
       in: path
