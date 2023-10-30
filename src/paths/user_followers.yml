@@ -56,3 +56,6 @@ get:
                 next:
                   type: string
                   example: 19cad4233712
+                total_followers:
+                  type: int
+                  example: 551
