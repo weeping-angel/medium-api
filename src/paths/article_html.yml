@@ -3,7 +3,10 @@ get:
   tags:
     - Article
   description: >
-    Returns the plain HTML of a Medium Article, for the corresponding `article_id`
+    Returns the **plain HTML** of a Medium Article, for the given `article_id`.
+
+
+    **Note:** This plain HTML output can be stylized as per your own custom branding. For the sample CSS, visit: "https://mediumapi.com/styles/dark.css"
   parameters:
     - name: article_id
       in: path
@@ -20,6 +23,15 @@ get:
       schema:
         type: bool
         example: false
+
+    - name: style_file
+      in: query
+      required: false
+      description: Name or link to a CSS file to be included in the HTML. It works when `fullpage` is true.
+      schema:
+        type: string
+        example: https://mediumapi.com/styles/dark.css
+
   responses:
     '200':
       description: OK
@@ -28,6 +40,9 @@ get:
           schema:
             type: object
             properties:
+              id: 
+                type: string
+                example: ff6369938b63
               html: 
                 type: string
                 example: >

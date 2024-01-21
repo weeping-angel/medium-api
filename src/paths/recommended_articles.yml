@@ -1,9 +1,9 @@
 get:
-  summary: Get Article Fans
+  summary: Get Recommended Articles
   tags:
     - Article
   description: >
-    Returns a list of `user_ids` of the people who clapped on the article (a.k.a `voters`).
+    Returns a list of 10 articles (`article_ids`) as recommended by the Medium, for the given article.
 
   parameters:
     - name: article_id
@@ -24,14 +24,9 @@ get:
                 id: 
                   type: string
                   example: 67fa62fc1971
-                  
-                voters: 
+                recommended_articles: 
                   type: array
                   items: 
                     type: string
-                    example: fa40650a485
+                    example: f393206c6626
                 
-                count:
-                  type: integer
-                  format: int32
-                  example: 145

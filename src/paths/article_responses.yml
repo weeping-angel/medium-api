@@ -5,7 +5,8 @@ get:
   description: >
     Returns a list of responses (`response_ids`, same as `article_ids`) for a given article (`article_id`)
 
-    Note: To see the content of the response, use the "Get Article's Content" endpoint
+
+    **Note:** To see the content of the response, use the _Get Article's Content_ endpoint (`/article/{article_id}/content`)
   parameters:
     - name: article_id
       in: path
@@ -22,11 +23,13 @@ get:
           schema:
             type: object
             properties:
+                id: 
+                  type: string
+                  example: 67fa62fc1971
+
                 responses: 
                   type: array
                   items: 
                     type: string
                     example: a9bbc22aa1e6
-                id: 
-                  type: string
-                  example: 67fa62fc1971
+                

@@ -3,7 +3,8 @@ get:
   tags:
     - User
   description: >
-    Returns the list of articles (`article_ids`) written by the user.
+    Returns the list of articles (`article_ids`) written by the given user.
+
   parameters:
     - name: user_id
       in: path
@@ -20,6 +21,9 @@ get:
           schema:
             type: object
             properties:
+                id:
+                  type: string
+                  example: "1985b61817c3"
                 associated_articles: 
                   type: array
                   items: 

@@ -20,6 +20,10 @@ get:
           schema:
             type: object
             properties:
+                id: 
+                  type: string
+                  example: 1985b61817c3
+                  
                 tags_followed: 
                   type: array
                   items: 

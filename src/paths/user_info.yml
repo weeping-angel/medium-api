@@ -3,15 +3,48 @@ get:
   tags:
     - User
   description: >
-    Returns user related information like *Full name, Bio, Followers count, Following count, Twitter username, Profile-image URL, User ID, etc...* 
+    Returns user-related information such as their
+
+
+    - Username
+
+    - Full name
     
+    - Bio
     
-    It takes `user_id` as the path parameter.
+    - Followers count
+    
+    - Following count
+    
+    - Publication Following count
+    
+    - Twitter Username
+    
+    - Profile Image URL
+    
+    - Background Image URL
+    
+    - Logo Image URL
+    
+    - Tipping Link
+    
+    - List of tags in which the user is Top Writer
+    
+    - When did the user become a Medium Member (conditional)
+    
+    - Whether the user has Lists (boolean)
+    
+    - Whether the user is a Medium-verified book author (boolean)
+    
+    - Whether the user is enrolled in Medium Partner Program (boolean)
+    
+    - Whether the user has allowed notes on their articles (boolean)
+    
+    - Whether the user is suspended or not (boolean)
 
     
-    **Note:** If you don't know the `user_id`, then you can get it from the endpoint\
-    
-    '/user/id_for/{`username`}'.
+    **Note:** If you don't know the `user_id`, you can get it from the _Get User ID_ endpoint (`/user/id_for/{username}`).
+
   parameters:
     - name: user_id
       in: path
@@ -53,6 +86,10 @@ get:
                 type: integer
                 format: int32
                 example: 4
+              publication_following_count:
+                type: integer
+                format: int32
+                example: 2
               twitter_username: 
                 type: string
                 example: one_anachronism
@@ -75,4 +112,14 @@ get:
               image_url: 
                 type: string
                 example: https://miro.medium.com/1*C92Hx7k9nRM7TPlrmhgW9w.jpeg
+              logo_image_url:
+                type: string
+                example: https://miro.medium.com/1*jp6zL2GND2FnDy1WGZOdpQ.png
+              bg_image_url:
+                type: string
+                example: https://miro.medium.com/1*5EKkWUnrRoveFz88dcWP4Q.png
+              tipping_link:
+                type: string
+                example: https://www.paypal.com/paypalme/sanskarjain1997
+              
 

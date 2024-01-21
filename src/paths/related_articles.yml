@@ -21,11 +21,12 @@ get:
           schema:
             type: object
             properties:
+                id: 
+                  type: string
+                  example: 67fa62fc1971
                 related_articles: 
                   type: array
                   items: 
                     type: string
                     example: f393206c6626
-                id: 
-                  type: string
-                  example: 67fa62fc1971
+                

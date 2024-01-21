@@ -3,7 +3,7 @@ get:
   tags:
     - User
   description: >
-    Returns a list of `publication_ids` where the user is the editor and/or creator.
+    Returns 2 lists of `publication_ids` where the given user is either an admin (creator/editor) or a contributing writer.
   parameters:
     - name: user_id
       in: path
@@ -20,11 +20,19 @@ get:
           schema:
             type: object
             properties:
-                publications: 
-                  type: array
-                  items: 
-                    type: string
-                    example: bff2346ccdf1
-                user_id:
+                id:
                   type: string
                   example: 14d5c41e0264
+                publications: 
+                  type: object
+                  properties:
+                    admin_in:
+                      type: array
+                      items:
+                        type: string
+                        example: bff2346ccdf1
+                    writer_in:
+                      type: array
+                      items:
+                        type: string
+                        example: 7f60cf5620c9

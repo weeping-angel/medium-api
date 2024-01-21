@@ -24,11 +24,13 @@ get:
           schema:
             type: object
             properties:
-                lists: 
-                  type: array
-                  items: 
-                    type: string
-                    example: 95b41261bee0
-                user_id:
+              id:
+                type: string
+                example: 5142451174a3
+                
+              lists: 
+                type: array
+                items: 
                   type: string
-                  example: 5142451174a3
+                  example: 95b41261bee0
+                

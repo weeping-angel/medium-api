@@ -3,7 +3,7 @@ get:
   tags:
     - Article
   description: >
-    Returns the content of an article/story, for the corresponding `article_id`
+    Returns the content of an article for the given `article_id`.
   parameters:
     - name: article_id
       in: path
@@ -20,6 +20,9 @@ get:
           schema:
             type: object
             properties:
+              id:
+                type: string
+                example: 562c5821b5f0
               content: 
                 type: string
                 example: >

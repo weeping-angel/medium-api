@@ -47,6 +47,8 @@ paths:
     $ref: './paths/user_info.yml'
   /user/{user_id}/following:
     $ref: './paths/user_following.yml'
+  /user/{user_id}/publication_following:
+    $ref: './paths/user_publication_following.yml'
   /user/{user_id}/followers:
     $ref: './paths/user_followers.yml'
   /user/{user_id}/articles:
@@ -70,10 +72,14 @@ paths:
     $ref: './paths/article_markdown.yml'
   /article/{article_id}/html:
     $ref: './paths/article_html.yml'
+  /article/{article_id}/assets:
+    $ref: './paths/article_assets.yml'
   /article/{article_id}/responses:
     $ref: './paths/article_responses.yml'
   /article/{article_id}/fans:
     $ref: './paths/article_fans.yml'
+  /article/{article_id}/recommended:
+    $ref: './paths/recommended_articles.yml'
   /article/{article_id}/related:
     $ref: './paths/related_articles.yml'
   

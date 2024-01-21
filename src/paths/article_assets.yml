@@ -1,0 +1,81 @@
+get:
+  summary: Get Article Assets
+  tags:
+    - Article
+  description: >
+    Returns a list of URLs for the assets present in the Medium Article.
+
+
+    These assets may include images, embedded YouTube videos, Github Gists, Hyperlinks (anchors), Links to other Medium Articles, etc…
+  parameters:
+    - name: article_id
+      in: path
+      required: true
+      description: It's a unique hash id assigned to every Medium Article.
+      schema:
+        type: string
+        example: b7d838c84f72
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              assets: 
+                type: object
+                properties:
+                  images:
+                    type: array
+                    items:
+                      type: string
+                      example: https://miro.medium.com/1*aNnZHUx6H1A5QbEJtK6lmA.png
+                  
+                  github_gists:
+                    type: array
+                    items:
+                      type: string
+                      example: https://gist.github.com/weeping-angel/9f4b84244b9752ea3bca6a7bb1997a65.js
+
+                  youtube:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        title:
+                          type: string
+                          example: Mathematics of Music - 1
+                        href:
+                          type: string
+                          example: https://www.youtube.com/watch?v=IH2nqc8B0Bg
+                        description:
+                          type: string
+                          example: "Mathematics of Music - \"Twinkle Twinkle Little Star\" Synthesized using Python (Numpy and Scipy) Full article at my profile: https://medium.com/@nishu_jain"
+                  
+                  anchors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        text:
+                          type: string
+                          example: repo
+                        href:
+                          type: string
+                          example: https://github.com/weeping-angel/Mathematics-of-Music
+                        
+                  other_embeds:
+                    type: object
+                    properties:
+                      example.com:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            title:
+                              type: string
+                              example: Title of some other webpage
+                            href:
+                              type: string
+                              example: https://example.com/somepage.html

@@ -3,9 +3,49 @@ get:
   tags:
     - Article
   description: >
-    Returns the article related information such as *Title, Subtitle, Tags, 
-    Topics* (assigned by Medium), *Publication, Published date and time, 
-    Clap Count, Voter Count, Word Count, Reading Time, Language, etc…*
+    Returns article-related information such as 
+
+    - Title
+    
+    - Subtitle
+
+    - Author (ID)
+    
+    - Tags
+    
+    - Topics (assigned by Medium)
+    
+    - Publication (ID)
+    
+    - Published date and time
+
+    - Last Modified date and time
+    
+    - Clap Count
+    
+    - Voter Count
+    
+    - Word Count
+    
+    - Response Count
+    
+    - Reading Time
+    
+    - Language
+    
+    - Unique Slug
+
+    - URL
+
+    - Image URL (Cover image)
+    
+    - Top Highlight
+
+    - Whether the article is in a series or not (boolean)
+
+    - Whether the article is a shortform or not (boolean)
+
+    - Whether the article is locked or not (boolean)
 
   parameters:
     - name: article_id
@@ -14,7 +54,7 @@ get:
       description: It's a unique hash id assigned to every Medium Article.
       schema:
         type: string
-        example: f06086080568
+        example: 67fa62fc1971
   responses:
     '200':
       description: OK
@@ -25,49 +65,52 @@ get:
             properties:
               id: 
                 type: string
-                example: f06086080568
+                example: 67fa62fc1971
               title: 
                 type: string
-                example: 4 Tips to Strengthen Your Bonds — Now
+                example: Why it's Super Hard to be an ML Researcher or Developer?
               subtitle: 
                 type: string
-                example: Re-energize your relationship in the midst of a crisis
+                example: A Realization that Literally Changed my Life
               author: 
                 type: string
                 example: 1985b61817c3
               publication_id: 
                 type: string
-                example: e7040e67514c
+                example: 98111c9905da
               responses_count:
                 type: integer
                 format: int32
-                example: 10
+                example: 6
               word_count: 
                 type: integer
                 format: int32
-                example: 845
+                example: 1146
               reading_time: 
                 type: number
-                example: 3.5720125786164
+                example: 4.874528301886793
               topics: 
                 type: array
                 items: 
                   type: string
-                  example: mental-health
+                  example: machine-learning
               tags: 
                 type: array
                 items: 
                   type: string
-                  example: relationships
+                  example: data-science
               claps: 
                 type: integer
                 format: int32
-                example: 53
+                example: 603
               voters: 
                 type: integer
                 format: int32
-                example: 3
+                example: 141
               is_series:
+                type: boolean
+                example: false
+              is_shortform:
                 type: boolean
                 example: false
               is_locked:
@@ -78,13 +121,19 @@ get:
                 example: en
               published_at: 
                 type: string
-                example: 2020-08-25 11:08:18
+                example: "2020-10-28 21:01:06"
               last_modified_at: 
                 type: string
-                example: 2021-05-28 04:22:48
+                example: "2023-06-20 06:37:11"
+              unique_slug:
+                type: string
+                example: why-its-super-hard-to-be-an-ml-researcher-or-developer-67fa62fc1971
               url: 
                 type: string
-                example: https://medium.com/age-of-awareness/re-energizing-your-relationship-in-the-midst-of-a-crisis-f06086080568
+                example: https://pub.towardsai.net/why-its-super-hard-to-be-an-ml-researcher-or-developer-67fa62fc1971
               image_url: 
                 type: string
-                example: https://miro.medium.com/1*W0wM9xIeeIR3_Oo0E_thaA.png
+                example: https://miro.medium.com/1*Ot1HMgLOe8GhwX1Knlx96g.png
+              top_highlight:
+                type: string
+                example: Give me six hours to chop down a tree and I will spend the first four sharpening the axe - Abraham Lincoln"

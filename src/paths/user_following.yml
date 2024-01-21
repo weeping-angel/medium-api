@@ -3,10 +3,14 @@ get:
   tags:
     - User
   description: >
-    Returns the list of `user_ids` of the user's followings.
+    Returns a list of users (`user_ids`) that the given user is following.
 
 
-    **Note:** Currently, this list does not contain the `publication_ids` of the publications that the user is following.
+    Use the `count` query parameter (_optional_) to limit the number of results. (count <= 1500)
+
+
+    **Note:** This list does not contain the `publication_ids` of the publications that the user is following. To get those, please use _Get User Publication Following_ endpoint (`/user/{user_id}/publication_following`).
+
   parameters:
     - name: user_id
       in: path
@@ -31,11 +35,13 @@ get:
           schema:
             type: object
             properties:
+                id: 
+                  type: string
+                  example: 14d5c41e0264
+
                 following: 
                   type: array
                   items: 
                     type: string
                     example: c61f93eeb8a5
-                id: 
-                  type: string
-                  example: 14d5c41e0264
+                

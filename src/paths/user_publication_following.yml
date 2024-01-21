@@ -1,9 +1,10 @@
 get:
-  summary: Get User's Top Articles
+  summary: Get User Publication Following
   tags:
     - User
   description: >
-    Returns a list of `article_ids` of the top 10 articles on the user's profile, for a given `user_id`.
+    Returns a list of publications (`publication_ids`) that the given user is following.
+
   parameters:
     - name: user_id
       in: path
@@ -11,7 +12,8 @@ get:
       description: Unique hash id assigned to every single Medium user.
       schema:
         type: string
-        example: "1985b61817c3"
+        example: 1985b61817c3
+    
   responses:
     '200':
       description: OK
@@ -20,11 +22,16 @@ get:
           schema:
             type: object
             properties:
-                id:
+                id: 
                   type: string
-                  example: "1985b61817c3"
-                top_articles: 
+                  example: 1985b61817c3
+
+                publication_following: 
                   type: array
                   items: 
                     type: string
-                    example: 562c5821b5f0
+                    example: aa36b7f642de
+
+                count:
+                  type: integer
+                  example: 2

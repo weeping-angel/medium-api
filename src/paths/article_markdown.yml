@@ -3,7 +3,8 @@ get:
   tags:
     - Article
   description: >
-    Returns the markdown of an article/story from Medium, for the corresponding `article_id`
+    Returns the markdown of a Medium Article/Story, for the given `article_id`
+    
   parameters:
     - name: article_id
       in: path
@@ -20,6 +21,9 @@ get:
           schema:
             type: object
             properties:
+              id:
+                type: string
+                example: 67fa62fc1971
               markdown: 
                 type: string
                 example: >

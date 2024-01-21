@@ -42,20 +42,24 @@ get:
           schema:
             type: object
             properties:
+                id: 
+                  type: string
+                  example: 1985b61817c3
+
                 followers: 
                   type: array
                   items: 
                     type: string
                     example: 1556eaf34b46
-                id: 
-                  type: string
-                  example: 1985b61817c3
+                
                 count:
                   type: int
                   example: 10
+
                 next:
                   type: string
                   example: 19cad4233712
+                  
                 total_followers:
                   type: int
                   example: 551
