@@ -1,5 +1,4 @@
 import os
-import pytest
 from datetime import datetime
 
 from medium_api import Medium
