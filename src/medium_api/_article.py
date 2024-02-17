@@ -4,6 +4,27 @@ This module contains the `Article` class.
 
 from datetime import datetime
 
+SAMPLE_STYLE_FILE = 'https://mediumapi.com/styles/dark.css'
+
+class ArticleAssets:
+    """ArticleAssets Class
+    """
+    def __init__(self, dictionary):
+        self.d = {k.replace('.', '_'):v for k,v in dictionary.items()}
+
+    def __getattr__(self, key):
+        if key in self.d:
+            obj = self.d[key]
+            if isinstance(obj, dict):
+                return ArticleAssets(obj)
+            else:
+                return obj
+        else:
+            raise AttributeError(f"'ArticleAssets' object has no attribute '{key}'")
+
+    def __repr__(self):
+        return f"<ArticleAssets {list(self.d)}>"
+
 class Article:
     """Article Class
     
@@ -49,6 +70,7 @@ class Article:
         self.claps = None
         self.author = None
         self.url = None
+        self.unique_slug = None
         self.published_at = None
         self.publication_id = None
         self.tags = None
@@ -62,6 +84,8 @@ class Article:
         self.image_url = None
         self.is_series = None
         self.is_locked = None
+        self.is_shortform = None
+        self.top_highlight = None
 
         self.publication = None
 
@@ -69,12 +93,15 @@ class Article:
         self.__content = None
         self.__markdown = None
         self.__html = None
+        self.__assets = None
         self.__response_ids = None
         self.__responses = None
         self.__fans_ids = None
         self.__fans = None
         self.__related_articles_ids = None
         self.__related_articles = None
+        self.__recommended_articles_ids = None
+        self.__recommended_articles = None
 
         if save_info:
             self.save_info()
@@ -91,6 +118,7 @@ class Article:
                 - ``article.claps``
                 - ``article.author``
                 - ``article.url``
+                - ``article.unique_slug``
                 - ``article.published_at``
                 - ``article.publication_id``
                 - ``article.tags``
@@ -103,8 +131,10 @@ class Article:
                 - ``article.lang``
                 - ``article.is_series``
                 - ``article.is_locked``
+                - ``article.is_shortform``
                 - ``article.image_url`` 
                 - ``article.publication``
+                - ``article.top_highlight``
         """
         from medium_api._user import User
         from medium_api._publication import Publication
@@ -122,6 +152,7 @@ class Article:
                            fetch_lists=self.__fetch_lists,
                            save_info=False) if article.get('author') else None
         self.url = article.get('url')
+        self.unique_slug = article.get('unique_slug')
         self.published_at = datetime.strptime(article['published_at'], '%Y-%m-%d %H:%M:%S') if article.get('published_at') else None
         self.publication_id = article.get('publication_id')
         self.tags = article.get('tags')
@@ -134,7 +165,9 @@ class Article:
         self.lang = article.get('lang')
         self.is_series = article.get('is_series')
         self.is_locked = article.get('is_locked')
+        self.is_shortform = article.get('is_shortform')
         self.image_url = article.get('image_url')
+        self.top_highlight = article.get('top_highlight')
 
         if not self.is_self_published:
             self.publication = Publication(publication_id=self.publication_id, 
@@ -317,6 +350,41 @@ class Article:
         return self.__related_articles
 
     @property
+    def recommended_articles_ids(self):
+        """To get the list of `article_ids` of the recommended posts for the given article.
+        
+        Returns:
+            list: Returns a list of `article_ids`.
+        """
+        if self.__recommended_articles_ids is None:
+            resp, _ = self.__get_resp(f'/article/{self.article_id}/recommended')
+            self.__recommended_articles_ids = list(resp['recommended_articles'])
+        
+        return self.__recommended_articles_ids
+    
+
+    @property
+    def recommended_articles(self):
+        """To get the list of recommended articles (Article Objects)
+
+        Returns:
+            list[Article]: Returns a list of `Article` Objects.
+        """
+        if self.__recommended_articles is None:
+            self.__recommended_articles = [Article(
+                                                article_id=recommended_article_id, 
+                                                get_resp=self.__get_resp, 
+                                                fetch_articles=self.__fetch_articles,
+                                                fetch_users=self.__fetch_users,
+                                                fetch_publications=self.__fetch_publications,
+                                                fetch_lists=self.__fetch_lists,
+                                                save_info=False,
+                                              )
+                                for recommended_article_id in self.recommended_articles_ids]
+
+        return self.__recommended_articles
+
+    @property
     def is_self_published(self):
         """To check if the article is self-published or not
         
@@ -370,20 +438,39 @@ class Article:
 
         return self.__html
     
-    def save_html(self, fullpage:bool=False):
+    @property
+    def assets(self):
+        """To get the URL of the assets present in the Medium Article such as images, embedded youtube videos,
+        gisthub gists, hyperlinks (anchors), etc ...
+
+        Returns:
+            ArticleAssets: An `ArticleAssets` Class Object
+        
+        """
+        if self.__assets is None:
+            resp, _ = self.__get_resp(f'/article/{self.article_id}/assets')
+            self.__assets = ArticleAssets(resp['assets'])
+
+        return self.__assets
+
+
+    def save_html(self, fullpage:bool=False, style_file:str=SAMPLE_STYLE_FILE):
         """Saves the article in plain HTML format
 
         Args:
 
             fullpage (bool, optional): If 'True', saves full HTML page with head, body, title and meta tags. 
                 Else, saves HTML inside body only.
+
+            style_file (str, optional): Name or URL to the CSS style file that can be included in the HTML output
+                of the Article. Default is 'https://mediumapi.com/styles/dark.css' (Sample CSS)
         
         Returns:
             None
 
         """
         fullpage = 'true' if fullpage else 'false'
-        resp, _ = self.__get_resp(f'/article/{self.article_id}/html?fullpage={fullpage}')
+        resp, _ = self.__get_resp(f'/article/{self.article_id}/html?fullpage={fullpage}&style_file={style_file}')
         self.__html = str(resp['html'])
 
     @property
@@ -419,12 +506,22 @@ class Article:
         """
         self.__fetch_users(self.fans)
 
-    def fetch_related_articles(self, content=False):
+    def fetch_related_articles(self, content=False, markdown=False, html=False, html_fullpage=True):
         """To fetch all the related articles information and textual content, using multi-threading
 
         Args:
             content (bool, optional): Set it to `True` if you want to fetch the 
                 textual content of the related articles as well. Otherwise, default is `False`.
+            
+            markdown (bool, optional): Set it to `True` if you want to fetch the 
+                Markdown content of the related articles as well. Otherwise, default is `False`.
+                
+            html (bool, optional): Set it to `True` if you want to fetch the 
+                HTML content of the related articles as well. Otherwise, default is `False`.
+                
+            html_fullpage (bool, optional): Set it to `True` if you want to fetch the 
+                HTML content (with head, title, meta tags, etc...) of the related articles 
+                as well. Otherwise, default is `True`.
 
         Returns:
             None: All the fetched information will be access via `article.related_articles`.
@@ -433,4 +530,45 @@ class Article:
             ``article.related_articles[2].title``
             ``article.related_articles[1].claps``
         """
-        self.__fetch_articles(self.related_articles, content=content)
+        self.__fetch_articles(
+                    self.related_articles, 
+                    content=content, 
+                    markdown=markdown, 
+                    html=html, 
+                    html_fullpage=html_fullpage
+                )
+
+    def fetch_recommended_articles(self, content=False, markdown=False, html=False, html_fullpage=True):
+        """To fetch all the recommended articles information and textual content, using multi-threading
+
+        Args:
+            content (bool, optional): Set it to `True` if you want to fetch the 
+                textual content of the recommended articles as well. Otherwise, default is `False`.
+            
+            markdown (bool, optional): Set it to `True` if you want to fetch the 
+                Markdown content of the related articles as well. Otherwise, default is `False`.
+                
+            html (bool, optional): Set it to `True` if you want to fetch the 
+                HTML content of the related articles as well. Otherwise, default is `False`.
+                
+            html_fullpage (bool, optional): Set it to `True` if you want to fetch the 
+                HTML content (with head, title, meta tags, etc...) of the related articles 
+                as well. Otherwise, default is `True`.
+
+        Returns:
+            None: All the fetched information will be access via `article.recommended_articles`.
+
+            ``article.recommended_articles[0].content``
+            ``article.recommended_articles[2].title``
+            ``article.recommended_articles[1].claps``
+        """
+        self.__fetch_articles(
+                    self.recommended_articles, 
+                    content=content, 
+                    markdown=markdown, 
+                    html=html, 
+                    html_fullpage=html_fullpage
+                )
+
+    def __repr__(self):
+        return f'<Article: {self.article_id}>'

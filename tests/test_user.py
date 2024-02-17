@@ -30,9 +30,13 @@ def test_user_info():
     assert isinstance(user.twitter_username, str)
     assert isinstance(user.bio, str)
     assert isinstance(user.image_url, str)
+    assert isinstance(user.tipping_link, str)
+    assert isinstance(user.bg_image_url, str)
+    assert isinstance(user.logo_image_url, str)
 
     assert isinstance(user.followers_count, int)
     assert isinstance(user.following_count, int)
+    assert isinstance(user.publication_following_count, int)
     
     assert isinstance(user.medium_member_at, datetime) or user.medium_member_at is None
     assert isinstance(user.top_writer_in, list)
@@ -82,6 +86,20 @@ def test_user_following():
         assert isinstance(following[0], User)
         # assert isinstance(following[0].fullname, str)
 
+def test_user_publication_following():
+    publication_following_ids = user.publication_following_ids
+    publication_following = user.publication_following
+
+    # user.fetch_publication_following()
+
+    assert isinstance(publication_following_ids, list)
+    if len(publication_following_ids) != 0:
+        assert isinstance(publication_following_ids[0], str)
+
+    assert isinstance(publication_following, list)
+    if len(publication_following) != 0:
+        assert isinstance(publication_following[0], Publication)
+
 def test_user_followers():
     followers_ids = user.followers_ids
     followers = user.followers
@@ -114,14 +132,26 @@ def test_user_publications():
 
     # user.fetch_publications()
 
-    assert isinstance(publication_ids, list)
-    if len(publication_ids) != 0:
-        assert isinstance(publication_ids[0], str)
+    assert isinstance(publication_ids, dict)
+    assert 'admin_in' in publication_ids.keys()
+    assert 'writer_in' in publication_ids.keys()
 
-    assert isinstance(publications, list)
-    if len(publications) != 0:
-        assert isinstance(publications[0], Publication)
-        # assert isinstance(publications[0].name, str)
+    if len(publication_ids['admin_in']) != 0:
+        assert isinstance(publication_ids['admin_in'][0], str)
+
+    if len(publication_ids['writer_in']) != 0:
+        assert isinstance(publication_ids['writer_in'][0], str)
+
+    assert isinstance(publications, dict)
+    assert 'admin_in' in publications.keys()
+    assert 'writer_in' in publications.keys()
+
+    if len(publications['admin_in']) != 0:
+        assert isinstance(publications['admin_in'][0], Publication)
+
+    if len(publications['writer_in']) != 0:
+        assert isinstance(publications['writer_in'][0], Publication)
+
 
 def test_user_lists():
     list_ids = user.list_ids

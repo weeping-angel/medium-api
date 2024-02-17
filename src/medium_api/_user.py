@@ -58,6 +58,8 @@ class User:
         self.__following_ids = None
         self.__following = None
         self.__followers_ids = None
+        self.__publication_following_ids = None
+        self.__publication_following = None
         self.__followers = None
         self.__all_followers_ids = None
         self.__all_followers = None
@@ -81,6 +83,10 @@ class User:
         self.top_writer_in = None
         self.has_list = None
         self.is_book_author = None
+        self.tipping_link = None
+        self.publication_following_count = None
+        self.bg_image_url = None
+        self.logo_image_url = None
 
         if save_info:
             self.save_info()
@@ -134,7 +140,7 @@ class User:
         """
         if self.__publication_ids is None:
             resp, _ = self.__get_resp(f'/user/{self._id}/publications')
-            self.__publication_ids = list(resp['publications'])
+            self.__publication_ids = resp['publications']
 
         return self.__publication_ids
     
@@ -163,7 +169,8 @@ class User:
         from medium_api._publication import Publication
 
         if self.__publications is None:
-            self.__publications = [Publication(
+            self.__publications = {
+                                    "admin_in": [Publication(
                                         publication_id = pub_id,
                                         get_resp = self.__get_resp, 
                                         fetch_articles=self.__fetch_articles, 
@@ -172,7 +179,19 @@ class User:
                                         fetch_lists=self.__fetch_lists,
                                         save_info=False
                                         ) 
-                            for pub_id in self.publication_ids]
+                                    for pub_id in self.publication_ids["admin_in"]],
+
+                                    "writer_in": [Publication(
+                                        publication_id = pub_id,
+                                        get_resp = self.__get_resp, 
+                                        fetch_articles=self.__fetch_articles, 
+                                        fetch_users = self.__fetch_users,
+                                        fetch_publications=self.__fetch_publications,
+                                        fetch_lists=self.__fetch_lists,
+                                        save_info=False
+                                        ) 
+                                    for pub_id in self.publication_ids["writer_in"]]
+                            }
             
         return self.__publications
     
@@ -242,6 +261,44 @@ class User:
             self.__following_ids = list(resp['following'])
         
         return self.__following_ids
+
+    @property
+    def publication_following_ids(self):
+        """To get a list of `publications_ids` that the give user is followings
+        
+        Returns:
+            list[str]: A list of `publication_ids` (str)
+        
+        """
+        if self.__publication_following_ids is None:
+            resp, _ = self.__get_resp(f'/user/{self._id}/publication_following')
+            self.__publication_following_ids = list(resp['publication_following'])
+        
+        return self.__publication_following_ids
+    
+    @property
+    def publication_following(self):
+        """To get a list of `Publication` objects that the give user is followings
+        
+        Returns:
+            list[Publication]: A list of `Publication` objects
+        
+        """
+        from medium_api._publication import Publication
+
+        if self.__publication_following is None:
+            self.__publication_following = [Publication(
+                                                publication_id = pub_id,
+                                                get_resp = self.__get_resp, 
+                                                fetch_articles=self.__fetch_articles, 
+                                                fetch_users = self.__fetch_users,
+                                                fetch_publications=self.__fetch_publications,
+                                                fetch_lists=self.__fetch_lists,
+                                                save_info=False
+                                                ) 
+                                            for pub_id in self.publication_following_ids]
+        
+        return self.__publication_following
 
     @property
     def followers_ids(self):
@@ -415,6 +472,10 @@ class User:
                 - ``user.medium_member_at``
                 - ``user.top_writer_in``
                 - ``user.image_url``
+                - ``user.tipping_link``
+                - ``user.publication_following_count``
+                - ``user.bg_image_url``
+                - ``user.logo_image_url``
         """
         user = self.info
 
@@ -430,6 +491,10 @@ class User:
         self.allow_notes = user.get('allow_notes')
         self.has_list = user.get('has_list')
         self.is_book_author = user.get('is_book_author')
+        self.tipping_link = user.get('tipping_link')
+        self.publication_following_count = user.get('publication_following_count')
+        self.bg_image_url = user.get('bg_image_url')
+        self.logo_image_url = user.get('logo_image_url')
 
         if user.get('medium_member_at'):
             self.medium_member_at = datetime.strptime(user['medium_member_at'], '%Y-%m-%d %H:%M:%S') if user['medium_member_at']!='' else None
@@ -454,16 +519,21 @@ class User:
         """
         self.__fetch_articles(self.articles, content=content)
 
-    def fetch_publications(self):
-        """To fetch all the publication-related information where the user is either creator and/or editor
+    def fetch_publications(self, admin_in=True, writer_in=True):
+        """To fetch all the publication-related information where the given user is 
+        either an admin (creator/editor) or a contributing writer.
 
         Returns:
             None: All the fetched information will be access via `user.publications`.
 
-            ``user.publications[0].name``
-            ``user.publications[1].followers``
+            ``user.publications['admin_in'][0].name``
+            ``user.publications['writer_in'][1].followers``
         """
-        self.__fetch_publications(self.publications)
+        if admin_in:
+            self.__fetch_publications(self.publications['admin_in'])
+        
+        if writer_in:
+            self.__fetch_publications(self.publications['writer_in'])
 
     def fetch_top_articles(self, content=False):
         """To fetch top 10 user-written top articles information and content
@@ -490,6 +560,17 @@ class User:
             ``user.following[1].bio``
         """
         self.__fetch_users(self.following)
+
+    def fetch_publication_following(self):
+        """To get information related to publications that the user is following
+
+        Returns:
+            None: All the fetched information will be access via `user.publication_following`
+
+            ``user.publication_following[0].name``
+            ``user.publication_following[1].followers``
+        """
+        self.__fetch_publications(self.publication_following)
 
     def fetch_followers(self):
         """To get user's followers information (first 25)
@@ -523,4 +604,14 @@ class User:
             ``user.lists[1].count``
         """
         self.__fetch_lists(self.lists)
+
+    def __repr__(self):
+        r = ''
+
+        if self.user_id:
+            r += self.user_id 
+        if self.username:
+            r += f"({self.username})"
+
+        return f"<User: {r}>"
 

@@ -1,15 +1,14 @@
 import os
-import pytest
 from datetime import datetime
 
 from medium_api import Medium
 from medium_api._publication import Publication
 from medium_api._user import User
-from medium_api._article import Article
+from medium_api._article import Article, ArticleAssets
 
 medium = Medium(os.getenv('RAPIDAPI_KEY'))
 
-article_id = '67fa62fc1971'
+article_id = 'b7d838c84f72'
 
 article = medium.article(article_id=article_id)
 
@@ -27,6 +26,8 @@ def test_article_info():
     assert isinstance(article.publication_id, str)
     assert isinstance(article.lang, str)
     assert isinstance(article.image_url, str)
+    assert isinstance(article.top_highlight, str)
+    assert isinstance(article.unique_slug, str)
     
     assert isinstance(article.claps, int)
     assert isinstance(article.word_count, int)
@@ -35,6 +36,7 @@ def test_article_info():
 
     assert isinstance(article.is_series, bool)
     assert isinstance(article.is_locked, bool)
+    assert isinstance(article.is_shortform, bool)
 
     assert isinstance(article.reading_time, float)
 
@@ -87,6 +89,19 @@ def test_related_articles():
 
     # assert article.related_articles[0].title is not None
 
+def test_recommended_articles():
+    assert isinstance(article.recommended_articles_ids, list)
+    assert isinstance(article.recommended_articles_ids[0], str)
+
+    assert isinstance(article.recommended_articles, list)
+    assert isinstance(article.recommended_articles[0], Article)
+
+    assert article.recommended_articles[0].title is None
+
+    # article.fetch_recommended_articles()
+
+    # assert article.recommended_articles[0].title is not None
+
 def test_article_content():
     article.save_content()
 
@@ -100,11 +115,14 @@ def test_article_markdown():
     assert len(article.markdown) > 0
 
 def test_article_html():
-    article.save_html(fullpage=True)
+    style_file = 'xyz.css'
+
+    article.save_html(fullpage=True, style_file=style_file)
 
     assert isinstance(article.html, str)
     assert len(article.html) > 0
     assert article.html[:len('<html')] == '<html'
+    assert style_file in article.html
 
 def test_article_json():
     article.save_info()
@@ -129,4 +147,21 @@ def test_article_publication():
         assert isinstance(article.publication, Publication)
     else:
         assert article.publication is None
+
+
+def test_article_assets():
+    assets = article.assets
+
+    assert isinstance(assets, ArticleAssets)
+
+    assert isinstance(assets.images, list)
+    assert isinstance(assets.images[0], str)
+
+    assert isinstance(assets.youtube, list)
+    assert isinstance(assets.youtube[0], dict)
+
+    assert isinstance(assets.github_gists, list)
+    assert isinstance(assets.github_gists[0], str)
+
+    assert isinstance(assets.other_embeds, ArticleAssets)
 

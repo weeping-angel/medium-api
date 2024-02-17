@@ -74,3 +74,6 @@ class TopWriters:
             ``top_writers.users[1].bio``
         """
         self.__fetch_users(self.users)
+
+    def __repr__(self):
+        return f"<TopWriters: {self.topic_slug}>"

@@ -13,7 +13,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from medium_api._topfeeds import TopFeeds
 from medium_api._user import User
-from medium_api._article import Article
+from medium_api._article import Article, SAMPLE_STYLE_FILE
 from medium_api._publication import Publication
 from medium_api._top_writers import TopWriters
 from medium_api._latestposts import LatestPosts
@@ -55,20 +55,21 @@ class Medium:
         See https://docs.rapidapi.com/docs/keys to learn more about RapidAPI keys.
 
     """
-    def __init__(self, rapidapi_key:str, base_url:str='medium2.p.rapidapi.com', calls:int=0):
+    def __init__(self, rapidapi_key:str, base_url:str='medium2.p.rapidapi.com', endpoint_prefix = '', calls:int=0):
         if rapidapi_key and isinstance(rapidapi_key, str):
             self.headers = {
                 'X-RapidAPI-Key': rapidapi_key,
                 'User-Agent': f"medium-api-python-sdk"
             }
             self.base_url = base_url
+            self.endpoint_prefix = endpoint_prefix
             self.calls = calls
         else:
             print('[ERROR]: Please pass the API Key in string format')
 
     def __get_resp(self, endpoint:str, retries:int=0):
         conn = HTTPSConnection(self.base_url)
-        conn.request('GET', endpoint, headers=self.headers)
+        conn.request('GET', self.endpoint_prefix + endpoint, headers=self.headers)
         resp = conn.getresponse()
 
         data = resp.read()
@@ -551,8 +552,9 @@ class Medium:
 
         return resp
 
-    def fetch_articles(self, articles:list, content:bool = False, markdown:bool = False, html:bool = False, html_fullpage:bool = True):
-        """To quickly fetch articles (info and content) using multithreading
+    def fetch_articles(self, articles:list, content:bool = False, markdown:bool = False, 
+                       html:bool = False, html_fullpage:bool = True, html_style_file:str = SAMPLE_STYLE_FILE):
+        """To quickly fetch articles (info, content, markdown, html) using multithreading
 
             Typical usage example:
 
@@ -592,7 +594,7 @@ class Medium:
                 future_to_url += [executor.submit(article.save_markdown) for article in articles]
 
             if html:
-                future_to_url += [executor.submit(article.save_html, html_fullpage) for article in articles]
+                future_to_url += [executor.submit(article.save_html, html_fullpage, html_style_file) for article in articles]
 
             for future in as_completed(future_to_url):
                 future.result()

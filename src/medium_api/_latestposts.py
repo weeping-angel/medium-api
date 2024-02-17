@@ -98,3 +98,7 @@ class LatestPosts:
                     html=html, 
                     html_fullpage=html_fullpage
                 )
+        
+    
+    def __repr__(self):
+        return f"<LatestPosts '{self.topic_slug}'>"

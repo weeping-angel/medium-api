@@ -13,3 +13,5 @@ _build
 build
 test_scripts
 to_pypi.sh
+delete_me.py
+delete_me_plz.py

@@ -337,3 +337,6 @@ class Publication:
             self.__articles = self.get_articles_between()
         
         return self.__articles
+    
+    def __repr__(self):
+        return f"<Publication: {self.publication_id}>"

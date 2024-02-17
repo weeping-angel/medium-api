@@ -102,3 +102,6 @@ class TopFeeds:
                     html=html, 
                     html_fullpage=html_fullpage
                 )
+        
+    def __repr__(self):
+        return f'<TopFeeds: {self.tag} - {self.mode}>'

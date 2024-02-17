@@ -241,3 +241,7 @@ class MediumList:
             ``medium_list.responses[1].claps``
         """
         self.__fetch_articles(self.responses, content=content)
+
+    
+    def __repr__(self):
+        return f"<MediumList: {self.list_id}>"
