@@ -68,6 +68,15 @@ Get User's Following
 	<script src="https://gist.github.com/weeping-angel/cc9b4660765d52bff85fa9a80c66002c.js?file=get_user_following_output.txt"></script>
 
 
+Get User's Publication Following
+--------------------------------
+
+.. raw:: html
+
+	<script src="https://gist.github.com/weeping-angel/1a266a417778482edb7baa6a3f21fdb6.js?file=get_user_publication_following.py"></script>
+	<script src="https://gist.github.com/weeping-angel/1a266a417778482edb7baa6a3f21fdb6.js?file=get_user_publication_following_output.txt"></script>
+
+
 Get User's Publications
 -----------------------
 
@@ -124,6 +133,15 @@ Get Article's HTML
 	<script src="https://gist.github.com/weeping-angel/222a0fe71fb1d9bed6bcfd51020ae80b.js?file=get_article_html_output.txt"></script>
 
 
+Get Article's Assets
+--------------------
+
+.. raw:: html
+
+	<script src="https://gist.github.com/weeping-angel/27f47a0a0c19d85df93741f0bcdf4198.js?file=get_article_assets.py"></script>
+	<script src="https://gist.github.com/weeping-angel/27f47a0a0c19d85df93741f0bcdf4198.js?file=get_article_assets_output.txt"></script>
+
+
 Get Article's Responses
 -----------------------
 
@@ -150,6 +168,14 @@ Get Related Articles
 	<script src="https://gist.github.com/weeping-angel/ee02d67dcf886bed39494c2874cb8fc7.js?file=get_related_articles.py"></script>
 	<script src="https://gist.github.com/weeping-angel/ee02d67dcf886bed39494c2874cb8fc7.js?file=get_related_articles_output.txt"></script>
 
+
+Get Recommended Articles
+------------------------
+
+.. raw:: html
+
+	<script src="https://gist.github.com/weeping-angel/4059ab3b1230d9fe481b77734568c057.js?file=get_recommended_articles.py"></script>
+	<script src="https://gist.github.com/weeping-angel/4059ab3b1230d9fe481b77734568c057.js?file=get_recommended_articles_output.txt"></script>
 
 Publication
 ~~~~~~~~~~~~
