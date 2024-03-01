@@ -138,10 +138,6 @@ components:
       type: apiKey
       in: header
       name: x-rapidapi-key
-    ApiHost:
-      type: apiKey
-      in: header
-      name: x-rapidapi-host
   
   
 
