@@ -12,7 +12,7 @@ get:
       description: It's a unique string, usually hyphen-separated, representing a class of content.
       schema:
         type: string
-        example: artificial-intelligence
+        example: data-science
 
     - name: mode
       in: path
@@ -29,25 +29,6 @@ get:
       schema:
         type: string
         example: new
-    
-    - name: after
-      in: query
-      required: false
-      description: To get the subsequent top feeds. (`after` < 250)
-      schema:
-        type: int
-        example: 10
-        default: 0
-
-    - name: count
-      in: query
-      required: false
-      description: To limit the number of top feeds. (`count` < 25)
-      schema:
-        type: int
-        example: 20
-        default: 25
-
 
   responses:
     '200':
@@ -57,8 +38,44 @@ get:
           schema:
             type: object
             properties:
-              topfeeds: 
+              topfeeds:
                 type: array
                 items: 
                   type: string
-                  example: b2076afc4930
+                  example:
+                    - "bf49caa30c3b"
+                    - "ff6d1d1f9570"
+                    - "a02226fe86af"
+                    - "baa85c10ac58"
+                    - "8179180bc349"
+                    - "fa27f64443ce"
+                    - "c73786e6aa76"
+                    - "ebfb35d80d31"
+                    - "0b678210431d"
+                    - "1da5001ed444"
+                    - "3002a9f32abf"
+                    - "14478e4e548b"
+                    - "c25f1b3f5682"
+                    - "8853184eb60c"
+                    - "d59f2ea14ce4"
+                    - "de7469608483"
+                    - "2cbb5b268b76"
+                    - "313d225bbf3f"
+                    - "6b6902e66043"
+                    - "8054b797de64"
+                    - "05d01f5e3ed0"
+                    - "c8285b6d45ba"
+                    - "0ac7c96965b6"
+                    - "721dfecb9c00"
+              
+              count: 
+                type: integer
+                example: 25
+              
+              tag:
+                type: string
+                example: data-science
+
+              mode:
+                type: string
+                example: NEW

@@ -27,4 +27,14 @@ get:
                   type: array
                   items: 
                     type: string
-                    example: 562c5821b5f0
+                    example:
+                      - "562c5821b5f0"
+                      - "95f4919cc39c"
+                      - "077229e514a3"
+                      - "c9a4be35cb93"
+                      - "05a740c035cc"
+                      - "23a287916d3f"
+                      - "9263875a3649"
+                      - "6c34414177bd"
+                      - "9867ba29a923"
+                      - "65a63626c04e"

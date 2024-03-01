@@ -26,7 +26,17 @@ get:
                 type: array
                 items: 
                   type: string
-                  example: 1985b61817c3
+                  example: 
+                    - "1cdedc00c37b"
+                    - "1bfba30bdef4"
+                    - "de7c5a1b117c"
+                    - "cd447042040e"
+                    - "9e9176bf9645"
+                    - "ecdc94046915"
+                    - "589e227843c0"
+                    - "bcee825b3d9c"
+                    - "602d3a172ce8"
+                    - "3489e9c7ed41"
               
               search_query:
                 type: string

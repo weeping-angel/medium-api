@@ -31,5 +31,15 @@ get:
                   type: array
                   items: 
                     type: string
-                    example: a9bbc22aa1e6
+                    example:
+                      - "a9bbc22aa1e6"
+                      - "3308e927204a"
+                      - "b1fcf9f36d87"
+                      - "295b0938fd49"
+                      - "cc14e813995a"
+                      - "649b48584efb"
+
+                count:
+                  type: integer
+                  example: 6
                 

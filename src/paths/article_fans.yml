@@ -29,9 +29,15 @@ get:
                   type: array
                   items: 
                     type: string
-                    example: fa40650a485
+                    example:
+                      - "def64349b55f"
+                      - "dfd0edd2cde5"
+                      - "263f0e59ea39"
+                      - "fdaa0a92e5b9"
+                      - "6b775dd37806"
+                      - "c84d0210fb0b"
                 
                 count:
                   type: integer
                   format: int32
-                  example: 145
+                  example: 6

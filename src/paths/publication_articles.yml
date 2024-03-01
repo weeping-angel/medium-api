@@ -28,8 +28,45 @@ get:
           schema:
             type: object
             properties:
-                publication_articles: 
-                  type: array
-                  items: 
-                    type: string
-                    example: 67fa62fc1971
+              publication_articles: 
+                type: array
+                items: 
+                  type: string
+                  example:
+                    - "638fb16c5092"
+                    - "8100fa230c7d"
+                    - "dafe61eabe34"
+                    - "b22a38900f39"
+                    - "5c2e28922659"
+                    - "78d8ecab19c4"
+                    - "52f352912025"
+                    - "9bed21ed3432"
+                    - "e4ccce6ab64b"
+                    - "8009cad3c111"
+                    - "bc63d4ada624"
+                    - "af749790e33b"
+                    - "c3fabbd0e00b"
+                    - "d23a4c3ec0cd"
+                    - "b830a1f9c9d5"
+                    - "8c58a7c93ca"
+                    - "581d31dd625f"
+                    - "b13dd00dc212"
+                    - "763c88143560"
+                    - "73b72c3b977a"
+                    - "993a4acf3d97"
+                    - "cfbff2388d04"
+                    - "f853beb264f6"
+                    - "50b605599b1b"
+                    - "2c7327bf1928"
+
+              publication_id:
+                type: string
+                example: 98111c9905da
+
+              from:
+                type: string
+                example: "2022-08-13 03:08:16"
+
+              to:
+                type: string
+                example: "2022-08-05 12:02:25"

@@ -27,6 +27,7 @@ get:
       schema:
         type: int
         example: 10
+
   responses:
     '200':
       description: OK
@@ -43,5 +44,14 @@ get:
                   type: array
                   items: 
                     type: string
-                    example: c61f93eeb8a5
-                
+                    example:
+                      - "3340d9dd0981"
+                      - "51e7eb466f57"
+                      - "c0db304eefe1"
+                      - "db7a1a122aa"
+                      - "799bdc99a0fd"
+                      - "3d91a45f0e94"
+                      - "41f99c370629"
+                      - "cfa71f272740"
+                      - "4a142a63b9a0"
+                      - "78561519e424"

@@ -32,5 +32,16 @@ get:
                 type: array
                 items: 
                   type: string
-                  example: 95b41261bee0
-                
+                  example:
+                    - "321cfd9966ec"
+                    - "ba3904884898"
+                    - "b8a117567230"
+                    - "9516ed2145ae"
+                    - "24356f9a9c6e"
+                    - "e8b1c393bcff"
+                    - "95b41261bee0"
+                    - "4ecdbfd97d05"
+
+              count:
+                type: integer
+                example: 8

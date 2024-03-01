@@ -23,7 +23,7 @@ get:
       description: It's a unique string, usually hyphen-separated, representing a topic/niche, as classified by Medium.
       schema:
         type: string
-        example: relationships
+        example: artificial-intelligence
     - name: count
       in: query
       required: false
@@ -43,4 +43,14 @@ get:
                 type: array
                 items: 
                   type: string
-                  example: 1985b61817c3
+                  example:
+                    - "37a2cbe8bd15"
+                    - "9b351e8113e9"
+                    - "8c8e5b7182ef"
+                    - "b0fbe613be9d"
+                    - "e43895122f94"
+                    - "14176fcb5743"
+                    - "fb7a5e85e951"
+                    - "76398be9016"
+                    - "fb44e21903f3"
+                    - "c4a298b66f16"

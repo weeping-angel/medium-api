@@ -26,7 +26,16 @@ get:
                 type: array
                 items: 
                   type: string
-                  example: cryptocurrency
+                  example:
+                    - "cryptocurrency"
+                    - "bitcoin"
+                    - "crypto"
+                    - "ethereum"
+                    - "technology"
+                    - "defi"
+                    - "nft"
+                    - "web3"
+                    - "money"
               
               given_tag:
                 type: string

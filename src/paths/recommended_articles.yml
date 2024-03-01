@@ -28,5 +28,15 @@ get:
                   type: array
                   items: 
                     type: string
-                    example: f393206c6626
+                    example:
+                      - "dd44714e619a"
+                      - "cd14232a781c"
+                      - "87a8f8c10d92"
+                      - "f5f7bd88a144"
+                      - "973775246425"
+                      - "7dd26fb5282c"
+                      - "cad364e668db"
+                      - "ff3010db542f"
+                      - "e10d7d5b83a6"
+                      - "99b5311986c7"
                 

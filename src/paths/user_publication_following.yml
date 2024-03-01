@@ -30,7 +30,9 @@ get:
                   type: array
                   items: 
                     type: string
-                    example: aa36b7f642de
+                    example: 
+                      - "aa36b7f642de"
+                      - "b7e45b22fec3"
 
                 count:
                   type: integer

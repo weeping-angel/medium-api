@@ -20,7 +20,7 @@ get:
       description: It's a unique string, usually hyphen-separated, representing a topic/niche, as classified by Medium.
       schema:
         type: string
-        example: artificial-intelligence
+        example: blockchain
   responses:
     '200':
       description: OK
@@ -33,4 +33,29 @@ get:
                 type: array
                 items: 
                   type: string
-                  example: 67fa62fc1971
+                  example:
+                    - "743b229b9b80"
+                    - "48a08afafdcc"
+                    - "284009a2e941"
+                    - "9351fd40340e"
+                    - "8a48250702f7"
+                    - "78ed78f16362"
+                    - "434687e795c6"
+                    - "a51cbcffc4e2"
+                    - "e125f9d62f2"
+                    - "ca84ac87a0bf"
+                    - "4e2161787934"
+                    - "d277be4453f4"
+                    - "bfa982ef9a7f"
+                    - "64bc45d49931"
+                    - "8b7d1c46d849"
+                    - "b63e8f8a6798"
+                    - "cd389ec40e17"
+                    - "7ed4c9ac8512"
+                    - "a4713fa815c"
+                    - "afd1ad23fa5e"
+                    - "4cec3f13895a"
+                    - "24a6562a875c"
+                    - "275060016663"
+                    - "e3d799eaf913"
+                    - "7e0c28d4f682"

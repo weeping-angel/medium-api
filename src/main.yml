@@ -1,12 +1,12 @@
 openapi: '3.0.2'
 
 info:
-  title: Unofficial Medium API
+  title: Medium API (Unofficial)
   version: '1.0'
   x-twitter: 'https://twitter.com/medium_api'
   x-linkedin: 'https://www.linkedin.com/company/medium-api'
   x-logo:
-    url: https://mediumapi.com/imgs/logo/logo-primary-color.svg
+    url: https://mediumapi.com/imgs/logo/logo-dark-color.svg
   description: >
     Our Unofficial Medium API helps you to quickly extract data from Medium's Website (https://medium.com). 
     
@@ -17,14 +17,14 @@ info:
     email: nishu@mediumapi.com
     url: https://mediumapi.com
 
-  termsOfService: https://github.com/weeping-angel/medium-apis/raw/pages/terms_of_use.pdf
+  termsOfService: https://mediumapi.com/terms_of_use.html
 
 tags: 
   - name: Welcome
   - name: User
   - name: Publication
   - name: Article
-  - name: Misc
+  - name: Platform
   - name: List
   - name: Search
 
@@ -96,6 +96,8 @@ paths:
   
   # Misc Endpoints
   
+  /recommended_feed/{tag}?page={page}:
+    $ref: './paths/recommended_feed.yml'
   /topfeeds/{tag}/{mode}:
     $ref: './paths/topfeeds.yml'
   /top_writers/{topic_slug}:

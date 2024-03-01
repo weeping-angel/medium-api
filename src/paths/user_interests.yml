@@ -28,4 +28,13 @@ get:
                   type: array
                   items: 
                     type: string
-                    example: software-engineering
+                    example: 
+                      - software-engineering
+                      - startup
+                      - machine-learning
+                      - data-science
+                      - blockchain
+
+                count:
+                  type: integer
+                  example: 5

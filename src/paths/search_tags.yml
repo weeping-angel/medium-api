@@ -26,7 +26,17 @@ get:
                 type: array
                 items: 
                   type: string
-                  example: blockchain-technology
+                  example:
+                    - "blockchain"
+                    - "blockchai̇n"
+                    - "blockchain-technology"
+                    - "blockchain-development"
+                    - "blockchain-startup"
+                    - "blockchain-game"
+                    - "blockchain-gaming"
+                    - "blockchain-application"
+                    - "blockchain-security"
+                    - "blockchain-news"
               
               search_query:
                 type: string

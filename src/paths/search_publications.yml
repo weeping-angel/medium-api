@@ -26,7 +26,17 @@ get:
                 type: array
                 items: 
                   type: string
-                  example: 8d6b8a439e32
+                  example:
+                    - "b224b324ef5"
+                    - "de4b53c10bc7"
+                    - "efea2976ffad"
+                    - "2dedf1e9c066"
+                    - "7debdac7d2c2"
+                    - "d1c54e7b78e2"
+                    - "14b51ced1b92"
+                    - "4479ee3a8306"
+                    - "6b598c326afa"
+                    - "f1cb0af385f"
               
               search_query:
                 type: string

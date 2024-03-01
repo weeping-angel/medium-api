@@ -30,9 +30,27 @@ get:
                       type: array
                       items:
                         type: string
-                        example: bff2346ccdf1
+                        example:
+                          - "bff2346ccdf1"
+                          - "df81adaf6236"
+                          - "9830e436a84"
+                          - "aec755e28853"
+                          - "ac4c2146e2f"
+                          - "a7d8d7c02da"
+                          - "ab314b84960a"
+
                     writer_in:
                       type: array
                       items:
                         type: string
-                        example: 7f60cf5620c9
+                        example:
+                          - "6cb21729512d"
+                          - "78d064101951"
+                          - "7adf33e44ae3"
+                          - "3f6ecf56618"
+                          - "193b68bd4fba"
+                          - "d3eff52d6f1c"
+                          - "998e693d29cd"
+                          - "40187e704f1c"
+                          - "48e972f5c24e"
+                          - "65d07f93c269"

@@ -1,0 +1,108 @@
+get:
+  summary: Get Recommended Feed
+  tags:
+    - Misc
+  description: >
+    Returns a list of recommended articles (`article_ids`) for the given `tag`. 
+    This feed is similar to Topfeeds Trending Articles.
+
+
+    Using the `page` query string parameter, you can get the list page by page. 
+    The page number can be between 1 and 20. Each page will have up to 25 Article IDs.
+
+
+    So at maximum, you can fetch 500 `article_ids` in 20 API calls.
+    
+  parameters:
+    - name: tag
+      in: path
+      required: true
+      description: It's a unique string, usually hyphen-separated, representing a class of content.
+      schema:
+        type: string
+        example: data-science
+    
+    - name: page
+      in: query
+      required: false
+      description: A number between 1 and 20.
+      schema:
+        type: integer
+        example: 1
+
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              recommended_feed:
+                type: array
+                items: 
+                  type: string
+                  example:
+                    - "d99f4a35ff4"
+                    - "53affbd9c728"
+                    - "d1ffb9d9f042"
+                    - "28aefb495657"
+                    - "d8b3b04538cf"
+                    - "02dd62cd4bda"
+                    - "2919236a6082"
+                    - "593a332dd08d"
+                    - "29e23f371ddd"
+                    - "27add4c8536d"
+                    - "d31587158f34"
+                    - "4ca1c6ce3eb9"
+                    - "6ca2d70f7a62"
+                    - "6fc97b93dc9a"
+                    - "d63c736cccef"
+                    - "a682d1adf4e8"
+                    - "a37d66716d57"
+                    - "d449463078b2"
+                    - "b2a545f39ad5"
+                    - "dcab44048ebb"
+                    - "c41407efe59b"
+                    - "ef0358634c1b"
+                    - "bddb73ef62ff"
+                    - "4de1464a9930"
+                    - "e8b71b1c169b"
+              
+              count: 
+                type: integer
+                example: 25
+              
+              tag:
+                type: string
+                example: data-science
+
+              page:
+                type: integer
+                example: 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

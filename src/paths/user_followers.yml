@@ -34,6 +34,7 @@ get:
       schema:
         type: string
         example: 14274b746ca3
+
   responses:
     '200':
       description: OK
@@ -50,7 +51,17 @@ get:
                   type: array
                   items: 
                     type: string
-                    example: 1556eaf34b46
+                    example:
+                      - "14609d40b731"
+                      - "148ae689f366"
+                      - "14daabbff886"
+                      - "150aaf6fae67"
+                      - "1556eaf34b46"
+                      - "157ac0b7fce4"
+                      - "15f72b3c21f1"
+                      - "160c3e933453"
+                      - "162e5e73459a"
+                      - "16759d70a68f"
                 
                 count:
                   type: int
@@ -58,8 +69,8 @@ get:
 
                 next:
                   type: string
-                  example: 19cad4233712
+                  example: 16759d70a68f
                   
                 total_followers:
                   type: int
-                  example: 551
+                  example: 721

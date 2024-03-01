@@ -12,7 +12,7 @@ get:
       description: It's a unique hash id assigned to every Medium List.
       schema:
         type: string
-        example: 38f9e0f9bea6
+        example: 3d8f744f5370
   responses:
     '200':
       description: OK
@@ -23,9 +23,16 @@ get:
             properties:
               id: 
                 type: string
-                example: 38f9e0f9bea6
+                example: 3d8f744f5370
+
               responses:
                 type: array
                 items:
-                  type: str
-                  example: f31a257b42e8
+                  type: string
+                  example: 
+                    - f31a257b42e8
+                    - a62b717bca13
+
+              count:
+                type: integer
+                example: 2
