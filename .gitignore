@@ -3,3 +3,4 @@ venv
 .DS_Store
 dist
 start_local_server.sh
+generate_docs.sh
