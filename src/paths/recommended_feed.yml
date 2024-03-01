@@ -1,7 +1,7 @@
 get:
   summary: Get Recommended Feed
   tags:
-    - Misc
+    - Platform
   description: >
     Returns a list of recommended articles (`article_ids`) for the given `tag`. 
     This feed is similar to Topfeeds Trending Articles.

@@ -1,7 +1,7 @@
 get:
   summary: Get Topfeeds
   tags:
-    - Misc
+    - Platform
   description: >
     Returns a list of `article_ids` (length: 25) for the given `tag` and `mode`.
     

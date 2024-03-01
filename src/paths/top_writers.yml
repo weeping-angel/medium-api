@@ -1,7 +1,7 @@
 get:
   summary: Get Top Writers
   tags:
-    - Misc
+    - Platform
   description: >
     Returns a list of top writers (`user_ids`) within a particular topic/niche (`topic_slug`). 
     
