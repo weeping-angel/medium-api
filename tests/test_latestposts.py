@@ -1,5 +1,4 @@
 import os
-import pytest
 
 from medium_api import Medium
 from medium_api._article import Article

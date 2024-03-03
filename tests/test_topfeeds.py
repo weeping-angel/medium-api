@@ -1,6 +1,4 @@
 import os
-import pytest
-import random
 
 from medium_api import Medium
 from medium_api._article import Article

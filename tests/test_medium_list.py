@@ -1,6 +1,5 @@
 import os
 from datetime import datetime
-import pytest
 
 from medium_api import Medium
 from medium_api._medium_list import MediumList
