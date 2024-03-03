@@ -12,6 +12,7 @@ from json import loads
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from medium_api._topfeeds import TopFeeds
+from medium_api._recommended_feed import RecommendedFeed
 from medium_api._user import User
 from medium_api._article import Article, SAMPLE_STYLE_FILE
 from medium_api._publication import Publication
@@ -315,7 +316,7 @@ class Medium:
                            fetch_lists=self.fetch_lists,
                         )
 
-    def topfeeds(self, tag:str, mode:str, count:int = 25):
+    def topfeeds(self, tag:str, mode:str):
         """For getting the Medium's TopFeeds Object
 
             Typical usage example:
@@ -325,8 +326,6 @@ class Medium:
         Args:
             tag (str): It's a string (smallcase, hyphen-separated) which specifies
                 a category/niche as classified by the Medium Platform.
-            
-            count (int): Number of top feed articles you want to fetch (less than 250).
 
             mode (str): There are 6 modes as follows:
 
@@ -344,7 +343,33 @@ class Medium:
             and `mode`.
 
         """
-        return TopFeeds(tag=tag, mode=mode, count=count,
+        return TopFeeds(tag=tag, mode=mode,
+                        get_resp=self.__get_resp, 
+                        fetch_articles=self.fetch_articles,
+                        fetch_users=self.fetch_users,
+                        fetch_publications=self.fetch_publications,
+                        fetch_lists=self.fetch_lists,
+                    )
+    
+    def recommended_feed(self, tag:str, count:int = 25):
+        """For getting the Medium's RecommendedFeed Object
+
+            Typical usage example:
+
+            ``recommended_feed = medium.recommended_feed(tag="blockchain", count=100)``
+
+        Args:
+            tag (str): It's a string (smallcase, hyphen-separated) which specifies
+                a category/niche as classified by the Medium Platform.
+            
+            count (int): Number of articles you want to fetch from recommended feed (Should be less than 500).
+
+        Returns:
+            RecommendedFeed: Medium API `RecommendedFeed` Object (medium_api._recommended_feed.RecommendedFeed) 
+            that can be used to access all the properties and methods, for given `tag`.
+
+        """
+        return RecommendedFeed(tag=tag, count=count,
                         get_resp=self.__get_resp, 
                         fetch_articles=self.fetch_articles,
                         fetch_users=self.fetch_users,

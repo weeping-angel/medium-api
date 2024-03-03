@@ -4,6 +4,10 @@ Publication Module
 from functools import lru_cache
 from datetime import datetime
 from medium_api._user import User
+
+
+SAMPLE_STYLE_FILE = 'https://mediumapi.com/styles/dark.css'
+
 class Newsletter:
     """Newsletter Class
     
@@ -241,7 +245,7 @@ class Publication:
     
     
     @lru_cache(maxsize=16)
-    def get_articles_between(self, _from=None, _to=None, content=False, markdown=False, html=False, html_fullpage=True):
+    def get_articles_between(self, _from=None, _to=None, content=False, markdown=False, html=False, html_fullpage=True, html_style_file=SAMPLE_STYLE_FILE):
         """To get publication articles within a datetime range.
 
             Example usage:
@@ -300,7 +304,8 @@ class Publication:
                                 content=content,
                                 markdown=markdown, 
                                 html=html, 
-                                html_fullpage=html_fullpage
+                                html_fullpage=html_fullpage,
+                                html_style_file=html_style_file
                             )
 
                 self.__articles = [article for article in articles if (_to <= article.published_at <= _from)]
@@ -316,7 +321,8 @@ class Publication:
                         content=content,
                         markdown=markdown, 
                         html=html, 
-                        html_fullpage=html_fullpage
+                        html_fullpage=html_fullpage,
+                        html_style_file=html_style_file
                     )
         
         return self.__articles

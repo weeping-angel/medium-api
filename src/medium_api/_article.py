@@ -506,7 +506,7 @@ class Article:
         """
         self.__fetch_users(self.fans)
 
-    def fetch_related_articles(self, content=False, markdown=False, html=False, html_fullpage=True):
+    def fetch_related_articles(self, content=False, markdown=False, html=False, html_fullpage=True, html_style_file=SAMPLE_STYLE_FILE):
         """To fetch all the related articles information and textual content, using multi-threading
 
         Args:
@@ -535,10 +535,11 @@ class Article:
                     content=content, 
                     markdown=markdown, 
                     html=html, 
-                    html_fullpage=html_fullpage
+                    html_fullpage=html_fullpage,
+                    html_style_file = html_style_file
                 )
 
-    def fetch_recommended_articles(self, content=False, markdown=False, html=False, html_fullpage=True):
+    def fetch_recommended_articles(self, content=False, markdown=False, html=False, html_fullpage=True, html_style_file=SAMPLE_STYLE_FILE):
         """To fetch all the recommended articles information and textual content, using multi-threading
 
         Args:
@@ -567,7 +568,8 @@ class Article:
                     content=content, 
                     markdown=markdown, 
                     html=html, 
-                    html_fullpage=html_fullpage
+                    html_fullpage=html_fullpage,
+                    html_style_file=html_style_file
                 )
 
     def __repr__(self):

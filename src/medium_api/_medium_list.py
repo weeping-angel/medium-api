@@ -4,6 +4,9 @@ medium_list (not python list) module containing `MediumList` class.
 from datetime import datetime
 from medium_api._user import User
 
+
+SAMPLE_STYLE_FILE = 'https://mediumapi.com/styles/dark.css'
+
 class MediumList:
     """MediumList Class
     
@@ -196,7 +199,7 @@ class MediumList:
 
         return self.__responses
 
-    def fetch_articles(self, content=False, markdown=False, html=False, html_fullpage=True):
+    def fetch_articles(self, content=False, markdown=False, html=False, html_fullpage=True, html_style_file=SAMPLE_STYLE_FILE):
         """To fetch all the Medium List's articles information (using multithreading)
 
         Args:
@@ -224,7 +227,8 @@ class MediumList:
                     content=content,
                     markdown=markdown, 
                     html=html, 
-                    html_fullpage=html_fullpage
+                    html_fullpage=html_fullpage,
+                    html_style_file=html_style_file
                 )
 
     def fetch_responses(self, content=False):

@@ -21,15 +21,11 @@ def test_topfeeds_modes():
     ]
     print('\n')
     for mode in modes:
-        count = random.choice(range(10, 35))
-        topfeeds = medium.topfeeds(tag=tag, mode=mode, count=count)
-
-        print("Mode: ", mode, "\t Count: ", count)
+        topfeeds = medium.topfeeds(tag=tag, mode=mode)
 
         assert isinstance(topfeeds, TopFeeds)
 
         assert isinstance(topfeeds.ids, list)
-        assert len(topfeeds.ids) == count
         assert isinstance(topfeeds.ids[0], str)
 
         assert isinstance(topfeeds.articles, list)

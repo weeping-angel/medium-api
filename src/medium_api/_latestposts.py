@@ -2,6 +2,7 @@
 latestposts module
 """
 
+SAMPLE_STYLE_FILE = 'https://mediumapi.com/styles/dark.css'
 
 class LatestPosts:
     """LatestPosts Class
@@ -68,7 +69,7 @@ class LatestPosts:
 
         return self.__posts 
 
-    def fetch_articles(self, content=False, markdown=False, html=False, html_fullpage=True):
+    def fetch_articles(self, content=False, markdown=False, html=False, html_fullpage=True, html_style_file=SAMPLE_STYLE_FILE):
         """To fetch all the latestposts articles information (multithreading)
 
         Args:
@@ -96,7 +97,8 @@ class LatestPosts:
                     content=content,
                     markdown=markdown, 
                     html=html, 
-                    html_fullpage=html_fullpage
+                    html_fullpage=html_fullpage,
+                    html_style_file=html_style_file
                 )
         
     

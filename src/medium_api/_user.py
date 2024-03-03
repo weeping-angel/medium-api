@@ -3,6 +3,9 @@ Users Module
 '''
 from datetime import datetime
 
+
+SAMPLE_STYLE_FILE = 'https://mediumapi.com/styles/dark.css'
+
 class User:
     """User Class
     
@@ -504,12 +507,22 @@ class User:
             print(f"[ERROR]: Could not retrieve user for the given user_id ({self.user_id}). Please check if this user exists.")
             print(f"[ERROR]: Link to unknown user's profile: https://medium.com/u/{self.user_id}")
 
-    def fetch_articles(self, content=False, markdown=False, html=False, html_fullpage=True):
+    def fetch_articles(self, content=False, markdown=False, html=False, html_fullpage=True, html_style_file=SAMPLE_STYLE_FILE):
         """To fetch all the user-written articles information and content
 
         Args:
             content (bool, optional): Set it to `True` if you want to fetch the 
                 textual content of the article as well. Otherwise, default is `False`.
+            
+            markdown(bool, optional): Set it to `True` if you want to fetch the markdown of 
+                the article as well. Otherwise, default is `False`
+
+            html(bool, optional): Set it to `True` if you want to fetch the article in HTML 
+                format as well. Otherwise, default is `False`
+
+            html_fullpage(bool, optional): Set it to `False` if you only want to fetch the HTML 
+                inside body tag of the article. Otherwise, default is `True`, which fetches the 
+                entire HTML of the article.
 
         Returns:
             None: All the fetched information will be access via `user.articles`.
@@ -517,7 +530,14 @@ class User:
             ``user.articles[0].title``
             ``user.articles[1].claps``
         """
-        self.__fetch_articles(self.articles, content=content)
+        self.__fetch_articles(
+                    self.articles, 
+                    content=content, 
+                    markdown=markdown, 
+                    html=html, 
+                    html_fullpage=html_fullpage,
+                    html_style_file=html_style_file
+                )
 
     def fetch_publications(self, admin_in=True, writer_in=True):
         """To fetch all the publication-related information where the given user is 
@@ -535,12 +555,22 @@ class User:
         if writer_in:
             self.__fetch_publications(self.publications['writer_in'])
 
-    def fetch_top_articles(self, content=False):
+    def fetch_top_articles(self, content=False, markdown=False, html=False, html_fullpage=True, html_style_file=SAMPLE_STYLE_FILE):
         """To fetch top 10 user-written top articles information and content
 
         Args:
             content (bool, optional): Set it to `True` if you want to fetch the 
                 textual content of the article as well. Otherwise, default is `False`.
+            
+            markdown(bool, optional): Set it to `True` if you want to fetch the markdown of 
+                the article as well. Otherwise, default is `False`
+
+            html(bool, optional): Set it to `True` if you want to fetch the article in HTML 
+                format as well. Otherwise, default is `False`
+
+            html_fullpage(bool, optional): Set it to `False` if you only want to fetch the HTML 
+                inside body tag of the article. Otherwise, default is `True`, which fetches the 
+                entire HTML of the article.
 
         Returns:
             None: All the fetched information will be access via `user.top_articles`.
@@ -548,7 +578,14 @@ class User:
             ``user.top_articles[0].title``
             ``user.top_articles[1].claps``
         """
-        self.__fetch_articles(self.top_articles, content=content)
+        self.__fetch_articles(
+                        self.top_articles, 
+                        content=content,
+                        markdown=markdown, 
+                        html=html, 
+                        html_fullpage=html_fullpage,
+                        html_style_file=html_style_file
+                    )
 
     def fetch_following(self):
         """To get user's followings information
