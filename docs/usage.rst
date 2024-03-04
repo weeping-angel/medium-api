@@ -219,6 +219,14 @@ Get Publication's Newsletter
 Misc
 ~~~~~
 
+Get Recommended Feed
+------------
+
+.. raw:: html
+
+	<script src="https://gist.github.com/weeping-angel/464e7e4c1428a0a8d998bb41eb63efdd.js?file=get_recommended_feed.py"></script>
+	<script src="https://gist.github.com/weeping-angel/464e7e4c1428a0a8d998bb41eb63efdd.js?file=get_recommended_feed_output.txt"></script>
+
 Get TopFeeds
 ------------
 
