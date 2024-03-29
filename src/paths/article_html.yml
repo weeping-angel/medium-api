@@ -6,7 +6,7 @@ get:
     Returns the **plain HTML** of a Medium Article, for the given `article_id`.
 
 
-    **Note:** This plain HTML output can be stylized as per your own custom branding. For the sample CSS, visit: "https://mediumapi.com/styles/dark.css"
+    **Note:** This plain HTML output can be stylized as per your own custom branding. For the sample CSS, visit: https://mediumapi.com/styles/dark.css
   parameters:
     - name: article_id
       in: path
