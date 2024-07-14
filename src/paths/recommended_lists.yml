@@ -1,0 +1,43 @@
+get:
+  summary: Get Recommended Lists
+  tags:
+    - Platform
+  description: >
+    Returns an array of recommended Medium Lists for the given tag. 
+    
+    
+    Max Length = 250.
+
+  parameters:
+    - name: tag
+      in: path
+      required: true
+      description: It's a unique string, usually hyphen-separated, representing a class of content.
+      schema:
+        type: string
+        example: self-improvement
+
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              recommended_lists:
+                type: array
+                items:
+                  type: string
+                  example: 
+                    - "f09f1aaf38cd"
+                    - "3c62b6cb0526"
+                    - "467b590560f8"
+                    - "e830014a1893"
+                    - "e1cbaa5fcda6"
+              count: 
+                type: integer
+                example: 5
+              tag:
+                type: string
+                example: self-improvement

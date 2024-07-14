@@ -1,0 +1,44 @@
+get:
+  summary: Get Recommended Users
+  tags:
+    - Platform
+  description: >
+    Returns a list of recommended users (who to follow) for the given tag. 
+    
+    
+    Max length = 250.
+
+  parameters:
+    - name: tag
+      in: path
+      required: true
+      description: It's a unique string, usually hyphen-separated, representing a class of content.
+      schema:
+        type: string
+        example: self-improvement
+
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              recommended_users:
+                type: array
+                items:
+                  type: string
+                  example: 
+                    - "f87623ec7b55"
+                    - "c2faf6a91b8f"
+                    - "63d62054c6e9"
+                    - "fd01d12eff0d"
+                    - "81fd74a2e3ff"
+              count: 
+                type: integer
+                example: 5
+
+              tag:
+                type: string
+                example: self-improvement

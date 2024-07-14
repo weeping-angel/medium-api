@@ -61,6 +61,8 @@ paths:
     $ref: './paths/user_lists.yml'
   /user/{user_id}/publications:
     $ref: './paths/user_publications.yml'
+  /user/{user_id}/books:
+    $ref: './paths/user_books.yml'
 
   # Article Endpoints
   
@@ -108,6 +110,14 @@ paths:
     $ref: './paths/related_tags.yml'
   /tag/{tag}:
     $ref: './paths/tag_info.yml'
+  /root_tags:
+    $ref: './paths/root_tags.yml'
+  /archived_articles/{tag}:
+    $ref: './paths/archived_articles.yml'
+  /recommended_users/{tag}:
+    $ref: './paths/recommended_users.yml'
+  /recommended_lists/{tag}:
+    $ref: './paths/recommended_lists.yml'
 
   # List Endpoints
 

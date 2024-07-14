@@ -1,0 +1,79 @@
+get:
+  summary: Get Archived Articles
+  tags:
+    - Platform
+  description: >
+    Returns a list of archived articles (max length = 20) for the given tag. 
+    You can filter the results by adding optional parameters like `year` and `month`. 
+    Use the `next` parameter to get more results.
+
+  parameters:
+    - name: tag
+      in: path
+      required: true
+      description: It's a unique string, usually hyphen-separated, representing a class of content.
+      schema:
+        type: string
+        example: self-improvement
+
+    - name: year
+      in: query
+      required: false
+      description: Year of the archived articles (YYYY)
+      schema:
+        type: string
+        example: "2023"
+
+    - name: month
+      in: query
+      required: false
+      description: Month of the archived articles (MM)
+      schema:
+        type: string
+        example: "06"
+
+    - name: next
+      in: query
+      required: false
+      description: Use this parameter to get more results on the next page.
+      schema:
+        type: string
+        example: "NTgwMzk0ZmI4NDcyOjoxNjg4MTYyNzY3ODE2"
+
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              archived_articles:
+                type: array
+                items:
+                  type: string
+                  example: 
+                    - "3426b97f21f2"
+                    - "d9edfd767132"
+                    - "b89a2c54883"
+                    - "b3366eb3bab6"
+                    - "5e21f7f5ffd8"
+              count: 
+                type: integer
+                example: 5
+
+              tag:
+                type: string
+                example: self-improvement
+
+              year:
+                type: string
+                example: "2023"
+
+              month:
+                type: string
+                example: "jun"
+
+              next:
+                type: string
+                example: "MzJiOWVmZWNjYzRlOjoxNjg4MTUzNjQzMzY4"

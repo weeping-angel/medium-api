@@ -1,0 +1,55 @@
+get:
+  summary: Get User Books
+  tags:
+    - User
+  description: >
+    Returns a list of all the books published by the user. 
+    It includes book's title, description, co-authors, published date, cover image and URL.
+
+    
+    **Note:** If you don't know the `user_id`, you can get it from the _Get User ID_ endpoint (`/user/id_for/{username}`).
+
+  parameters:
+    - name: user_id
+      in: path
+      required: true
+      description: It's a unique hash id assigned to every single Medium user.
+      schema:
+        type: string
+        example: "6e2475a6e38a"
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id: 
+                type: string
+                example: 6e2475a6e38a
+              books:
+                type: array
+                items:
+                  type: object
+                  example:
+                    - name: "What did Tashi do?"
+                      description: "A cybercrime thriller depicting the impact of leaked personal information on a woman's life."
+                      authors:
+                        - Anangsha Alammyan
+                      published_on: "2019-11-16"
+                      cover: "https://miro.medium.com/v2/28116b62de8ca47dc7a32c7b3e343329a695ab472aa1b66e67556ed813d0cd66"
+                      urls:
+                        - https://www.amazon.com/What-did-Tashi-Anangsha-Alammyan/dp/8194406730/
+
+                    - name: "Stolen Reflections: Some Stories Are Told in Verse"
+                      description: "The love story of a modern young woman told through poems."
+                      authors:
+                        - Anangsha Alammyan
+                      published_on: "2018-04-26"
+                      cover: "https://miro.medium.com/v2/82df80fee16a14c32f1691fec257ddec9bbab970088b23535a340948cf639ec4"
+                      urls:
+                        - "https://www.amazon.com/Stolen-Reflections-Some-stories-verse/dp/1643240862/"
+              count: 
+                type: integer
+                example: 2

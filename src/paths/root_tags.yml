@@ -1,0 +1,33 @@
+get:
+  summary: Get Root Tags
+  tags:
+    - Platform
+  description: >
+    Returns a list of root tags (or top-level tags) from the Medium Platform. 
+    This is how Medium broadly categorizes articles. 
+    
+
+    These tags have their own child tags that you can fetch using the "Tag Info" endpoint. 
+    
+    
+    This list may change/expand in the future.
+
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              root_tags:
+                type: array
+                items:
+                  type: string
+                  example: 
+                    - life
+                    - self-improvement
+                    - work
+              count: 
+                type: integer
+                example: 3

@@ -17,6 +17,8 @@ get:
     
     - Number of latest writers
 
+    - Child tags (if any)
+
   parameters:
     - name: tag
       in: path
@@ -24,7 +26,7 @@ get:
       description: It's a unique string, usually hyphen-separated, representing a class of content.
       schema:
         type: string
-        example: artificial-intelligence
+        example: self-improvement
 
   responses:
     '200':
@@ -36,10 +38,10 @@ get:
             properties:
               tag:
                 type: string
-                example: artificial-intelligence
+                example: self-improvement
               name:
                 type: string
-                example: Artificial Intelligence
+                example: Self Improvement
               followers:
                 type: integer
                 example: 1581563
@@ -55,5 +57,11 @@ get:
               latest_authors_count:
                 type: integer
                 example: 296
-              
-              
+              children:
+                type: array
+                items:
+                  type: string
+                  example: 
+                    - mental-health
+                    - productivity
+                    - mindfulness

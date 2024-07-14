@@ -6,7 +6,7 @@ get:
     Returns an array of `list_ids` created by the user.
 
 
-    **Note:** You can check whether the use has created lists or not beforehand. Check the 
+    **Note:** You can check whether the user has created lists or not beforehand. Check the 
     `has_list` attribute in the "Article Info" endpoint.
   parameters:
     - name: user_id
