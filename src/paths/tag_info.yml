@@ -38,27 +38,35 @@ get:
             properties:
               tag:
                 type: string
+                description: Tag (lowercase, hyphen-separated)
                 example: self-improvement
               name:
                 type: string
+                description: Tag name
                 example: Self Improvement
               followers:
                 type: integer
+                description: Number of followers
                 example: 1581563
               articles_count:
                 type: integer
+                description: Number of stories
                 example: 234250
               authors_count:
                 type: integer
+                description: Number of writers
                 example: 87802
               latest_articles_count:
                 type: integer
+                description: Number of latest stories
                 example: 483
               latest_authors_count:
                 type: integer
+                description: Number of latest writers
                 example: 296
               children:
                 type: array
+                description: Child tags
                 items:
                   type: string
                   example: 

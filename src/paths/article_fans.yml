@@ -23,10 +23,12 @@ get:
             properties:
                 id: 
                   type: string
+                  description: Article ID
                   example: 67fa62fc1971
                   
                 voters: 
                   type: array
+                  description: List of user IDs who clapped on the article. Also known as `voters` or `fans`.
                   items: 
                     type: string
                     example:
@@ -40,4 +42,5 @@ get:
                 count:
                   type: integer
                   format: int32
+                  description: Number of user IDs returned.
                   example: 6

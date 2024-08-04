@@ -25,12 +25,15 @@ get:
             properties:
               id: 
                 type: string
+                description: List ID
                 example: 38f9e0f9bea6
               name: 
                 type: string
+                description: Name of the list
                 example: Medium API
               description: 
                 type: string
+                description: Description of the list
                 example: Collections of all the articles and resources related to Medium API
               author: 
                 type: string
@@ -44,20 +47,25 @@ get:
               responses_count:
                 type: integer
                 format: int32
+                description: Number of comments/responses on the list
                 example: 1
               claps: 
                 type: integer
                 format: int32
+                description: Number of claps on the list
                 example: 48
               voters: 
                 type: integer
                 format: int32
+                description: Number of people who clapped on the list
                 example: 1
               created_at: 
                 type: string
+                description: Creation date and time of the list
                 example: "2023-03-12 06:46:46"
               last_item_inserted_at: 
                 type: string
+                description: Last article inserted date and time
                 example: "2023-03-12 06:53:02"
               thumbnail: 
                 type: string

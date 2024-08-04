@@ -22,9 +22,11 @@ get:
             properties:
               id:
                 type: string
+                description: Article ID
                 example: 562c5821b5f0
               content: 
                 type: string
+                description: Textual content of the article.
                 example: >
                   Article title
                 

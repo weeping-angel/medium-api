@@ -24,6 +24,7 @@ get:
             properties:
               related_tags: 
                 type: array
+                description: An array of related tags
                 items: 
                   type: string
                   example:
@@ -39,4 +40,5 @@ get:
               
               given_tag:
                 type: string
+                description: Given Tag
                 example: blockchain

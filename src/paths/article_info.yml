@@ -65,75 +65,97 @@ get:
             properties:
               id: 
                 type: string
+                description: Article ID
                 example: 67fa62fc1971
               title: 
                 type: string
+                description: Title of the article.
                 example: Why it's Super Hard to be an ML Researcher or Developer?
               subtitle: 
                 type: string
+                description: Subtitle of the article.
                 example: A Realization that Literally Changed my Life
               author: 
                 type: string
+                description: Author ID
                 example: 1985b61817c3
               publication_id: 
                 type: string
+                description: Publication ID
                 example: 98111c9905da
               responses_count:
                 type: integer
                 format: int32
+                description: Number of responses/comments on the article.
                 example: 6
               word_count: 
                 type: integer
                 format: int32
+                description: Number of words in the article.
                 example: 1146
               reading_time: 
                 type: number
+                description: Reading time in minutes.
                 example: 4.874528301886793
               topics: 
                 type: array
+                description: List of topics assigned by Medium.
                 items: 
                   type: string
                   example: machine-learning
               tags: 
                 type: array
+                description: List of tags assigned by the author.
                 items: 
                   type: string
                   example: data-science
               claps: 
                 type: integer
                 format: int32
+                description: Number of claps on the article.
                 example: 603
               voters: 
                 type: integer
                 format: int32
+                description: Number of people who clapped on the article.
                 example: 141
               is_series:
                 type: boolean
+                description: Whether the article is part of a series or not.
                 example: false
               is_shortform:
                 type: boolean
+                description: Whether the article is a shortform or not.
                 example: false
               is_locked:
                 type: boolean
+                description: Whether the article is locked or not.
                 example: true
               lang:
                 type: string
+                description: Language of the article.
                 example: en
               published_at: 
                 type: string
+                description: Date and time when the article was published.
                 example: "2020-10-28 21:01:06"
               last_modified_at: 
                 type: string
+                description: Date and time when the article was last modified.
                 example: "2023-06-20 06:37:11"
               unique_slug:
                 type: string
+                description: Unique slug assigned to the article.
                 example: why-its-super-hard-to-be-an-ml-researcher-or-developer-67fa62fc1971
               url: 
                 type: string
+                description: URL of the article.
                 example: https://pub.towardsai.net/why-its-super-hard-to-be-an-ml-researcher-or-developer-67fa62fc1971
               image_url: 
                 type: string
+                description: URL of the cover image of the article.
                 example: https://miro.medium.com/1*Ot1HMgLOe8GhwX1Knlx96g.png
               top_highlight:
                 type: string
+                description: Top highlight of the article.
                 example: Give me six hours to chop down a tree and I will spend the first four sharpening the axe - Abraham Lincoln"

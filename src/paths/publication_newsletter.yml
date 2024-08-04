@@ -25,23 +25,30 @@ get:
             properties:
               id: 
                 type: string
+                description: Newsletter ID
                 example: d710a73cd042
               name: 
                 type: string
+                description: Name of the newsletter.
                 example: This AI newsletter is all you need
               description:
                 type: string
+                description: Description of the newsletter.
                 example: We have moved our newsletter. Subscribe → https://ws.towardsai.net/subscribe
               subscribers: 
                 type: integer
                 format: int32
+                description: Number of subscribers of the newsletter.
                 example: 6752
               slug: 
                 type: string
+                description: Slug of the newsletter.
                 example: this-ai-newsletter-is-all-you-need
               creator_id:
                 type: string
+                description: "`user_id` of the creator"
                 example: aea8a19ea239
               image:
                 type: string
+                description: Image URL of the newsletter.
                 example: https://miro.medium.com/1*j2OVd7j2o2FHeE7T8TzpXw.png

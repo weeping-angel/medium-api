@@ -38,10 +38,12 @@ get:
             properties:
                 id: 
                   type: string
+                  description: User ID
                   example: 14d5c41e0264
 
                 following: 
                   type: array
+                  description: List of authors (User IDs) that the given user is following.
                   items: 
                     type: string
                     example:

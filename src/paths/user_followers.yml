@@ -45,10 +45,12 @@ get:
             properties:
                 id: 
                   type: string
+                  description: User ID
                   example: 1985b61817c3
 
                 followers: 
                   type: array
+                  description: List of followers (User IDs).
                   items: 
                     type: string
                     example:
@@ -65,12 +67,15 @@ get:
                 
                 count:
                   type: int
+                  description: Number of followers returned.
                   example: 10
 
                 next:
                   type: string
+                  description: Use this parameter to get more results on the next page.
                   example: 16759d70a68f
                   
                 total_followers:
                   type: int
+                  description: Total number of followers.
                   example: 721

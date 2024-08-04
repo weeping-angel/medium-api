@@ -40,6 +40,7 @@ get:
             properties:
               topfeeds:
                 type: array
+                description: List of Top feed articles (IDs)
                 items: 
                   type: string
                   example:
@@ -70,12 +71,15 @@ get:
               
               count: 
                 type: integer
+                description: Number of article ids returned.
                 example: 25
               
               tag:
                 type: string
+                description: Tag for which the articles are fetched.
                 example: data-science
 
               mode:
                 type: string
+                description: Mode for which the articles are fetched.
                 example: NEW

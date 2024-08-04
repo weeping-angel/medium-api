@@ -31,6 +31,7 @@ get:
             properties:
               latestposts: 
                 type: array
+                description: List of article IDs
                 items: 
                   type: string
                   example:

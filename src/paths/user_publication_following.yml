@@ -24,10 +24,12 @@ get:
             properties:
                 id: 
                   type: string
+                  description: User ID
                   example: 1985b61817c3
 
                 publication_following: 
                   type: array
+                  description: List of Publications (IDs) that the given user is following.
                   items: 
                     type: string
                     example: 
@@ -36,4 +38,5 @@ get:
 
                 count:
                   type: integer
+                  description: Number of publications returned.
                   example: 2

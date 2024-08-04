@@ -22,10 +22,12 @@ get:
             properties:
                 id: 
                   type: string
+                  description: User ID
                   example: 1985b61817c3
                   
                 tags_followed: 
                   type: array
+                  description: An array of tags that the user follows.
                   items: 
                     type: string
                     example: 
@@ -37,4 +39,5 @@ get:
 
                 count:
                   type: integer
+                  description: Number of tags returned.
                   example: 5

@@ -27,6 +27,7 @@ get:
             properties:
               recommended_users:
                 type: array
+                description: List of recommended users (IDs)
                 items:
                   type: string
                   example: 
@@ -37,8 +38,10 @@ get:
                     - "81fd74a2e3ff"
               count: 
                 type: integer
+                description: Number of recommended users
                 example: 5
 
               tag:
                 type: string
+                description: Tag for which the users are recommended
                 example: self-improvement

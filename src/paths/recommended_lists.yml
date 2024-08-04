@@ -27,6 +27,7 @@ get:
             properties:
               recommended_lists:
                 type: array
+                description: An array of recommended Medium Lists (IDs)
                 items:
                   type: string
                   example: 
@@ -37,7 +38,9 @@ get:
                     - "e1cbaa5fcda6"
               count: 
                 type: integer
+                description: Number of recommended Medium Lists
                 example: 5
               tag:
                 type: string
+                description: Tag for which the Medium Lists are recommended
                 example: self-improvement

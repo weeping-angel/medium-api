@@ -26,6 +26,7 @@ get:
                 type: array
                 items: 
                   type: string
+                  description: An array of Medium Tags for the given search query.
                   example:
                     - "blockchain"
                     - "blockchai̇n"
@@ -40,4 +41,5 @@ get:
               
               search_query:
                 type: string
+                description: Search Query
                 example: blockchain

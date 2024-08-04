@@ -40,6 +40,7 @@ get:
             properties:
               recommended_feed:
                 type: array
+                description: List of recommended articles (IDs)
                 items: 
                   type: string
                   example:
@@ -71,14 +72,17 @@ get:
               
               count: 
                 type: integer
+                description: Number of article ids returned.
                 example: 25
               
               tag:
                 type: string
+                description: Tag for which the articles are fetched.
                 example: data-science
 
               page:
                 type: integer
+                description: Page number of the feed.
                 example: 1
 
 

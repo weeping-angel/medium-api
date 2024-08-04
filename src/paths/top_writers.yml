@@ -41,6 +41,7 @@ get:
             properties:
               top_writers: 
                 type: array
+                description: List of top writers (IDs)
                 items: 
                   type: string
                   example:

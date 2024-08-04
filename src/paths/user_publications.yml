@@ -28,6 +28,7 @@ get:
                   properties:
                     admin_in:
                       type: array
+                      description: List of Publications (IDs) where the user is an admin (creator or editor).
                       items:
                         type: string
                         example:
@@ -41,6 +42,7 @@ get:
 
                     writer_in:
                       type: array
+                      description: List of Publications (IDs) where the user is a contributing writer.
                       items:
                         type: string
                         example:

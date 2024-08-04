@@ -42,9 +42,11 @@ get:
             properties:
               id: 
                 type: string
+                description: Article ID
                 example: ff6369938b63
               html: 
                 type: string
+                description: HTML content of the article.
                 example: >
                   <div class="blog">
                     <h1 id="abcd">Article Title<h1>

@@ -23,9 +23,11 @@ get:
             properties:
               id:
                 type: string
+                description: Article ID
                 example: 67fa62fc1971
               markdown: 
                 type: string
+                description: Article in the Markdown format.
                 example: >
                   # Article title
                 

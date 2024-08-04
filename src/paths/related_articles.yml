@@ -23,11 +23,13 @@ get:
             properties:
                 id: 
                   type: string
+                  description: Given Article's ID
                   example: 67fa62fc1971
                 related_articles: 
                   type: array
                   items: 
                     type: string
+                    description: An array of Articles (IDs) related to the given article.
                     example:
                       - "edab6cac5c80"
                       - "b84ae866344e"

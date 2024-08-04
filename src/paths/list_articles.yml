@@ -23,10 +23,12 @@ get:
             properties:
               id: 
                 type: string
+                description: List ID
                 example: 3d8f744f5370
 
               list_articles:
                 type: array
+                description: An array of Article IDs present in the Medium List.
                 items:
                   type: str
                   example:

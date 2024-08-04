@@ -23,11 +23,13 @@ get:
             properties:
                 id: 
                   type: string
+                  description: Given Article's ID
                   example: 67fa62fc1971
                 recommended_articles: 
                   type: array
                   items: 
                     type: string
+                    description: An array of Article IDs recommended by Medium for the given article.
                     example:
                       - "dd44714e619a"
                       - "cd14232a781c"

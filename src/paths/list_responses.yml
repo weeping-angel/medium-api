@@ -23,10 +23,12 @@ get:
             properties:
               id: 
                 type: string
+                description: List ID
                 example: 3d8f744f5370
 
               responses:
                 type: array
+                description: An array of Response/Comments (ids) on the Medium List.
                 items:
                   type: string
                   example: 

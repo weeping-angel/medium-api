@@ -24,6 +24,7 @@ get:
             properties:
               articles: 
                 type: array
+                description: An array of Medium Articles (IDs) for the given search query.
                 items: 
                   type: string
                   example:
@@ -40,4 +41,5 @@ get:
               
               search_query:
                 type: string
+                description: Search Query
                 example: startup

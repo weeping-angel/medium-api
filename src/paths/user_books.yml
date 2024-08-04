@@ -27,9 +27,11 @@ get:
             properties:
               id: 
                 type: string
+                description: User ID
                 example: 6e2475a6e38a
               books:
                 type: array
+                description: List of books published by the user.
                 items:
                   type: object
                   example:

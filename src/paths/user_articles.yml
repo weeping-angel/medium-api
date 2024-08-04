@@ -3,7 +3,12 @@ get:
   tags:
     - User
   description: >
-    Returns the list of articles (`article_ids`) written by the given user.
+    Returns a list of `article_ids` written by a specified user, 
+    with a maximum of 500 `article_ids` per request. 
+
+
+    If the user has published over 500 articles, use the `next` query string 
+    parameter in subsequent API calls to retrieve additional articles.
 
   parameters:
     - name: user_id
@@ -12,7 +17,16 @@ get:
       description: Unique hash id assigned to every single Medium user.
       schema:
         type: string
-        example: "1985b61817c3"
+        example: "6e2475a6e38a"
+    
+    - name: next
+      in: query
+      required: false
+      description: Use this parameter to get more results on the next page.
+      schema:
+        type: string
+        example: "1625519209064"
+
   responses:
     '200':
       description: OK
@@ -23,21 +37,29 @@ get:
             properties:
                 id:
                   type: string
-                  example: "1985b61817c3"
+                  description: User ID
+                  example: "6e2475a6e38a"
                 associated_articles: 
                   type: array
+                  description: List of article IDs associated with the user.
                   items: 
                     type: string
                     example: 
-                      - "562c5821b5f0"
-                      - "95f4919cc39c"
-                      - "077229e514a3"
-                      - "c9a4be35cb93"
-                      - "05a740c035cc"
+                      - "81adea1a7973"
+                      - "f62685b42923"
+                      - "5105fc08e749"
+                      - "6c2d076d2e82"
+                      - "6fe20446d139"
 
                 count:
                   type: integer
+                  description: Number of articles returned.
                   example: 5
+
+                next:
+                  type: string
+                  description: Use this parameter to get more results on the next page.
+                  example: "1625519709163"
 
 
     

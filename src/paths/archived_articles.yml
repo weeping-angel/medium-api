@@ -50,6 +50,7 @@ get:
             properties:
               archived_articles:
                 type: array
+                description: List of archived article IDs
                 items:
                   type: string
                   example: 
@@ -60,20 +61,25 @@ get:
                     - "5e21f7f5ffd8"
               count: 
                 type: integer
+                description: Number of articles ids returned.
                 example: 5
 
               tag:
                 type: string
+                description: Tag for which the articles are fetched.
                 example: self-improvement
 
               year:
                 type: string
+                description: Year of the articles.
                 example: "2023"
 
               month:
                 type: string
+                description: Month of the articles.
                 example: "jun"
 
               next:
                 type: string
+                description: Use this parameter to get more results on the next page.
                 example: "MzJiOWVmZWNjYzRlOjoxNjg4MTUzNjQzMzY4"

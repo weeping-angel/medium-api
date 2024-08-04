@@ -63,63 +63,84 @@ get:
             properties:
               id: 
                 type: string
+                description: User ID
                 example: 1985b61817c3
               username: 
                 type: string
+                description: An unique name chosen by every single Medium user.
                 example: nishu-jain
               fullname: 
                 type: string
+                description: Full name of the user.
                 example: Nishu Jain
               bio: 
                 type: string
+                description: A short description about the user.
                 example: Obsessed with Tech Biz Arts & Words; Does NOT dumb down the writing; Skilled Wordsmith; Delivers the best
               top_writer_in:
                 type: array
+                description: List of tags in which the user is a Top Writer.
                 items:
                   type: string
                   example: programming
               followers_count: 
                 type: integer
                 format: int32
+                description: Number of followers the user has.
                 example: 450
               following_count: 
                 type: integer
                 format: int32
+                description: Number of authors the user is following.
                 example: 4
               publication_following_count:
                 type: integer
                 format: int32
+                description: Number of publications the user is following.
                 example: 2
               twitter_username: 
                 type: string
+                description: Twitter (X) username of the user.
                 example: one_anachronism
               is_writer_program_enrolled: 
                 type: boolean
+                description: Whether the user is enrolled in the Medium Partner Program.
+                example: true
               is_suspended: 
                 type: boolean
+                description: Whether the user is suspended or not.
                 example: false
               has_list:
                 type: boolean
+                description: Whether the user has created Lists.
                 example: true
               is_book_author:
                 type: boolean
+                description: Whether the user is a Medium-verified book author.
                 example: false
               allow_notes:
                 type: boolean
+                description: Whether the user has allowed notes on their articles.
+                example: true
               medium_member_at:
                 type: string
+                description: Date when the user became a Medium Member.
                 example: "2020-06-24 16:05:46"
               image_url: 
                 type: string
+                description: Profile image of the user (URL).
                 example: https://miro.medium.com/1*C92Hx7k9nRM7TPlrmhgW9w.jpeg
               logo_image_url:
                 type: string
+                description: Logo image of the user (URL).
                 example: https://miro.medium.com/1*jp6zL2GND2FnDy1WGZOdpQ.png
               bg_image_url:
                 type: string
+                description: Background image of the user (URL).
                 example: https://miro.medium.com/1*5EKkWUnrRoveFz88dcWP4Q.png
               tipping_link:
                 type: string
+                description: A link where you can tip the Medium author.
                 example: https://www.paypal.com/paypalme/sanskarjain1997
               
 

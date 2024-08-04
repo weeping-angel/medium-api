@@ -25,10 +25,12 @@ get:
             properties:
                 id: 
                   type: string
+                  description: Article ID
                   example: 67fa62fc1971
 
                 responses: 
                   type: array
+                  description: List of Response IDs associated with the article. Responses are also known as Comments.
                   items: 
                     type: string
                     example:

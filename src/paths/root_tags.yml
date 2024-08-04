@@ -22,6 +22,7 @@ get:
             properties:
               root_tags:
                 type: array
+                description: List of root tags
                 items:
                   type: string
                   example: 
@@ -30,4 +31,5 @@ get:
                     - work
               count: 
                 type: integer
+                description: Number of root tags
                 example: 3

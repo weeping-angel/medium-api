@@ -25,45 +25,58 @@ get:
             properties:
               id: 
                 type: string
+                description: Publication ID
                 example: 98111c9905da
               name: 
                 type: string
+                description: Name of the publication.
                 example: Towards AI
               tagline: 
                 type: string
+                description: Tagline of the publication.
                 example: The World's Leading AI and Technology Publication
               description: 
                 type: string
+                description: Description of the publication.
                 example: Towards AI is the world's leading AI and technology publication. Publishing unbiased AI and technology-related articles. Read by thought-leaders and decision-makers around the world.
               tags: 
                 type: array
+                description: Tags of the publication.
                 items: 
                   type: string
                   example: ARTIFICIAL INTELLIGENCE
               followers: 
                 type: integer
                 format: int32
+                description: Number of followers of the publication.
                 example: 25260
               instagram_username: 
                 type: string
+                description: Instagram username of the publication.
                 example: towards_ai
               facebook_pagename: 
                 type: string
+                description: Facebook Page name of the publication.
                 example: towardsAl
               url: 
                 type: string
+                description: URL of the publication.
                 example: pub.towardsai.net
               slug: 
                 type: string
+                description: Slug of the publication.
                 example: towards-artificial-intelligence
               twitter_username: 
                 type: string
+                description: Twitter (X) username of the publication.
                 example: towards_AI
               creator:
                 type: string
+                description: Creator (id) of the publication.
                 example: 8a819983d566
               editors:
                 type: array
+                description: List of Editors (ids) of the publication. 
                 items:
                   type: string
                   example: aea8a19ea239

@@ -22,9 +22,11 @@ get:
             properties:
                 id:
                   type: string
+                  description: User ID
                   example: "1985b61817c3"
                 top_articles: 
                   type: array
+                  description: List of top 10 articles on the user's profile.
                   items: 
                     type: string
                     example:

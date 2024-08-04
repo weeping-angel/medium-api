@@ -32,6 +32,7 @@ get:
                 type: array
                 items: 
                   type: string
+                  description: List of Articles (ids) published within the publication.
                   example:
                     - "638fb16c5092"
                     - "8100fa230c7d"
@@ -61,12 +62,15 @@ get:
 
               publication_id:
                 type: string
+                description: Publication ID
                 example: 98111c9905da
 
               from:
                 type: string
+                description: Date and time before which the articles are fetched.
                 example: "2022-08-13 03:08:16"
 
               to:
                 type: string
+                description: Date and time after which the articles are fetched.
                 example: "2022-08-05 12:02:25"

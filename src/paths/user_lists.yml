@@ -26,10 +26,12 @@ get:
             properties:
               id:
                 type: string
+                description: User ID
                 example: 5142451174a3
                 
               lists: 
                 type: array
+                description: An array of Medium Lists (IDs) created by the user.
                 items: 
                   type: string
                   example:
