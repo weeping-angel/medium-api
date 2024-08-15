@@ -1,5 +1,4 @@
 import os
-import pytest
 import random
 
 from medium_api import Medium

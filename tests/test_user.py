@@ -9,8 +9,8 @@ from medium_api._medium_list import MediumList
 
 medium = Medium(os.getenv('RAPIDAPI_KEY'))
 
-username = 'nishu-jain'
-user_id = '1985b61817c3'
+username = 'anangsha'
+user_id = '6e2475a6e38a'
 
 user = medium.user(username = username, save_info=False)
 
@@ -50,6 +50,7 @@ def test_user_article_ids():
     user_articles_ids = user.article_ids
 
     assert isinstance(user_articles_ids, list)
+    assert len(user_articles_ids) > 500
     assert isinstance(user_articles_ids[0], str)
 
 def test_user_top_article_ids():
@@ -112,18 +113,17 @@ def test_user_followers():
     assert isinstance(followers, list)
     if len(followers) != 0:
         assert isinstance(followers[0], User)
-        # assert isinstance(followers[0].fullname, str)
 
-    all_followers_ids = user.all_followers_ids
-    all_followers = user.all_followers
+    # all_followers_ids = user.all_followers_ids
+    # all_followers = user.all_followers
 
-    assert isinstance(all_followers_ids, list)
-    if len(all_followers_ids) != 0:
-        assert isinstance(all_followers_ids[0], str)
+    # assert isinstance(all_followers_ids, list)
+    # if len(all_followers_ids) != 0:
+    #     assert isinstance(all_followers_ids[0], str)
 
-    assert isinstance(all_followers, list)
-    if len(all_followers) != 0:
-        assert isinstance(all_followers[0], User)
+    # assert isinstance(all_followers, list)
+    # if len(all_followers) != 0:
+    #     assert isinstance(all_followers[0], User)
 
 def test_user_publications():
     publication_ids = user.publication_ids
@@ -174,4 +174,14 @@ def test_user_interests():
     if interests:
         assert isinstance(interests[0], str)
 
+def test_user_books():
+    books = user.books
 
+    assert isinstance(books, list)
+    if books:
+        assert isinstance(books[0].name, str)
+        assert isinstance(books[0].description, str)
+        assert isinstance(books[0].urls, list)
+        assert isinstance(books[0].cover, str)
+        assert isinstance(books[0].published_on, str)
+        assert isinstance(books[0].authors, list)

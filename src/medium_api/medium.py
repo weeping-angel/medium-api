@@ -13,6 +13,9 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from medium_api._topfeeds import TopFeeds
 from medium_api._recommended_feed import RecommendedFeed
+from medium_api._recommended_users import RecommendedUsers
+from medium_api._recommended_lists import RecommendedLists
+from medium_api._archived_articles import ArchivedArticles
 from medium_api._user import User
 from medium_api._article import Article, SAMPLE_STYLE_FILE
 from medium_api._publication import Publication
@@ -94,6 +97,8 @@ class Medium:
             print(f'[ERROR]: Response: {data}')
             return {}, status
 
+    # Main Functions
+
     def user(self, username:str = None, user_id:str = None, save_info:bool = True):
         """For getting the Medium User Object
 
@@ -128,7 +133,7 @@ class Medium:
             You have to provide either `username` or `user_id` to get the User object. You
             cannot omit both. 
         """
-        if user_id is not None:
+        if user_id:
             return User(user_id = user_id, 
                         get_resp = self.__get_resp, 
                         fetch_articles=self.fetch_articles,
@@ -136,7 +141,8 @@ class Medium:
                         fetch_publications=self.fetch_publications,
                         fetch_lists=self.fetch_lists,
                         save_info = save_info)
-        elif username is not None:
+        
+        elif username:
             resp, _ = self.__get_resp(f'/user/id_for/{str(username)}')
             user_id = resp['id']
             return User(user_id = user_id, 
@@ -240,7 +246,7 @@ class Medium:
             You cannot omit both. 
 
         """
-        if publication_id is not None:
+        if publication_id:
             return Publication(publication_id = publication_id, 
                         get_resp = self.__get_resp, 
                         fetch_articles=self.fetch_articles,
@@ -249,7 +255,7 @@ class Medium:
                         fetch_lists=self.fetch_lists,
                         save_info = save_info)
 
-        elif publication_slug is not None:
+        elif publication_slug:
             resp, _ = self.__get_resp(f'/publication/id_for/{str(publication_slug)}')
             publication_id = resp['publication_id']
             return Publication(publication_id = publication_id, 
@@ -263,6 +269,8 @@ class Medium:
             print('[ERROR]: Missing parameter: Please provide "publication_id" or "publication_slug" to call this function')
             return None
 
+    # Platform/Misc Functions
+    
     def top_writers(self, topic_slug:str, count:int = 100):
         """For getting the Medium's TopWriters Object
 
@@ -377,6 +385,145 @@ class Medium:
                         fetch_lists=self.fetch_lists,
                     )
     
+    def related_tags(self, given_tag:str):
+        """For getting the list of related tags
+
+            Typical usage example:
+
+            ``related_tags = medium.related_tag(given_tag="blockchain")``
+
+        Args:
+            given_tag (str): It's a string (lowercase, hyphen-separated) which specifies
+                             a category/niche as classified by the Medium Platform.
+
+        Returns:
+            list[str]: List of Related Tags (strings).
+
+        """
+        resp, _ = self.__get_resp(f'/related_tags/{given_tag}')
+
+        return resp['related_tags']
+    
+    def tag_info(self, tag:str):
+        """To get the tag-related information
+
+            Typical usage example:
+
+            ``blockchain_tag = medium.tag_info(given_tag="blockchain")``
+
+        Args:
+            tag (str): It's a string (lowercase, hyphen-separated) which specifies
+                       a category/niche as classified by the Medium Platform.
+
+        Returns:
+            dict: Contains tag-related information
+
+        """
+        resp, _ = self.__get_resp(f'/tag/{tag}')
+
+        return resp
+    
+    def recommended_users(self, tag:str):
+        """For getting the Medium's RecommendedUsers Object
+
+            Typical usage example:
+
+            ``recommended_users = medium.recommended_users(tag="data-science")``
+
+        Args:
+            tag (str): It's a string (smallcase, hyphen-separated) which specifies
+                a category/niche as classified by the Medium Platform.
+
+        Returns:
+            RecommendedUsers: Medium API `RecommendedUsers` Object (medium_api._recommended_users.RecommendedUsers) 
+            that can be used to access all the properties and methods, for given `tag`.
+
+        """
+        return RecommendedUsers(tag=tag, 
+                                get_resp=self.__get_resp, 
+                                fetch_articles=self.fetch_articles,
+                                fetch_users=self.fetch_users,
+                                fetch_publications=self.fetch_publications,
+                                fetch_lists=self.fetch_lists,
+                            )
+    
+    def recommended_lists(self, tag:str):
+        """For getting the Medium's RecommendedLists Object
+
+            Typical usage example:
+
+            ``recommended_lists = medium.recommended_lists(tag="artificial-intelligence")``
+
+        Args:
+            tag (str): It's a string (smallcase, hyphen-separated) which specifies
+                a category/niche as classified by the Medium Platform.
+
+        Returns:
+            RecommendedLists: Medium API `RecommendedLists` Object (medium_api._recommended_lists.RecommendedLists) 
+            that can be used to access all the properties and methods, for given `tag`.
+
+        """
+        return RecommendedLists(tag=tag, 
+                                get_resp=self.__get_resp, 
+                                fetch_articles=self.fetch_articles,
+                                fetch_users=self.fetch_users,
+                                fetch_publications=self.fetch_publications,
+                                fetch_lists=self.fetch_lists,
+                            )
+    
+    def archived_articles(self, tag:str, count:int = 20, year:str = "", month:str = "", next:str = ""):
+        """
+        For getting the Medium's ArchivedArticles Object
+            
+            Typical usage example:
+
+            ``archived_articles = medium.archived_articles(tag="artificial-intelligence", count=100)``
+        
+        Args:
+            tag (str): It's a string (smallcase, hyphen-separated) which specifies
+                a category/niche as classified by the Medium Platform.
+
+            count (int): Number of archived articles you want to fetch (less than 500).
+
+            year (str, optional): It's the year for which you want to fetch the archived articles.
+                If not provided, it fetches articles for 'all_years'.
+
+            month (str, optional): It's the month for which you want to fetch the archived articles.
+                If not provided, it fetches the articles for 'all_months'.
+
+            next (str, optional): It's the hash id of the last article fetched in the previous call.
+                If provided, it fetches the next set of articles.
+
+        Returns:
+            ArchivedArticles: Medium API `ArchivedArticles` Object (medium_api._archived_articles.ArchivedArticles) 
+            that can be used to access all the properties and methods, for given `tag`.
+
+        """
+        return ArchivedArticles(tag=tag, count=count, year=year, month=month, next=next,
+                                get_resp=self.__get_resp, 
+                                fetch_articles=self.fetch_articles,
+                                fetch_users=self.fetch_users,
+                                fetch_publications=self.fetch_publications,
+                                fetch_lists=self.fetch_lists,
+                            )
+    
+    def root_tags(self):
+        """To get the list of root tags
+
+            Typical usage example:
+
+            ``root_tags = medium.root_tags()``
+
+        Returns:
+            list[str]: List of Root Tags (strings).
+
+        """
+        resp, _ = self.__get_resp(f'/root_tags')
+
+        return resp['root_tags']
+
+    # Search Functions
+
     def search_articles(self, query:str, save_info:bool=False):
         """To get the list of `Articles` for the given search query, from the Medium Platform.
 
@@ -539,43 +686,7 @@ class Medium:
 
         return tags if tags else []
 
-    def related_tags(self, given_tag:str):
-        """For getting the list of related tags
-
-            Typical usage example:
-
-            ``related_tags = medium.related_tag(given_tag="blockchain")``
-
-        Args:
-            given_tag (str): It's a string (lowercase, hyphen-separated) which specifies
-                             a category/niche as classified by the Medium Platform.
-
-        Returns:
-            list[str]: List of Related Tags (strings).
-
-        """
-        resp, _ = self.__get_resp(f'/related_tags/{given_tag}')
-
-        return resp['related_tags']
-    
-    def tag_info(self, tag:str):
-        """To get the tag-related information
-
-            Typical usage example:
-
-            ``blockchain_tag = medium.tag_info(given_tag="blockchain")``
-
-        Args:
-            tag (str): It's a string (lowercase, hyphen-separated) which specifies
-                       a category/niche as classified by the Medium Platform.
-
-        Returns:
-            dict: Contains tag-related information
-
-        """
-        resp, _ = self.__get_resp(f'/tag/{tag}')
-
-        return resp
+    # Extra Functions
 
     def fetch_articles(self, articles:list, content:bool = False, markdown:bool = False, 
                        html:bool = False, html_fullpage:bool = True, html_style_file:str = SAMPLE_STYLE_FILE):

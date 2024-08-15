@@ -91,6 +91,8 @@ class User:
         self.bg_image_url = None
         self.logo_image_url = None
 
+        self.__books = None
+
         if save_info:
             self.save_info()
 
@@ -130,6 +132,9 @@ class User:
         if self.__article_ids is None:
             resp, _ = self.__get_resp(f'/user/{self._id}/articles')
             self.__article_ids = list(resp['associated_articles'])
+            while resp['next']:
+                resp, _ = self.__get_resp(f'/user/{self._id}/articles?next={resp["next"]}')
+                self.__article_ids += list(resp['associated_articles'])
 
         return self.__article_ids
     
@@ -280,6 +285,19 @@ class User:
         return self.__publication_following_ids
     
     @property
+    def books(self):
+        class UserBook(object): 
+            def __init__(self, my_dict): 
+                for key in my_dict: 
+                    setattr(self, key, my_dict[key]) 
+
+        if self.__books is None:
+            resp, _ = self.__get_resp(f'/user/{self._id}/books')
+            self.__books = list([UserBook(book) for book in resp['books']])
+        
+        return self.__books
+    
+    @property
     def publication_following(self):
         """To get a list of `Publication` objects that the give user is followings
         
@@ -319,7 +337,8 @@ class User:
     
     @property
     def all_followers_ids(self):
-        """To get a list of `user_ids` of user's followers (all)
+        """To get a list of `user_ids` of user's followers (all). 
+        This may take some time if the user has a lot of followers.
         
         Returns:
             list[str]: A list of `user_ids` (str) of the user's followers (all).
