@@ -483,7 +483,7 @@ class Medium:
             tag (str): It's a string (smallcase, hyphen-separated) which specifies
                 a category/niche as classified by the Medium Platform.
 
-            count (int): Number of archived articles you want to fetch (less than 500).
+            count (int): Number of archived articles you want to fetch.
 
             year (str, optional): It's the year for which you want to fetch the archived articles.
                 If not provided, it fetches articles for 'all_years'.

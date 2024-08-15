@@ -94,6 +94,14 @@ Get User's Lists
 	<script src="https://gist.github.com/weeping-angel/bd3e881e86c41222f2f7b88ff5b40529.js?file=get_user_lists.py"></script>
 	<script src="https://gist.github.com/weeping-angel/bd3e881e86c41222f2f7b88ff5b40529.js?file=get_user_lists_output.txt"></script>
 
+Get User's Books
+----------------
+
+.. raw:: html
+
+	<script src="https://gist.github.com/weeping-angel/5358f7d8e991fe10a0418c6b2569baed.js?file=get_user_books.py"></script>
+	<script src="https://gist.github.com/weeping-angel/5358f7d8e991fe10a0418c6b2569baed.js?file=get_user_books_output.txt"></script>
+
 Article
 ~~~~~~~~~
 
@@ -219,8 +227,16 @@ Get Publication's Newsletter
 Misc
 ~~~~~
 
+Get Archived Articles
+---------------------
+
+.. raw:: html
+
+	<script src="https://gist.github.com/weeping-angel/4409bc93122cad2a8eb9f9e9aa823355.js?file=get_archived_articles.py"></script>
+	<script src="https://gist.github.com/weeping-angel/4409bc93122cad2a8eb9f9e9aa823355.js?file=get_archived_articles_output.txt"></script>
+
 Get Recommended Feed
-------------
+--------------------
 
 .. raw:: html
 
@@ -268,6 +284,29 @@ Get Tag Info
 	<script src="https://gist.github.com/weeping-angel/65d7f3c442d498c9a9cf7f2d8f029465.js?file=get_tag_info.py"></script>
 	<script src="https://gist.github.com/weeping-angel/65d7f3c442d498c9a9cf7f2d8f029465.js?file=get_tag_info_output.txt"></script>
 
+Get Root Tags
+-------------
+
+.. raw:: html
+
+	<script src="https://gist.github.com/weeping-angel/0859eba0b117edd6cd5d30d8162ff9e9.js?file=get_root_tags.py"></script>
+	<script src="https://gist.github.com/weeping-angel/0859eba0b117edd6cd5d30d8162ff9e9.js?file=get_root_tags_output.txt"></script>
+
+Get Recommended Users
+---------------------
+
+.. raw:: html
+
+	<script src="https://gist.github.com/weeping-angel/181f21d458c0c4af5d6668e2969fa952.js?file=get_recommended_users.py"></script>
+	<script src="https://gist.github.com/weeping-angel/181f21d458c0c4af5d6668e2969fa952.js?file=get_recommended_users_output.txt"></script>
+
+Get Recommended Lists
+---------------------
+
+.. raw:: html
+
+	<script src="https://gist.github.com/weeping-angel/b982aa71e3e46d8b0af8e81fd25da301.js?file=get_recommended_lists.py"></script>
+	<script src="https://gist.github.com/weeping-angel/b982aa71e3e46d8b0af8e81fd25da301.js?file=get_recommended_lists_output.txt"></script>
 
 List
 ~~~~~

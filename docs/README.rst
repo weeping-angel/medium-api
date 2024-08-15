@@ -82,31 +82,26 @@ For more examples, see `Usage <https://medium-api.readthedocs.io/en/latest/usage
 How to get your RapidAPI Key
 ----------------------------
 
-.. image:: https://img.youtube.com/vi/-MM1C6mb-mc/0.jpg
-        :align: center
-        :target: https://www.youtube.com/watch?v=-MM1C6mb-mc
-        :alt: How to get your RapidAPI Key (Subscribe to Medium API)
-
 Steps:
 
         - Sign up on `RapidAPI Platform <https://rapidapi.com/auth/sign-up>`_
         - Subscribe to our `Unofficial Medium-API <http://hub.mediumapi.com/pricing>`_
-        - Go to the API's *Endpoints* tab on the `RapidAPI Hub listing <http://hub.mediumapi.com>`_ and select the API key from the **X-RapidAPI-Key** dropdown under *Header Parameters* section.
+        - Click on any of API's Endpoints on the `RapidAPI Hub listing <http://hub.mediumapi.com>` and select the API key from the **X-RapidAPI-Key** header under *App* section.
 
-For more details, see the following links:
+For more detailed step by step guide, see:
 
-        - https://rapidapi.com/blog/api-glossary/api-key/
-        - https://docs.rapidapi.com/docs/keys
+        - https://mediumapi.com/how-to-subscribe-to-medium-api.html
 
 Features
 --------
 
 Extract/Scrape/Fetch/Get:
   
-    - Medium User information and User-written Articles
+    - Medium User's information and User-written Articles
     - Medium User's Followers and Following
+    - Medium User's Publications and Books
     - Medium Articles information
-    - Medium Article's Textual Content and Markdown
+    - Medium Article's Textual Content and Markdown and HTML
     - Medium Article's Responses/Comments 
     - Medium Publications information
     - Medium Publication's Articles
@@ -114,6 +109,7 @@ Extract/Scrape/Fetch/Get:
     - Medium's Top Writers
     - Medium's Topfeeds (Trending, Latest, All time best, best of year/month/week)
     - Medium's LatestPosts (distributed articles)
+    - Medium's Recommended Feed, Users and Lists
 
 
 Documentation

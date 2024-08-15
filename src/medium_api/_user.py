@@ -29,6 +29,7 @@ class User:
         - user.publications
         - user.list_ids
         - user.lists
+        - user.books
 
         - user.save_info()
         - user.fetch_articles()
