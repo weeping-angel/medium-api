@@ -24,6 +24,7 @@ get:
                   type: string
                   description: User ID
                   example: "1985b61817c3"
+
                 top_articles: 
                   type: array
                   description: List of top 10 articles on the user's profile.
@@ -40,3 +41,8 @@ get:
                       - "6c34414177bd"
                       - "9867ba29a923"
                       - "65a63626c04e"
+
+                total_pinned_articles:
+                  type: integer
+                  description: Number of articles pinned by the user.
+                  example: 1

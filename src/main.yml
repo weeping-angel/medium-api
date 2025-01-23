@@ -8,7 +8,7 @@ info:
   x-logo:
     url: https://mediumapi.com/imgs/logo/logo-dark-color.svg
   description: >
-    Our Unofficial Medium API helps you to quickly extract data from Medium's Website (https://medium.com). 
+    Medium API (Unofficial) helps you to quickly fetch data from Medium's Website (https://medium.com). 
     
     
     You can gather data related to users, publications, articles (including its textual content), latest posts & top writers within a topic/niche, etc…
@@ -30,7 +30,7 @@ tags:
 
 externalDocs:
   description: Read more
-  url: 'https://mediumapi.com/documentation.html'
+  url: 'https://mediumapi.com/documentation.html?utm_source=swagger_docs&utm_medium=external_docs&utm_campaign=api_reference'
 
 servers:
   - url: https://medium2.p.rapidapi.com

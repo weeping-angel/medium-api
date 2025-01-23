@@ -56,6 +56,11 @@ get:
                   description: Number of articles returned.
                   example: 5
 
+                total_pinned_articles:
+                  type: integer
+                  description: Total number of articles pinned by the user.
+                  example: 2
+                
                 next:
                   type: string
                   description: Use this parameter to get more results on the next page.
