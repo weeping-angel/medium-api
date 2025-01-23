@@ -29,6 +29,7 @@ class User:
         - user.publications
         - user.list_ids
         - user.lists
+        - user.total_pinned_articles
         - user.books
 
         - user.save_info()
@@ -92,6 +93,8 @@ class User:
         self.bg_image_url = None
         self.logo_image_url = None
 
+        self.total_pinned_articles = None # accessible after fetchting article_ids or top_article_ids
+
         self.__books = None
 
         if save_info:
@@ -133,6 +136,7 @@ class User:
         if self.__article_ids is None:
             resp, _ = self.__get_resp(f'/user/{self._id}/articles')
             self.__article_ids = list(resp['associated_articles'])
+            self.total_pinned_articles = resp['total_pinned_articles']
             while resp['next']:
                 resp, _ = self.__get_resp(f'/user/{self._id}/articles?next={resp["next"]}')
                 self.__article_ids += list(resp['associated_articles'])
@@ -240,6 +244,7 @@ class User:
         if self.__top_article_ids is None:
             resp, _ = self.__get_resp(f'/user/{self._id}/top_articles')
             self.__top_article_ids = list(resp['top_articles'])
+            self.total_pinned_articles = resp['total_pinned_articles']
 
         return self.__top_article_ids
 

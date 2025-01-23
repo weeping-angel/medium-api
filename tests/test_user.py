@@ -52,12 +52,14 @@ def test_user_article_ids():
     assert isinstance(user_articles_ids, list)
     assert len(user_articles_ids) > 500
     assert isinstance(user_articles_ids[0], str)
+    assert isinstance(user.total_pinned_articles, int)
 
 def test_user_top_article_ids():
     top_articles_ids = user.top_article_ids
 
     assert isinstance(top_articles_ids, list)
     assert isinstance(top_articles_ids[0], str)
+    assert isinstance(user.total_pinned_articles, int)
 
 def test_user_articles_instances():
     user_articles = user.articles
