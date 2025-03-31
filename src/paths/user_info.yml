@@ -11,6 +11,8 @@ get:
     - Full name
     
     - Bio
+
+    - Tier (FREE, MEMBER or FRIEND)
     
     - Followers count
     
@@ -31,6 +33,8 @@ get:
     - List of tags in which the user is Top Writer
     
     - When did the user become a Medium Member (conditional)
+
+    - When did the user become "Friend of Medium" (conditional)
     
     - Whether the user has Lists (boolean)
     
@@ -77,6 +81,10 @@ get:
                 type: string
                 description: A short description about the user.
                 example: Obsessed with Tech Biz Arts & Words; Does NOT dumb down the writing; Skilled Wordsmith; Delivers the best
+              tier:
+                type: string
+                description: Tier of the user. It can be FREE, MEMBER or FRIEND.
+                example: FRIEND
               top_writer_in:
                 type: array
                 description: List of tags in which the user is a Top Writer.
@@ -126,6 +134,10 @@ get:
                 type: string
                 description: Date when the user became a Medium Member.
                 example: "2020-06-24 16:05:46"
+              friend_since:
+                type: string
+                description: Date when the user became "Friend of Medium".
+                example: "2024-01-10 12:30:21"
               image_url: 
                 type: string
                 description: Profile image of the user (URL).

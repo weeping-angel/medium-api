@@ -20,6 +20,8 @@ get:
     - Published date and time
 
     - Last Modified date and time
+
+    - Boosted date and time
     
     - Clap Count
     
@@ -143,6 +145,10 @@ get:
                 type: string
                 description: Date and time when the article was last modified.
                 example: "2023-06-20 06:37:11"
+              boosted_at: 
+                type: string
+                description: Date and time when the article was Boosted.
+                example: "2023-06-21 08:02:54"
               unique_slug:
                 type: string
                 description: Unique slug assigned to the article.
