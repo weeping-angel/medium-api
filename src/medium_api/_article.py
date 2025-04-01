@@ -76,6 +76,7 @@ class Article:
         self.tags = None
         self.topics = None
         self.last_modified_at = None
+        self.boosted_at = None
         self.reading_time = None
         self.word_count = None
         self.responses_count = None
@@ -124,6 +125,7 @@ class Article:
                 - ``article.tags``
                 - ``article.topics``
                 - ``article.last_modified_at``
+                - ``article.boosted_at``
                 - ``article.reading_time``
                 - ``article.word_count``
                 - ``article.responses_count``
@@ -158,6 +160,7 @@ class Article:
         self.tags = article.get('tags')
         self.topics = article.get('topics')
         self.last_modified_at = datetime.strptime(article['last_modified_at'], '%Y-%m-%d %H:%M:%S') if article.get('last_modified_at') else None
+        self.boosted_at = datetime.strptime(article['boosted_at'], '%Y-%m-%d %H:%M:%S') if article.get('boosted_at') else None
         self.reading_time = article.get('reading_time')
         self.word_count = article.get('word_count')
         self.responses_count = article.get('responses_count')

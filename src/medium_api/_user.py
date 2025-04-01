@@ -79,10 +79,12 @@ class User:
         self.followers_count = None
         self.following_count = None
         self.bio = None
+        self.tier = None
         self.twitter_username = None
         self.is_writer_program_enrolled = None
         self.is_suspended = None
         self.medium_member_at = None
+        self.friend_since = None
         self.allow_notes = None
         self.image_url = None
         self.top_writer_in = None
@@ -491,6 +493,7 @@ class User:
                 - ``user.followers_count``
                 - ``user.following_count``
                 - ``user.bio``
+                - ``user.tier``
                 - ``user.twitter_username``
                 - ``user.is_writer_program_enrolled``
                 - ``user.is_suspended``
@@ -498,6 +501,7 @@ class User:
                 - ``user.is_book_author``
                 - ``user.allow_notes``
                 - ``user.medium_member_at``
+                - ``user.friend_since``
                 - ``user.top_writer_in``
                 - ``user.image_url``
                 - ``user.tipping_link``
@@ -512,6 +516,7 @@ class User:
         self.followers_count = user.get('followers_count')
         self.following_count = user.get('following_count')
         self.bio = user.get('bio')
+        self.tier = user.get('tier')
         self.twitter_username = user.get('twitter_username')
         self.is_writer_program_enrolled = user.get("is_writer_program_enrolled")
         self.image_url = user.get('image_url')
@@ -526,6 +531,10 @@ class User:
 
         if user.get('medium_member_at'):
             self.medium_member_at = datetime.strptime(user['medium_member_at'], '%Y-%m-%d %H:%M:%S') if user['medium_member_at']!='' else None
+        
+        if user.get('friend_since'):
+            self.friend_since = datetime.strptime(user['friend_since'], '%Y-%m-%d %H:%M:%S') if user['friend_since']!='' else None
+
         self.top_writer_in = list(user['top_writer_in']) if user.get('top_writer_in') else []
 
         if self.fullname is None:

@@ -45,6 +45,7 @@ def test_article_info():
 
     assert isinstance(article.published_at, datetime)
     assert isinstance(article.last_modified_at, datetime)
+    assert isinstance(article.boosted_at, datetime) or article.boosted_at == None
 
     assert isinstance(article.author, User)
 

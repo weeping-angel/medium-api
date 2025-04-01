@@ -28,6 +28,8 @@ def test_user_info():
     assert isinstance(user.username, str)
     assert isinstance(user.twitter_username, str)
     assert isinstance(user.bio, str)
+    assert isinstance(user.tier, str)
+
     assert isinstance(user.image_url, str)
     assert isinstance(user.tipping_link, str)
     assert isinstance(user.bg_image_url, str)
@@ -38,6 +40,7 @@ def test_user_info():
     assert isinstance(user.publication_following_count, int)
     
     assert isinstance(user.medium_member_at, datetime) or user.medium_member_at is None
+    assert isinstance(user.friend_since, datetime) or user.friend_since is None
     assert isinstance(user.top_writer_in, list)
 
     assert isinstance(user.is_writer_program_enrolled, bool)
@@ -45,6 +48,8 @@ def test_user_info():
     assert isinstance(user.allow_notes, bool)
     assert isinstance(user.has_list, bool)
     assert isinstance(user.is_book_author, bool)
+
+    assert user.tier in ['FREE', 'MEMBER', 'FRIEND']
 
 def test_user_article_ids():
     user_articles_ids = user.article_ids
