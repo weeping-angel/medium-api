@@ -6,7 +6,9 @@ get:
     Returns a list of users (`user_ids`) that the given user is following.
 
 
-    Use the `count` query parameter (_optional_) to limit the number of results. (count <= 1500)
+    - Upto 500 results per request.
+
+    - To fetch additional results, use "next" query parameter provided in the previous response.
 
 
     **Note:** This list does not contain the `publication_ids` of the publications that the user is following. To get those, please use _Get User Publication Following_ endpoint (`/user/{user_id}/publication_following`).
@@ -20,13 +22,22 @@ get:
         type: string
         example: 14d5c41e0264
     
-    - name: count
+    - name: next
       in: query
       required: false
-      description: To limit the number of results. (count < 1500)
+      description: >
+        - The `next` parameter is used to paginate through the results.
+
+        - It should be set to the value of the `next` field from the previous response.
+
+        - If you want to get the first page, you can set it to an empty string.
+
+        - The `next` parameter is optional.
+
+        - If you don't provide it, the API will return the first page of results.
       schema:
-        type: int
-        example: 10
+        type: string
+        example: ""
 
   responses:
     '200':
@@ -57,3 +68,17 @@ get:
                       - "cfa71f272740"
                       - "4a142a63b9a0"
                       - "78561519e424"
+
+                count:
+                  type: integer
+                  format: int32
+                  description: Number of user accounts that the given user is following.
+                  example: 10
+
+                next:
+                  type: string
+                  description: >
+                    - This attribute can be used in your next request to get the next page of results.
+                    
+                    - If there are no more results, this attribute will be an empty string.
+                  example: "1485886216373"
