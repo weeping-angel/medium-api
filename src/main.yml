@@ -116,8 +116,8 @@ paths:
     $ref: './paths/archived_articles.yml'
   /recommended_users/{tag}:
     $ref: './paths/recommended_users.yml'
-  /recommended_lists/{tag}:
-    $ref: './paths/recommended_lists.yml'
+  # /recommended_lists/{tag}:
+  #   $ref: './paths/recommended_lists.yml'
 
   # List Endpoints
 
