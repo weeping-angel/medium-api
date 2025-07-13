@@ -4,10 +4,10 @@ get:
     - User
   description: >
     Returns a list of `article_ids` written by a specified user, 
-    with a maximum of 500 `article_ids` per request. 
+    with a maximum of 250 `article_ids` per request. 
 
 
-    If the user has published over 500 articles, use the `next` query string 
+    If the user has published over 250 articles, use the `next` query string 
     parameter in subsequent API calls to retrieve additional articles.
 
   parameters:
