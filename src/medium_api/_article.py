@@ -79,6 +79,8 @@ class Article:
         self.boosted_at = None
         self.reading_time = None
         self.word_count = None
+        self.views = None
+        self.reads = None
         self.responses_count = None
         self.voters = None
         self.lang = None
@@ -163,6 +165,8 @@ class Article:
         self.boosted_at = datetime.strptime(article['boosted_at'], '%Y-%m-%d %H:%M:%S') if article.get('boosted_at') else None
         self.reading_time = article.get('reading_time')
         self.word_count = article.get('word_count')
+        self.views = article.get('views')
+        self.reads = article.get('reads')
         self.responses_count = article.get('responses_count')
         self.voters = article.get('voters')
         self.lang = article.get('lang')

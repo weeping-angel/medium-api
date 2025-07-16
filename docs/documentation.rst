@@ -64,11 +64,11 @@ RecommendedUsers class
 .. autoclass:: medium_api._recommended_users.RecommendedUsers
    :members:
 
-RecommendedLists class
-^^^^^^^^^^^^^^^^^^^^^^
+.. RecommendedLists class
+.. ^^^^^^^^^^^^^^^^^^^^^^
 
-.. autoclass:: medium_api._recommended_lists.RecommendedLists
-   :members:
+.. .. autoclass:: medium_api._recommended_lists.RecommendedLists
+..    :members:
 
 RecommendedFeed class
 ^^^^^^^^^^^^^^^^^^^^^

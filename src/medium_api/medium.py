@@ -14,7 +14,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from medium_api._topfeeds import TopFeeds
 from medium_api._recommended_feed import RecommendedFeed
 from medium_api._recommended_users import RecommendedUsers
-from medium_api._recommended_lists import RecommendedLists
+# from medium_api._recommended_lists import RecommendedLists
 from medium_api._archived_articles import ArchivedArticles
 from medium_api._user import User
 from medium_api._article import Article, SAMPLE_STYLE_FILE
@@ -447,29 +447,29 @@ class Medium:
                                 fetch_lists=self.fetch_lists,
                             )
     
-    def recommended_lists(self, tag:str):
-        """For getting the Medium's RecommendedLists Object
+    # def recommended_lists(self, tag:str):
+    #     """For getting the Medium's RecommendedLists Object
 
-            Typical usage example:
+    #         Typical usage example:
 
-            ``recommended_lists = medium.recommended_lists(tag="artificial-intelligence")``
+    #         ``recommended_lists = medium.recommended_lists(tag="artificial-intelligence")``
 
-        Args:
-            tag (str): It's a string (smallcase, hyphen-separated) which specifies
-                a category/niche as classified by the Medium Platform.
+    #     Args:
+    #         tag (str): It's a string (smallcase, hyphen-separated) which specifies
+    #             a category/niche as classified by the Medium Platform.
 
-        Returns:
-            RecommendedLists: Medium API `RecommendedLists` Object (medium_api._recommended_lists.RecommendedLists) 
-            that can be used to access all the properties and methods, for given `tag`.
+    #     Returns:
+    #         RecommendedLists: Medium API `RecommendedLists` Object (medium_api._recommended_lists.RecommendedLists) 
+    #         that can be used to access all the properties and methods, for given `tag`.
 
-        """
-        return RecommendedLists(tag=tag, 
-                                get_resp=self.__get_resp, 
-                                fetch_articles=self.fetch_articles,
-                                fetch_users=self.fetch_users,
-                                fetch_publications=self.fetch_publications,
-                                fetch_lists=self.fetch_lists,
-                            )
+    #     """
+    #     return RecommendedLists(tag=tag, 
+    #                             get_resp=self.__get_resp, 
+    #                             fetch_articles=self.fetch_articles,
+    #                             fetch_users=self.fetch_users,
+    #                             fetch_publications=self.fetch_publications,
+    #                             fetch_lists=self.fetch_lists,
+    #                         )
     
     def archived_articles(self, tag:str, count:int = 20, year:str = "", month:str = "", next:str = ""):
         """

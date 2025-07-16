@@ -275,6 +275,10 @@ class User:
         if self.__following_ids is None:
             resp, _ = self.__get_resp(f'/user/{self._id}/following')
             self.__following_ids = list(resp['following'])
+
+            while resp['next']:
+                resp, _ = self.__get_resp(f'/user/{self._id}/following?next={resp["next"]}')
+                self.__following_ids += list(resp['following'])
         
         return self.__following_ids
 

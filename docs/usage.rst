@@ -300,13 +300,13 @@ Get Recommended Users
 	<script src="https://gist.github.com/weeping-angel/181f21d458c0c4af5d6668e2969fa952.js?file=get_recommended_users.py"></script>
 	<script src="https://gist.github.com/weeping-angel/181f21d458c0c4af5d6668e2969fa952.js?file=get_recommended_users_output.txt"></script>
 
-Get Recommended Lists
----------------------
+.. Get Recommended Lists
+.. ---------------------
 
-.. raw:: html
+.. .. raw:: html
 
-	<script src="https://gist.github.com/weeping-angel/b982aa71e3e46d8b0af8e81fd25da301.js?file=get_recommended_lists.py"></script>
-	<script src="https://gist.github.com/weeping-angel/b982aa71e3e46d8b0af8e81fd25da301.js?file=get_recommended_lists_output.txt"></script>
+.. 	<script src="https://gist.github.com/weeping-angel/b982aa71e3e46d8b0af8e81fd25da301.js?file=get_recommended_lists.py"></script>
+.. 	<script src="https://gist.github.com/weeping-angel/b982aa71e3e46d8b0af8e81fd25da301.js?file=get_recommended_lists_output.txt"></script>
 
 List
 ~~~~~

@@ -33,6 +33,8 @@ def test_article_info():
     assert isinstance(article.word_count, int)
     assert isinstance(article.responses_count, int)
     assert isinstance(article.voters, int)
+    assert isinstance(article.views, int)
+    assert isinstance(article.reads, int)
 
     assert isinstance(article.is_series, bool)
     assert isinstance(article.is_locked, bool)
