@@ -28,6 +28,10 @@ get:
     - Voter Count
     
     - Word Count
+
+    - Views
+
+    - Reads
     
     - Response Count
     
@@ -121,6 +125,16 @@ get:
                 format: int32
                 description: Number of people who clapped on the article.
                 example: 141
+              views:
+                type: integer
+                format: int32
+                description: Number of views on the article.
+                example: 1000
+              reads:
+                type: integer
+                format: int32
+                description: Number of reads on the article.
+                example: 800
               is_series:
                 type: boolean
                 description: Whether the article is part of a series or not.
