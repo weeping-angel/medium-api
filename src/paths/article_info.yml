@@ -3,48 +3,44 @@ get:
   tags:
     - Article
   description: >
-    Returns article-related information such as 
+    Returns article-related information such as
 
     - Title
-    
+
     - Subtitle
 
     - Author (ID)
-    
+
     - Tags
-    
+
     - Topics (assigned by Medium)
-    
+
     - Publication (ID)
-    
+
     - Published date and time
 
     - Last Modified date and time
 
     - Boosted date and time
-    
+
     - Clap Count
-    
+
     - Voter Count
-    
+
     - Word Count
 
-    - Views
-
-    - Reads
-    
     - Response Count
-    
+
     - Reading Time
-    
+
     - Language
-    
+
     - Unique Slug
 
     - URL
 
     - Image URL (Cover image)
-    
+
     - Top Highlight
 
     - Whether the article is in a series or not (boolean)
@@ -69,23 +65,23 @@ get:
           schema:
             type: object
             properties:
-              id: 
+              id:
                 type: string
                 description: Article ID
                 example: 67fa62fc1971
-              title: 
+              title:
                 type: string
                 description: Title of the article.
                 example: Why it's Super Hard to be an ML Researcher or Developer?
-              subtitle: 
+              subtitle:
                 type: string
                 description: Subtitle of the article.
                 example: A Realization that Literally Changed my Life
-              author: 
+              author:
                 type: string
                 description: Author ID
                 example: 1985b61817c3
-              publication_id: 
+              publication_id:
                 type: string
                 description: Publication ID
                 example: 98111c9905da
@@ -94,47 +90,37 @@ get:
                 format: int32
                 description: Number of responses/comments on the article.
                 example: 6
-              word_count: 
+              word_count:
                 type: integer
                 format: int32
                 description: Number of words in the article.
                 example: 1146
-              reading_time: 
+              reading_time:
                 type: number
                 description: Reading time in minutes.
                 example: 4.874528301886793
-              topics: 
+              topics:
                 type: array
                 description: List of topics assigned by Medium.
-                items: 
+                items:
                   type: string
                   example: machine-learning
-              tags: 
+              tags:
                 type: array
                 description: List of tags assigned by the author.
-                items: 
+                items:
                   type: string
                   example: data-science
-              claps: 
+              claps:
                 type: integer
                 format: int32
                 description: Number of claps on the article.
                 example: 603
-              voters: 
+              voters:
                 type: integer
                 format: int32
                 description: Number of people who clapped on the article.
                 example: 141
-              views:
-                type: integer
-                format: int32
-                description: Number of views on the article.
-                example: 1000
-              reads:
-                type: integer
-                format: int32
-                description: Number of reads on the article.
-                example: 800
               is_series:
                 type: boolean
                 description: Whether the article is part of a series or not.
@@ -151,15 +137,15 @@ get:
                 type: string
                 description: Language of the article.
                 example: en
-              published_at: 
+              published_at:
                 type: string
                 description: Date and time when the article was published.
                 example: "2020-10-28 21:01:06"
-              last_modified_at: 
+              last_modified_at:
                 type: string
                 description: Date and time when the article was last modified.
                 example: "2023-06-20 06:37:11"
-              boosted_at: 
+              boosted_at:
                 type: string
                 description: Date and time when the article was Boosted.
                 example: "2023-06-21 08:02:54"
@@ -167,11 +153,11 @@ get:
                 type: string
                 description: Unique slug assigned to the article.
                 example: why-its-super-hard-to-be-an-ml-researcher-or-developer-67fa62fc1971
-              url: 
+              url:
                 type: string
                 description: URL of the article.
                 example: https://pub.towardsai.net/why-its-super-hard-to-be-an-ml-researcher-or-developer-67fa62fc1971
-              image_url: 
+              image_url:
                 type: string
                 description: URL of the cover image of the article.
                 example: https://miro.medium.com/1*Ot1HMgLOe8GhwX1Knlx96g.png
